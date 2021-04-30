@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Duel {
-    public static int a;
+    public static int b;
 /*
     public void run(String input) {
         while (true) {
