@@ -3,7 +3,8 @@ package view;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Duel {}
+public class Duel {
+    public static int a;
 /*
     public void run(String input) {
         while (true) {
@@ -155,3 +156,4 @@ public class Duel {}
     }
 }
 */
+}
