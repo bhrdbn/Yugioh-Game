@@ -155,5 +155,13 @@ public class Duel {
         return matcher;
     }
 }
+ public static void getInput(){
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            Login login = new Login();
+            login.run(input);
+        }
+    }
 */
 }
