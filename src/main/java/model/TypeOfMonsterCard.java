@@ -17,5 +17,6 @@ public enum TypeOfMonsterCard {
     INSECT,
     CYBERS,
     FAIRY,
-    SEASERPENT
+    SEASERPENT,
+    SPECIES
 }
