@@ -20,6 +20,7 @@ public class Deck {
     public String getName() {
         return name;
     }
+
     public void addCard(Card card,int position){
         if(position==1)mainDeck.add(card);
         else sideDeck.add(card);
@@ -40,14 +41,20 @@ public class Deck {
 
     }
 
-    public void setIsValid(int count){
+    public void setIsValid(){
         isValid= (mainDeck.size()>=40&&mainDeck.size()<=60
-                && sideDeck.size()<=15&&count<=3);
+                && sideDeck.size()<=15);
     }
-    public String isValid(){
-        if(isValid==true)return "valid";
-        else return "invalid";
+    public boolean isValid(){
+        return isValid;
     }
+    public boolean isMainFull(){
+        return (mainDeck.size()==60);
+    }
+    public boolean isSideFull(){
+        return (sideDeck.size()==15);
+    }
+
 
     @Override
     public String toString() {
