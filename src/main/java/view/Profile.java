@@ -28,23 +28,15 @@ public class Profile {
         ProfileController profileController = new ProfileController();
         if(flag == 0) {
             if (profileController.checkPassword(matcher.group(1), matcher.group(2))) {
-                for (Player player: player.getPlayers()) {
-                    if (player.getPassword.equals(matcher.group(2)))
-                        System.out.println("please enter a new password");
-                }
                 profileController.changePassword(matcher.group(2));
-                System.out.println("password changed successfully!");
+                System.out.println(profileController.changePassword(matcher.group(2)));
             } else
                 System.out.println("current password is invalid");
         }
         else if(flag == 1){
             if (profileController.checkPassword(matcher.group(2), matcher.group(1))) {
-                for (Player player: player.getPlayers()) {
-                    if (player.getPassword.equals(matcher.group(2)))
-                        System.out.println("please enter a new password");
-                }
-                profileController.changePassword(matcher.group(2));
-                System.out.println("password changed successfully!");
+                profileController.changePassword(matcher.group(1));
+                System.out.println(profileController.changePassword(matcher.group(1)));
             } else
                 System.out.println("current password is invalid");
         }
