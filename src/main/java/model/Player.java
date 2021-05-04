@@ -99,10 +99,6 @@ public class Player {
         return null;
     }
 
-
-    public void setActivatedDeck(Deck activatedDeck) {
-        this.activatedDeck = activatedDeck;
-    }
     public void removeDeck(Deck deck){
         decks.remove(deck);
     }
@@ -126,39 +122,13 @@ public class Player {
         return null;
 
     }
-    /*
 
     public void setActivatedDeck(Deck activatedDeck) {
         this.activatedDeck = activatedDeck;
     }
 
-
-
-
-
     public void decreaseMoney(int decrease) {
         money -= decrease;
     }
-
-
-
-
-
-
-
-
-
-
-    public void addDeck(Deck deck) {
-    decks.add(deck);
-
-    }
-
-
-
-
-
-
-    */
 
 }
