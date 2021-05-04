@@ -61,4 +61,5 @@ public class Deck {
         return
                 name+": main deck "+mainDeck.size()+", side deck "+sideDeck.size()+", "+isValid();
     }
+
 }
