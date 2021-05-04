@@ -3,7 +3,7 @@ package view;
 import java.util.Scanner;
 
 public class Main {
-/*
+
     public static void main(String[] args) {
         getInput();
     }
@@ -21,5 +21,5 @@ public class Main {
 
     public static void printOutput(String string){
         System.out.println(string);
-    }*/
+    }
 }

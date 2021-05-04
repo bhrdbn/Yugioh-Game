@@ -3,7 +3,7 @@ import java.util.regex.*;
 import controller.*;
 public class Login {
     LoginController loginController = new LoginController();
-
+public static int b;
     public void run(String input) {
         while (true) {
             Matcher matcher1 = getCommand(input, "user create --username(\\w+) --nickname(\\w+) --password(\\w+)");
@@ -16,7 +16,9 @@ public class Login {
             Matcher matcher2_1 = getCommand(input, "user login --password (\\w+) --username (\\w+)");
             Matcher matcher5 = getCommand(input, "menu show-current");
             if (matcher1.find())
-                createUser(matcher1, 0);
+            { createUser(matcher1, 0);
+             b=9;
+            }
             else if (matcher1_1.find())
                 createUser(matcher1_1, 1);
             else if (matcher1_2.find())
@@ -43,8 +45,8 @@ public class Login {
 
     public void loginUser(Matcher matcher, int flag) {
         if (flag == 0) {
-
             System.out.println(loginController.loginUser(matcher.group(1), matcher.group(2)));
+            b=8;
         } else {
             System.out.println(loginController.loginUser(matcher.group(2), matcher.group(1)));
         }
@@ -53,6 +55,7 @@ public class Login {
     public void createUser(Matcher matcher, int flag) {
         if (flag == 0) {
             System.out.println(loginController.createUser(matcher.group(1), matcher.group(2), matcher.group(3)));
+            b=6;
         } else if (flag == 1) {
             System.out.println(loginController.createUser(matcher.group(2), matcher.group(1), matcher.group(3)));
         } else if (flag == 2) {
