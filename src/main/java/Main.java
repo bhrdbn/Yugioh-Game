@@ -6,7 +6,7 @@ public class Main {
         System.out.println("bac");
         System.out.println("hi");
         System.out.println("my");
-
+        System.out.println();
 
     }
 }
