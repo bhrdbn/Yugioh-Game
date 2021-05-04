@@ -19,6 +19,7 @@ public class Player {
         allPlayers.add(this);
         this.username = username;
         this.password = password;
+        decks=new ArrayList<>();
     }
 
 

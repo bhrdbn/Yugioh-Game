@@ -4,9 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import java.util.regex.*;
-
+import controller.*;
 public class Profile {
-    /*
+    ProfileController profileController = new ProfileController();
     public void run(String input){
         while(true){
             Matcher matcher1 = getCommand(input, "profile change --nickname(\\w+)");
@@ -25,7 +25,7 @@ public class Profile {
     }
 
     public void changePassword(Matcher matcher, int flag) {
-        ProfileController profileController = new ProfileController();
+
         if(flag == 0) {
             if (profileController.checkPassword(matcher.group(1), matcher.group(2))) {
                 profileController.changePassword(matcher.group(2));
@@ -59,5 +59,5 @@ public class Profile {
         Matcher matcher = pattern.matcher(input);
         return matcher;
     }
-*/
+
 }
