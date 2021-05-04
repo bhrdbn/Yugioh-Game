@@ -1,65 +1,54 @@
 package model;
-   /*
-public class TrapAction {{
 
-}}
-    int cardControllerNumber;
+public class TrapAction {
 
 
-    public  void neutralizeATK()
-    {
+   private int cardControllerNumber;
 
-    }
 
-    public void destroyAllAttackModes()
-    {
+    public void neutralizeATK() {
 
     }
 
-    public void destroyAllVersions()
-    {
+    public void destroyAllAttackModes() {
 
     }
 
-    public void destroyOPRitualMonster(int cardControllerNumber)
-    {
+    public void destroyAllVersions() {
 
     }
 
-    public void destroyAllMonsters(int cardControllerNumber)
-    {
+    public void destroyOPRitualMonster(int cardControllerNumber) {
 
     }
 
-    public void noCardForOpponent(int cardControllerNumber)
-    {
+    public void destroyAllMonsters(int cardControllerNumber) {
 
     }
 
-    public void neutralizeATK(int cardControllerNumber)
-    {
+    public void noCardForOpponent(int cardControllerNumber) {
 
     }
 
-    public void stopTheRitual(int cardControllerNumber)
-    {
+    public void neutralizeATK(int cardControllerNumber) {
 
     }
 
-    public void throwAwayOneAndDestroySpell(int cardControllerNumber)
-    {
+    public void stopTheRitual(int cardControllerNumber) {
 
     }
 
-    public void retributeACardFromGraveYard(int cardControllerNumber)
-    {
+    public void throwAwayOneAndDestroySpell(int cardControllerNumber) {
 
     }
 
-    public void run()
-    {
+    public void retributeACardFromGraveYard(int cardControllerNumber) {
 
     }
-*/
+
+    public void run() {
+
+    }
+}
 
 
