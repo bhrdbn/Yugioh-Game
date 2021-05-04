@@ -26,7 +26,7 @@ public class Profile {
 
     public void changePassword(Matcher matcher, int flag) {
 
-        if(flag == 0) {
+        if(1 == 0) {
             if (profileController.checkPassword(matcher.group(1), matcher.group(2))) {
                 profileController.changePassword(matcher.group(2));
                 System.out.println(profileController.changePassword(matcher.group(2)));
