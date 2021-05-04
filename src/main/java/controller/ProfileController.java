@@ -1,17 +1,17 @@
 package controller;
 
 import java.util.ArrayList;
-
+import model.*;
 public class ProfileController {
-/*
-    Player player = new Player();
+
+    Player player;
     public void changeNickName(String nickname){
-        player.setNickName(nickname);
+        player.setNickname(nickname);
     }
 
     public String changePassword(String newPassword) {
-    for (Player player: player.getPlayers()) {
-                    if (player.getPassword.equals(matcher.group(2)))
+    for (Player player: Player.getAllPlayers()) {
+                    if (player.getPassword().equals(newPassword))
                         return "please enter a new password";
                 }
         player.setPassword(newPassword);
@@ -20,8 +20,8 @@ public class ProfileController {
 
 
     public boolean checkNickName(String nickname){
-        for (Player player: player.getPlayers) {
-            if(!player.getNickName().equals(nickname))
+        for (Player player: Player.getAllPlayers()) {
+            if(!player.getNickname().equals(nickname))
                 return true;
         }
         return false;
@@ -29,12 +29,12 @@ public class ProfileController {
 
 
     public boolean checkPassword(String currentPassword, String newPassword){
-        for (Player player: player.getPlayers) {
-            if(!player.getPassword.equals(currentPassword))
+        for (Player player: Player.getAllPlayers()) {
+            if(!player.getPassword().equals(currentPassword))
                 return false;
         }
 
         return true;
     }
- */
+
 }
