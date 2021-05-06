@@ -3,10 +3,22 @@ package controller;
 public class ShopController {
 /*
     Card card = new Card();
-    public void buy(String cardName){
+    public String buy(String cardName){
         Player player = new Player();
         Card card = new Card();
-        player.setMoney(player.getMoney() - card.getPrice());
+        int count = 0;
+        for (Card cards: card.getCards()) {
+            if(!cards.getName().equals(cardName))
+                count++;
+        }
+        if(count == card.getCards().size - 1)
+            return "there is no card with this name";
+        else if(player.getMoney < card.getPrice)
+            return "not enough money";
+        else{
+            player.setMoney(player.getMoney() - card.getPrice());
+        }
+    return null;
     }
 
 
@@ -14,5 +26,6 @@ public class ShopController {
         for (Card card: card.getCards) {
             System.out.println(card.getName() + " " + card.getDescription());
         }
-    }*/
+    }
+    */
 }
