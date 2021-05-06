@@ -21,12 +21,6 @@ public class DeckView {
             Matcher matcher4_1=getCommand(input, "deck add-card card (\\w+) deck (\\w+) side");
             Matcher matcher4_2=getCommand(input, "deck add-card side deck (\\w+) card (\\w+)");
             Matcher matcher4_3=getCommand(input, "deck add-card side card (\\w+) deck (\\w+) side");
-
-
-
-
-
-
             if (matcher.find()) createDeck(matcher);
             if (matcher1.find()) deleteDeck(matcher1);
             if (matcher2.find()) activateDeck(matcher2);
