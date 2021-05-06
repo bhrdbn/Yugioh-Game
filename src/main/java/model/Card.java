@@ -31,12 +31,14 @@ public class Card {
         this.cardDescription = cardDescription;
     }
 
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public Card(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price) {
+        this.name = name;
+        this.number = number;
+        this.type = type;
+        this.cardDescription = cardDescription;
+        this.cardController = cardController;
+        this.side = side;
+        this.price = price;
     }
 
     public ArrayList<Integer> getCardController() {
@@ -47,13 +49,6 @@ public class Card {
         this.cardController = cardController;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
 
     public boolean isSide() {
         return side;
@@ -71,14 +66,22 @@ public class Card {
         Card.allCards = allCards;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     protected String name;
     protected int number;
     protected String type;
     protected String cardDescription;
-    protected String icon;
     protected ArrayList<Integer> cardController;
-    protected int level;
     protected boolean side;
+    protected int price;
+
     private  static ArrayList<Card> allCards=new ArrayList<>();
 
     public String getName() {
