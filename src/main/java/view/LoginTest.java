@@ -13,7 +13,7 @@ class LoginTest {
     Login login =new Login();
     @Test
     void run(String s) {
-      run("user create --username alimohseni --nickname ali --password alialavi20002");
+      run("user create username alimohseni nickname ali password alialavi20002");
       int b = Login.b;
         assertEquals(9,b);
     }

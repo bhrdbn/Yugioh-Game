@@ -40,6 +40,48 @@ public class Deck {
         return counter;
 
     }
+    public ArrayList<Card> getMonsters(int position){
+        ArrayList<Card>monsters=new ArrayList<>();
+        if(position==1) {
+            for (Card card1 : mainDeck) {
+                if (card1 instanceof MonsterCard) monsters.add(card1);
+            }
+        }
+        else {
+            for (Card card2 : sideDeck) {
+                if (card2 instanceof MonsterCard) monsters.add(card2);
+            }
+        }
+        return monsters;
+    }
+    public ArrayList<Card> getTrapOrSpell(int position){
+        ArrayList<Card>trapOrSpell=new ArrayList<>();
+        if(position==1) {
+            for (Card card1 : mainDeck) {
+                if (card1 instanceof TrapCard||card1 instanceof SpellCard) trapOrSpell.add(card1);
+            }
+        }
+        else {
+            for (Card card2 : sideDeck) {
+                if (card2 instanceof TrapCard || card2 instanceof SpellCard) trapOrSpell.add(card2);
+            }
+        }
+        return trapOrSpell;
+    }
+    public boolean doesHaveCard(String name,int position){
+        if(position==1) {
+            for (Card card1 : mainDeck) {
+                if (card1.getName().equals(name)) return true;
+            }
+        }
+        else {
+            for (Card card2 : sideDeck) {
+                if (card2.getName().equals(name)) return true;
+            }
+        }
+        return false;
+
+    }
 
     public void setIsValid(){
         isValid= (mainDeck.size()>=40&&mainDeck.size()<=60
@@ -48,18 +90,21 @@ public class Deck {
     public boolean isValid(){
         return isValid;
     }
+    public String returnStringIsValid(){
+        if(isValid)return "valid";
+        return "invalid";
+    }
     public boolean isMainFull(){
         return (mainDeck.size()==60);
     }
     public boolean isSideFull(){
         return (sideDeck.size()==15);
     }
-
-
     @Override
     public String toString() {
         return
-                name+": main deck "+mainDeck.size()+", side deck "+sideDeck.size()+", "+isValid();
+                name+": main deck "+mainDeck.size()+", side deck "+sideDeck.size()+", "+returnStringIsValid();
     }
+
 
 }

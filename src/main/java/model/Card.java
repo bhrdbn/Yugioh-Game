@@ -100,4 +100,11 @@ public class Card {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "Card{" +
+                "card name : " + name +
+                " cardDescription : " + cardDescription
+                ;
+    }
 }

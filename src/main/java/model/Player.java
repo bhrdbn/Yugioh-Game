@@ -8,6 +8,7 @@ public class Player {
     private int score;
     private int money;
     private  ArrayList<Deck> decks;
+    private  ArrayList<Deck> otherDecks;
     private Deck activatedDeck;
     private String password;
     private String username;
@@ -20,6 +21,7 @@ public class Player {
         this.username = username;
         this.password = password;
         decks=new ArrayList<>();
+        otherDecks=new ArrayList<>();
     }
 
 
@@ -30,6 +32,14 @@ public class Player {
         return null;
 
     }
+    public boolean doesHaveCardWithName(String name) {
+        for(Card card:cards){
+            if(card.getName().equals(name))return true;
+        }
+        return false;
+
+    }
+
 
     public String getNickname() {
         return nickname;
@@ -93,6 +103,11 @@ public class Player {
         }
         return false;
     }
+
+    public ArrayList<Deck> getOtherDecks() {
+        return otherDecks;
+    }
+
     public Deck getDeckByName(String name){
         for(Deck deck: decks){
             if (deck.getName().equals(name))return deck;
@@ -102,6 +117,10 @@ public class Player {
 
     public void removeDeck(Deck deck){
         decks.remove(deck);
+        if(!deck.getName().equals(activatedDeck.getName())) {
+            otherDecks.remove(deck);
+        }
+        else activatedDeck=null;
     }
     public void removeFromDeck(Card card){
         cards.add(card);
@@ -111,6 +130,7 @@ public class Player {
     }
     public void addDeck(Deck deck){
         decks.add(deck);
+        otherDecks.add(deck);
     }
 
     public Deck getActivatedDeck() {
@@ -124,12 +144,17 @@ public class Player {
 
     }
 
+
     public void setActivatedDeck(Deck activatedDeck) {
         this.activatedDeck = activatedDeck;
+        otherDecks.remove(activatedDeck);
     }
 
     public void decreaseMoney(int decrease) {
         money -= decrease;
     }
 
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
 }
