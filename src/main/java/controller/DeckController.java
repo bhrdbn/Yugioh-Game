@@ -6,9 +6,7 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
-public class DeckController {
-    Player player;
-
+public class DeckController extends  MainController {
     public String createDeck(String deckName){
         if(player.doesHaveDeckWithThisName(deckName)) return "deck with name <deck name> already exists";
         else {

@@ -5,7 +5,9 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 import model.*;
+
 public class MainController {
+    protected Player player;
     public static ArrayList<Player> scoreboard() {
         Comparator<Player> scoreComparator = Comparator.comparing(Player::getScore).reversed();
         Comparator<Player> alphabetComparator = Comparator.comparing(Player::getNickname);

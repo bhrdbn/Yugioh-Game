@@ -1,6 +1,6 @@
 package controller;
 
-public class ShopController {
+public class ShopController extends  MainController{
 /*
     Card card = new Card();
     public String buy(String cardName){

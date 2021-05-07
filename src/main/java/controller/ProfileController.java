@@ -2,9 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 import model.*;
-public class ProfileController {
+public class ProfileController extends MainController {
 
-    Player player;
     public void changeNickName(String nickname){
         player.setNickname(nickname);
     }
