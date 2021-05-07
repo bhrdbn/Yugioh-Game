@@ -1,10 +1,19 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TrapCard extends Card{
     private int number;
     private ArrayList<TrapCard> traps;
+
+    public TrapCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price) {
+        super(name, number, type, cardDescription, cardController, side, price);
+    }
 
     @Override
     public int getNumber() {
@@ -23,17 +32,17 @@ public class TrapCard extends Card{
     public void setTraps(ArrayList<TrapCard> traps) {
         this.traps = traps;
     }
-    TrapCard TrapHole = new TrapCard();
-    TrapCard MirrorForce = new TrapCard();
-    TrapCard MagicCylinder = new TrapCard();
-    TrapCard MindCrush = new TrapCard();
-    TrapCard TorrentialTribute = new TrapCard();
-    TrapCard TimeSeal = new TrapCard();
-    TrapCard NegateAttack = new TrapCard();
-    TrapCard SolemnWarning = new TrapCard();
-    TrapCard MagicJamamer = new TrapCard();
-    TrapCard CallOfTheHaunted = new TrapCard();
-    TrapCard VanitySEmptiness = new TrapCard();
-    TrapCard WallOfRevealingLight = new TrapCard();
+    public static void read() throws ParseException, IOException {
+        BufferedReader br = new BufferedReader(new FileReader("D://Trap.csv"));
+        String line = null;
+        HashMap<String, String> mapTrap = new HashMap<String, String>();
 
+        while ((line = br.readLine()) != null) {
+            String str[] = line.split(",");
+            for (int i = 1; i < str.length; i++) {
+                String arr[] = str[i].split(":");
+                mapTrap.put(arr[0], arr[1]);
+            }
+        }
+    }
 }
