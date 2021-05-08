@@ -9,6 +9,18 @@ import controller.*;
 public class Shop {
      /*
     ShopController shopController=ShopController.getInstance();
+    private static Shop shop=null;
+    private Shop(){
+
+    }
+    public static Shop getInstance()
+    {
+        if (shop == null)
+            shop = new Shop();
+
+        return shop;
+    }
+
 
     public void run(String input) {
         while (true) {

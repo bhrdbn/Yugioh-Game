@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
+import view.*;
+
 
 public class LoginController {
     private static LoginController loginController = null;
@@ -67,6 +69,7 @@ public class LoginController {
         if (checkUserName(username)) {
             if (checkPassword(Player.getPlayerByUser(username), password)) {
                 GlobalVariable.setPlayer(Player.getPlayerByUser(username));
+
                 return ("user logged in successfully!");
             }
             else

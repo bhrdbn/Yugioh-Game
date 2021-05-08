@@ -2,16 +2,30 @@ package view;
 
 import java.util.regex.Matcher;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import controller.*;
 
-public class DeckView {
+public class DeckView  {
+    private static DeckView deckView=null;
+    private DeckView(){
+
+    }
+    public static DeckView getInstance()
+    {
+        if (deckView == null)
+            deckView = new DeckView();
+
+        return deckView;
+    }
+
+
 
     DeckController deckController = DeckController.getInstance();
 
-    public void run(String input) {
+    public void run() {
         while (true) {
+            String input= Main.scanner.nextLine();
             Matcher matcher = getCommand(input, "deck create (\\w+)");
             Matcher matcher1 = getCommand(input, "deck delete (\\w+)");
             Matcher matcher2 = getCommand(input, "^deck set-activate (\\w+)$");
@@ -32,27 +46,30 @@ public class DeckView {
             Matcher matcher9=getCommand(input, "deck show deck-name (\\w+) side");
             Matcher matcher10=getCommand(input, "deck show side(Opt) deck-name (\\w+)");
             Matcher matcher11=getCommand(input, "deck show cards");
+            Matcher matcher12=getCommand(input, "exit");
 
             if (matcher.find()) createDeck(matcher);
-            if (matcher1.find()) deleteDeck(matcher1);
-            if (matcher2.find()) activateDeck(matcher2);
-            if (matcher3.find()) addCardToDeck(matcher3,0);
-            if(matcher3_1.find()) addCardToDeck(matcher3_1,1);
-            if(matcher4.find())   addCardToDeck(matcher4,2);
-            if(matcher4_1.find())   addCardToDeck(matcher4_1,3);
-            if(matcher4_2.find())   addCardToDeck(matcher4_2,4);
-            if(matcher4_3.find())   addCardToDeck(matcher4_3,5);
-            if (matcher5.find()) removeCardFromDeck(matcher5,0);
-            if(matcher5_1.find()) removeCardFromDeck(matcher5_1,1);
-            if(matcher6.find())   removeCardFromDeck(matcher6,2);
-            if(matcher6_1.find())   removeCardFromDeck(matcher6_1,3);
-            if(matcher6_2.find())   removeCardFromDeck(matcher6_2,4);
-            if(matcher6_3.find())   removeCardFromDeck(matcher6_3,5);
-            if(matcher7.find()) showAllDecks();
-            if(matcher8.find()) showADeck(1,matcher8);
-            if(matcher9.find()) showADeck(2,matcher9);
-            if(matcher10.find()) showADeck(3,matcher10);
-            if(matcher11.find())  showAllCards();
+            else if (matcher1.find()) deleteDeck(matcher1);
+            else if (matcher2.find()) activateDeck(matcher2);
+            else if (matcher3.find()) addCardToDeck(matcher3,0);
+            else if(matcher3_1.find()) addCardToDeck(matcher3_1,1);
+            else if(matcher4.find())   addCardToDeck(matcher4,2);
+            else if(matcher4_1.find())   addCardToDeck(matcher4_1,3);
+            else if(matcher4_2.find())   addCardToDeck(matcher4_2,4);
+            else if(matcher4_3.find())   addCardToDeck(matcher4_3,5);
+            else if (matcher5.find()) removeCardFromDeck(matcher5,0);
+            else if(matcher5_1.find()) removeCardFromDeck(matcher5_1,1);
+            else if(matcher6.find())   removeCardFromDeck(matcher6,2);
+            else if(matcher6_1.find())   removeCardFromDeck(matcher6_1,3);
+            else if(matcher6_2.find())   removeCardFromDeck(matcher6_2,4);
+            else if(matcher6_3.find())   removeCardFromDeck(matcher6_3,5);
+            else if(matcher7.find()) showAllDecks();
+            else if(matcher8.find()) showADeck(1,matcher8);
+            else if(matcher9.find()) showADeck(2,matcher9);
+            else if(matcher10.find()) showADeck(3,matcher10);
+            else if(matcher11.find())  showAllCards();
+            else if(matcher12.find())  MenuHandler.runBack(Menu.DECK);
+            else System.out.println("invalid command");
 
 
 
