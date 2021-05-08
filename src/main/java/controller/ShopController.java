@@ -1,7 +1,15 @@
 package controller;
 
+import java.util.ArrayList;
+
 public class ShopController extends  MainController{
-/*
+   /* String name;
+    String type;
+    int number;
+    String cardDescription;
+    int price;
+    boolean side;
+    ArrayList<Integer> cardController;
     Card card = new Card();
     public String buy(String cardName){
         Player player = new Player();
@@ -27,5 +35,5 @@ public class ShopController extends  MainController{
             System.out.println(card.getName() + " " + card.getDescription());
         }
     }
-    */
+*/
 }
