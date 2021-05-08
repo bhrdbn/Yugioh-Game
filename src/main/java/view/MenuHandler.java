@@ -21,16 +21,16 @@ public class MenuHandler {
 
     public static void runNextLogin() {
 
-        MainView.getInstance();
+        MainView.getInstance().run();
     }
 
     public static void runNextMain(Menu menu) {
         switch (menu) {
             case PROFILE:
-                Profile.getInstance();
+                Profile.getInstance().run();
                 break;
             case DECK:
-                DeckView.getInstance();
+                DeckView.getInstance().run();
                 break;
 
         }

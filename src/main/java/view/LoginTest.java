@@ -1,4 +1,4 @@
-package view;
+//package view;
 
 import controller.LoginController;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LoginTest {
+//class LoginTest {
     /*LoginController loginController = LoginController.getInstance();
     Login login =new Login();
     @Test
@@ -31,4 +31,4 @@ class LoginTest {
         assertEquals(6,b);
     }
 */
-}
+//}

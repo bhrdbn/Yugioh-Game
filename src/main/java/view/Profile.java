@@ -22,8 +22,8 @@ public class Profile {
         while(true){
             String input=Main.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "profile change --nickname(\\w+)");
-            Matcher matcher2 = getCommand(input, "profile change --password --current(\\w+) --new(\\w+)|profile change --current --password(\\w+) --new(\\w+)|profile change --current(\\w+) --new(\\w+) --password");
-            Matcher matcher2_1 = getCommand(input, "profile change --password --new(\\w+) --current(\\w+)|profile change --new(\\w+) --password --current(\\w+)|profile change --new(\\w+) --current(\\w+) --password");
+            Matcher matcher2 = getCommand(input, "profile change password current(\\w+) new(\\w+)|profile change current password(\\w+) new(\\w+)|profile change current(\\w+) new(\\w+) password");
+            Matcher matcher2_1 = getCommand(input, "profile change password new(\\w+) current(\\w+)|profile change new(\\w+) password current(\\w+)|profile change new(\\w+) current(\\w+) password");
             if(matcher1.find())
                 changeNickName(matcher1);
             else if(matcher2.find())

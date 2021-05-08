@@ -21,14 +21,14 @@ public class LoginController {
     }
 
 
-    public void createNewUser(String userName, String nickName, String password) {
+    public void createNewUser(String nickName, String password, String userName) {
         Player player = new Player(nickName, password, userName);
     }
 
     public String createUser(String userName, String nickName, String password) {
         if (checkUserName(userName)) {
             if (checkNickName(nickName)) {
-                createNewUser(userName, nickName, password);
+                createNewUser(nickName, password, userName);
                 return ("user created successfully!");
             } else
                 return ("user with nickname " + nickName + " already exists");
@@ -66,7 +66,7 @@ public class LoginController {
 
 
     public String loginUser(String username, String password) {
-        if (checkUserName(username)) {
+        if (Player.getPlayerByUser(username)!=null) {
             if (checkPassword(Player.getPlayerByUser(username), password)) {
                 GlobalVariable.setPlayer(Player.getPlayerByUser(username));
 

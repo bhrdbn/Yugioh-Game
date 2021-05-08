@@ -17,9 +17,9 @@ public class Player {
 
     public Player(String nickname, String password, String username) {
         this.nickname = nickname;
-        allPlayers.add(this);
         this.username = username;
         this.password = password;
+        allPlayers.add(this);
         decks=new ArrayList<>();
         otherDecks=new ArrayList<>();
     }

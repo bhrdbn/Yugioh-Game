@@ -22,14 +22,14 @@ public class Login  {
     public void run() {
         while (true) {
             String input=Main.scanner.nextLine();
-            Matcher matcher1 = getCommand(input, "user create --username(\\w+) --nickname(\\w+) --password(\\w+)");
-            Matcher matcher1_1 = getCommand(input, "user create --nickname(\\w+) --username(\\w+) --password(\\w+)");
-            Matcher matcher1_2 = getCommand(input, "user create --username(\\w+) --password(\\w+) --nickname(\\w+)");
-            Matcher matcher1_3 = getCommand(input, "user create --nickname(\\w+) --password(\\w+) --username(\\w+)");
-            Matcher matcher1_4 = getCommand(input, "user create --password(\\w+) --username(\\w+) --nickname(\\w+)");
-            Matcher matcher1_5 = getCommand(input, "user create --password(\\w+) --nickname(\\w+) --username(\\w+)");
-            Matcher matcher2 = getCommand(input, "user login --username (\\w+) --password (\\w+)");
-            Matcher matcher2_1 = getCommand(input, "user login --password (\\w+) --username (\\w+)");
+            Matcher matcher1 = getCommand(input, "user create username (\\w+) nickname (\\w+) password (\\w+)");
+            Matcher matcher1_1 = getCommand(input, "user create nickname (\\w+) username (\\w+) password (\\w+)");
+            Matcher matcher1_2 = getCommand(input, "user create username (\\w+) password (\\w+) nickname (\\w+)");
+            Matcher matcher1_3 = getCommand(input, "user create nickname (\\w+) password (\\w+) username (\\w+)");
+            Matcher matcher1_4 = getCommand(input, "user create password (\\w+) username (\\w+) nickname (\\w+)");
+            Matcher matcher1_5 = getCommand(input, "user create password (\\w+) nickname (\\w+) username (\\w+)");
+            Matcher matcher2 = getCommand(input, "user login username (\\w+) password (\\w+)");
+            Matcher matcher2_1 = getCommand(input, "user login password (\\w+) username (\\w+)");
             Matcher matcher5 = getCommand(input, "menu show-current");
             Matcher matcher6=getCommand(input, "exit");
             if (matcher1.find()) {
