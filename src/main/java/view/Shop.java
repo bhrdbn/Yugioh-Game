@@ -4,9 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import java.util.regex.*;
+import controller.*;
 
 public class Shop {
-    /*
+     /*
+    ShopController shopController=ShopController.getInstance();
+
     public void run(String input) {
         while (true) {
             Matcher matcher1 = getCommand(input, "shopBuy([a-zA-Z]+)");
@@ -21,12 +24,12 @@ public class Shop {
     }
 
     public void showAll() {
-        ShopController shopController = new ShopController();
+
         shopController.showAll();
     }
 
     public void buy(Matcher matcher1) {
-        ShopController shopController = new ShopController();
+
            if(shopController.buy(matcher1.group(1)) != null)
                System.out.println(shopController.buy(matcher1.group(1)));
     }

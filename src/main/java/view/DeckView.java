@@ -8,7 +8,7 @@ import controller.*;
 
 public class DeckView {
 
-    DeckController deckController = new DeckController();
+    DeckController deckController = DeckController.getInstance();
 
     public void run(String input) {
         while (true) {

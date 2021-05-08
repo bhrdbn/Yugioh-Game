@@ -1,6 +1,6 @@
 package controller;
 
-public class DuelController extends  MainController{
+public class DuelController{
 /*
     private Board board;
     private String turn;

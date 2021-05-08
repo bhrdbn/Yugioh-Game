@@ -6,6 +6,18 @@ import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
 public class LoginController {
+    private static LoginController loginController = null;
+    private LoginController(){
+
+    }
+    public static LoginController getInstance()
+    {
+        if (loginController == null)
+            loginController = new LoginController();
+
+        return loginController;
+    }
+
 
     public void createNewUser(String userName, String nickName, String password) {
         Player player = new Player(nickName, password, userName);
@@ -53,8 +65,10 @@ public class LoginController {
 
     public String loginUser(String username, String password) {
         if (checkUserName(username)) {
-            if (checkPassword(Player.getPlayerByUser(username), password))
+            if (checkPassword(Player.getPlayerByUser(username), password)) {
+                GlobalVariable.setPlayer(Player.getPlayerByUser(username));
                 return ("user logged in successfully!");
+            }
             else
                 return ("Username and password didn't match!");
         } else return ("Username and password didn't match!");

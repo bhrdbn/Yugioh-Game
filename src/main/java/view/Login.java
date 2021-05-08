@@ -2,7 +2,7 @@ package view;
 import java.util.regex.*;
 import controller.*;
 public class Login {
-    LoginController loginController = new LoginController();
+
 public static int b;
     public void run(String input) {
         while (true) {
@@ -45,27 +45,27 @@ public static int b;
 
     public void loginUser(Matcher matcher, int flag) {
         if (flag == 0) {
-            System.out.println(loginController.loginUser(matcher.group(1), matcher.group(2)));
+            System.out.println(LoginController.getInstance().loginUser(matcher.group(1), matcher.group(2)));
             b=8;
         } else {
-            System.out.println(loginController.loginUser(matcher.group(2), matcher.group(1)));
+            System.out.println(LoginController.getInstance().loginUser(matcher.group(2), matcher.group(1)));
         }
     }
 
     public void createUser(Matcher matcher, int flag) {
         if (flag == 0) {
-            System.out.println(loginController.createUser(matcher.group(1), matcher.group(2), matcher.group(3)));
+            System.out.println(LoginController.getInstance().createUser(matcher.group(1), matcher.group(2), matcher.group(3)));
             b=6;
         } else if (flag == 1) {
-            System.out.println(loginController.createUser(matcher.group(2), matcher.group(1), matcher.group(3)));
+            System.out.println(LoginController.getInstance().createUser(matcher.group(2), matcher.group(1), matcher.group(3)));
         } else if (flag == 2) {
-            System.out.println(loginController.createUser(matcher.group(1), matcher.group(3), matcher.group(2)));
+            System.out.println(LoginController.getInstance().createUser(matcher.group(1), matcher.group(3), matcher.group(2)));
         } else if (flag == 3) {
-            System.out.println(loginController.createUser(matcher.group(3), matcher.group(1), matcher.group(2)));
+            System.out.println(LoginController.getInstance().createUser(matcher.group(3), matcher.group(1), matcher.group(2)));
         } else if (flag == 4) {
-            System.out.println(loginController.createUser(matcher.group(2), matcher.group(3), matcher.group(1)));
+            System.out.println(LoginController.getInstance().createUser(matcher.group(2), matcher.group(3), matcher.group(1)));
         } else if (flag == 5) {
-            System.out.println(loginController.createUser(matcher.group(3), matcher.group(2), matcher.group(1)));
+            System.out.println(LoginController.getInstance().createUser(matcher.group(3), matcher.group(2), matcher.group(1)));
         }
     }
 

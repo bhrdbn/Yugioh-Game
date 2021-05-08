@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import java.util.regex.*;
 import controller.*;
 public class Profile {
-    ProfileController profileController = new ProfileController();
+    ProfileController profileController = ProfileController.getInstance();
     public void run(String input){
         while(true){
             Matcher matcher1 = getCommand(input, "profile change --nickname(\\w+)");
@@ -45,7 +45,7 @@ public class Profile {
     }
 
     public void changeNickName(Matcher matcher1) {
-        ProfileController profileController = new ProfileController();
+
         if(profileController.checkNickName(matcher1.group(1))) {
             profileController.changeNickName(matcher1.group(1));
             System.out.println("nickname changed successfully");

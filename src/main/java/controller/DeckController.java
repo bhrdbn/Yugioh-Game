@@ -6,47 +6,59 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
-public class DeckController extends  MainController {
+public class DeckController  {
+    private static DeckController deckController=null;
+    private DeckController(){
+
+    }
+    public static DeckController getInstance()
+    {
+        if (deckController== null)
+            deckController = new DeckController();
+
+        return deckController;
+    }
+
     public String createDeck(String deckName){
-        if(player.doesHaveDeckWithThisName(deckName)) return "deck with name <deck name> already exists";
+        if(GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName)) return "deck with name <deck name> already exists";
         else {
             Deck deck= new Deck(deckName);
-            player.addDeck(deck);
+            GlobalVariable.getPlayer().addDeck(deck);
             return "deck created successfully!";
         }
     }
     public String deleteDeck(String deckName){
-        if(!player.doesHaveDeckWithThisName(deckName)) return "deck with name "+deckName+" does not exist";
+        if(!GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName)) return "deck with name "+deckName+" does not exist";
         else {
-            player.removeDeck(player.getDeckByName(deckName));
+            GlobalVariable.getPlayer().removeDeck(GlobalVariable.getPlayer().getDeckByName(deckName));
             return "deck deleted successfully";
         }
     }
     public String activateDeck(String deckName){
-        if(!player.doesHaveDeckWithThisName(deckName)) return "deck with name "+deckName+" does not exist";
+        if(!GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName)) return "deck with name "+deckName+" does not exist";
         else{
-            player.setActivatedDeck(player.getDeckByName(deckName));
+            GlobalVariable.getPlayer().setActivatedDeck(GlobalVariable.getPlayer().getDeckByName(deckName));
             return "deck activated successfully";
         }
     }
     public String addCardToDeck(String deckName,String cardName,int position){
 
-        if (!player.doesHaveCardWithName(cardName)) return "card with name " + cardName + " does not exist";
-        else if (!player.doesHaveDeckWithThisName(deckName))
+        if (!GlobalVariable.getPlayer().doesHaveCardWithName(cardName)) return "card with name " + cardName + " does not exist";
+        else if (!GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName))
             return "deck with name " + deckName + " does not exist";
-        else if(position==1&&player.getDeckByName(deckName).isMainFull()) {
+        else if(position==1&&GlobalVariable.getPlayer().getDeckByName(deckName).isMainFull()) {
 
             return "main deck is full";
         }
-        else if(position==0&&player.getDeckByName(deckName).isSideFull()) {
+        else if(position==0&&GlobalVariable.getPlayer().getDeckByName(deckName).isSideFull()) {
 
             return "side deck is full";
         }
-        else if (player.getDeckByName(deckName).countACardInDeck(Card.getCardByName(cardName)) == 3) {
+        else if (GlobalVariable.getPlayer().getDeckByName(deckName).countACardInDeck(Card.getCardByName(cardName)) == 3) {
             return "there are already three cards with name " + cardName + " in deck " + deckName;
         } else {
-            player.getDeckByName(deckName).addCard(Card.getCardByName(cardName), position);
-            player.getDeckByName(deckName).setIsValid();
+            GlobalVariable.getPlayer().getDeckByName(deckName).addCard(Card.getCardByName(cardName), position);
+            GlobalVariable.getPlayer().getDeckByName(deckName).setIsValid();
             return "card added to deck successfully";
         }
 
@@ -54,14 +66,14 @@ public class DeckController extends  MainController {
     public String removeCardFromDeck(String deckName,String cardName,int position){
 
 
-         if (!player.doesHaveDeckWithThisName(deckName))
+         if (!GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName))
             return "deck with name " + deckName + " does not exist";
-        else if (player.getDeckByName(deckName).doesHaveCard(cardName,position))
+        else if (GlobalVariable.getPlayer().getDeckByName(deckName).doesHaveCard(cardName,position))
             return "card with name " + cardName + " does not exist";
 
          else {
-            player.getDeckByName(deckName).removeCard(Card.getCardByName(cardName), position);
-            player.getDeckByName(deckName).setIsValid();
+             GlobalVariable.getPlayer().getDeckByName(deckName).removeCard(Card.getCardByName(cardName), position);
+             GlobalVariable.getPlayer().getDeckByName(deckName).setIsValid();
             return "card removed from deck successfully";
         }
 
@@ -69,14 +81,14 @@ public class DeckController extends  MainController {
     public String showDecks() {
         StringBuilder otherDecks= new StringBuilder("");
         Comparator<Deck> alphabetComparator = Comparator.comparing(Deck::getName);
-        ArrayList<Deck> sortedOtherDeck = (ArrayList<Deck>) player.getOtherDecks().stream().sorted(alphabetComparator).
+        ArrayList<Deck> sortedOtherDeck = (ArrayList<Deck>) GlobalVariable.getPlayer().getOtherDecks().stream().sorted(alphabetComparator).
                 collect(Collectors.toList());
         for(Deck deck:sortedOtherDeck){
             otherDecks.append(deck.toString()).append("\n");
         }
         return "Decks:\n" +
                 "Active deck:\n" +
-                player.getActivatedDeck()+"\n" +
+                GlobalVariable.getPlayer().getActivatedDeck()+"\n" +
                 "Other decks:\n" +
                 otherDecks;
     }
@@ -87,12 +99,12 @@ public class DeckController extends  MainController {
         if(position==1)sideOrMain="Main";
         else sideOrMain="Side";
         Comparator<Card> alphabetComparator = Comparator.comparing(Card::getName);
-        ArrayList<Card> sortedMonsterCards = (ArrayList<Card>) player.getDeckByName(deckName).getMonsters(position).stream().sorted(alphabetComparator).
+        ArrayList<Card> sortedMonsterCards = (ArrayList<Card>) GlobalVariable.getPlayer().getDeckByName(deckName).getMonsters(position).stream().sorted(alphabetComparator).
                 collect(Collectors.toList());
         for(Card card:sortedMonsterCards){
             monsterDeck.append(card.toString()).append("\n");
         }
-        ArrayList<Card> sortedTrapCards = (ArrayList<Card>) player.getDeckByName(deckName).getTrapOrSpell(position).stream().sorted(alphabetComparator).
+        ArrayList<Card> sortedTrapCards = (ArrayList<Card>) GlobalVariable.getPlayer().getDeckByName(deckName).getTrapOrSpell(position).stream().sorted(alphabetComparator).
                 collect(Collectors.toList());
         for(Card card:sortedTrapCards){
             trapAndSpellDeck.append(card.toString()).append("\n");
@@ -106,7 +118,7 @@ public class DeckController extends  MainController {
     }
     public String showAllCards(){
         StringBuilder cards= new StringBuilder("");
-        for(Card card:player.getCards()){
+        for(Card card:GlobalVariable.getPlayer().getCards()){
             cards.append(card.toString()).append("\n");
         }
         return cards.toString();

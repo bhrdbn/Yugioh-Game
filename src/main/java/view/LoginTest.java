@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LoginTest {
-    LoginController loginController = new LoginController();
+    LoginController loginController = LoginController.getInstance();
     Login login =new Login();
     @Test
     void run(String s) {

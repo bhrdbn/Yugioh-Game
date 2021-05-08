@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import  controller.*;
 import model.*;
 public class MainView {
-    MainController mainController=new MainController();
+    MainController mainController=MainController.getInstance();
     public void run(String input){
         while(true){
             Matcher matcher = getCommand(input, "scoreboard show");

@@ -2,10 +2,22 @@ package controller;
 
 import java.util.ArrayList;
 import model.*;
-public class ProfileController extends MainController {
+public class ProfileController{
+    private static ProfileController profileController=null;
+    private ProfileController(){
+
+    }
+    public static ProfileController getInstance()
+    {
+        if (profileController == null)
+            profileController = new ProfileController();
+
+        return profileController;
+    }
+
 
     public void changeNickName(String nickname){
-        player.setNickname(nickname);
+        GlobalVariable.getPlayer().setNickname(nickname);
     }
 
     public String changePassword(String newPassword) {
@@ -13,7 +25,7 @@ public class ProfileController extends MainController {
                     if (player.getPassword().equals(newPassword))
                         return "please enter a new password";
                 }
-        player.setPassword(newPassword);
+        GlobalVariable.getPlayer().setPassword(newPassword);
         return "password changed successfully!";
     }
 

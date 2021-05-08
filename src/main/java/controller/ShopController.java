@@ -1,9 +1,23 @@
 package controller;
 
 import java.util.ArrayList;
+import model.*;
 
-public class ShopController extends  MainController{
-   /* String name;
+public class ShopController {
+     /*
+    private static ShopController shopController=null;
+    private ShopController(){
+
+    }
+    public static ShopController getInstance()
+    {
+        if (shopController == null)
+            shopController = new ShopController();
+
+        return shopController;
+    }
+
+    String name;
     String type;
     int number;
     String cardDescription;
