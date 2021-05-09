@@ -24,10 +24,10 @@ public class ShopController {
     int price;
     boolean side;
     ArrayList<Integer> cardController;
-    Card card = new Card();
+
     public String buy(String cardName){
         Player player = new Player();
-        Card card = new Card();
+
         int count = 0;
         for (Card cards: card.getCards()) {
             if(!cards.getName().equals(cardName))
