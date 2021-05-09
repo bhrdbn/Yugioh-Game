@@ -24,16 +24,16 @@ public class ShopController {
     int price;
     boolean side;
     ArrayList<Integer> cardController;
-
+    Card card = new Card(name, number,type, cardDescription, cardController,side, price);
     public String buy(String cardName){
-        Player player = new Player();
 
+        Card card = new Card(name, number,type, cardDescription, cardController,side, price);
         int count = 0;
-        for (Card cards: card.getCards()) {
+
             if(!cards.getName().equals(cardName))
                 count++;
         }
-        if(count == card.getCards().size - 1)
+
             return "there is no card with this name";
         else if(player.getMoney < card.getPrice)
             return "not enough money";
@@ -45,9 +45,7 @@ public class ShopController {
 
 
     public void showAll(){
-        for (Card card: card.getCards) {
-            System.out.println(card.getName() + " " + card.getDescription());
-        }
+
     }
 */
 }
