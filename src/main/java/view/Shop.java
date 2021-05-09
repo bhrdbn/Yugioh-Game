@@ -7,7 +7,7 @@ import java.util.regex.*;
 import controller.*;
 
 public class Shop {
-     /*
+
     ShopController shopController=ShopController.getInstance();
     private static Shop shop=null;
     private Shop(){
@@ -51,5 +51,5 @@ public class Shop {
         Matcher matcher = pattern.matcher(input);
         return matcher;
     }
-*/
+
 }
