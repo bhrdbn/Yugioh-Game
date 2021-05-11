@@ -17,6 +17,14 @@ public class Deck {
 
     }
 
+    public ArrayList<Card> getMainDeck() {
+        return mainDeck;
+    }
+
+    public ArrayList<Card> getSideDeck() {
+        return sideDeck;
+    }
+
     public String getName() {
         return name;
     }

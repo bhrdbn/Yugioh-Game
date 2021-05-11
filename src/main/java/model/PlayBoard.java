@@ -1,26 +1,34 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayBoard {
-    private List<MonsterCard> changedPositionCards;
-    private List<MonsterCard> attackerCards;
-    private List<SpellCard> activatedSpellCards;
-    private List<MonsterCard> summonCards;
-    private List<Card> graveyards;
-    private List<SpellCard> fields;
-    private Deck deck;
+    private Player player;
+    private ArrayList<MonsterCard> changedPositionCards=new ArrayList<>();
+    private ArrayList<MonsterCard> attackerCards=new ArrayList<>();
+    private ArrayList<SpellCard> activatedSpellCards=new ArrayList<>();
+    private List<MonsterCard> summonCards=new ArrayList<>();
+    private ArrayList<Card> graveyards=new ArrayList<>();
+    private ArrayList<SpellCard> fields=new ArrayList<>() ;
+    private Deck deck ;
+
     private List<Card> monsters;
     private List<Card> SpellTrap;
     private List<List<Card>> hand;
+    public PlayBoard(Player player){
+        deck =new Deck(player.getActivatedDeck().getName());
+        setDeck(player);
+    }
 
     public List<MonsterCard> getChangedPositionCards() {
         return changedPositionCards;
     }
 
     public void setChangedPositionCards(List<MonsterCard> changedPositionCards) {
-        this.changedPositionCards = changedPositionCards;
+        this.changedPositionCards = (ArrayList<MonsterCard>) changedPositionCards;
     }
+
 
     public List<MonsterCard> getAttackerCards() {
         return attackerCards;
@@ -66,8 +74,13 @@ public class PlayBoard {
         return deck;
     }
 
-    public void setDeck(Deck deck) {
-        this.deck = deck;
+    public void setDeck(Player player) {
+        for(Card card:player.getActivatedDeck().getMainDeck()){
+            deck.addCard(card,1);
+        }
+        for(Card card:player.getActivatedDeck().getSideDeck()){
+            deck.addCard(card,0);
+        }
     }
 
     public List<Card> getMonsters() {
