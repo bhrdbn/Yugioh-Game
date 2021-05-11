@@ -39,19 +39,7 @@ public class SpellCard extends Card{
     public void setSpells(ArrayList<SpellCard> spells) {
         this.spells = spells;
     }
-    public static void read() throws ParseException, IOException {
-        BufferedReader br = new BufferedReader(new FileReader("D://Spell.csv"));
-        String line = null;
-        HashMap<String, String> mapSpell = new HashMap<String, String>();
 
-        while ((line = br.readLine()) != null) {
-            String str[] = line.split(",");
-            for (int i = 1; i < str.length; i++) {
-                String arr[] = str[i].split(":");
-                mapSpell.put(arr[0], arr[1]);
-            }
-        }
-    }
 
 
 }

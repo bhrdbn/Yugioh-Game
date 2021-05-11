@@ -17,16 +17,16 @@ import java.util.List;
 public class MonsterCard extends Card {
 
     private int attack;
-    private int deffence;
+    private int defence;
     private ArrayList<MonsterCard> monsters;
 private String attribute;
 private int level;
 private String monsterType;
 
-    public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int deffence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
+    public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
         super(name, number, type, cardDescription, cardController, side, price);
         this.attack = attack;
-        this.deffence = deffence;
+        this.defence = defence;
         this.monsters = monsters;
         this.attribute = attribute;
         this.level = level;
@@ -42,12 +42,12 @@ String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
         this.attack = attack;
     }
 
-    public int getDeffence() {
-        return deffence;
+    public int getDefence() {
+        return defence;
     }
 
-    public void setDeffence(int deffence) {
-        this.deffence = deffence;
+    public void setDefence(int defence) {
+        this.defence = defence;
     }
 
     public ArrayList<MonsterCard> getMonsters() {
@@ -81,17 +81,5 @@ String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
     public void setMonsterType(String monsterType) {
         this.monsterType = monsterType;
     }
-    public static void read() throws ParseException, IOException {
-        BufferedReader br = new BufferedReader(new FileReader("D://Monster.csv"));
-        String line = null;
-        HashMap<String, String> mapMonster = new HashMap<String, String>();
 
-        while ((line = br.readLine()) != null) {
-            String str[] = line.split(",");
-            for (int i = 1; i < str.length; i++) {
-                String arr[] = str[i].split(":");
-                mapMonster.put(arr[0], arr[1]);
-            }
-        }
-    }
 }

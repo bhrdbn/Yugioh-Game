@@ -39,17 +39,5 @@ public class TrapCard extends Card{
     public void setTraps(ArrayList<TrapCard> traps) {
         this.traps = traps;
     }
-    public static void read() throws ParseException, IOException {
-        BufferedReader br = new BufferedReader(new FileReader("D://Trap.csv"));
-        String line = null;
-        HashMap<String, String> mapTrap = new HashMap<String, String>();
 
-        while ((line = br.readLine()) != null) {
-            String str[] = line.split(",");
-            for (int i = 1; i < str.length; i++) {
-                String arr[] = str[i].split(":");
-                mapTrap.put(arr[0], arr[1]);
-            }
-        }
-    }
 }
