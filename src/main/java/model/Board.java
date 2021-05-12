@@ -32,14 +32,10 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board{" +
-                "player1=" + playBoard1.getPlayer() +
-                ", turn=" + turn +
-                ", phase='" + phase + '\'' +
-                ", playboard1=" + playBoard1 +
-                ", player2=" + playBoard2.getPlayer() +
-                ", playboard2=" + playBoard2 +
-                '}';
+        String board="";
+        board+=getOpponentPlayBoardByTurn().rotateToString();
+        board+="\n\n----------------------\n\n";
+        return board;
     }
 
     public void setPhase(Phase phase) {
@@ -79,6 +75,11 @@ public class Board {
             return playBoard1;
         else return playBoard2;
     }
+    public PlayBoard getOpponentPlayBoardByTurn(){
+        if(turn.getNickname().equals(playBoard1.getPlayer().getNickname()))
+            return playBoard2;
+        else return playBoard1;
+    }
 
     public void addToGrave(Card card,PlayBoard playBoard)
     {
@@ -87,10 +88,6 @@ public class Board {
 
     }
 
-    public void reverseBoard(String turn)
-    {
-
-    }
 
     public void addToHand(PlayBoard playBoard)
     {
