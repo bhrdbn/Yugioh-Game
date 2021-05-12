@@ -9,13 +9,13 @@ public class PlayBoard {
     private ArrayList<MonsterCard> attackerCards=new ArrayList<>();
     private ArrayList<SpellCard> activatedSpellCards=new ArrayList<>();
     private List<MonsterCard> summonCards=new ArrayList<>();
-    private ArrayList<Card> graveyards=new ArrayList<>();
-    private ArrayList<SpellCard> fields=new ArrayList<>() ;
+    private ArrayList<Card> graveyard=new ArrayList<>();
+    private SpellCard fields;
     private Deck deck ;
 
-    private List<Card> monsters;
-    private List<Card> SpellTrap;
-    private List<List<Card>> hand;
+    private ArrayList<Card> monsters;
+    private ArrayList<Card> SpellTrap;
+    private ArrayList<Card> hand;
     public PlayBoard(Player player){
         deck =new Deck(player.getActivatedDeck().getName());
         setDeck(player);
@@ -25,16 +25,15 @@ public class PlayBoard {
         return changedPositionCards;
     }
 
-    public void setChangedPositionCards(List<MonsterCard> changedPositionCards) {
-        this.changedPositionCards = (ArrayList<MonsterCard>) changedPositionCards;
+    public void setChangedPositionCards(ArrayList<MonsterCard> changedPositionCards) {
+        this.changedPositionCards = changedPositionCards;
     }
-
 
     public List<MonsterCard> getAttackerCards() {
         return attackerCards;
     }
 
-    public void setAttackerCards(List<MonsterCard> attackerCards) {
+    public void setAttackerCards(ArrayList<MonsterCard> attackerCards) {
         this.attackerCards = attackerCards;
     }
 
@@ -42,7 +41,7 @@ public class PlayBoard {
         return activatedSpellCards;
     }
 
-    public void setActivatedSpellCards(List<SpellCard> activatedSpellCards) {
+    public void setActivatedSpellCards(ArrayList<SpellCard> activatedSpellCards) {
         this.activatedSpellCards = activatedSpellCards;
     }
 
@@ -55,18 +54,18 @@ public class PlayBoard {
     }
 
     public List<Card> getGraveyards() {
-        return graveyards;
+        return graveyard;
     }
 
-    public void setGraveyards(List<Card> graveyards) {
-        this.graveyards = graveyards;
+    public void setGraveyards(ArrayList<Card> graveyards) {
+        this.graveyard = graveyards;
     }
 
     public List<SpellCard> getFields() {
         return fields;
     }
 
-    public void setFields(List<SpellCard> fields) {
+    public void setFields(ArrayList<SpellCard> fields) {
         this.fields = fields;
     }
 
@@ -87,7 +86,7 @@ public class PlayBoard {
         return monsters;
     }
 
-    public void setMonsters(List<Card> monsters) {
+    public void setMonsters(ArrayList<Card> monsters) {
         this.monsters = monsters;
     }
 
@@ -95,15 +94,41 @@ public class PlayBoard {
         return SpellTrap;
     }
 
-    public void setSpellTrap(List<Card> spellTrap) {
+    public void setSpellTrap(ArrayList<Card> spellTrap) {
         SpellTrap = spellTrap;
     }
 
-    public List<List<Card>> getHand() {
+    public ArrayList<Card> getHand() {
         return hand;
     }
 
-    public void setHand(List<List<Card>> hand) {
+    public void setHand(ArrayList<Card> hand) {
         this.hand = hand;
+    }
+
+    public String graveToString(){
+        StringBuilder grave= new StringBuilder();
+        for(Card card:graveyard){
+            grave.append(card).append("\n");
+        }
+        return grave.toString();
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public String toString(int number) {
+        String playBoard="";
+        if(fields==null){
+            playBoard+="E";
+        }
+        else playBoard+="O";
+        playBoard+="\t\t\t\t\t\t";
+        playBoard+=graveyard.size()+"\n";
+        for(Card card:hand){
+            playBoard+="c\t";
+        }
+        return playBoard;
     }
 }

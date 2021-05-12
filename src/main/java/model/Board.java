@@ -3,58 +3,87 @@ package model;
 import java.util.regex.Matcher;
 
 public class Board {
-    private Player player1;
     private Player turn;
-    private String phase;
-    private PlayBoard playboard1;
-    private Player player2;
-    private PlayBoard playboard2;
+    private Phase phase;
+    private PlayBoard playBoard1;
+    private PlayBoard playBoard2;
 
-/*
-    public Card selecFromGrave()
+
+
+
+    public MonsterCard selectMonster(int number,PlayBoard playBoard)
     {
+        return (MonsterCard) playBoard.getMonsters().get(number);
 
     }
 
-    public MonsterCard selectMonster(Matcher matcheer)
+    public Card selectSpellOrTrap(int number,PlayBoard playBoard)
     {
+        return  playBoard.getSpellTrap().get(number);
 
     }
 
-    public Card selectSpell(Matcher matcher)
+    public Card selectFromHand(int number)
     {
+        return getPlayBoardByTurn().getHand().get(number);
+
 
     }
-
-    public Card selectFromHand(Matcher matcher)
-    {
-
-    }*/
 
     @Override
     public String toString() {
         return "Board{" +
-                "player1=" + player1 +
+                "player1=" + playBoard1.getPlayer() +
                 ", turn=" + turn +
                 ", phase='" + phase + '\'' +
-                ", playboard1=" + playboard1 +
-                ", player2=" + player2 +
-                ", playboard2=" + playboard2 +
+                ", playboard1=" + playBoard1 +
+                ", player2=" + playBoard2.getPlayer() +
+                ", playboard2=" + playBoard2 +
                 '}';
     }
 
-    public void changePhase(String phase)
+    public void setPhase(Phase phase) {
+        this.phase = phase;
+    }
+
+    public void changePhase(Phase phase)
     {
+        switch (phase){
+            case DRAW:
+                setPhase(Phase.STANDBY);
+                break;
+            case STANDBY:
+                setPhase(Phase.MAIN1);
+                break;
+            case MAIN1:
+                setPhase(Phase.BATTLE);
+                break;
+            case BATTLE:
+                setPhase(Phase.MAIN2);
+                break;
+            case MAIN2:setPhase(Phase.END);
+        }
 
     }
 
     public void reverseTurn()
     {
+        if(playBoard2.getPlayer().getNickname().equals(turn.getNickname())){
+            turn=playBoard1.getPlayer();
+        }
+        else turn=playBoard2.getPlayer();
 
     }
+    public PlayBoard getPlayBoardByTurn(){
+        if(turn.getNickname().equals(playBoard1.getPlayer().getNickname()))
+            return playBoard1;
+        else return playBoard2;
+    }
 
-    public void addToGrave(Card card)
+    public void addToGrave(Card card,PlayBoard playBoard)
     {
+        playBoard.getGraveyards().add(card);
+
 
     }
 
@@ -63,8 +92,11 @@ public class Board {
 
     }
 
-    public void addToHand(Card card)
+    public void addToHand(PlayBoard playBoard)
     {
+        Card card=playBoard.getDeck().getMainDeck().get(0);
+        playBoard.getHand().add(card);
+        playBoard.getDeck().getMainDeck().remove(0);
 
     }
 
@@ -102,7 +134,7 @@ public class Board {
     {
 
     }
-/*
+
     public boolean isRitualCardInHand()
     {
 
@@ -110,6 +142,7 @@ public class Board {
 
     public boolean isSpellZoneFull()
     {
+        return getPlayBoardByTurn().getSpellTrap().size() == 5;
 
     }
 
@@ -130,13 +163,15 @@ public class Board {
 
     public Boolean isHandFull()
     {
+        return getPlayBoardByTurn().getHand().size() == 6;
 
     }
 
     public boolean isMonsterZoneFull()
     {
+        return getPlayBoardByTurn().getMonsters().size() == 5;
 
     }
-    */
+
 
 }

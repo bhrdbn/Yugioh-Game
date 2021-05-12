@@ -18,6 +18,7 @@ public class MonsterCard extends Card {
 
     private int attack;
     private int defence;
+    private boolean isAttack;
     private ArrayList<MonsterCard> monsters;
 private String attribute;
 private int level;
@@ -36,6 +37,10 @@ String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
      ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
     public int getAttack() {
         return attack;
+    }
+
+    public void setIs_attack(boolean isAttack) {
+        this.isAttack = isAttack;
     }
 
     public void setAttack(int attack) {
