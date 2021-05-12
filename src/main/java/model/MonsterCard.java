@@ -33,7 +33,12 @@ private String monsterType;
         this.level = level;
         this.monsterType = monsterType;
     }
-String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
+
+    public boolean isAttack() {
+        return isAttack;
+    }
+
+    String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
      ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
     public int getAttack() {
         return attack;

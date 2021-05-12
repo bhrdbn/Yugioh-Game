@@ -12,13 +12,15 @@ public class PlayBoard {
     private ArrayList<Card> graveyard=new ArrayList<>();
     private SpellCard fields;
     private Deck deck ;
+    private int lifePoint;
 
-    private ArrayList<Card> monsters;
+    private ArrayList<MonsterCard> monsters;
     private ArrayList<Card> SpellTrap;
     private ArrayList<Card> hand;
     public PlayBoard(Player player){
         deck =new Deck(player.getActivatedDeck().getName());
         setDeck(player);
+        lifePoint=8000;
     }
 
     public List<MonsterCard> getChangedPositionCards() {
@@ -61,11 +63,11 @@ public class PlayBoard {
         this.graveyard = graveyards;
     }
 
-    public List<SpellCard> getFields() {
+    public SpellCard getFields() {
         return fields;
     }
 
-    public void setFields(ArrayList<SpellCard> fields) {
+    public void setFields(SpellCard fields) {
         this.fields = fields;
     }
 
@@ -82,11 +84,11 @@ public class PlayBoard {
         }
     }
 
-    public List<Card> getMonsters() {
+    public ArrayList<MonsterCard> getMonsters() {
         return monsters;
     }
 
-    public void setMonsters(ArrayList<Card> monsters) {
+    public void setMonsters(ArrayList<MonsterCard> monsters) {
         this.monsters = monsters;
     }
 
@@ -117,18 +119,75 @@ public class PlayBoard {
     public Player getPlayer() {
         return player;
     }
-
-    public String toString(int number) {
-        String playBoard="";
+    public boolean isDeckFinished(){
+        return deck.getMainDeck().size()==0;
+    }
+    public String monster(int number){
+        if(monsters.get(number)==null) return "\tE";
+        else if(monsters.get(number).isAttack()){
+            return "\tOO";
+        }
+        else if(monsters.get(number).isSide()) return "\tDO";
+        else return "\tDH";
+    }
+    public String spell(int number){
+        if(SpellTrap.get(number)==null) return "\tE";
+        else if(SpellTrap.get(number).isSide()){
+            return "\tO";
+        }
+        else return "\tH";
+    }
+    @Override
+    public String toString() {
+        StringBuilder playBoard= new StringBuilder();
         if(fields==null){
-            playBoard+="E";
+            playBoard.append("E");
         }
-        else playBoard+="O";
-        playBoard+="\t\t\t\t\t\t";
-        playBoard+=graveyard.size()+"\n";
+        else playBoard.append("O");
+        playBoard.append("\t\t\t\t\t\t");
+        playBoard.append(graveyard.size()).append("\n");
+        for (int i : new int[]{5, 3, 1, 2, 4}) {
+            playBoard.append(monster(i));
+        }
+        playBoard.append("\n");
+        for (int i : new int[]{5, 3, 1, 2, 4}) {
+            playBoard.append(spell(i));
+        }
+        playBoard.append("\n");
+        playBoard.append("\t\t\t\t\t\t");
+        playBoard.append(deck.getMainDeck().size()).append("\n");
+
+
         for(Card card:hand){
-            playBoard+="c\t";
+            playBoard.append("C\t");
         }
-        return playBoard;
+        playBoard.append("\n");
+        playBoard.append(player.getNickname()).append(":");
+        playBoard.append(lifePoint);
+
+        return playBoard.toString();
+    }
+    public String rotateToString(){
+        StringBuilder playBoard= new StringBuilder();
+        playBoard.append(player.getNickname()).append(":");
+        playBoard.append(lifePoint);
+        for(Card card:hand){
+            playBoard.append("\tC");
+        }
+        playBoard.append(deck.getMainDeck().size()).append("\n");
+        for (int i : new int[]{4, 2, 1, 3, 5}) {
+            playBoard.append(spell(i));
+        }
+        for (int i : new int[]{4, 2, 1, 3, 5}) {
+            playBoard.append(monster(i));
+        }
+        playBoard.append("\n");
+        playBoard.append(graveyard.size()).append("\n");
+        playBoard.append("\t\t\t\t\t\t");
+        if(fields==null){
+            playBoard.append("E");
+        }
+        else playBoard.append("O");
+        return playBoard.toString();
     }
 }
