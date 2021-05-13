@@ -43,7 +43,27 @@ private String monsterType;
     public int getAttack() {
         return attack;
     }
+  /* for(int i = 0; i <45 ; i++)
+   {
+       MonsterCard monster =(monstersOBJECT.get(i));
+   } */
+   //emtiazi
+    //csv
+    /*
+        public static void read() throws ParseException, IOException {
+        BufferedReader br = new BufferedReader(new FileReader("D://Monster.csv"));
+        String line = null;
+        HashMap<String, String> mapMonster = new HashMap<String, String>();
 
+        while ((line = br.readLine()) != null) {
+            String str[] = line.split(",");
+            for (int i = 1; i < str.length; i++) {
+                String arr[] = str[i].split(":");
+                mapMonster.put(arr[0], arr[1]);
+            }
+        }
+    }
+     */
     public void setIs_attack(boolean isAttack) {
         this.isAttack = isAttack;
     }
