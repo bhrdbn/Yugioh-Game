@@ -42,12 +42,23 @@ private String monsterType;
      ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
     public int getAttack() {
         return attack;
+
     }
-  /* for(int i = 0; i <45 ; i++)
-   {
-       MonsterCard monster =(monstersOBJECT.get(i));
-   } */
-   //emtiazi
+
+    public ArrayList<MonsterCard> getMonstersOBJECT() {
+
+        return monstersOBJECT;
+    }
+
+    public void setMonstersOBJECT(ArrayList<MonsterCard> monstersOBJECT) {
+        this.monstersOBJECT = monstersOBJECT;
+        for(int i = 0; i <45 ; i++)
+        {
+            MonsterCard monster =(monstersOBJECT.get(i));
+        }
+    }
+
+    //emtiazi
     //csv
     /*
         public static void read() throws ParseException, IOException {
