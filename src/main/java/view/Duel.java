@@ -2,16 +2,19 @@ package view;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import controller.*;
 
 public class Duel {
-    public static int b;
-/*
+
+
     public void run(String input) {
         while (true) {
-            Matcher matcherPlayer = getCommand(input, "duel --new --second-player (\\w+) --rounds (\\w+)");
+            Matcher matcherPlayer0 = getCommand(input, "duel new second-player (\\w+) rounds (\\d)");
+            Matcher matcherPlayer1 = getCommand(input, "duel new rounds (\\d) second-player (\\w+)");
             Matcher matcherAI = getCommand(input, "duel --new --ai --rounds(\\w+)");
-            Matcher matcherSelect = getCommand(input, "select --monster (\\s)");
-            Matcher matcherSelect2 = getCommand(input, "select --monster (\\s) --opponent");
+            Matcher matcherSelect = getCommand(input, "select monster (\\d)");
+            Matcher matcherSelect2 = getCommand(input, "select monster (\\d) opponent");
+            Matcher matcherSelect3 = getCommand(input, "select opponent monster (\\d)");
             Matcher matcherSelectAdress = getCommand(input, "select (\\w+)");
             Matcher matcherSelectRemove = getCommand(input, "select -d");
             Matcher matcherNextPhase = getCommand(input, "phase:(\\w+)");
@@ -29,16 +32,18 @@ public class Duel {
             Matcher matchershowGraveyard = getCommand(input, "showGraveyard");
             Matcher matchershowCard = getCommand(input, "show --card");
             Matcher matcherback = getCommand(input, "back");
-            if(matcherPlayer.find()) {
-                checkUserName(matcherPlayer);
-                checkRoundsforPlayer
+            if(matcherPlayer0.find()) {
+                newDuel(matcherPlayer0,0);
+            }
+            if(matcherPlayer1.find()) {
+                newDuel(matcherPlayer1,1);
             }
             else if(matcherAI.find())
             { checkRoundsforAI();}
             else if(matcherSelect.find())
-            { select(matcherSelect);}
-            else if(matcherSelect2.find())
-            { select(matcherSelect2);}
+            { selectOwnMonster(Integer.parseInt(matcherSelect.group(1)));}
+            else if(matcherSelect2.find()||matcherSelect3.find())
+            { selectOpponentMonster(Integer.parseInt(matcherSelect2.group(1)));}
             else if(matcherSelectAdress.find())
             { select(matcherSelectAdress);}
             else if(matcherSelectRemove.find())
@@ -65,12 +70,19 @@ public class Duel {
                 System.out.println("invalid command");
         }
     }
-    public boolean checkUserName( Matcher matcherPlayer){
-        for (Player player: player.getPlayer) {
-            if(player.getUserName().eqauls(username))
-                return false;
-        }
-        return true;
+    public void newDuel( Matcher matcherPlayer ,int flag){
+        if(flag == 0)
+            System.out.println(DuelController.getInstance().newDuel(Integer.parseInt
+                (matcherPlayer.group(2)),matcherPlayer.group(1),GlobalVariable.getPlayer().getUsername()));
+        else
+            System.out.println(DuelController.getInstance().newDuel(Integer.parseInt
+                (matcherPlayer.group(1)),matcherPlayer.group(2),GlobalVariable.getPlayer().getUsername()));
+    }
+    public void selectOwnMonster(int number) {
+        System.out.println(DuelController.getInstance().selectOwnMonster(number));
+    }
+    public void selectOpponentMonster(int number) {
+        System.out.println(DuelController.getInstance().selectOpponentMonster(number));
     }
     public boolean checkRoundsforPlayer(Matcher matcherPlayer){
         for (PlayBoard PlayBoard: PlayBoard.getRound) {
