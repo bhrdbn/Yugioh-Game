@@ -11,16 +11,58 @@ public class PlayBoard {
     private List<MonsterCard> summonCards=new ArrayList<>();
     private ArrayList<Card> graveyard=new ArrayList<>();
     private SpellCard fields;
-    private Deck deck ;
+    private Deck deck; ;
     private int lifePoint;
 
     private ArrayList<MonsterCard> monsters;
     private ArrayList<Card> SpellTrap;
     private ArrayList<Card> hand;
+    private Card selectedCard;
+    private Card selectedOpponentCard;
     public PlayBoard(Player player){
         deck =new Deck(player.getActivatedDeck().getName());
         setDeck(player);
         lifePoint=8000;
+        setPlayer(player);
+    }
+
+    public void setSelectedOpponentCard(Card selectedOpponentCard) {
+        this.selectedOpponentCard = selectedOpponentCard;
+    }
+
+    public Card getSelectedCard() {
+        return selectedCard;
+    }
+
+    public Card getSelectedOpponentCard() {
+        return selectedOpponentCard;
+    }
+
+    public void setSelectedCard(Card selectedCard) {
+        this.selectedCard = selectedCard;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    public MonsterCard selectMonster(int number)
+    {
+        return (MonsterCard) getMonsters().get(number);
+
+    }
+
+    public Card selectSpellOrTrap(int number)
+    {
+        return  getSpellTrap().get(number);
+
+    }
+
+
+    public Card selectFromHand(int number)
+    {
+        return getHand().get(number);
+
+
     }
 
     public List<MonsterCard> getChangedPositionCards() {

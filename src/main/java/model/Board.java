@@ -7,28 +7,14 @@ public class Board {
     private Phase phase;
     private PlayBoard playBoard1;
     private PlayBoard playBoard2;
+public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
+    playBoard1=playBoardPlayer;
+    playBoard2=playBoardOpponent;
+}
 
 
 
 
-    public MonsterCard selectMonster(int number,PlayBoard playBoard)
-    {
-        return (MonsterCard) playBoard.getMonsters().get(number);
-
-    }
-
-    public Card selectSpellOrTrap(int number,PlayBoard playBoard)
-    {
-        return  playBoard.getSpellTrap().get(number);
-
-    }
-
-    public Card selectFromHand(int number)
-    {
-        return getPlayBoardByTurn().getHand().get(number);
-
-
-    }
 
     @Override
     public String toString() {
