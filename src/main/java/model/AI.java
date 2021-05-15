@@ -1,47 +1,45 @@
 package model;
 
-public class AI {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AI extends Player {
     private Player AIPlayer;
+    private static List<AI> aiPlayers = new ArrayList<>();
+    private int winningPrize;
+
+    public AI(String nickname, int score, int money, ArrayList<Deck> decks, ArrayList<Deck> otherDecks, Deck activatedDeck, String password, String username, ArrayList<Card> cards, Player AIPlayer, int winningPrize) {
+        super(nickname, score, money, decks, otherDecks, activatedDeck, password, username, cards);
+        this.AIPlayer = AIPlayer;
+        this.winningPrize = winningPrize;
+    }
 
     public Player getAIPlayer() {
         return AIPlayer;
-    }
-
-    public AI(Player AIPlayer) {
-        this.AIPlayer = AIPlayer;
     }
 
     public void setAIPlayer(Player AIPlayer) {
         this.AIPlayer = AIPlayer;
     }
 
-    public void setTrap()
-    {
-
+    public static void addAIPlayer(List<AI> aiPlayers) {
+        if (aiPlayers == null)
+            return;
+        for (AI aiPlayer : aiPlayers)
+            addAIPlayer((List<AI>) aiPlayer);
+    }
+    private static void addAIPlayer(AI aiPlayer) {
+        if (aiPlayer == null)
+            return;
+        aiPlayers.add(aiPlayer);
+    }
+    public static List<AI> getAiPlayers() {
+        return aiPlayers;
     }
 
-    public void activateSpell()
-    {
-
+    public int getWinningPrize() {
+        return winningPrize;
     }
 
-    public void SummonMonsterWithHighestLevel()
-    {
 
-    }
-
-    public void AttackMonsterwithChances()
-    {
-
-    }
-
-    public void sacraficeTheWeak()
-    {
-
-    }
-
-    public void defendCards()
-    {
-
-    }
 }

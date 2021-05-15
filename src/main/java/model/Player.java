@@ -13,17 +13,27 @@ public class Player {
     private String password;
     private String username;
     ArrayList<Card>cards=new ArrayList<>();
+    private static Player currentPlayer;
 
-
-    public Player(String nickname, String password, String username) {
-        this.nickname = nickname;
-        this.username = username;
-        this.password = password;
-        allPlayers.add(this);
-        decks=new ArrayList<>();
-        otherDecks=new ArrayList<>();
+    public static Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
+    public static void setCurrentPlayer(Player currentPlayer) {
+        Player.currentPlayer = currentPlayer;
+    }
+
+    public Player(String nickname, int score, int money, ArrayList<Deck> decks, ArrayList<Deck> otherDecks, Deck activatedDeck, String password, String username, ArrayList<Card> cards) {
+        this.nickname = nickname;
+        this.score = score;
+        this.money = 2000;
+        this.decks = decks;
+        this.otherDecks = otherDecks;
+        this.activatedDeck = activatedDeck;
+        this.password = password;
+        this.username = username;
+        this.cards = cards;
+    }
 
     public Player getPlayerByNickName(String nickname) {
         for(Player player:allPlayers){
@@ -157,5 +167,9 @@ public class Player {
 
     public ArrayList<Card> getCards() {
         return cards;
+    }
+
+    public static void logout() {
+        currentPlayer = null;
     }
 }
