@@ -21,6 +21,8 @@ public class ProfileController{
     }
 
     public String changePassword(String newPassword) {
+        if(GlobalVariable.getPlayer().getPassword().equals(newPassword))
+            return "please enter a new password";
     for (Player player: Player.getAllPlayers()) {
                     if (player.getPassword().equals(newPassword))
                         return "please enter a new password";
