@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import model.*;
@@ -38,7 +39,7 @@ public class DuelController {
             PlayBoard playBoardPlayer=new PlayBoard(Player.getPlayerByUser(usernamePlayer));
             PlayBoard playBoardOpponent=new PlayBoard(Player.getPlayerByUser(usernameOpponent));
             GlobalVariable.setBoard(new Board(playBoardPlayer,playBoardOpponent));
-            return null;
+            return "duel created";
         }
     }
     public String selectOwnMonster(int number) {
@@ -48,7 +49,7 @@ public class DuelController {
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
                     setSelectedCard(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(number));
-            return null;
+            return "card selected";
         }
     }
     public String selectOpponentMonster(int number) {
@@ -58,7 +59,69 @@ public class DuelController {
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
                     setSelectedOpponentCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectMonster(number));
-            return null;
+            return "card selected";
+        }
+    }
+    public String selectOwnSpell(int number) {
+        if(number>5) return "selection is invalid" ;
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number)==null) return
+                "no card found in the given position";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().
+                    setSelectedCard(GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number));
+            return "card selected";
+        }
+    }
+    public String selectOpponentSpell(int number) {
+        if(number>5) return "selection is invalid" ;
+        else if(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number)==null) return
+                "no card found in the given position";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().
+                    setSelectedOpponentCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number));
+            return "card selected";
+        }
+    }
+    public String selectHand(int number) {
+        if(number>6) return "selection is invalid" ;
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number)==null) return
+                "no card found in the given position";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().
+                    setSelectedCard(GlobalVariable.getBoard().getPlayBoardByTurn().selectFromHand(number));
+            return "card selected";
+        }
+    }
+
+    public String selectField() {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getFields()==null)
+            return "no card found in the given position";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().
+                    setSelectedOpponentCard(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
+            return "card selected";
+        }
+    }
+
+    public String selectOpponentField() {
+        if(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getFields()==null)
+            return "no card found in the given position";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().
+                    setSelectedOpponentCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getFields());
+            return "card selected";
+        }
+    }
+    public String deselect() {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()==null&&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard()==null)
+            return "no card is selected yet";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().
+                    setSelectedOpponentCard(null);
+            GlobalVariable.getBoard().getPlayBoardByTurn().
+                    setSelectedCard(null);
+            return "card deselected";
         }
     }
 
@@ -82,23 +145,23 @@ public class DuelController {
 
     }
 
-    public String setMonster(MonsterCard phase:String monster) {
+    public String setMonster(MonsterCard phase,String monster) {
 
     }
 
-    public Sring changePosition(Matcher phase:String cardCardMatcher) {
+    public String changePosition(Matcher phase,String cardCardMatcher) {
 
     }
 
-    public Sring flipSummon(int phase:String place) {
+    public String flipSummon(int phase,String place) {
 
     }
 
-    public String attack(MonsterCard matcher :Matcher phase:Sring monster) {
+    public String attack(MonsterCard matcher ,(Matcher phase,String monster) {
 
     }
 
-    public String setDamage(MonsterCard card2:MonsterCard card1) {
+    public String setDamage(MonsterCard card2,MonsterCard card1) {
 
     }
 
@@ -154,5 +217,7 @@ public class DuelController {
 
     }
 }
-*/
+
+
         }
+                */

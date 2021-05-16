@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AI extends Player {
-    private Player AIPlayer;
+    public AI(String nickname, String password, String username) {
+        super(nickname, password, username);
+    }
+/*    private Player AIPlayer;
     private static List<AI> aiPlayers = new ArrayList<>();
     private int winningPrize;
 
@@ -40,6 +43,6 @@ public class AI extends Player {
     public int getWinningPrize() {
         return winningPrize;
     }
-
+*/
 
 }

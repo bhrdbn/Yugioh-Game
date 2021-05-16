@@ -47,20 +47,20 @@ public class PlayBoard {
     }
     public MonsterCard selectMonster(int number)
     {
-        return (MonsterCard) getMonsters().get(number);
+        return (MonsterCard) getMonsters().get(number-1);
 
     }
 
     public Card selectSpellOrTrap(int number)
     {
-        return  getSpellTrap().get(number);
+        return  getSpellTrap().get(number-1);
 
     }
 
 
     public Card selectFromHand(int number)
     {
-        return getHand().get(number);
+        return getHand().get(number-1);
 
 
     }

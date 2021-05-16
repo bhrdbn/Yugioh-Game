@@ -23,16 +23,14 @@ public class Player {
         Player.currentPlayer = currentPlayer;
     }
 
-    public Player(String nickname, int score, int money, ArrayList<Deck> decks, ArrayList<Deck> otherDecks, Deck activatedDeck, String password, String username, ArrayList<Card> cards) {
+    public Player(String nickname, String password, String username) {
         this.nickname = nickname;
-        this.score = score;
         this.money = 2000;
-        this.decks = decks;
-        this.otherDecks = otherDecks;
-        this.activatedDeck = activatedDeck;
         this.password = password;
         this.username = username;
-        this.cards = cards;
+        decks=new ArrayList<>();
+        otherDecks=new ArrayList<>();
+        allPlayers.add(this);
     }
 
     public Player getPlayerByNickName(String nickname) {

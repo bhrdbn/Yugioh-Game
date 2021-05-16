@@ -3,6 +3,7 @@ package model;
 import java.util.regex.Matcher;
 
 public class Board {
+    /*
     private Player turn;
     private Phase phase;
     private PlayBoard playBoard1;
@@ -26,6 +27,10 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
 
     public void setPhase(Phase phase) {
         this.phase = phase;
+    }
+
+    public Phase getPhase() {
+        return phase;
     }
 
     public void changePhase(Phase phase)
@@ -155,6 +160,6 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
         return getPlayBoardByTurn().getMonsters().size() == 5;
 
     }
-
+*/
 
 }

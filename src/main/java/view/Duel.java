@@ -6,11 +6,20 @@ import controller.*;
 
 public class Duel {
 
-
+/*
     public void run(String input) {
         while (true) {
             Matcher matcherPlayer0 = getCommand(input, "duel new second-player (\\w+) rounds (\\d)");
             Matcher matcherPlayer1 = getCommand(input, "duel new rounds (\\d) second-player (\\w+)");
+            Matcher matcherSelect4 = getCommand(input, "select spell (\\d)");
+            Matcher matcherSelect10 = getCommand(input, "select hand (\\d)");
+            Matcher matcherSelect5 = getCommand(input, "select spell (\\d) opponent");
+            Matcher matcherSelect6 = getCommand(input, "select opponent spell (\\d)");
+            Matcher matcherSelect9 = getCommand(input, "select field");
+            Matcher matcherSelect7 = getCommand(input, "select field opponent");
+            Matcher matcherSelect8 = getCommand(input, "select opponent field");
+            Matcher deselect=getCommand(input, "select -d");
+            Matcher matcherSelectAdress = getCommand(input, "select (\\w+)");
             Matcher matcherAI = getCommand(input, "duel --new --ai --rounds(\\w+)");
             Matcher matcherSelect = getCommand(input, "select monster (\\d)");
             Matcher matcherSelect2 = getCommand(input, "select monster (\\d) opponent");
@@ -42,14 +51,31 @@ public class Duel {
             { checkRoundsforAI();}
             else if(matcherSelect.find())
             { selectOwnMonster(Integer.parseInt(matcherSelect.group(1)));}
-            else if(matcherSelect2.find()||matcherSelect3.find())
+            else if(matcherSelect10.find())
+            { selectHand(Integer.parseInt(matcherSelect10.group(1)));}
+            else if(matcherSelect4.find())
+            { selectOwnSpell(Integer.parseInt(matcherSelect4.group(1)));}
+            else if(matcherSelect2.find())
             { selectOpponentMonster(Integer.parseInt(matcherSelect2.group(1)));}
+            else if(matcherSelect3.find())
+            { selectOpponentMonster(Integer.parseInt(matcherSelect3.group(1)));}
+            else if(matcherSelect5.find())
+            { selectOpponentSpell(Integer.parseInt(matcherSelect5.group(1)));}
+            else if(matcherSelect6.find())
+            { selectOpponentMonster(Integer.parseInt(matcherSelect6.group(1)));}
             else if(matcherSelectAdress.find())
             { select(matcherSelectAdress);}
             else if(matcherSelectRemove.find())
             { select(matcherSelectRemove);}
             else if(matchersummon.find())
             { summon(matchersummon);}
+            else if(matcherSelect9.find()) {
+                selectField();
+            }
+            else if(matcherSelect7.find()||matcherSelect8.find()) {
+                selectOpponentField();
+            }
+            else if(deselect.find()) deselect();
             else if(matchersetPosATK.find())
             { setMonster(matchersetPosATK);}
             else if(matchersetPosDEF.find())
@@ -83,6 +109,24 @@ public class Duel {
     }
     public void selectOpponentMonster(int number) {
         System.out.println(DuelController.getInstance().selectOpponentMonster(number));
+    }
+    public void selectOwnSpell(int number) {
+        System.out.println(DuelController.getInstance().selectOwnSpell(number));
+    }
+    public void selectOpponentSpell(int number) {
+        System.out.println(DuelController.getInstance().selectOpponentSpell(number));
+    }
+    public void selectField() {
+        System.out.println(DuelController.getInstance().selectField());
+    }
+    public void selectOpponentField() {
+        System.out.println(DuelController.getInstance().selectOpponentField());
+    }
+    public void selectHand(int number) {
+        System.out.println(DuelController.getInstance().selectHand(number));
+    }
+    public void deselect(int number) {
+        System.out.println(DuelController.getInstance().deselect());
     }
     public boolean checkRoundsforPlayer(Matcher matcherPlayer){
         for (PlayBoard PlayBoard: PlayBoard.getRound) {
