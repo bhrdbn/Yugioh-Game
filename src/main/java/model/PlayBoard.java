@@ -232,4 +232,8 @@ public class PlayBoard {
         else playBoard.append("O");
         return playBoard.toString();
     }
+
+    public void setLifePoint(int damage) {
+        lifePoint -= damage;
+    }
 }

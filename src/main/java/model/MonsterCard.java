@@ -3,6 +3,7 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import controller.GlobalVariable;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -18,11 +19,12 @@ public class MonsterCard extends Card {
 
     private int attack;
     private int defence;
-    private boolean isAttack;
+    private boolean isAttack = false;
     private ArrayList<MonsterCard> monsters;
 private String attribute;
 private int level;
 private String monsterType;
+
 
     public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
         super(name, number, type, cardDescription, cardController, side, price);
@@ -75,8 +77,8 @@ private String monsterType;
         }
     }
      */
-    public void setIs_attack(boolean isAttack) {
-        this.isAttack = isAttack;
+    public void setIsAttack(){
+        isAttack = true;
     }
 
     public void setAttack(int attack) {
@@ -121,6 +123,34 @@ private String monsterType;
 
     public void setMonsterType(String monsterType) {
         this.monsterType = monsterType;
+    }
+
+    private void lowerAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
+        int damage = currentMonster.attack - opponentMonster.attack;
+        GraveYard.setCards(opponentMonster);
+        GlobalVariable.getBoard().lowerLifePoint(damage);
+        System.out.println("your opponent's monster is destroyed and your opponent receives " + damage  + "battle damage");
+    }
+
+    public void Attack(MonsterCard opponentMonster, MonsterCard currentMonster){
+        if(currentMonster.attack > opponentMonster.attack) {
+            lowerAttack(opponentMonster, currentMonster);
+        }
+        else if(currentMonster.attack == opponentMonster.attack){
+            GraveYard.setCards(opponentMonster);
+            GraveYard.setCards(currentMonster);
+            System.out.println("both you and your opponent monster cards are destroyed and no one receives damage");
+        }
+        else{
+            int damage = opponentMonster.attack - currentMonster.attack ;
+            GlobalVariable.getBoard().lowerLifePoint(damage);
+            GraveYard.setCards(currentMonster);
+            System.out.println("Your monster card is destroyed and you received " + damage + "battle damage");
+        }
+    }
+
+    public void defense(MonsterCard opponentMonster, MonsterCard currentMonster){
+
     }
 
 }

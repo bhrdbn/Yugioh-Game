@@ -69,7 +69,9 @@ public class GraveYard {
         inputCommandLine();;
     }
 
-
+    public static void setCards(Card card){
+        lostCards.add(card);
+    }
     public static ArrayList<Card> getCards() {
         return lostCards;
     }
