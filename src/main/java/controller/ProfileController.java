@@ -25,7 +25,6 @@ public class ProfileController{
             return "please enter a new password";
         else{
             GlobalVariable.getPlayer().setPassword(newPassword);
-            return "password changed successfully!";
             return null;
         }
     }
