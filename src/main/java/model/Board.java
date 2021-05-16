@@ -157,4 +157,7 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
     }
 
 
+    public void lowerLifePoint(int damage) {
+    getPlayBoardByTurn().setLifePoint(damage);
+    }
 }
