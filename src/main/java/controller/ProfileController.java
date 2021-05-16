@@ -23,8 +23,7 @@ public class ProfileController{
     public String changePassword(String newPassword) {
         if(GlobalVariable.getPlayer().getPassword().equals(newPassword))
             return "please enter a new password";
-        GlobalVariable.getPlayer().setPassword(newPassword);
-        return "password changed successfully!";
+
     }
 
 
