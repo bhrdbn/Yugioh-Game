@@ -26,6 +26,7 @@ public class ProfileController{
         else{
             GlobalVariable.getPlayer().setPassword(newPassword);
             return "password changed successfully!";
+            return null;
         }
     }
 
