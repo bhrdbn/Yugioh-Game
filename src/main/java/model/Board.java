@@ -160,9 +160,11 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
         return getPlayBoardByTurn().getMonsters().size() == 5;
 
     }
-*/
+
 
     public void lowerLifePoint(int damage) {
     getPlayBoardByTurn().setLifePoint(damage);
     }
+
+     */
 }
