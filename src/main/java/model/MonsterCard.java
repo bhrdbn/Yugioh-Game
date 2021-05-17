@@ -26,8 +26,39 @@ public class MonsterCard extends Card {
     private int level;
     private String monsterType;
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 
-        public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public void setAttack(boolean attack) {
+        isAttack = attack;
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
             super(name, number, type, cardDescription, cardController, side, price);
             this.attack = attack;
             this.defence = defence;
@@ -58,6 +89,15 @@ public class MonsterCard extends Card {
             for(int i = 0; i <45 ; i++)
             {
                 MonsterCard monster =(monstersOBJECT.get(i));
+                monster.setName(monstersOBJECT.get(i).name);
+                monster.setType(monstersOBJECT.get(i).type);
+                monster.setSide(monstersOBJECT.get(i).side);
+                monster.setPrice(monstersOBJECT.get(i).price);
+                monster.setCardDescription(monstersOBJECT.get(i).cardDescription);
+                monster.setAttack(monstersOBJECT.get(i).attack);
+                monster.setDefence(monstersOBJECT.get(i).defence);
+                monster.setAttribute(monstersOBJECT.get(i).attribute);
+
             }
         }
 
