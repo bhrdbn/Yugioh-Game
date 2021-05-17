@@ -17,67 +17,67 @@ import java.util.List;
 
 public class MonsterCard extends Card {
 
-    private int attack;
-    private int defence;
-    private boolean isAttack = false;
-    private ArrayList<MonsterCard> monsters;
-private String attribute;
-private int level;
-private String monsterType;
+
+        private int attack;
+        private int defence;
+        private boolean isAttack = false;
+        private ArrayList<MonsterCard> monsters;
+    private String attribute;
+    private int level;
+    private String monsterType;
 
 
-    public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
-        super(name, number, type, cardDescription, cardController, side, price);
-        this.attack = attack;
-        this.defence = defence;
-        this.monsters = monsters;
-        this.attribute = attribute;
-        this.level = level;
-        this.monsterType = monsterType;
-    }
-
-    public boolean isAttack() {
-        return isAttack;
-    }
-
-    String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
-     ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
-
-    public int getAttack() {
-        return attack;
-
-    }
-
-    public ArrayList<MonsterCard> getMonstersOBJECT() {
-
-        return monstersOBJECT;
-    }
-
-    public void setMonstersOBJECT(ArrayList<MonsterCard> monstersOBJECT) {
-        this.monstersOBJECT = monstersOBJECT;
-        for(int i = 0; i <45 ; i++)
-        {
-            MonsterCard monster =(monstersOBJECT.get(i));
+        public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
+            super(name, number, type, cardDescription, cardController, side, price);
+            this.attack = attack;
+            this.defence = defence;
+            this.monsters = monsters;
+            this.attribute = attribute;
+            this.level = level;
+            this.monsterType = monsterType;
         }
-    }
 
-    //emtiazi
-    //csv
-    /*
-        public static void read() throws ParseException, IOException {
-        BufferedReader br = new BufferedReader(new FileReader("D://Monster.csv"));
-        String line = null;
-        HashMap<String, String> mapMonster = new HashMap<String, String>();
+        public boolean isAttack() {
+            return isAttack;
+        }
 
-        while ((line = br.readLine()) != null) {
-            String str[] = line.split(",");
-            for (int i = 1; i < str.length; i++) {
-                String arr[] = str[i].split(":");
-                mapMonster.put(arr[0], arr[1]);
+        String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
+         ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
+        public int getAttack() {
+            return attack;
+
+        }
+
+        public ArrayList<MonsterCard> getMonstersOBJECT() {
+
+            return monstersOBJECT;
+        }
+
+        public void setMonstersOBJECT(ArrayList<MonsterCard> monstersOBJECT) {
+            this.monstersOBJECT = monstersOBJECT;
+            for(int i = 0; i <45 ; i++)
+            {
+                MonsterCard monster =(monstersOBJECT.get(i));
             }
         }
-    }
-     */
+
+        //emtiazi
+        //csv
+        /*
+            public static void read() throws ParseException, IOException {
+            BufferedReader br = new BufferedReader(new FileReader("D://Monster.csv"));
+            String line = null;
+            HashMap<String, String> mapMonster = new HashMap<String, String>();
+
+            while ((line = br.readLine()) != null) {
+                String str[] = line.split(",");
+                for (int i = 1; i < str.length; i++) {
+                    String arr[] = str[i].split(":");
+                    mapMonster.put(arr[0], arr[1]);
+                }
+            }
+        }
+
     public void setIsAttack(){
         isAttack = true;
     }
@@ -153,5 +153,5 @@ private String monsterType;
     public void defense(MonsterCard opponentMonster, MonsterCard currentMonster){
 
     }
-
+ */
 }

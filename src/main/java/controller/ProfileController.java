@@ -21,12 +21,12 @@ public class ProfileController{
     }
 
     public String changePassword(String newPassword) {
-    for (Player player: Player.getAllPlayers()) {
-                    if (player.getPassword().equals(newPassword))
-                        return "please enter a new password";
-                }
-        GlobalVariable.getPlayer().setPassword(newPassword);
-        return "password changed successfully!";
+        if(GlobalVariable.getPlayer().getPassword().equals(newPassword))
+            return "please enter a new password";
+        else{
+            GlobalVariable.getPlayer().setPassword(newPassword);
+            return null;
+        }
     }
 
 
