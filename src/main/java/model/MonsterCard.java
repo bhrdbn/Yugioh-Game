@@ -42,6 +42,7 @@ private String monsterType;
 
     String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
      ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
+
     public int getAttack() {
         return attack;
 

@@ -4,12 +4,6 @@ public class CheatMode {
 
     private Player player;
 
-
-    public void changeScoreBoard()
-    {
-
-    }
-
     public void changeLP()
     {
 
