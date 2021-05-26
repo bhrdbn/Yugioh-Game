@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PlayBoard {
@@ -9,14 +10,15 @@ public class PlayBoard {
     private ArrayList<MonsterCard> attackerCards=new ArrayList<>();
     private ArrayList<SpellCard> activatedSpellCards=new ArrayList<>();
     private List<MonsterCard> summonCards=new ArrayList<>();
+    private boolean isCardSummonedOrSet;
     private ArrayList<Card> graveyard=new ArrayList<>();
     private SpellCard fields;
     private Deck deck; ;
     private int lifePoint;
 
-    private ArrayList<MonsterCard> monsters;
-    private ArrayList<Card> SpellTrap;
-    private ArrayList<Card> hand;
+    private ArrayList<MonsterCard> monsters=new ArrayList<>();
+    private ArrayList<Card> SpellTrap=new ArrayList<>();
+    private ArrayList<Card> hand=new ArrayList<>();
     private Card selectedCard;
     private Card selectedOpponentCard;
     public PlayBoard(Player player){
@@ -40,6 +42,14 @@ public class PlayBoard {
 
     public void setSelectedCard(Card selectedCard) {
         this.selectedCard = selectedCard;
+    }
+
+    public boolean isCardSummonedOrSet() {
+        return isCardSummonedOrSet;
+    }
+
+    public void setCardSummonedOrSet(boolean cardSummonedOrSet) {
+        isCardSummonedOrSet = cardSummonedOrSet;
     }
 
     public void setPlayer(Player player) {
@@ -233,7 +243,7 @@ public class PlayBoard {
         return playBoard.toString();
     }
 
-    public void setLifePoint(int damage) {
+    public void decreaseLifePoint(int damage) {
         lifePoint -= damage;
     }
 }

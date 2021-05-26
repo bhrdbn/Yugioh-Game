@@ -32,6 +32,7 @@ public class Deck {
     public void addCard(Card card,int position){
         if(position==1)mainDeck.add(card);
         else sideDeck.add(card);
+        card.setLocation(Location.DECK);
     }
     public void removeCard(Card card,int position){
         if(position==1)mainDeck.remove(card);

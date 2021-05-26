@@ -68,6 +68,7 @@ public class MonsterCard extends Card {
             this.monsterType = monsterType;
         }
 
+
         public boolean isAttack() {
             return isAttack;
         }

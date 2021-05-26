@@ -31,23 +31,20 @@ public class Card {
         this.cardDescription = cardDescription;
     }
 
-    public Card(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price) {
+    public Card(String name, int number, String type, String cardDescription, boolean side, int price) {
         this.name = name;
         this.number = number;
         this.type = type;
         this.cardDescription = cardDescription;
-        this.cardController = cardController;
+        this.commands = new ArrayList<>();
         this.side = side;
         this.price = price;
     }
 
-    public ArrayList<Integer> getCardController() {
-        return cardController;
-    }
-
-    public void setCardController(ArrayList<Integer> cardController) {
-        this.cardController = cardController;
-    }
+   public void run(PlayBoard playBoard,Card card){
+        for (Command command:commands)
+            command.doAction(playBoard,card,this);
+   }
 
 
     public boolean isSide() {
@@ -78,9 +75,11 @@ public class Card {
     protected int number;
     protected String type;
     protected String cardDescription;
-    protected ArrayList<Integer> cardController;
+    protected ArrayList<Command> commands;
     protected boolean side;
     protected int price;
+    boolean canBeAttacked;
+    private Location location;
 
     private  static ArrayList<Card> allCards=new ArrayList<>();
 
@@ -93,6 +92,14 @@ public class Card {
         }
         return null;
     }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    public Location getLocation() {
+        return location;
+    }
+
     public static boolean doesCardExist(String name) {
         for(Card card:allCards){
             if(card.getName().equals(name))return true;
