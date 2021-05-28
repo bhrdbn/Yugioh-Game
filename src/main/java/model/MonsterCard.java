@@ -20,7 +20,6 @@ public class MonsterCard extends Card {
 
         private int attack;
         private int defence;
-        private boolean isAttack = false;
         private ArrayList<MonsterCard> monsters;
     private String attribute;
     private int level;
@@ -36,10 +35,6 @@ public class MonsterCard extends Card {
 
     public void setDefence(int defence) {
         this.defence = defence;
-    }
-
-    public void setAttack(boolean attack) {
-        isAttack = attack;
     }
 
     public String getAttribute() {
@@ -68,10 +63,6 @@ public class MonsterCard extends Card {
             this.monsterType = monsterType;
         }
 
-
-        public boolean isAttack() {
-            return isAttack;
-        }
 
         String json = new String(Files.readAllBytes(Paths.get("D://Monster.json")));
          ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
@@ -118,6 +109,7 @@ public class MonsterCard extends Card {
                 }
             }
         }
+
 
     public void setIsAttack(){
         isAttack = true;
@@ -166,15 +158,15 @@ public class MonsterCard extends Card {
     public void setMonsterType(String monsterType) {
         this.monsterType = monsterType;
     }
-
-    private void lowerAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
+*/
+    private static void lowerAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
         int damage = currentMonster.attack - opponentMonster.attack;
         GraveYard.setCards(opponentMonster);
         GlobalVariable.getBoard().lowerLifePoint(damage);
         System.out.println("your opponent's monster is destroyed and your opponent receives " + damage  + "battle damage");
     }
 
-    public void Attack(MonsterCard opponentMonster, MonsterCard currentMonster){
+    public static void Attack(MonsterCard opponentMonster, MonsterCard currentMonster){
         if(currentMonster.attack > opponentMonster.attack) {
             lowerAttack(opponentMonster, currentMonster);
         }
@@ -191,8 +183,18 @@ public class MonsterCard extends Card {
         }
     }
 
-    public void defense(MonsterCard opponentMonster, MonsterCard currentMonster){
+    public void directAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
+        if(currentMonster.attack > opponentMonster.attack) {
+            lowerAttack(opponentMonster, currentMonster);
+            int damage = currentMonster.attack - opponentMonster.attack;
+            System.out.println("your opponent receives " + damage + " battle damage");
+        }
 
     }
- */
+
+
+    public void summon (MonsterCard opponentMonster, MonsterCard currentMonster){
+
+    }
+
 }

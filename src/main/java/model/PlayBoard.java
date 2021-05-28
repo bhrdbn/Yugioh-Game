@@ -11,6 +11,7 @@ public class PlayBoard {
     private ArrayList<SpellCard> activatedSpellCards=new ArrayList<>();
     private List<MonsterCard> summonCards=new ArrayList<>();
     private boolean isCardSummonedOrSet;
+    private boolean isCardAttacked;
     private ArrayList<Card> graveyard=new ArrayList<>();
     private SpellCard fields;
     private Deck deck; ;
@@ -48,8 +49,16 @@ public class PlayBoard {
         return isCardSummonedOrSet;
     }
 
+    public boolean isCardAttacked(){
+        return isCardAttacked;
+    }
+
     public void setCardSummonedOrSet(boolean cardSummonedOrSet) {
         isCardSummonedOrSet = cardSummonedOrSet;
+    }
+
+    public void setCardAttacked(boolean cardAttacked){
+        isCardAttacked = cardAttacked;
     }
 
     public void setPlayer(Player player) {
