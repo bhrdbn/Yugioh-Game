@@ -183,7 +183,7 @@ public class MonsterCard extends Card {
         }
     }
 
-    public void directAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
+    public static void directAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
         if(currentMonster.attack > opponentMonster.attack) {
             lowerAttack(opponentMonster, currentMonster);
             int damage = currentMonster.attack - opponentMonster.attack;

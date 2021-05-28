@@ -292,10 +292,21 @@ public class DuelController {
     public String setDamage(MonsterCard card2, MonsterCard card1) {
 
     }
-
-    public String attackDirect(MonsterCard phase :String monster) {
-
-    }
+//
+//     {
+//         if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+//                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+//             return "no card is selected yet";
+//         else if(GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
+//             return "you can't do this action in this phase";
+//         else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
+//             return "this card already attacked";
+//         else
+//             MonsterCard.directAttack(opponentMonster, currentMonster);
+//         return null;
+//
+//
+//    }
 
     public String activateCard(Card card) {
 
