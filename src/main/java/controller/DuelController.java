@@ -269,24 +269,25 @@ public class DuelController {
 
     }
 
-//     {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
-//                getLocation() != Location.HAND || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
-//                getLocation() != Location.MONSTERS)
-//            return "you can’t attack this card";
-//        else if(GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
-//            return "you can't do this action in this phase";
-//        else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
-//            return "this card already attacked";
-//        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
-//            return "there is no card to attack here";
-//        else
-//            MonsterCard.Attack(matcher, monster);
-//
-//    }
+     public String attack(MonsterCard matcher, Matcher phase, MonsterCard monster){
+        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
+                getLocation() != Location.HAND || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
+                getLocation() != Location.MONSTERS)
+            return "you can’t attack this card";
+        else if(GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
+            return "you can't do this action in this phase";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
+            return "this card already attacked";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "there is no card to attack here";
+        else
+            MonsterCard.Attack(matcher, monster);
+
+    return null;
+    }
 
     public String setDamage(MonsterCard card2, MonsterCard card1) {
 
