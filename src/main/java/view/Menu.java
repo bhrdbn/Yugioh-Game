@@ -6,5 +6,6 @@ public enum Menu {
     DUEL,
     PROFILE,
     SHOP,
-    Main
+    Main,
+    GRAVEYARD
 }

@@ -15,6 +15,8 @@ public class MenuHandler {
             case Main:
                 Login.getInstance().run();
                 break;
+            case GRAVEYARD:
+                Duel.getInstance().run();
 
         }
     }
@@ -22,6 +24,10 @@ public class MenuHandler {
     public static void runNextLogin() {
 
         MainView.getInstance().run();
+    }
+    public static void runGraveFromDuel() {
+
+      Duel.getInstance().run();
     }
 
     public static void runNextMain(Menu menu) {

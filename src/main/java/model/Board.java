@@ -3,7 +3,7 @@ package model;
 import java.util.regex.Matcher;
 
 public class Board {
-    /*
+
     private Player turn;
     private Phase phase;
     private PlayBoard playBoard1;
@@ -48,10 +48,17 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
             case BATTLE:
                 setPhase(Phase.MAIN2);
                 break;
-            case MAIN2:setPhase(Phase.END);
+            case MAIN2:
+                setPhase(Phase.END);
+                break;
+            case END:
+                setPhase(Phase.DRAW);
+                break;
+
         }
 
     }
+
 
     public void reverseTurn()
     {
@@ -79,11 +86,16 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
 
     }
 
+    public boolean isDeckFinished(){
+        return getPlayBoardByTurn().getDeck().getMainDeck().size()==0;
+    }
 
     public void addToHand(PlayBoard playBoard)
     {
+
         Card card=playBoard.getDeck().getMainDeck().get(0);
         playBoard.getHand().add(card);
+        card.setLocation(Location.HAND);
         playBoard.getDeck().getMainDeck().remove(0);
 
     }
@@ -91,6 +103,10 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
     public void addToMonster(Card card)
     {
 
+    }
+
+    public Player getTurn() {
+        return turn;
     }
 
     public void addToSpell(Card card)
@@ -163,8 +179,8 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
 
 
     public void lowerLifePoint(int damage) {
-    getPlayBoardByTurn().setLifePoint(damage);
+    getPlayBoardByTurn().decreaseLifePoint(damage);
     }
 
-     */
+
 }
