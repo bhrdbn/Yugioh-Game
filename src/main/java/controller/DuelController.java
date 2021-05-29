@@ -7,6 +7,7 @@ import view.GraveView;
 import view.Main;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class DuelController {
@@ -255,15 +256,57 @@ public class DuelController {
 
     }
 
-    public String setMonster(MonsterCard phase, String monster) {
+    public String setMonster(MonsterCard monster, String phase) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
+            return "you can't set this card";
+        else if((GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
+                instanceof MonsterCard) &&
+        (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 || GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
+            return "you can't do this action in this phase";
+        else if(GlobalVariable.getBoard().isMonsterZoneFull())
+            return "monster card zone is full";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet())
+            return "you already summoned/set on this turn";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
+            MonsterCard.set(monster);
+        return "set successfully";
+        }
+
 
     }
 
     public String changePosition(Matcher phase, String cardCardMatcher) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
+            return "you can't change this card position";
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 ||
+                GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
+            return "you can't do this action in this phase";
+        //halat card
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isPositionChanged())
+            return "you already changed this card position in this turn";
+        //taviz halat
 
     }
 
     public String flipSummon(int phase, String place) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+        GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
+            return "you can't change this card position";
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 ||
+                GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
+            return "you can't do this action in this phase";
+        else if(!GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(Main.scanner.nextLine())).equals("DH"))
+                return "you can't flip summon this card";
+        //taviz halat
 
     }
 

@@ -12,6 +12,7 @@ public class PlayBoard {
     private List<MonsterCard> summonCards=new ArrayList<>();
     private boolean isCardSummonedOrSet;
     private boolean isCardAttacked;
+    private boolean isPositionChanged;
     private ArrayList<Card> graveyard=new ArrayList<>();
     private SpellCard fields;
     private Deck deck; ;
@@ -59,6 +60,10 @@ public class PlayBoard {
 
     public void setCardAttacked(boolean cardAttacked){
         isCardAttacked = cardAttacked;
+    }
+
+    public void setPositionChanged(boolean positionChanged){
+        isPositionChanged = positionChanged;
     }
 
     public void setPlayer(Player player) {
@@ -254,5 +259,9 @@ public class PlayBoard {
 
     public void decreaseLifePoint(int damage) {
         lifePoint -= damage;
+    }
+
+    public boolean isPositionChanged() {
+        return isPositionChanged;
     }
 }

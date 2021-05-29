@@ -24,9 +24,15 @@ public class MonsterCard extends Card {
     private String attribute;
     private int level;
     private String monsterType;
+    private boolean isAttack;
+
+
 
     public void setAttack(int attack) {
         this.attack = attack;
+    }
+    public void setIsAttack(boolean isAttack){
+        this.isAttack = isAttack;
     }
 
     public int getDefence() {
@@ -193,8 +199,11 @@ public class MonsterCard extends Card {
     }
 
 
-    public void summon (MonsterCard opponentMonster, MonsterCard currentMonster){
-
+    public static void set(MonsterCard monster) {
+        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
     }
 
+    public boolean isAttack() {
+        return isAttack;
+    }
 }
