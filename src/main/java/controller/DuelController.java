@@ -7,6 +7,7 @@ import view.GraveView;
 import view.Main;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class DuelController {
@@ -194,16 +195,15 @@ public class DuelController {
             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add
                     ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
             return "summoned successfully";
-        }
-        else if (((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getLevel() <= 6) {
+        } else if (((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getLevel() <= 6) {
             if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().size() == 0)
                 return "there are not enough cards for tribute";
             else {
-                int monster= Integer.parseInt(Main.scanner.nextLine());
-                if(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster)==null)
+                int monster = Integer.parseInt(Main.scanner.nextLine());
+                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster) == null)
                     return "there no monsters one this address";
                 else {
-                    Card card=GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster);
+                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster);
                     GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
@@ -215,19 +215,18 @@ public class DuelController {
 
             }
 
-        }
-        else  {
+        } else {
             if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().size() < 2)
                 return "there are not enough cards for tribute";
             else {
-                int monster= Integer.parseInt(Main.scanner.nextLine());
-                int monster1= Integer.parseInt(Main.scanner.nextLine());
-                if(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster)==null||
-                        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1)==null)
+                int monster = Integer.parseInt(Main.scanner.nextLine());
+                int monster1 = Integer.parseInt(Main.scanner.nextLine());
+                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster) == null ||
+                        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1) == null)
                     return "there no monsters one this address";
                 else {
-                    Card card=GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster);
-                    Card card1=GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1);
+                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster);
+                    Card card1 = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card1);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster);
@@ -257,19 +256,61 @@ public class DuelController {
 
     }
 
-    public String setMonster(MonsterCard phase, String monster) {
+    public String setMonster(MonsterCard monster, String phase) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
+            return "you can't set this card";
+        else if((GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
+                instanceof MonsterCard) &&
+        (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 || GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
+            return "you can't do this action in this phase";
+        else if(GlobalVariable.getBoard().isMonsterZoneFull())
+            return "monster card zone is full";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet())
+            return "you already summoned/set on this turn";
+        else {
+            GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
+            MonsterCard.set(monster);
+        return "set successfully";
+        }
+
 
     }
 
     public String changePosition(Matcher phase, String cardCardMatcher) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
+            return "you can't change this card position";
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 ||
+                GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
+            return "you can't do this action in this phase";
+        //halat card
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isPositionChanged())
+            return "you already changed this card position in this turn";
+        //taviz halat
 
     }
 
     public String flipSummon(int phase, String place) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+        GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
+            return "you can't change this card position";
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 ||
+                GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
+            return "you can't do this action in this phase";
+        else if(!GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(Main.scanner.nextLine())).equals("DH"))
+                return "you can't flip summon this card";
+        //taviz halat
 
     }
 
-     public String attack(MonsterCard matcher, Matcher phase, MonsterCard monster){
+    public String attack(MonsterCard matcher, Matcher phase, MonsterCard monster) {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
@@ -277,23 +318,34 @@ public class DuelController {
                 getLocation() != Location.HAND || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
                 getLocation() != Location.MONSTERS)
             return "you can’t attack this card";
-        else if(GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
+        else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
             return "you can't do this action in this phase";
-        else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
             return "this card already attacked";
-        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "there is no card to attack here";
         else
             MonsterCard.Attack(matcher, monster);
 
-    return null;
+        return null;
     }
 
     public String setDamage(MonsterCard card2, MonsterCard card1) {
 
     }
 
-    public String attackDirect(MonsterCard phase :String monster) {
+    public String directAttack(MonsterCard opponentMonster, MonsterCard currentMonster, String phase) {
+        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
+            return "you can't do this action in this phase";
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
+            return "this card already attacked";
+        else
+            MonsterCard.directAttack(opponentMonster, currentMonster);
+        return null;
+
 
     }
 
