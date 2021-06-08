@@ -1,10 +1,10 @@
 package model;
 
-import controller.ImprotExport;
+import controller.improtExport;
 
 import java.util.ArrayList;
 
-public class Player extends ImprotExport {
+public class Player extends improtExport {
     private String nickname;
     private static ArrayList<Player> allPlayers = new ArrayList<>();
     private int score;
