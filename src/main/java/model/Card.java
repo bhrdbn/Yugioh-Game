@@ -1,5 +1,7 @@
 package model;
 
+import controller.GlobalVariable;
+
 import java.util.ArrayList;
 
 public class Card {
@@ -43,7 +45,7 @@ public class Card {
 
    public void run(PlayBoard playBoard,Card card){
         for (Command command:commands)
-            command.doAction(playBoard,card,this);
+            command.doAction(GlobalVariable.getBoard());
    }
 
 
