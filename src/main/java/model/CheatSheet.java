@@ -7,10 +7,10 @@ public class CheatSheet extends Player {
     public CheatSheet(String nickname, String password, String username) {
         super(nickname, password, username);
     }
-    /*private int code;
+   private int code;
 
-    public CheatSheet(String nickname, int score, int money, ArrayList<Deck> decks, ArrayList<Deck> otherDecks, Deck activatedDeck, String password, String username, int LP, int code) {
-        super(nickname, score, money, decks, otherDecks, activatedDeck, password, username, LP);
+    public CheatSheet(String nickname, String password, String username, int code) {
+        super(nickname, password, username);
         this.code = code;
     }
 
@@ -40,14 +40,14 @@ public class CheatSheet extends Player {
             setScore(1000000);
         }
         if (code ==5){
-            this.setLP(999999);
+            this.setScore(999999);
         }
         if (code == 6)
         {
             this.setMoney(2000);
         }
     }
-*/
+
 
 }
 
