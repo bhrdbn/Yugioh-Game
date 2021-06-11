@@ -1,4 +1,5 @@
-package view;
+package Graphic.view;
+
 
 public class MenuHandler {
     public static void runBack(Menu menu) {

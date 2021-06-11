@@ -1,4 +1,5 @@
-package view;
+package Graphic.view;
+
 
 public class GraveView {
     private static GraveView graveView = null;

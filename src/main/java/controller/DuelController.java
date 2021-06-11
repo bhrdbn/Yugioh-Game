@@ -2,12 +2,8 @@
 package controller;
 
 import model.*;
-import view.DeckView;
-import view.GraveView;
 import view.Main;
 
-import java.util.HashMap;
-import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class DuelController {

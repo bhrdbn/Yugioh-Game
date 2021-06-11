@@ -1,4 +1,5 @@
-package view;
+package Graphic.view;
+
 
 public enum Menu {
     LOGIN,

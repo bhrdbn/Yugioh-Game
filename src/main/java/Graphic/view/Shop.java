@@ -1,4 +1,5 @@
-package view;
+package Graphic.view;
+
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
