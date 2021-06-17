@@ -59,18 +59,20 @@ public class MonsterCard extends Card {
         this.level = level;
     }
 
-    public MonsterCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
-            super(name, number, type, cardDescription, cardController, side, price);
-            this.attack = attack;
-            this.defence = defence;
-            this.monsters = monsters;
-            this.attribute = attribute;
-            this.level = level;
-            this.monsterType = monsterType;
-        }
+    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType, boolean isAttack, String json, ArrayList<MonsterCard> monstersOBJECT) throws IOException {
+        super(name, number, type, cardDescription, side, price);
+        this.attack = attack;
+        this.defence = defence;
+        this.monsters = monsters;
+        this.attribute = attribute;
+        this.level = level;
+        this.monsterType = monsterType;
+        this.isAttack = isAttack;
+        this.json = json;
+        this.monstersOBJECT = monstersOBJECT;
+    }
 
-
-        String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonmonster.json")));
+    String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonmonster.json")));
          ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
         public int getAttack() {
             return attack;
@@ -116,55 +118,9 @@ public class MonsterCard extends Card {
             }
         }
 
-
-    public void setIsAttack(){
-        isAttack = true;
-    }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
-    }
-
-    public ArrayList<MonsterCard> getMonsters() {
-        return monsters;
-    }
-
-    public void setMonsters(ArrayList<MonsterCard> monsters) {
-        this.monsters = monsters;
-    }
-
-    public String getAttribute() {
-        return attribute;
-    }
-
-    public void setAttribute(String attribute) {
-        this.attribute = attribute;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public String getMonsterType() {
-        return monsterType;
-    }
-
-    public void setMonsterType(String monsterType) {
-        this.monsterType = monsterType;
-    }
 */
+
+
     private static void lowerAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
         int damage = currentMonster.attack - opponentMonster.attack;
         GraveYard.setCards(opponentMonster);
