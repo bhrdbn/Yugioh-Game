@@ -86,7 +86,7 @@ public class MonsterCard extends Card {
 
         public void setMonstersOBJECT(ArrayList<MonsterCard> monstersOBJECT) {
             this.monstersOBJECT = monstersOBJECT;
-            for(int i = 0; i <45 ; i++)
+            for(int i = 0; i <42 ; i++)
             {
                 MonsterCard monster =(monstersOBJECT.get(i));
                 monster.setName(monstersOBJECT.get(i).name);
