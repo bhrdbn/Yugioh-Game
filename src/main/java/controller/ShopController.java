@@ -198,6 +198,7 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
     String name34 = "Command Knight";
 
 
+
     public void showAll() {
         for (Card cards : card.getAllCards()) {
             System.out.println(cards.getName() + " " + cards.getCardDescription());

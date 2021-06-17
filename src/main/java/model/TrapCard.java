@@ -17,11 +17,27 @@ public class TrapCard extends Card{
     private int number;
     private ArrayList<TrapCard> traps;
 
-    public TrapCard(String name, int number, String type, String cardDescription, ArrayList<Integer> cardController, boolean side, int price) throws IOException {
-        super(name, number, type, cardDescription, cardController, side, price);
+    public TrapCard(String name, int number, String type, String cardDescription, boolean side, int price, int number1, ArrayList<TrapCard> traps) throws IOException {
+        super(name, number, type, cardDescription, side, price);
+        this.number = number1;
+        this.traps = traps;
     }
-    String json = new String(Files.readAllBytes(Paths.get("D://Trap.json")));
-    ArrayList<MonsterCard> trapOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
+    String json = new String(Files.readAllBytes(Paths.get("resources//csvjsontrap.json")));
+    ArrayList<SpellCard> trapsOBJECT  = new Gson().fromJson(json,new TypeToken<List<TrapCard>>(){}.getType());
+    public void setTrapsOBJECT(ArrayList<TrapCard> trapsOBJECT) {
+        for(int i = 0; i <45 ; i++)
+        {
+            TrapCard trap =(trapsOBJECT.get(i));
+            trap.setName(trapsOBJECT.get(i).name);
+            trap.setType(trapsOBJECT.get(i).type);
+            trap.setSide(trapsOBJECT.get(i).side);
+            trap.setPrice(trapsOBJECT.get(i).price);
+            trap.setCardDescription(trapsOBJECT.get(i).cardDescription);
+
+
+        }
+    }
+
     @Override
     public int getNumber() {
         return number;
