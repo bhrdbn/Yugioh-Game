@@ -74,6 +74,7 @@ public class Duel {
             { selectOpponentSpell(Integer.parseInt(matcherSelect5.group(1)));}
             else if(matcherSelect6.find())
             { selectOpponentMonster(Integer.parseInt(matcherSelect6.group(1)));}
+
            else if(nextPhase.find()) {
                goNextPhase();
             }
