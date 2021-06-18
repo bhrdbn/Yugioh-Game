@@ -5,14 +5,15 @@ import model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class AIController {
+public class AIController  {
     //ye seri ide benazaram ghavi nist vali hala :)
- /*
+
     Player player;
     private int counter = -1;
     Random random = new Random();
-    public Ai(Player player) {
+    public AIController(Player player) {
         this.player = player;
     }
 

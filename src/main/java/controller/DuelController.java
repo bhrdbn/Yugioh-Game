@@ -10,8 +10,8 @@ public class DuelController {
     private static DuelController duelController = null;
 
     private DuelController() {
-
     }
+
 
     public static DuelController getInstance() {
         if (duelController == null)
@@ -363,13 +363,6 @@ public class DuelController {
 
     }
 
-    public String isConditionMet(String spellCardPhase) {
-
-    }
-
-    public String setField(SpellCard field) {
-
-    }
 
     public String setSpellCard(SpellCard phase:String spell) {
 
