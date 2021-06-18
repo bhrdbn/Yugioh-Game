@@ -245,11 +245,11 @@ public class DuelController {
     }
 
     public boolean isMonsterForTribute(String turn) {
-
+        return true;
     }
 
     public boolean isMonserInPosition(int place) {
-
+return true;
     }
 
     public String setMonster(MonsterCard monster, String phase) {
