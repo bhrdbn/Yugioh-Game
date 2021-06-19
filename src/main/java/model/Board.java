@@ -109,7 +109,7 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
         return turn;
     }
 
-    public void addToSpell(Card card)
+    public void addToSpell(SpellCard card)
     {
 
     }
@@ -148,6 +148,9 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
     {
         return getPlayBoardByTurn().getSpellTrap().size() == 5;
 
+    }
+
+    public boolean isFieldZoneFull(){
     }
 
     public boolean wasSommoned(MonsterCard card)
