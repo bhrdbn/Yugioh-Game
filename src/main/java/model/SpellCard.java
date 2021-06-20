@@ -16,6 +16,7 @@ import java.util.List;
 public class SpellCard extends Card{
     private int number;
     private ArrayList<SpellCard> spells;
+    private TypeOfSpellCard type;
 
 
     public SpellCard(String name, int number, String type, String cardDescription, boolean side, int price, int number1, ArrayList<SpellCard> spells) throws IOException {
@@ -57,6 +58,13 @@ public class SpellCard extends Card{
         this.spells = spells;
     }
 
+    public void setSpellType(TypeOfSpellCard type){
+        this.type = type;
+    }
+
+    public TypeOfSpellCard getSpellType(){
+        return type;
+    }
 
 
 }
