@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import com.google.gson.JsonParseException;
+//import com.google.gson.JsonParseException;
 import model.MonsterCard;
 
 public class ImprotExport {

@@ -10,7 +10,10 @@ public class AI extends Player {
         setActivatedDeck(deck);
     }
 
-
+    @Override
+    public void setActivatedDeck(Deck activatedDeck) {
+        this.activatedDeck=activatedDeck;
+    }
     // public AI(String nickname, String password, String username) {
  //     super(nickname, password, username);
  // }
