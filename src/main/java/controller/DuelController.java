@@ -10,8 +10,8 @@ public class DuelController {
     private static DuelController duelController = null;
 
     private DuelController() {
-    }
 
+    }
 
     public static DuelController getInstance() {
         if (duelController == null)
@@ -359,10 +359,45 @@ public class DuelController {
 
     }
 
-    public String activateCard(Card card) {
+    public String activateCard(SpellCard card) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
+        GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.SPELL)
+            return "activate effect is only for spell cards";
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 || GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
+            return "you can't activate effect on this turn";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardActivated())
+            return "you have already activated this card";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() == Location.HAND &&
+        GlobalVariable.getBoard().isSpellZoneFull() && GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.FIELD)
+            return "spell card zone is full";
+        else if(!isConditionMet(card))
+            return "preparations of this spell are not done yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.FIELD){
+            GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
+            GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
+            return "spell activated";
+        }
+        else{
+            if(GlobalVariable.getBoard().isFieldZoneFull())
+                GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
+            GlobalVariable.getBoard().getPlayBoardByTurn().setFields(card);
+            GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
+            return "spell activated";
+
+        }
+
 
     }
 
+    public boolean isConditionMet(SpellCard spellCard) {
+
+    }
+
+    public String setField(SpellCard field) {
+
+    }
 
     public String setSpellCard(SpellCard phase:String spell) {
 

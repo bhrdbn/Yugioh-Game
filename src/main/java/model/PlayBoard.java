@@ -13,15 +13,17 @@ public class PlayBoard {
     private boolean isCardSummonedOrSet;
     private boolean isCardAttacked;
     private boolean isPositionChanged;
+    private boolean isCardActivated;
     private ArrayList<Card> graveyard=new ArrayList<>();
     private SpellCard fields;
     private Deck deck; ;
     private int lifePoint;
 
     private ArrayList<MonsterCard> monsters=new ArrayList<>();
-    private ArrayList<Card> SpellTrap=new ArrayList<>();
+    private ArrayList<SpellCard> SpellTrap=new ArrayList<>();
     private ArrayList<Card> hand=new ArrayList<>();
     private Card selectedCard;
+    private SpellCard selectedSpellCard;
     private Card selectedOpponentCard;
     public PlayBoard(Player player){
         deck =new Deck(player.getActivatedDeck().getName());
@@ -46,12 +48,24 @@ public class PlayBoard {
         this.selectedCard = selectedCard;
     }
 
+    public void setSelectedSpellCard(SpellCard selectedSpellCard){
+        this.selectedSpellCard = selectedSpellCard;
+    }
+
+    public SpellCard getSelectedSpellCard(){
+        return selectedSpellCard;
+    }
+
     public boolean isCardSummonedOrSet() {
         return isCardSummonedOrSet;
     }
 
     public boolean isCardAttacked(){
         return isCardAttacked;
+    }
+
+    public boolean isCardActivated(){
+        return isCardActivated;
     }
 
     public void setCardSummonedOrSet(boolean cardSummonedOrSet) {
@@ -64,6 +78,10 @@ public class PlayBoard {
 
     public void setPositionChanged(boolean positionChanged){
         isPositionChanged = positionChanged;
+    }
+
+    public void setCardActivated(boolean activated){
+        isCardActivated = activated;
     }
 
     public void setPlayer(Player player) {
@@ -158,11 +176,11 @@ public class PlayBoard {
         this.monsters = monsters;
     }
 
-    public List<Card> getSpellTrap() {
+    public List<SpellCard> getSpellTrap() {
         return SpellTrap;
     }
 
-    public void setSpellTrap(ArrayList<Card> spellTrap) {
+    public void setSpellTrap(ArrayList<SpellCard> spellTrap) {
         SpellTrap = spellTrap;
     }
 
