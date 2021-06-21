@@ -17,7 +17,8 @@ public class Duel {
 
         return duel;
     }
-
+    Matcher matcherSelect;
+    Matcher matcherSelect2;
 
     public void run() {
         while (true) {
@@ -35,18 +36,19 @@ public class Duel {
             Matcher nextPhase=getCommand(input,"next phase");
 
             Matcher matcherAI = getCommand(input, "duel --new --ai --rounds(\\w+)");
-            Matcher matcherSelect = getCommand(input, "select monster (\\d)");
-            Matcher matcherSelect2 = getCommand(input, "select monster (\\d) opponent");
+            matcherSelect = getCommand(input, "select monster (\\d)");
+            matcherSelect2 = getCommand(input, "select monster (\\d) opponent");
             Matcher matcherSelect3 = getCommand(input, "select opponent monster (\\d)");
             Matcher matcherMainPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matcherEndPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matchersummon = getCommand(input, "summon");
             Matcher matcherstandbyPhase = getCommand(input, "new card added to the hand : (\\w+)");
-            Matcher matcherset = getCommand(input, "duel --new --second-player (\\w+) --rounds (\\w+)");
+            Matcher matcherSet = getCommand(input, "set");
             Matcher matchersetPosATK = getCommand(input, "set -- position attack");
             Matcher matchersetPosDEF = getCommand(input, "set -- position defence");
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
             Matcher matcherAttack = getCommand(input, "attack (\\s)");
+            Matcher matcherDirectAttack = getCommand(input, "direct attack");
             Matcher matcherSetSpell = getCommand(input, "setTrap");
             Matcher matcherSetTrap = getCommand(input, "SetTrap");
             Matcher showGraveyard = getCommand(input, "show graveyard");
@@ -80,6 +82,9 @@ public class Duel {
             }
             else if(matchersummon.find())
             { summon(matchersummon);}
+            else if(matcherSet.find()){
+              set(matcherSet);
+            }
             else if(matcherSelect9.find()) {
                 selectField();
             }
@@ -93,10 +98,45 @@ public class Duel {
             {showOpponentGrave();}
             else if(showCard.find())
             { showCard();}
+            else if(matchersetPosATK.find()){
+                setPosATK(matchersetPosATK);
+            }
+            else if(matchersetPosDEF.find()){
+                setPosDEF(matchersetPosDEF);
+            }
+            else if(matcherflipSummon.find()){
+                flipSummons(matcherflipSummon);
+            }
+            else if(matcherAttack.find())
+                attack(matcherAttack);
+            else if(matcherDirectAttack.find())
+                directAttack(matcherDirectAttack);
             else
                 System.out.println("invalid command");
         }
     }
+    public void directAttack(Matcher matcherDirectAttack){
+        System.out.println(duelController.attack(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect2.group(1))), GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1)))));
+    }
+    public void attack(Matcher matcherAttack){
+        System.out.println(duelController.attack(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1))), GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect2.group(1)))));
+    }
+
+    public void flipSummons(Matcher matcherflipSummon) {
+        System.out.println(duelController.flipSummon(matcherSelect.group(1)));
+    }
+
+    public void setPosDEF(Matcher matchersetPosDEF) {
+        System.out.println(duelController.changePosition(matchersetPosDEF, duelController.selectOwnMonster(Integer.parseInt(matcherSelect.group(1)))));    }
+
+    public void setPosATK(Matcher matchersetPosATK) {
+        System.out.println(duelController.changePosition(matchersetPosATK, duelController.selectOwnMonster(Integer.parseInt(matcherSelect.group(1)))));
+    }
+
+    public void set(Matcher matcherSet) {
+        System.out.println(duelController.setMonster(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1)))));
+    }
+
     public void newDuel( Matcher matcherPlayer ,int flag){
         if(flag == 0)
             System.out.println(duelController.newDuel(Integer.parseInt
