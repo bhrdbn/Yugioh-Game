@@ -15,7 +15,7 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
     private ArrayList<SpellCard> spells = new ArrayList<>();
     private ArrayList<TrapCard> traps = new ArrayList<>();
     private ShopController() {
-        System.out.println("please enter the number of cards to buy");
+        System.out.println("please enter the number of cards to buy 1)monster 2)spell 3)trap");
 
     }
 
@@ -47,131 +47,131 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
         for (int i = 0; i <= fm; i++) {
 
 
-            if (card.getName().equals(name1)) {
+            if (cardName.equals(name1)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name2)) {
+            } else if (cardName.equals(name2)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name3)) {
+            } else if (cardName.equals(name3)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name4)) {
+            } else if (cardName.equals(name4)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name5)) {
+            } else if (cardName.equals(name5)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name6)) {
+            } else if (cardName.equals(name6)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name7)) {
+            } else if (cardName.equals(name7)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name8)) {
+            } else if (cardName.equals(name8)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name9)) {
+            } else if (cardName.equals(name9)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name10)) {
+            } else if (cardName.equals(name10)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name11)) {
+            } else if (cardName.equals(name11)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name12)) {
+            } else if (cardName.equals(name12)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name13)) {
+            } else if (cardName.equals(name13)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name14)) {
+            } else if (cardName.equals(name14)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name15)) {
+            } else if (cardName.equals(name15)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name16)) {
+            } else if (cardName.equals(name16)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name17)) {
+            } else if (cardName.equals(name17)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name18)) {
+            } else if (cardName.equals(name18)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name19)) {
+            } else if (cardName.equals(name19)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name20)) {
+            } else if (cardName.equals(name20)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name21)) {
+            } else if (cardName.equals(name21)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name22)) {
+            } else if (cardName.equals(name22)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name23)) {
+            } else if (cardName.equals(name23)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name24)) {
+            } else if (cardName.equals(name24)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name25)) {
+            } else if (cardName.equals(name25)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name26)) {
+            } else if (cardName.equals(name26)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name27)) {
+            } else if (cardName.equals(name27)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name28)) {
+            } else if (cardName.equals(name28)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name29)) {
+            } else if (cardName.equals(name29)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name30)) {
+            } else if (cardName.equals(name30)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name31)) {
+            } else if (cardName.equals(name31)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name32)) {
+            } else if (cardName.equals(name32)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name33)) {
+            } else if (cardName.equals(name33)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name34)) {
+            } else if (cardName.equals(name34)) {
                 monsters.add(monsterCard);
 
-            } else if (card.getName().equals(name35)) {
+            } else if (cardName.equals(name35)) {
                 monsters.add(monsterCard);
 
-            }
-            else if (card.getName().equals(name36)) {
+        }
+            else if (cardName.equals(name36)) {
                 monsters.add(monsterCard);
 
-            }else if (card.getName().equals(name37)) {
+            }else if (cardName.equals(name37)) {
                 monsters.add(monsterCard);
 
-            }else if (card.getName().equals(name38)) {
+            }else if (cardName.equals(name38)) {
                 monsters.add(monsterCard);
 
-            }else if (card.getName().equals(name39)) {
+            }else if (cardName.equals(name39)) {
                 monsters.add(monsterCard);
 
-            }else if (card.getName().equals(name40)) {
+            }else if (cardName.equals(name40)) {
                 monsters.add(monsterCard);
 
-            }else if (card.getName().equals(name41)) {
+            }else if (cardName.equals(name41)) {
                 monsters.add(monsterCard);
 
-            }else if (card.getName().equals(name42)) {
+            }else if (cardName.equals(name42)) {
                 monsters.add(monsterCard);
 
             }
@@ -179,76 +179,76 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
         for (int i = 0; i <= fs; i++) {
 
 
-            if (card.getName().equals(names1)) {
+            if (cardName.equals(names1)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names2)) {
+            } else if (cardName.equals(names2)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names3)) {
+            } else if (cardName.equals(names3)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names4)) {
+            } else if (cardName.equals(names4)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names5)) {
+            } else if (cardName.equals(names5)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names6)) {
+            } else if (cardName.equals(names6)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names7)) {
+            } else if (cardName.equals(names7)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names8)) {
+            } else if (cardName.equals(names8)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names9)) {
+            } else if (cardName.equals(names9)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names10)) {
+            } else if (cardName.equals(names10)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names11)) {
+            } else if (cardName.equals(names11)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names12)) {
+            } else if (cardName.equals(names12)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names13)) {
+            } else if (cardName.equals(names13)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names14)) {
+            } else if (cardName.equals(names14)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names15)) {
+            } else if (cardName.equals(names15)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names16)) {
+            } else if (cardName.equals(names16)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names17)) {
+            } else if (cardName.equals(names17)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names18)) {
+            } else if (cardName.equals(names18)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names19)) {
+            } else if (cardName.equals(names19)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names20)) {
+            } else if (cardName.equals(names20)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names21)) {
+            } else if (cardName.equals(names21)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names22)) {
+            } else if (cardName.equals(names22)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names23)) {
+            } else if (cardName.equals(names23)) {
                 spells.add(spellCard);
 
-            } else if (card.getName().equals(names24)) {
+            } else if (cardName.equals(names24)) {
                 spells.add(spellCard);
 
             }
@@ -256,42 +256,42 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
         for (int i = 0; i <= ft; i++) {
 
 
-            if (card.getName().equals(namet1)) {
+            if (cardName.equals(namet1)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet2)) {
+            } else if (cardName.equals(namet2)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet3)) {
+            } else if (cardName.equals(namet3)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet4)) {
+            } else if (cardName.equals(namet4)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet5)) {
+            } else if (cardName.equals(namet5)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet6)) {
+            } else if (cardName.equals(namet6)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet7)) {
+            } else if (cardName.equals(namet7)) {
                 traps.add(trapCard);
-            } else if (card.getName().equals(namet8)) {
-                traps.add(trapCard);
-
-            } else if (card.getName().equals(namet9)) {
+            } else if (cardName.equals(namet8)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet10)) {
+            } else if (cardName.equals(namet9)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet11)) {
+            } else if (cardName.equals(namet10)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet12)) {
+            } else if (cardName.equals(namet11)) {
                 traps.add(trapCard);
 
-            } else if (card.getName().equals(namet13)) {
+            } else if (cardName.equals(namet12)) {
+                traps.add(trapCard);
+
+            } else if (cardName.equals(namet13)) {
                 traps.add(trapCard);
             }
 
