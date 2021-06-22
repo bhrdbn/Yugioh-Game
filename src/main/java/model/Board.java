@@ -111,6 +111,11 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
 
     public void addToSpell(SpellCard card)
     {
+        for(int i = 0; i < getPlayBoardByTurn().getSpellTrap().size(); i++){
+            if(getPlayBoardByTurn().getSpellTrap().get(i) == null)
+        getPlayBoardByTurn().getSpellTrap().add(card);
+        break;
+    }
 
     }
 

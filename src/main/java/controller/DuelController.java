@@ -1,9 +1,11 @@
 
 package controller;
 
+import com.google.gson.stream.JsonToken;
 import model.*;
 import view.Main;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class DuelController {
@@ -240,7 +242,7 @@ public class DuelController {
 
     }
 
-    public void tributeMonsters(MonsterCard monser) {
+    public void tributeMonsters(int monser) {
 
     }
 
@@ -253,8 +255,7 @@ public class DuelController {
   //  }
 //
     public String setMonster(MonsterCard monster) {
-        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
             return "you can't set this card";
@@ -399,17 +400,71 @@ public class DuelController {
 
  //  }
 
- //  public String setSpellCard(SpellCard phase:String spell) {
+   public String setSpellCard(SpellCard spell, String phase) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
+            return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
+            return "you can't set this card";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof TrapCard && (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 || GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
+            return "you can't do this action in this phase";
+        else if(GlobalVariable.getBoard().isSpellZoneFull())
+            return "spell card zone is full";
+        else{
+            GlobalVariable.getBoard().addToSpell(spell);
+            GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(false);
+            return "set successfully";
+        }
+   }
 
  //  }
+    public String activateCardAndChangeTurn(SpellCard card) {
+        if(isConditionMet(card)) {
+            System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
+            System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
+            System.out.println("do you want to activate your trap and spell?");
+            String input= Main.scanner.nextLine();
+            String activation= Main.scanner.nextLine();
+            if(input.equals("no")) {
+                System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
+                System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
+            }
+            else{
+                if(activation.equals("activate spell") || activation.equals("activate trap")) {
+                    if (isConditionMet(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard())) {
+                        activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard());
+                        return "spell/trap activated";
+                    }
+                    else
+                        return "it's not your turn to play this kind of moves";
+                }
 
- //  public String activateCardAndChangeTurn(SpellCard card) {
+            }
 
- //  }
+        }
+   return null;
+    }
 
- //  public String ritualsummon(SpellCard card) {
+   public String ritualSummon(SpellCard card) {
+        if(!isConditionMet(card))
+            return "there is no way you could ritual summon a monster";
+        else if(isConditionMet(card) && (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.RITUAL || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedMonsterCard().typeOfMonsterCard() != TypeOfMonsterCard.RITUAL))
+            return "you should ritual summon right now";
+        else{
+            System.out.println("please enter the cards that you want to tribute");
+            String input = Main.scanner.nextLine();
+            if(!isMonsterForTribute(input))
+                return "selected monsters levels don't match with ritual monster";
+            else{
+                tributeMonsters(Integer.parseInt(input));
+                //tavize halat
+                return "summoned successfully";
+            }
 
- //  }
+
+        }
+
+
+   }
 
  //  public boolean isLevelMatched(int level) {
 
@@ -419,9 +474,9 @@ public class DuelController {
 
  //  }
 
- //  public String SpecialSummon(Card card) {
+   public String SpecialSummon(Card card) {
 
- //  }
+   }
 
  //  public void showGrave() {
 

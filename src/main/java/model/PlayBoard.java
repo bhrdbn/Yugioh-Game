@@ -24,6 +24,7 @@ public class PlayBoard {
     private ArrayList<Card> hand=new ArrayList<>();
     private Card selectedCard;
     private SpellCard selectedSpellCard;
+    private MonsterCard selectedMonsterCard;
     private Card selectedOpponentCard;
     public PlayBoard(Player player){
         deck =new Deck(player.getActivatedDeck().getName());
@@ -52,8 +53,16 @@ public class PlayBoard {
         this.selectedSpellCard = selectedSpellCard;
     }
 
+    public void setSelectedMonsterCard(MonsterCard selectedMonsterCard){
+        this.selectedMonsterCard = selectedMonsterCard;
+    }
+
     public SpellCard getSelectedSpellCard(){
         return selectedSpellCard;
+    }
+
+    public MonsterCard getSelectedMonsterCard(){
+        return selectedMonsterCard;
     }
 
     public boolean isCardSummonedOrSet() {
