@@ -1,83 +1,101 @@
 package controller;
 
+import model.*;
+
 import model.Deck;
-import model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class AIController  {
-    //ye seri ide benazaram ghavi nist vali hala :)
+public class AIController {
+    public String newDuel(int round, String usernamePlayer) {
 
-    Player player;
-    private int counter = -1;
-    Random random = new Random();
-    public AIController(Player player) {
-        this.player = player;
+        if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
+            return usernamePlayer + " has no active deck";
+        } else if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
+            return usernamePlayer + " has no active deck";
+        } else if (!Player.getPlayerByUser(usernamePlayer).getActivatedDeck().isValid()) {
+            return usernamePlayer + "’s deck is invalid";
+        } else if (round != 1 && round != 3)
+            return "number of rounds is not supported";
+        else {
+            PlayBoard playBoardPlayer = new PlayBoard(Player.getPlayerByUser(usernamePlayer));
+            PlayBoard playBoardOpponent = new PlayBoard(new AI("pc", "123", "ai", new Deck("AI Deck")));
+            GlobalVariable.setBoard(new Board(playBoardPlayer, playBoardOpponent));
+            return "duel created";
+        }
     }
 
-    public Player getPlayer() {
-        return player;
+    public String managePhaseAndPlay() {
+        String finalOut = "";
+        boolean summon = false;
+        GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn());
+        finalOut += "draw phase\n";
+        finalOut += "standby phase\n";
+        finalOut += "1st Main phase\n";
+        if (getMaxAttack().getAttack() > getMinOpponentAttack().getAttack()) {
+            finalOut += getMaxAttack().getName() + " is summoned\n";
+            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add(getMaxAttack())
+            finalOut += "battle phase\n";
+            MonsterCard.Attack(getMinOpponentAttack(), getMaxAttack());
+            summon = true;
+        }
+        finalOut += "2nd Main phase\n";
+        if (!summon) {
+            MonsterCard.set(getMaxDefense());
+            finalOut += "a card is set";
+        }
+        GlobalVariable.getBoard().changePhase(Phase.END);
+        GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(false);
+        GlobalVariable.getBoard().reverseTurn();
+        finalOut += "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn";
+
+        return finalOut;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-    public String sendRandomRequest(Player opponent){
-        counter++;
-            switch (counter) {
-                case 0:
-                    return insertRandomCard();
-                case 1:
-                    return selectRandomCard();
-                case 2:
-                    return moveRandomCard();
-                case 3:
-                    return attackRandomCard(opponent);
-                case 4:
-                    return "end turn";
-                case 5:
-                    counter = -1;
-                    return "";
-            }
-        return "chert";
-    }
-    private String insertRandomCard(){
 
-        ArrayList<Card> handCards = new ArrayList<>(player.getHandCards().values());
-        Card randomCard ;
-        Collections.shuffle(handCards);
 
-        for (Card handCard : handCards) {
-            if (handCard.getAttack()<player.getAttack()) {
-                return card;
+    public MonsterCard getMaxAttack() {
+        int max = 0;
+        MonsterCard monster = null;
+        for (Card card : GlobalVariable.getBoard().getPlayBoardByTurn().getHand()) {
+            if (card instanceof MonsterCard) {
+                if (max < ((MonsterCard) card).getAttack()) {
+                    max = ((MonsterCard) card).getAttack();
+                    monster = (MonsterCard) card;
+                }
             }
         }
-        return cardNull;
-    }
-    private String attackRandomCard(Player opponent){
-        Card card = player.getSelectedCard();
-        if (card == null)
-            return "forefeit";
-        ArrayList<Card> opponentInBattleCards = new ArrayList<>(opponent.getInBattleCards().keySet());
-        if(opponentInBattleCards.size() == 0)
-            return "enemy has no card";
-        Card opponentCard = opponentInBattleCards.get(random.nextInt(opponentInBattleCards.size()));
-        return "attack "+opponentCard.getInBattleCardId();
-
+        return monster;
     }
 
-    private String selectRandomCard(){
-        ArrayList<Card> inBattleCards = new ArrayList<>(player.getInBattleCards().keySet());
-        if(inBattleCards.size()==0)
-            return card;
-        Card card = inBattleCards.get(random.nextInt(inBattleCards.size()));
-        return card.getInBattleCardId();
+    public MonsterCard getMaxDefense() {
+        int max = 0;
+        MonsterCard monster = null;
+        for (Card card : GlobalVariable.getBoard().getPlayBoardByTurn().getHand()) {
+            if (card instanceof MonsterCard) {
+                if (max < ((MonsterCard) card).getDefence()) {
+                    max = ((MonsterCard) card).getDefence();
+                    monster = (MonsterCard) card;
+                }
+            }
+        }
+        return monster;
     }
-}
 
+    public MonsterCard getMinOpponentAttack() {
+        int max = 0;
+        MonsterCard monster = null;
+        for (Card card : GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters()) {
+            if (card instanceof MonsterCard) {
+                if (max < ((MonsterCard) card).getDefence()) {
+                    max = ((MonsterCard) card).getDefence();
+                    monster = (MonsterCard) card;
+                }
+            }
+        }
+        return monster;
+    }
 
-
-  */
 }

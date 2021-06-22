@@ -252,7 +252,7 @@ public class DuelController {
 
     }
 
-    public String setMonster(MonsterCard monster, String phase) {
+    public String setMonster(MonsterCard monster) {
         if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
@@ -302,7 +302,7 @@ public class DuelController {
     return null;
     }
 
-    public String flipSummon(int phase, String place) {
+    public String flipSummon(String place) {
         if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
         GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
@@ -320,7 +320,7 @@ public class DuelController {
 
     }
 
-    public String attack(MonsterCard matcher, Matcher phase, MonsterCard monster) {
+    public String attack(MonsterCard matcher, MonsterCard monster) {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
@@ -344,7 +344,7 @@ public class DuelController {
 
     }
 
-    public String directAttack(MonsterCard opponentMonster, MonsterCard currentMonster, String phase) {
+    public String directAttack(MonsterCard opponentMonster, MonsterCard currentMonster) {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";

@@ -5,17 +5,17 @@ import controller.improtExport;
 import java.util.ArrayList;
 
 public class Player extends improtExport {
-    private String nickname;
-    private static ArrayList<Player> allPlayers = new ArrayList<>();
-    private int score;
-    private int money;
-    private  ArrayList<Deck> decks;
-    private  ArrayList<Deck> otherDecks;
-    private Deck activatedDeck;
-    private String password;
-    private String username;
+    protected String nickname;
+    protected static ArrayList<Player> allPlayers = new ArrayList<>();
+    protected int score;
+    protected int money;
+    protected   ArrayList<Deck> decks;
+    protected   ArrayList<Deck> otherDecks;
+    protected Deck activatedDeck;
+    protected String password;
+    protected String username;
     ArrayList<Card>cards=new ArrayList<>();
-    private static Player currentPlayer;
+    protected static Player currentPlayer;
 
     public static Player getCurrentPlayer() {
         return currentPlayer;

@@ -235,7 +235,7 @@ Matcher matcher = null;
         MonsterCard monsterCard = new MonsterCard("a",1,"a","b",true,1,2,1,monsters,"w",1,"k",true,"k",monsters);
         monsters.add(monsterCard);
         Matcher matcher = null;
-        assertNotNull(duelController.attack(monsterCard,matcher,monsterCard));
+        assertNotNull(duelController.attack(monsterCard,monsterCard));
     }
 
     @Test
@@ -248,7 +248,7 @@ Matcher matcher = null;
         MonsterCard monsterCard = new MonsterCard("a",1,"a","b",true,1,2,1,monsters,"w",1,"k",true,"k",monsters);
         monsters.add(monsterCard);
         Matcher matcher = null;
-        assertNotNull(duelController.directAttack(monsterCard,monsterCard,"2"));
+        assertNotNull(duelController.directAttack(monsterCard,monsterCard));
     }
 
     @Test
