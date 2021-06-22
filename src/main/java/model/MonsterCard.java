@@ -23,7 +23,7 @@ public class MonsterCard extends Card {
         private ArrayList<MonsterCard> monsters;
     private String attribute;
     private int level;
-    private String monsterType;
+    private TypeOfMonsterCard monsterType;
     private boolean isAttack;
 
 
@@ -33,6 +33,10 @@ public class MonsterCard extends Card {
     }
     public void setIsAttack(boolean isAttack){
         this.isAttack = isAttack;
+    }
+
+    public TypeOfMonsterCard typeOfMonsterCard(){
+        return monsterType;
     }
 
     public int getDefence() {
