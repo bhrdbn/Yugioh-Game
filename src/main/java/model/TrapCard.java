@@ -25,7 +25,7 @@ public class TrapCard extends Card{
     String json = new String(Files.readAllBytes(Paths.get("resources//csvjsontrap.json")));
     ArrayList<SpellCard> trapsOBJECT  = new Gson().fromJson(json,new TypeToken<List<TrapCard>>(){}.getType());
     public void setTrapsOBJECT(ArrayList<TrapCard> trapsOBJECT) {
-        for(int i = 0; i <45 ; i++)
+        for(int i = 0; i <trapsOBJECT.size() ; i++)
         {
             TrapCard trap =(trapsOBJECT.get(i));
             trap.setName(trapsOBJECT.get(i).name);

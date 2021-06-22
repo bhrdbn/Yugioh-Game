@@ -28,11 +28,11 @@ public class SpellCard extends Card{
     String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonspell.json")));
     ArrayList<SpellCard> spellsOBJECT  = new Gson().fromJson(json,new TypeToken<List<SpellCard>>(){}.getType());
     public void setSpellOBJECT(ArrayList<SpellCard> spellOBJECT) {
-        for(int i = 0; i <45 ; i++)
+        for(int i = 0; i <spellOBJECT.size() ; i++)
         {
             SpellCard spell =(spellOBJECT.get(i));
             spell.setName(spellOBJECT.get(i).name);
-            spell.setType(spellOBJECT.get(i).type);
+            spell.setType(spellOBJECT.get(i).getType());
             spell.setSide(spellOBJECT.get(i).side);
             spell.setPrice(spellOBJECT.get(i).price);
             spell.setCardDescription(spellOBJECT.get(i).cardDescription);
