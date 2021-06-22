@@ -14,15 +14,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SpellCard extends Card{
-    private int number;
+
     private ArrayList<SpellCard> spells;
     private TypeOfSpellCard type;
+    private String icon;
+    private String status;
 
 
-    public SpellCard(String name, int number, String type, String cardDescription, boolean side, int price, int number1, ArrayList<SpellCard> spells) throws IOException {
+    public SpellCard(String status,String name, int number, String type, String cardDescription, boolean side, int price,  String icon) throws IOException {
         super(name, number, type, cardDescription, side, price);
-        this.number = number1;
-        this.spells = spells;
+        this.icon=icon;
+        this.status=status;
     }
 
     String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonspell.json")));

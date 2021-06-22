@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -404,7 +406,8 @@ break;
 
 
 
-    public void showAll() {
+    public String showAll() {
+        String showCard="";
         ArrayList<MonsterCard> allMonsters = new ArrayList<>();
         String json= null;
         try {
@@ -413,10 +416,34 @@ break;
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        for (MonsterCard card : allMonsters) {
-            System.out.println(card.getName());
+        ArrayList<SpellCard> allSpells = new ArrayList<>();
+        String json1= null;
+        try {
+            json1 = new String(Files.readAllBytes(Paths.get("csvjsonspell.json")));
+            allSpells= new Gson().fromJson(json1,new TypeToken<List<SpellCard>>(){}.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        Comparator<MonsterCard> alphabetComparator = Comparator.comparing(MonsterCard::getName);
+        ArrayList<MonsterCard> sortedAllMonsters= (ArrayList<MonsterCard>) allMonsters.stream().sorted(alphabetComparator).
+                collect(Collectors.toList());
+
+       Comparator<SpellCard> alphabetComparator1 = Comparator.comparing(SpellCard::getName);
+       ArrayList<SpellCard> sortedAllSpells= (ArrayList<SpellCard>) allSpells.stream().sorted(alphabetComparator1).
+               collect(Collectors.toList());
+       System.out.println("monster cards:\n");
+
+
+        for (MonsterCard card : sortedAllMonsters) {
+            showCard+=card.getName()+" : "+card.getPrice()+"\n";
+        }
+        showCard+="\n\nspell cards:\n";
+
+        for (SpellCard card : sortedAllSpells) {
+            showCard+=card.getName()+" : "+card.getPrice()+"\n";
+        }
+        return showCard;
     }
 
 }

@@ -25,7 +25,7 @@ private Card card = new Card("a",1,"1","1",true,1);
     private boolean isCardAttacked;
     private boolean isPositionChanged;
     private ArrayList<Card> graveyard=new ArrayList<>();
-    private SpellCard fields = new SpellCard("a",1,"1","a",true,1,1,activatedSpellCards);
+    private SpellCard fields = new SpellCard("a","s",1,"a","c",true,1,"ff");
     private Deck deck1 =  new Deck("a");
     private Deck deck2 =  new Deck("b");
     private int lifePoint;

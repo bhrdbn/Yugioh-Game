@@ -39,7 +39,7 @@ public class Shop {
 
     public void showAll() {
 
-        shopController.showAll();
+        System.out.println(shopController.showAll());
     }
 
     public void buy(Matcher matcher1) {

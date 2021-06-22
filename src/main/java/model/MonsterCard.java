@@ -63,7 +63,7 @@ public class MonsterCard extends Card {
         this.level = level;
     }
 
-    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType, boolean isAttack, String json, ArrayList<MonsterCard> monstersOBJECT) throws IOException {
+    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
         super(name, number, type, cardDescription, side, price);
         this.atk = attack;
         this.def = defence;
@@ -71,9 +71,8 @@ public class MonsterCard extends Card {
         this.attribute = attribute;
         this.level = level;
         this.monsterType = monsterType;
-        this.isAttack = isAttack;
-        this.json = json;
-        this.monstersOBJECT = monstersOBJECT;
+
+
     }
 
     String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonmonster.json")));

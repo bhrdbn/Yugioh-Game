@@ -22,7 +22,7 @@ public class ImprotExport {
     {
         ImprotExport tester = new ImprotExport();
         try {
-MonsterCard cards = new MonsterCard(name,number,type,describe,side,price,attack,deffence,monsterlist,attribute,level,type,isattackes,json,monsterlist);
+MonsterCard cards = new MonsterCard(name,number,type,describe,side,price,attack,deffence,monsterlist,attribute,level,type);
             cards.setName(name);
             cards.setCardDescription(describe);
             cards.setPrice(price);
