@@ -1,194 +1,194 @@
 [
   {
-    "Name": "Monster Reborn",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "Target 1 monster in either GY; Special Summon it.",
-    "Status": "Limited",
-    "Price": 2500
+    "name": "MonsterReborn",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Target 1 monster in either GY; Special Summon it.",
+    "status": "Limited",
+    "price": 2500
   },
   {
-    "Name": "Terraforming",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "Add 1 Field Spell from your Deck to your hand.",
-    "Status": "Limited",
-    "Price": 2500
+    "name": "Terraforming",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Add 1 Field Spell from your Deck to your hand.",
+    "status": "Limited",
+    "price": 2500
   },
   {
-    "Name": "Pot of Greed",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "Draw 2 cards.",
-    "Status": "Limited",
-    "Price": 2500
+    "name": "PotofGreed",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Draw 2 cards.",
+    "status": "Limited",
+    "price": 2500
   },
   {
-    "Name": "Raigeki",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "Destroy all monsters your opponent controls.",
-    "Status": "Limited",
-    "Price": 2500
+    "name": "Raigeki",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Destroy all monsters your opponent controls.",
+    "status": "Limited",
+    "price": 2500
   },
   {
-    "Name": "Change of Heart",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "Target 1 monster your opponent controls; take control of it until the End Phase.",
-    "Status": "Limited",
-    "Price": 2500
+    "name": "ChangeofHeart",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Target 1 monster your opponent controls; take control of it until the End Phase.",
+    "status": "Limited",
+    "price": 2500
   },
   {
-    "Name": "Swords of Revealing Light",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "After this card's activation, it remains on the field, but destroy it during the End Phase of your opponent's 3rd turn. When this card is activated: If your opponent controls a face-down monster, flip all monsters they control face-up. While this card is face-up on the field, your opponent's monsters cannot declare an attack.",
-    "Status": "Unlimited",
-    "Price": 2500
+    "name": "SwordsofRevealingLight",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "After this card's activation, it remains on the field, but destroy it during the End Phase of your opponent's 3rd turn. When this card is activated: If your opponent controls a face-down monster, flip all monsters they control face-up. While this card is face-up on the field, your opponent's monsters cannot declare an attack.",
+    "status": "Unlimited",
+    "price": 2500
   },
   {
-    "Name": "Harpie's Feather Duster",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "Destroy all Spells and Traps your opponent controls.",
-    "Status": "Limited",
-    "Price": 2500
+    "name": "HarpiesFeatherDuster",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Destroy all Spells and Traps your opponent controls.",
+    "status": "Limited",
+    "price": 2500
   },
   {
-    "Name": "Dark Hole",
-    "Type": "Spell",
-    "Icon (Property)": "Normal",
-    "Description": "Destroy all monsters on the field.",
-    "Status": "Unlimited",
-    "Price": 2500
+    "name": "DarkHole",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Destroy all monsters on the field.",
+    "status": "Unlimited",
+    "price": 2500
   },
   {
-    "Name": "Supply Squad",
-    "Type": "Spell",
-    "Icon (Property)": "Continuous",
-    "Description": "Once per turn, if a monster(s) you control is destroyed by battle or card effect: Draw 1 card.",
-    "Status": "Unlimited",
-    "Price": 4000
+    "name": "SupplySquad",
+    "type": "Spell",
+    "icon": "Continuous",
+    "description": "Once per turn, if a monster(s) you control is destroyed by battle or card effect: Draw 1 card.",
+    "status": "Unlimited",
+    "price": 4000
   },
   {
-    "Name": "Spell Absorption",
-    "Type": "Spell",
-    "Icon (Property)": "Continuous",
-    "Description": "Each time a Spell Card is activated, gain 500 Life Points immediately after it resolves.",
-    "Status": "Unlimited",
-    "Price": 4000
+    "name": "SpellAbsorption",
+    "type": "Spell",
+    "icon": "Continuous",
+    "description": "Each time a Spell Card is activated, gain 500 Life Points immediately after it resolves.",
+    "status": "Unlimited",
+    "price": 4000
   },
   {
-    "Name": "Messenger of peace",
-    "Type": "Spell",
-    "Icon (Property)": "Continuous",
-    "Description": "Monsters with 1500 or more ATK cannot declare an attack. Once per turn, during your Standby Phase, pay 100 LP or destroy this card.",
-    "Status": "Unlimited",
-    "Price": 4000
+    "name": "Messengerofpeace",
+    "type": "Spell",
+    "icon": "Continuous",
+    "description": "Monsters with 1500 or more ATK cannot declare an attack. Once per turn, during your Standby Phase, pay 100 LP or destroy this card.",
+    "status": "Unlimited",
+    "price": 4000
   },
   {
-    "Name": "Twin Twisters",
-    "Type": "Spell",
-    "Icon (Property)": "Quick-play",
-    "Description": "Discard 1 card, then target up to 2 Spells/Traps on the field; destroy them.",
-    "Status": "Unlimited",
-    "Price": 3500
+    "name": "TwinTwisters",
+    "type": "Spell",
+    "icon": "Quick-play",
+    "description": "Discard 1 card, then target up to 2 Spells/Traps on the field; destroy them.",
+    "status": "Unlimited",
+    "price": 3500
   },
   {
-    "Name": "Mystical space typhoon",
-    "Type": "Spell",
-    "Icon (Property)": "Quick-play",
-    "Description": "Target 1 Spell/Trap on the field; destroy that target.",
-    "Status": "Unlimited",
-    "Price": 3500
+    "name": "Mysticalspacetyphoon",
+    "type": "Spell",
+    "icon": "Quick-play",
+    "description": "Target 1 Spell/Trap on the field; destroy that target.",
+    "status": "Unlimited",
+    "price": 3500
   },
   {
-    "Name": "Ring of defense",
-    "Type": "Spell",
-    "Icon (Property)": "Quick-play",
-    "Description": "When a Trap effect that inflicts damage is activated: Make that effect damage 0.",
-    "Status": "Unlimited",
-    "Price": 3500
+    "name": "Ringofdefense",
+    "type": "Spell",
+    "icon": "Quick-play",
+    "description": "When a Trap effect that inflicts damage is activated: Make that effect damage 0.",
+    "status": "Unlimited",
+    "price": 3500
   },
   {
-    "Name": "Yami",
-    "Type": "Spell",
-    "Icon (Property)": "Field",
-    "Description": "All Fiend and Spellcaster monsters on the field gain 200 ATK/DEF, also all Fairy monsters on the field lose 200 ATK/DEF.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "Yami",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "All Fiend and Spellcaster monsters on the field gain 200 ATK/DEF, also all Fairy monsters on the field lose 200 ATK/DEF.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "Forest",
-    "Type": "Spell",
-    "Icon (Property)": "Field",
-    "Description": "All Insect, Beast, Plant, and Beast-Warrior monsters on the field gain 200 ATK/DEF.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "Forest",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "All Insect, Beast, Plant, and Beast-Warrior monsters on the field gain 200 ATK/DEF.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "Closed Forest",
-    "Type": "Spell",
-    "Icon (Property)": "Field",
-    "Description": "All Beast-Type monsters you control gain 100 ATK for each monster in your Graveyard. Field Spell Cards cannot be activated. Field Spell Cards cannot be activated during the turn this card is destroyed.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "ClosedForest",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "All Beast-Type monsters you control gain 100 ATK for each monster in your Graveyard. Field Spell Cards cannot be activated. Field Spell Cards cannot be activated during the turn this card is destroyed.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "Umiiruka",
-    "Type": "Spell",
-    "Icon (Property)": "Field",
-    "Description": "Increase the ATK of all WATER monsters by 500 points and decrease their DEF by 400 points.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "Umiiruka",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "Increase the ATK of all WATER monsters by 500 points and decrease their DEF by 400 points.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "Sword of dark destruction",
-    "Type": "Spell",
-    "Icon (Property)": "Equip",
-    "Description": "A DARK monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "Swordofdarkdestruction",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "A DARK monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "Black Pendant",
-    "Type": "Spell",
-    "Icon (Property)": "Equip",
-    "Description": "The equipped monster gains 500 ATK. When this card is sent from the field to the Graveyard: Inflict 500 damage to your opponent.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "BlackPendant",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "The equipped monster gains 500 ATK. When this card is sent from the field to the Graveyard: Inflict 500 damage to your opponent.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "United We Stand",
-    "Type": "Spell",
-    "Icon (Property)": "Equip",
-    "Description": "The equipped monster gains 800 ATK/DEF for each face-up monster you control.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "UnitedWeStand",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "The equipped monster gains 800 ATK/DEF for each face-up monster you control.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "Magnum Shield",
-    "Type": "Spell",
-    "Icon (Property)": "Equip",
-    "Description": "Equip only to a Warrior-Type monster. Apply this effect, depending on its battle position.\n● Attack Position: It gains ATK equal to its original DEF.\n● Defense Position: It gains DEF equal to its original ATK.",
-    "Status": "Unlimited",
-    "Price": 4300
+    "name": "MagnumShield",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "Equip only to a Warrior-Type monster. Apply this effect, depending on its battle position.\n● Attack Position: It gains ATK equal to its original DEF.\n● Defense Position: It gains DEF equal to its original ATK.",
+    "status": "Unlimited",
+    "price": 4300
   },
   {
-    "Name": "Advanced Ritual Art",
-    "Type": "Spell",
-    "Icon (Property)": "Ritual",
-    "Description": "This card can be used to Ritual Summon any 1 Ritual Monster. You must also send Normal Monsters from your Deck to the Graveyard whose total Levels equal the Level of that Ritual Monster.",
-    "Status": "Unlimited",
-    "Price": 3000
+    "name": "AdvancedRitualArt",
+    "type": "Spell",
+    "icon": "Ritual",
+    "description": "This card can be used to Ritual Summon any 1 Ritual Monster. You must also send Normal Monsters from your Deck to the Graveyard whose total Levels equal the Level of that Ritual Monster.",
+    "status": "Unlimited",
+    "price": 3000
   },
   {
-    "Name": "Nothing",
-    "Type": 9,
-    "Icon (Property)": 9,
-    "Description": 9,
-    "Status": 9,
-    "Price": 9
+    "name": "Nothing",
+    "type": 9,
+    "icon": 9,
+    "description": 9,
+    "status": 9,
+    "price": 9
   }
 ]

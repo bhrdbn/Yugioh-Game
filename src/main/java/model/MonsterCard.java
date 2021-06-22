@@ -100,8 +100,18 @@ public class MonsterCard extends Card {
 
             }
         }
+    /*
 
-        //emtiazi
+action 7,2 == 32
+action 12,22 == 33
+action 22,10,14 ==34
+action 12,15 == 35
+action 1,12 ==36
+
+
+     */
+
+    //emtiazi
         //csv
         /*
             public static void read() throws ParseException, IOException {
