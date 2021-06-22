@@ -11,21 +11,20 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import com.google.gson.JsonParseException;
+import model.Card;
 import model.MonsterCard;
 
 public class ImprotExport {
 
 
 
-    public void serialize(MonsterCard card, String name, String describe, int number , List<Integer> list, int attack, int deffence, int price, String attribute, int level, String type, ArrayList<MonsterCard> monsterlist, boolean side)
+    public void serialize(MonsterCard card, String name, String describe, int number , List<Integer> list, int attack, int deffence, int price, String attribute, int level, String type, ArrayList<MonsterCard> monsterlist, boolean side, boolean isattackes,String json)
     {
-        JacksonTester tester = new JacksonTester();
+        ImprotExport tester = new ImprotExport();
         try {
-            MonsterCard cards = new MonsterCard(name,number,type,describe,list<Integer>,side,price,attack,deffence,monsterlist<MonsterCard>,attribute,level,type)
+MonsterCard cards = new MonsterCard(name,number,type,describe,side,price,attack,deffence,monsterlist,attribute,level,type,isattackes,json,monsterlist);
             cards.setName(name);
             cards.setCardDescription(describe);
-            cards.setCardController(list<>);
             cards.setPrice(price);
             cards.setSide(side);
             cards.setType(type);
@@ -45,12 +44,12 @@ public class ImprotExport {
 
     private void writeJSON(MonsterCard card) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("Monster.json"), card);
+        mapper.writeValue(new File("src/test/resources/json_car.json"), card);
     }
 
     private MonsterCard readJSON() throws JsonParseException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
-        MonsterCard card = mapper.readValue(new File("Monster.json"));
+        MonsterCard card = mapper.readValue(new File("src/test/resources/json_car.json"),MonsterCard.class);
         return card;
     }
 
