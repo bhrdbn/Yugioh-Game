@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.*;
+import view.Main;
 
 public class ShopController {
 
@@ -15,7 +16,6 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
     private ArrayList<SpellCard> spells = new ArrayList<>();
     private ArrayList<TrapCard> traps = new ArrayList<>();
     private ShopController() {
-        System.out.println("please enter the number of cards to buy 1)monster 2)spell 3)trap");
 
     }
 
@@ -25,7 +25,7 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
 
         return shopController;
     }
-    public Scanner s = new Scanner(System.in);
+    public Scanner s = Main.scanner;
 
     String name;
     String type;
@@ -36,13 +36,15 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
     String nickname;
     String password;
     String username;
-    int fm = s.nextInt();
-    int fs=s.nextInt();
-    int ft=s.nextInt();
+
     ArrayList<Integer> cardController;
     Card card = new Card(name, number, type, cardDescription, side, price);
 
     public String buy(String cardName) {
+        System.out.println("please enter the number of cards to buy 1)monster 2)spell 3)trap");
+        int fm = s.nextInt();
+        int fs=s.nextInt();
+        int ft=s.nextInt();
         Player player = new Player(nickname, password, username);
         for (int i = 0; i <= fm; i++) {
 
@@ -403,7 +405,7 @@ private ArrayList<MonsterCard> monsters = new ArrayList<>();
 
 
     public void showAll() {
-        for (Card cards : card.getAllCards()) {
+        for (Card cards : Card.getAllCards()) {
             System.out.println(cards.getName() + " " + cards.getCardDescription());
         }
     }
