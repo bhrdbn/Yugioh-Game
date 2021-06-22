@@ -139,10 +139,10 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
 
     }
 
-    public boolean isRitualCardInHand()
-    {
+  // public boolean isRitualCardInHand()
+  // {
 
-    }
+  // }
 
     public boolean isSpellZoneFull()
     {
@@ -150,23 +150,23 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
 
     }
 
-    public boolean isFieldZoneFull(){
-    }
-
-    public boolean wasSommoned(MonsterCard card)
-    {
-
-    }
-
-    public boolean wasAttacked(Card card)
-    {
-
-    }
-
-    public boolean wasChanged(Card Card)
-    {
-
-    }
+//    public boolean isFieldZoneFull(){
+//    }
+//
+//    public boolean wasSommoned(MonsterCard card)
+//    {
+//
+//    }
+//
+//    public boolean wasAttacked(Card card)
+//    {
+//
+//    }
+//
+//    public boolean wasChanged(Card Card)
+//    {
+//
+//    }
 
     public Boolean isHandFull()
     {

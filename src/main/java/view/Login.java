@@ -20,6 +20,7 @@ public class Login  {
     public static int b;
 
     public void run() {
+        System.out.println("welcome to login menu");
         while (true) {
             String input=Main.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "user create username (\\w+) nickname (\\w+) password (\\w+)");

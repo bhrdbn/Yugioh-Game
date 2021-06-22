@@ -5,6 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import  controller.*;
 import model.*;
+import view.Main;
+
 public class MainView {
     private static MainView mainView=null;
     private MainView(){
@@ -21,7 +23,7 @@ public class MainView {
     MainController mainController=MainController.getInstance();
     public void run(){
         while(true){
-            String input=Main.scanner.nextLine();
+            String input= Main.scanner.nextLine();
             Matcher matcher = getCommand(input, "scoreboard show");
             Matcher matcher1 = getCommand(input, "user logout");
             Matcher matcher2 = getCommand(input, "exit");

@@ -22,9 +22,11 @@ public class Shop {
     }
 
 
-    public void run(String input) {
+    public void run() {
+        System.out.println("welcome to shop menu");
         while (true) {
-            Matcher matcher1 = getCommand(input, "shopBuy([a-zA-Z]+)");
+            String input=Main.scanner.nextLine();
+            Matcher matcher1 = getCommand(input, "shop buy ([a-zA-Z]+)");
             Matcher matcher2 = getCommand(input, "shop show --all");
             if(matcher1.find())
                 buy(matcher1);

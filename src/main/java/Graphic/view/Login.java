@@ -4,6 +4,7 @@ package Graphic.view;
 import java.util.regex.*;
 
 import controller.*;
+import view.Main;
 
 public class Login  {
     private static Login login = null;
@@ -22,7 +23,7 @@ public class Login  {
 
     public void run() {
         while (true) {
-            String input=Main.scanner.nextLine();
+            String input= Main.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "user create username (\\w+) nickname (\\w+) password (\\w+)");
             Matcher matcher1_1 = getCommand(input, "user create nickname (\\w+) username (\\w+) password (\\w+)");
             Matcher matcher1_2 = getCommand(input, "user create username (\\w+) password (\\w+) nickname (\\w+)");

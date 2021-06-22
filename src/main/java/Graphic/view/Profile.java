@@ -5,6 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import controller.*;
+import view.Main;
+
 public class Profile {
     ProfileController profileController = ProfileController.getInstance();
     private static Profile profile=null;
@@ -21,7 +23,7 @@ public class Profile {
 
     public void run(){
         while(true){
-            String input=Main.scanner.nextLine();
+            String input= Main.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "profile change nickname (\\w+)");
             Matcher matcher2 = getCommand(input, "profile change password current (\\w+) new (\\w+)|profile change current password(\\w+) new(\\w+)|profile change current(\\w+) new(\\w+) password");
             Matcher matcher2_1 = getCommand(input, "profile change password new (\\w+) current (\\w+)|profile change new(\\w+) password current(\\w+)|profile change new(\\w+) current(\\w+) password");

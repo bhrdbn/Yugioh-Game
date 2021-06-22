@@ -4,6 +4,7 @@ package Graphic.view;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import controller.*;
+import view.Main;
 
 public class Duel {
     DuelController duelController = DuelController.getInstance();
@@ -22,7 +23,7 @@ public class Duel {
 
     public void run() {
         while (true) {
-            String input=Main.scanner.nextLine();
+            String input= Main.scanner.nextLine();
             Matcher matcherPlayer0 = getCommand(input, "duel new second-player (\\w+) rounds (\\d)");
             Matcher matcherPlayer1 = getCommand(input, "duel new rounds (\\d) second-player (\\w+)");
             Matcher matcherSelect4 = getCommand(input, "select spell (\\d)");

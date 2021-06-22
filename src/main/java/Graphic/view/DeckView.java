@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import controller.*;
+import view.Main;
 
 public class DeckView  {
     private static DeckView deckView=null;

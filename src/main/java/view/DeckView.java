@@ -24,6 +24,7 @@ public class DeckView  {
     DeckController deckController = DeckController.getInstance();
 
     public void run() {
+        System.out.println("welcome to deck menu");
         while (true) {
             String input= Main.scanner.nextLine();
             Matcher matcher = getCommand(input, "deck create (\\w+)");

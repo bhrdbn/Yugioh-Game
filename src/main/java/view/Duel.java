@@ -21,6 +21,7 @@ public class Duel {
     Matcher matcherSelect2;
 
     public void run() {
+        System.out.println("welcome to duel menu");
         while (true) {
             String input=Main.scanner.nextLine();
             Matcher matcherPlayer0 = getCommand(input, "duel new second-player (\\w+) rounds (\\d)");

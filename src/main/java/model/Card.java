@@ -38,15 +38,15 @@ public class Card {
         this.number = number;
         this.type = type;
         this.cardDescription = cardDescription;
-        this.commands = new ArrayList<>();
+     //   this.commands = new ArrayList<>();
         this.side = side;
         this.price = price;
     }
 
-   public void run(PlayBoard playBoard,Card card){
-        for (Command command:commands)
-            command.doAction(GlobalVariable.getBoard());
-   }
+  // public void run(PlayBoard playBoard,Card card){
+  //      for (Command command:commands)
+  //          command.doAction(GlobalVariable.getBoard());
+  // }
 
 
     public boolean isSide() {
@@ -77,7 +77,7 @@ public class Card {
     protected int number;
     protected String type;
     protected String cardDescription;
-    protected ArrayList<Command> commands;
+    //protected ArrayList<Command> commands;
     protected boolean side;
     protected int price;
     boolean canBeAttacked;

@@ -19,6 +19,7 @@ public class Profile {
     }
 
     public void run(){
+        System.out.println("welcome to profile menu");
         while(true){
             String input=Main.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "profile change nickname (\\w+)");

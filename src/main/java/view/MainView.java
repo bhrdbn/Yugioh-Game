@@ -19,6 +19,7 @@ public class MainView {
 
     MainController mainController=MainController.getInstance();
     public void run(){
+        System.out.println("welcome to main menu");
         while(true){
             String input=Main.scanner.nextLine();
             Matcher matcher = getCommand(input, "scoreboard show");

@@ -1,6 +1,8 @@
 package Graphic.view;
 
 
+import view.Main;
+
 public class GraveView {
     private static GraveView graveView = null;
 
@@ -15,7 +17,7 @@ public class GraveView {
     }
     public void run(){
         while(true){
-            String input=Main.scanner.nextLine();
+            String input= Main.scanner.nextLine();
             if(input.equals("back")){
                 MenuHandler.runBack(Menu.GRAVEYARD);
                 break;

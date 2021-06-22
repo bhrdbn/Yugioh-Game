@@ -36,7 +36,7 @@ public class AIController {
         finalOut += "1st Main phase\n";
         if (getMaxAttack().getAttack() > getMinOpponentAttack().getAttack()) {
             finalOut += getMaxAttack().getName() + " is summoned\n";
-            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add(getMaxAttack())
+            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add(getMaxAttack());
             finalOut += "battle phase\n";
             MonsterCard.Attack(getMinOpponentAttack(), getMaxAttack());
             summon = true;

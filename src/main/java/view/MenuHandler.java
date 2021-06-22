@@ -38,6 +38,12 @@ public class MenuHandler {
             case DECK:
                 DeckView.getInstance().run();
                 break;
+            case DUEL:
+                Duel.getInstance().run();
+                break;
+            case SHOP:
+                Shop.getInstance().run();
+                break;
 
         }
 
