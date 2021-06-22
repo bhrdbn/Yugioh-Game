@@ -1,8 +1,14 @@
 package controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import model.*;
 import view.Main;
 
@@ -399,8 +405,17 @@ break;
 
 
     public void showAll() {
-        for (Card cards : Card.getAllCards()) {
-            System.out.println(cards.getName() + " " + cards.getCardDescription());
+        ArrayList<MonsterCard> allMonsters = new ArrayList<>();
+        String json= null;
+        try {
+            json = new String(Files.readAllBytes(Paths.get("csvjsonmonster.json")));
+            allMonsters= new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (MonsterCard card : allMonsters) {
+            System.out.println(card.getName());
         }
     }
 

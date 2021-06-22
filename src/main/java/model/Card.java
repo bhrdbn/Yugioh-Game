@@ -18,26 +18,26 @@ public class Card {
     }
 
     public String getType() {
-        return type;
+        return cardType;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.cardType = type;
     }
 
     public String getCardDescription() {
-        return cardDescription;
+        return description;
     }
 
     public void setCardDescription(String cardDescription) {
-        this.cardDescription = cardDescription;
+        this.description = cardDescription;
     }
 
     public Card(String name, int number, String type, String cardDescription, boolean side, int price) {
         this.name = name;
         this.number = number;
-        this.type = type;
-        this.cardDescription = cardDescription;
+        this.cardType = type;
+        this.description = cardDescription;
      //   this.commands = new ArrayList<>();
         this.side = side;
         this.price = price;
@@ -75,8 +75,8 @@ public class Card {
 
     protected String name;
     protected int number;
-    protected String type;
-    protected String cardDescription;
+    protected String cardType;
+    protected String description;
     //protected ArrayList<Command> commands;
     protected boolean side;
     protected int price;
@@ -113,7 +113,7 @@ public class Card {
     public String toString() {
         return "Card{" +
                 "card name : " + name +
-                " cardDescription : " + cardDescription
+                " cardDescription : " + description
                 ;
     }
 }

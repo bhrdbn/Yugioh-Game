@@ -18,33 +18,33 @@ import java.util.List;
 public class MonsterCard extends Card {
 
 
-        private int attack;
-        private int defence;
+        private int atk;
+        private int def;
         private ArrayList<MonsterCard> monsters;
     private String attribute;
     private int level;
-    private TypeOfMonsterCard monsterType;
+    private String monsterType;
     private boolean isAttack;
 
 
 
     public void setAttack(int attack) {
-        this.attack = attack;
+        this.atk = attack;
     }
     public void setIsAttack(boolean isAttack){
         this.isAttack = isAttack;
     }
 
-    public TypeOfMonsterCard typeOfMonsterCard(){
+    public String typeOfMonsterCard(){
         return monsterType;
     }
 
     public int getDefence() {
-        return defence;
+        return def;
     }
 
     public void setDefence(int defence) {
-        this.defence = defence;
+        this.def = defence;
     }
 
     public String getAttribute() {
@@ -65,8 +65,8 @@ public class MonsterCard extends Card {
 
     public MonsterCard(String name, int number, String type, String cardDescription, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType, boolean isAttack, String json, ArrayList<MonsterCard> monstersOBJECT) throws IOException {
         super(name, number, type, cardDescription, side, price);
-        this.attack = attack;
-        this.defence = defence;
+        this.atk = attack;
+        this.def = defence;
         this.monsters = monsters;
         this.attribute = attribute;
         this.level = level;
@@ -79,7 +79,7 @@ public class MonsterCard extends Card {
     String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonmonster.json")));
          ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
         public int getAttack() {
-            return attack;
+            return atk;
 
         }
 
@@ -94,12 +94,12 @@ public class MonsterCard extends Card {
             {
                 MonsterCard monster =(monstersOBJECT.get(i));
                 monster.setName(monstersOBJECT.get(i).name);
-                monster.setType(monstersOBJECT.get(i).type);
+                monster.setType(monstersOBJECT.get(i).cardType);
                 monster.setSide(monstersOBJECT.get(i).side);
                 monster.setPrice(monstersOBJECT.get(i).price);
-                monster.setCardDescription(monstersOBJECT.get(i).cardDescription);
-                monster.setAttack(monstersOBJECT.get(i).attack);
-                monster.setDefence(monstersOBJECT.get(i).defence);
+                monster.setCardDescription(monstersOBJECT.get(i).description);
+                monster.setAttack(monstersOBJECT.get(i).atk);
+                monster.setDefence(monstersOBJECT.get(i).def);
                 monster.setAttribute(monstersOBJECT.get(i).attribute);
 
             }
@@ -136,23 +136,23 @@ action 1,12 ==36
 
 
     private static void lowerAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
-        int damage = currentMonster.attack - opponentMonster.attack;
+        int damage = currentMonster.atk - opponentMonster.atk;
         GraveYard.setCards(opponentMonster);
         GlobalVariable.getBoard().lowerLifePoint(damage);
         System.out.println("your opponent's monster is destroyed and your opponent receives " + damage  + "battle damage");
     }
 
     public static void Attack(MonsterCard opponentMonster, MonsterCard currentMonster){
-        if(currentMonster.attack > opponentMonster.attack) {
+        if(currentMonster.atk > opponentMonster.atk) {
             lowerAttack(opponentMonster, currentMonster);
         }
-        else if(currentMonster.attack == opponentMonster.attack){
+        else if(currentMonster.atk == opponentMonster.atk){
             GraveYard.setCards(opponentMonster);
             GraveYard.setCards(currentMonster);
             System.out.println("both you and your opponent monster cards are destroyed and no one receives damage");
         }
         else{
-            int damage = opponentMonster.attack - currentMonster.attack ;
+            int damage = opponentMonster.atk - currentMonster.atk ;
             GlobalVariable.getBoard().lowerLifePoint(damage);
             GraveYard.setCards(currentMonster);
             System.out.println("Your monster card is destroyed and you received " + damage + "battle damage");
@@ -160,9 +160,9 @@ action 1,12 ==36
     }
 
     public static void directAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
-        if(currentMonster.attack > opponentMonster.attack) {
+        if(currentMonster.atk > opponentMonster.atk) {
             lowerAttack(opponentMonster, currentMonster);
-            int damage = currentMonster.attack - opponentMonster.attack;
+            int damage = currentMonster.atk - opponentMonster.atk;
             System.out.println("your opponent receives " + damage + " battle damage");
         }
 

@@ -35,7 +35,7 @@ public class SpellCard extends Card{
             spell.setType(spellOBJECT.get(i).getType());
             spell.setSide(spellOBJECT.get(i).side);
             spell.setPrice(spellOBJECT.get(i).price);
-            spell.setCardDescription(spellOBJECT.get(i).cardDescription);
+            spell.setCardDescription(spellOBJECT.get(i).description);
 
 
         }

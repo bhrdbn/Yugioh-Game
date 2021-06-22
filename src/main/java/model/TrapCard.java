@@ -29,10 +29,10 @@ public class TrapCard extends Card{
         {
             TrapCard trap =(trapsOBJECT.get(i));
             trap.setName(trapsOBJECT.get(i).name);
-            trap.setType(trapsOBJECT.get(i).type);
+            trap.setType(trapsOBJECT.get(i).cardType);
             trap.setSide(trapsOBJECT.get(i).side);
             trap.setPrice(trapsOBJECT.get(i).price);
-            trap.setCardDescription(trapsOBJECT.get(i).cardDescription);
+            trap.setCardDescription(trapsOBJECT.get(i).description);
 
 
         }

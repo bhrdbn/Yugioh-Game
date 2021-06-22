@@ -190,5 +190,197 @@
     "Description": 9,
     "Status": 9,
     "Price": 9
+=======
+    "name": "MonsterReborn",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Target 1 monster in either GY; Special Summon it.",
+    "status": "Limited",
+    "price": 2500
+  },
+  {
+    "name": "Terraforming",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Add 1 Field Spell from your Deck to your hand.",
+    "status": "Limited",
+    "price": 2500
+  },
+  {
+    "name": "PotofGreed",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Draw 2 cards.",
+    "status": "Limited",
+    "price": 2500
+  },
+  {
+    "name": "Raigeki",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Destroy all monsters your opponent controls.",
+    "status": "Limited",
+    "price": 2500
+  },
+  {
+    "name": "ChangeofHeart",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Target 1 monster your opponent controls; take control of it until the End Phase.",
+    "status": "Limited",
+    "price": 2500
+  },
+  {
+    "name": "SwordsofRevealingLight",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "After this card's activation, it remains on the field, but destroy it during the End Phase of your opponent's 3rd turn. When this card is activated: If your opponent controls a face-down monster, flip all monsters they control face-up. While this card is face-up on the field, your opponent's monsters cannot declare an attack.",
+    "status": "Unlimited",
+    "price": 2500
+  },
+  {
+    "name": "HarpiesFeatherDuster",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Destroy all Spells and Traps your opponent controls.",
+    "status": "Limited",
+    "price": 2500
+  },
+  {
+    "name": "DarkHole",
+    "type": "Spell",
+    "icon": "Normal",
+    "description": "Destroy all monsters on the field.",
+    "status": "Unlimited",
+    "price": 2500
+  },
+  {
+    "name": "SupplySquad",
+    "type": "Spell",
+    "icon": "Continuous",
+    "description": "Once per turn, if a monster(s) you control is destroyed by battle or card effect: Draw 1 card.",
+    "status": "Unlimited",
+    "price": 4000
+  },
+  {
+    "name": "SpellAbsorption",
+    "type": "Spell",
+    "icon": "Continuous",
+    "description": "Each time a Spell Card is activated, gain 500 Life Points immediately after it resolves.",
+    "status": "Unlimited",
+    "price": 4000
+  },
+  {
+    "name": "Messengerofpeace",
+    "type": "Spell",
+    "icon": "Continuous",
+    "description": "Monsters with 1500 or more ATK cannot declare an attack. Once per turn, during your Standby Phase, pay 100 LP or destroy this card.",
+    "status": "Unlimited",
+    "price": 4000
+  },
+  {
+    "name": "TwinTwisters",
+    "type": "Spell",
+    "icon": "Quick-play",
+    "description": "Discard 1 card, then target up to 2 Spells/Traps on the field; destroy them.",
+    "status": "Unlimited",
+    "price": 3500
+  },
+  {
+    "name": "Mysticalspacetyphoon",
+    "type": "Spell",
+    "icon": "Quick-play",
+    "description": "Target 1 Spell/Trap on the field; destroy that target.",
+    "status": "Unlimited",
+    "price": 3500
+  },
+  {
+    "name": "Ringofdefense",
+    "type": "Spell",
+    "icon": "Quick-play",
+    "description": "When a Trap effect that inflicts damage is activated: Make that effect damage 0.",
+    "status": "Unlimited",
+    "price": 3500
+  },
+  {
+    "name": "Yami",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "All Fiend and Spellcaster monsters on the field gain 200 ATK/DEF, also all Fairy monsters on the field lose 200 ATK/DEF.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "Forest",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "All Insect, Beast, Plant, and Beast-Warrior monsters on the field gain 200 ATK/DEF.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "ClosedForest",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "All Beast-Type monsters you control gain 100 ATK for each monster in your Graveyard. Field Spell Cards cannot be activated. Field Spell Cards cannot be activated during the turn this card is destroyed.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "Umiiruka",
+    "type": "Spell",
+    "icon": "Field",
+    "description": "Increase the ATK of all WATER monsters by 500 points and decrease their DEF by 400 points.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "Swordofdarkdestruction",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "A DARK monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "BlackPendant",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "The equipped monster gains 500 ATK. When this card is sent from the field to the Graveyard: Inflict 500 damage to your opponent.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "UnitedWeStand",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "The equipped monster gains 800 ATK/DEF for each face-up monster you control.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "MagnumShield",
+    "type": "Spell",
+    "icon": "Equip",
+    "description": "Equip only to a Warrior-Type monster. Apply this effect, depending on its battle position.\n● Attack Position: It gains ATK equal to its original DEF.\n● Defense Position: It gains DEF equal to its original ATK.",
+    "status": "Unlimited",
+    "price": 4300
+  },
+  {
+    "name": "AdvancedRitualArt",
+    "type": "Spell",
+    "icon": "Ritual",
+    "description": "This card can be used to Ritual Summon any 1 Ritual Monster. You must also send Normal Monsters from your Deck to the Graveyard whose total Levels equal the Level of that Ritual Monster.",
+    "status": "Unlimited",
+    "price": 3000
+  },
+  {
+    "name": "Nothing",
+    "type": 9,
+    "icon": 9,
+    "description": 9,
+    "status": 9,
+    "price": 9
+>>>>>>> origin/main
   }
 ]
