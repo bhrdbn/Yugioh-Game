@@ -292,11 +292,11 @@ public class DuelController {
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isPositionChanged())
             return "you already changed this card position in this turn";
         else if(phase.equals("set -- position attack")){
-            GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(cardCardMatcher)).replaceAll("DO", "OO");
+            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(Integer.parseInt(cardCardMatcher)).setIsAttack(true);
             System.out.println("set successfully");
         }
         else if(phase.equals("set -- position defense")){
-            GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(cardCardMatcher)).replaceAll("OO", "DO");
+            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(Integer.parseInt(cardCardMatcher)).setSide(true);
             System.out.println("set successfully");
         }
 
@@ -312,7 +312,7 @@ public class DuelController {
         else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 ||
                 GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't do this action in this phase";
-        else if(!GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(Main.scanner.nextLine())).equals("DH"))
+        else if(!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(Integer.parseInt(place)).isSide())
                 return "you can't flip summon this card";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(place));
