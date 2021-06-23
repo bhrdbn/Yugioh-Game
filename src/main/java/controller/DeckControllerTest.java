@@ -43,8 +43,8 @@ GlobalVariable globalVariable = new GlobalVariable();
     void activateDeck() {
         String deckname ="pari";
         Deck deck2 = new Deck("mom");
-        assertNotNull(deckController.activateDeck("ali"));
-        assertNotNull(deckController.activateDeck("mom"));
+        assertNull(deckController.activateDeck("ali"));
+        assertNull(deckController.activateDeck("mom"));
     }
 
     @Test
