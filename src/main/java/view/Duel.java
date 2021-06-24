@@ -59,7 +59,7 @@ public class Duel {
             if(matcherPlayer0.find()) {
                 newDuel(matcherPlayer0,0);
             }
-            if(matcherPlayer1.find()) {
+            else if(matcherPlayer1.find()) {
                 newDuel(matcherPlayer1,1);
             }
 
@@ -77,6 +77,7 @@ public class Duel {
             { selectOpponentSpell(Integer.parseInt(matcherSelect5.group(1)));}
             else if(matcherSelect6.find())
             { selectOpponentMonster(Integer.parseInt(matcherSelect6.group(1)));}
+            else  if(matcherback.find()) MenuHandler.runBack(Menu.DUEL);
 
            else if(nextPhase.find()) {
                goNextPhase();

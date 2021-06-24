@@ -8,7 +8,7 @@ public class Player {
     protected String nickname;
     protected static ArrayList<Player> allPlayers = new ArrayList<>();
     protected int score;
-    protected int money;
+    protected long money;
     protected   ArrayList<Deck> decks;
     protected   ArrayList<Deck> otherDecks;
     protected Deck activatedDeck;
@@ -27,7 +27,7 @@ public class Player {
 
     public Player(String nickname, String password, String username) {
         this.nickname = nickname;
-        this.money = 2000;
+        this.money = 20000;
         this.password = password;
         this.username = username;
         decks=new ArrayList<>();
@@ -60,13 +60,13 @@ public class Player {
 
     }
 
-    public void setMoney(int money) {
+    public void setMoney(long money) {
         this.money=money;
 
     }
 
 
-    public int getMoney() {
+    public long getMoney() {
         return money;
     }
 
@@ -161,7 +161,7 @@ public class Player {
         otherDecks.remove(activatedDeck);
     }
 
-    public void decreaseMoney(int decrease) {
+    public void decreaseMoney(long decrease) {
         money -= decrease;
     }
 

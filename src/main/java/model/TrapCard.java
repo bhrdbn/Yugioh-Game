@@ -17,26 +17,26 @@ public class TrapCard extends Card{
     private int number;
     private ArrayList<TrapCard> traps;
 
-    public TrapCard(String name, int number, String type, String cardDescription, boolean side, int price, int number1, ArrayList<TrapCard> traps) throws IOException {
+    public TrapCard(String name, int number, String type, String cardDescription, boolean side, long price, int number1, ArrayList<TrapCard> traps) throws IOException {
         super(name, number, type, cardDescription, side, price);
         this.number = number1;
         this.traps = traps;
     }
-    String json = new String(Files.readAllBytes(Paths.get("resources//csvjsontrap.json")));
-    ArrayList<SpellCard> trapsOBJECT  = new Gson().fromJson(json,new TypeToken<List<TrapCard>>(){}.getType());
-    public void setTrapsOBJECT(ArrayList<TrapCard> trapsOBJECT) {
-        for(int i = 0; i <trapsOBJECT.size() ; i++)
-        {
-            TrapCard trap =(trapsOBJECT.get(i));
-            trap.setName(trapsOBJECT.get(i).name);
-            trap.setType(trapsOBJECT.get(i).cardType);
-            trap.setSide(trapsOBJECT.get(i).side);
-            trap.setPrice(trapsOBJECT.get(i).price);
-            trap.setCardDescription(trapsOBJECT.get(i).description);
+ // String json = new String(Files.readAllBytes(Paths.get("resources//csvjsontrap.json")));
+ // ArrayList<SpellCard> trapsOBJECT  = new Gson().fromJson(json,new TypeToken<List<TrapCard>>(){}.getType());
+ // public void setTrapsOBJECT(ArrayList<TrapCard> trapsOBJECT) {
+ //     for(int i = 0; i <trapsOBJECT.size() ; i++)
+ //     {
+ //         TrapCard trap =(trapsOBJECT.get(i));
+ //         trap.setName(trapsOBJECT.get(i).name);
+ //         trap.setType(trapsOBJECT.get(i).cardType);
+ //         trap.setSide(trapsOBJECT.get(i).side);
+ //         trap.setPrice(trapsOBJECT.get(i).price);
+ //         trap.setCardDescription(trapsOBJECT.get(i).description);
 
 
-        }
-    }
+ //     }
+ // }
 
     @Override
     public int getNumber() {

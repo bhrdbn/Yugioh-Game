@@ -63,7 +63,7 @@ public class MonsterCard extends Card {
         this.level = level;
     }
 
-    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, int price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
+    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, long price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
         super(name, number, type, cardDescription, side, price);
         this.atk = attack;
         this.def = defence;
@@ -74,35 +74,44 @@ public class MonsterCard extends Card {
 
 
     }
+    public MonsterCard(MonsterCard card){
+        super(card.name,card.number,card.cardType,card.description,card.side,card.price);
+        atk=card.atk;
+        this.def = card.def;
+        this.monsters =card.monsters;
+        this.attribute = card.attribute;
+        this.level = card.level;
+        this.monsterType = card.monsterType;
+    }
 
-    String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonmonster.json")));
-         ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
+    //String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonmonster.json")));
+    //     ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
         public int getAttack() {
             return atk;
 
         }
 
-        public ArrayList<MonsterCard> getMonstersOBJECT() {
+      // public ArrayList<MonsterCard> getMonstersOBJECT() {
 
-            return monstersOBJECT;
-        }
+      //     return monstersOBJECT;
+      // }
 
-        public void setMonstersOBJECT(ArrayList<MonsterCard> monstersOBJECT) {
-            this.monstersOBJECT = monstersOBJECT;
-            for(int i = 0; i <monstersOBJECT.size() ; i++)
-            {
-                MonsterCard monster =(monstersOBJECT.get(i));
-                monster.setName(monstersOBJECT.get(i).name);
-                monster.setType(monstersOBJECT.get(i).cardType);
-                monster.setSide(monstersOBJECT.get(i).side);
-                monster.setPrice(monstersOBJECT.get(i).price);
-                monster.setCardDescription(monstersOBJECT.get(i).description);
-                monster.setAttack(monstersOBJECT.get(i).atk);
-                monster.setDefence(monstersOBJECT.get(i).def);
-                monster.setAttribute(monstersOBJECT.get(i).attribute);
+      // public void setMonstersOBJECT(ArrayList<MonsterCard> monstersOBJECT) {
+      //     this.monstersOBJECT = monstersOBJECT;
+      //     for(int i = 0; i <monstersOBJECT.size() ; i++)
+      //     {
+      //         MonsterCard monster =(monstersOBJECT.get(i));
+      //         monster.setName(monstersOBJECT.get(i).name);
+      //         monster.setType(monstersOBJECT.get(i).cardType);
+      //         monster.setSide(monstersOBJECT.get(i).side);
+      //         monster.setPrice(monstersOBJECT.get(i).price);
+      //         monster.setCardDescription(monstersOBJECT.get(i).description);
+      //         monster.setAttack(monstersOBJECT.get(i).atk);
+      //         monster.setDefence(monstersOBJECT.get(i).def);
+      //         monster.setAttribute(monstersOBJECT.get(i).attribute);
 
-            }
-        }
+      //     }
+      // }
     /*
 
 action 7,2 == 32

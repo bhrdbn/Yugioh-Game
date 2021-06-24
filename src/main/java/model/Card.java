@@ -33,7 +33,7 @@ public class Card {
         this.description = cardDescription;
     }
 
-    public Card(String name, int number, String type, String cardDescription, boolean side, int price) {
+    public Card(String name, int number, String type, String cardDescription, boolean side, long price) {
         this.name = name;
         this.number = number;
         this.cardType = type;
@@ -65,7 +65,7 @@ public class Card {
         Card.allCards = allCards;
     }
 
-    public int getPrice() {
+    public long getPrice() {
         return price;
     }
 
@@ -79,7 +79,7 @@ public class Card {
     protected String description;
     //protected ArrayList<Command> commands;
     protected boolean side;
-    protected int price;
+    protected long price;
     boolean canBeAttacked;
     private Location location;
 
