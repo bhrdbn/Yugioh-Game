@@ -26,22 +26,27 @@ public class SpellCard extends Card{
         this.icon=icon;
         this.status=status;
     }
-
-    String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonspell.json")));
-    ArrayList<SpellCard> spellsOBJECT  = new Gson().fromJson(json,new TypeToken<List<SpellCard>>(){}.getType());
-    public void setSpellOBJECT(ArrayList<SpellCard> spellOBJECT) {
-        for(int i = 0; i <spellOBJECT.size() ; i++)
-        {
-            SpellCard spell =(spellOBJECT.get(i));
-            spell.setName(spellOBJECT.get(i).name);
-            spell.setType(spellOBJECT.get(i).getType());
-            spell.setSide(spellOBJECT.get(i).side);
-            spell.setPrice(spellOBJECT.get(i).price);
-            spell.setCardDescription(spellOBJECT.get(i).description);
-
-
-        }
+    public SpellCard(SpellCard card){
+        super(card.name,card.number,card.cardType,card.description,card.side,card.price);
+        this.icon=card.icon;
+        this.status= card.status;
     }
+
+   //String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonspell.json")));
+   //ArrayList<SpellCard> spellsOBJECT  = new Gson().fromJson(json,new TypeToken<List<SpellCard>>(){}.getType());
+   //public void setSpellOBJECT(ArrayList<SpellCard> spellOBJECT) {
+   //    for(int i = 0; i <spellOBJECT.size() ; i++)
+   //    {
+   //        SpellCard spell =(spellOBJECT.get(i));
+   //        spell.setName(spellOBJECT.get(i).name);
+   //        spell.setType(spellOBJECT.get(i).getType());
+   //        spell.setSide(spellOBJECT.get(i).side);
+   //        spell.setPrice(spellOBJECT.get(i).price);
+   //        spell.setCardDescription(spellOBJECT.get(i).description);
+
+
+   //    }
+   //}
     @Override
     public int getNumber() {
         return number;
