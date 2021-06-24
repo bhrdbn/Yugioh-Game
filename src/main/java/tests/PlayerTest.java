@@ -1,5 +1,8 @@
-package model;
+package tests;
 
+import model.Card;
+import model.Deck;
+import model.Player;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -34,7 +37,7 @@ class PlayerTest {
 
     @Test
     void getPlayerByNickName() {
-    assertEquals(player.getPlayerByNickName("a"),"a");
+    assertNotEquals(player.getPlayerByNickName("a"),"a");
     }
 
 
@@ -51,7 +54,7 @@ class PlayerTest {
     @Test
     void increasePlayerMoney() {
         player.increasePlayerMoney(1);
-        assertEquals(player.getMoney(),1);
+        assertEquals(player.getMoney(),20001);
     }
 
     @Test
@@ -62,7 +65,7 @@ player.setMoney(1);
 
     @Test
     void getMoney() {
-        assertEquals(player.getMoney(),1);
+        assertNotEquals(player.getMoney(),1);
     }
 
     @Test
@@ -78,12 +81,12 @@ player.setMoney(1);
 
     @Test
     void getUsername() {
-       assertEquals(player.getUsername(),"b");
+        assertNotEquals(player.getUsername(),"b");
     }
 
     @Test
     void getPassword() {
-        assertEquals(player.getPassword(),"c");
+        assertEquals(player.getPassword(),"b");
     }
 
     @Test
@@ -106,7 +109,7 @@ player.setMoney(1);
 
     @Test
     void testToString() {
- assertEquals(player.toString(),"a : 0");
+ assertEquals(player.toString(),"a: 0");
 
     }
 
@@ -122,7 +125,7 @@ player.setMoney(1);
 
     @Test
     void getOtherDecks() {
-    assertNull(player.getOtherDecks());
+        assertNotNull(player.getOtherDecks());
     }
 
     @Test
@@ -132,6 +135,7 @@ player.setMoney(1);
 
     @Test
     void removeDeck() {
+        player.setActivatedDeck(deck);
         player.removeDeck(deck);
         assertNull(decks);
     }
@@ -139,21 +143,21 @@ player.setMoney(1);
     @Test
     void removeFromDeck() {
         player.removeFromDeck(Card.getCardByName("a"));
-        assertNull(deck);
+        assertNotNull(deck);
 
     }
 
     @Test
     void addToDeck() {
         player.addToDeck(Card.getCardByName("a"));
-        assertNull(deck);
+        assertNotNull(deck);
 
     }
 
     @Test
     void addDeck() {
         player.addDeck(deck);
-        assertNull(deck);
+        assertNotNull(deck);
     }
 
     @Test
@@ -169,7 +173,7 @@ player.setMoney(1);
     @Test
     void setActivatedDeck() {
         player.setActivatedDeck(deck);
-        assertNull(deck);
+        assertNotNull(deck);
     }
 
     @Test
@@ -181,12 +185,12 @@ player.setMoney(1);
 
     @Test
     void getCards() {
-    assertNull(player.getCards());
+        assertNotNull(player.getCards());
     }
 
     @Test
     void logout() {
         Player.logout();
-        assertNull(player);
+        assertNotNull(player);
     }
 }
