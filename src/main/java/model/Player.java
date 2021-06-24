@@ -49,6 +49,14 @@ public class Player {
         return false;
 
     }
+    public Card getCardByName(String name) {
+        for(Card card:cards){
+            if(card.getName().equals(name))return card;
+        }
+        return null;
+
+    }
+
 
 
     public String getNickname() {
@@ -128,7 +136,8 @@ public class Player {
 
     public void removeDeck(Deck deck){
         decks.remove(deck);
-        if(!deck.getName().equals(activatedDeck.getName())) {
+
+        if(activatedDeck!=null&&!deck.getName().equals(activatedDeck.getName())) {
             otherDecks.remove(deck);
         }
         else activatedDeck=null;

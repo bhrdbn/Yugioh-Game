@@ -57,13 +57,13 @@ public class Card {
         this.side = side;
     }
 
-    public static ArrayList<Card> getAllCards() {
-        return allCards;
-    }
-
-    public static void setAllCards(ArrayList<Card> allCards) {
-        Card.allCards = allCards;
-    }
+    //public static ArrayList<Card> getAllCards() {
+    //    return allCards;
+    //}
+//
+    //public static void setAllCards(ArrayList<Card> allCards) {
+    //    Card.allCards = allCards;
+    //}
 
     public long getPrice() {
         return price;
@@ -83,17 +83,17 @@ public class Card {
     boolean canBeAttacked;
     private Location location;
 
-    private  static ArrayList<Card> allCards=new ArrayList<>();
+  //  private  static ArrayList<Card> allCards=new ArrayList<>();
 
     public String getName() {
         return name;
     }
-    public static Card getCardByName(String name) {
-        for(Card card:allCards){
-            if(card.getName().equals(name))return card;
-        }
-        return null;
-    }
+  //  public static Card getCardByName(String name) {
+  //      for(Card card:allCards){
+  //          if(card.getName().equals(name))return card;
+  //      }
+  //      return null;
+  //  }
 
     public void setLocation(Location location) {
         this.location = location;
@@ -102,12 +102,12 @@ public class Card {
         return location;
     }
 
-    public static boolean doesCardExist(String name) {
-        for(Card card:allCards){
-            if(card.getName().equals(name))return true;
-        }
-        return false;
-    }
+   // public static boolean doesCardExist(String name) {
+   //     for(Card card:allCards){
+   //         if(card.getName().equals(name))return true;
+   //     }
+   //     return false;
+   // }
 
     @Override
     public String toString() {

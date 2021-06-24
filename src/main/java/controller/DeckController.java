@@ -20,7 +20,7 @@ public class DeckController  {
     }
 
     public String createDeck(String deckName){
-        if(GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName)) return "deck with name <deck name> already exists";
+        if(GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName)) return "deck with name "+ deckName +" already exists";
         else {
             Deck deck= new Deck(deckName);
             GlobalVariable.getPlayer().addDeck(deck);
@@ -54,10 +54,11 @@ public class DeckController  {
 
             return "side deck is full";
         }
-        else if (GlobalVariable.getPlayer().getDeckByName(deckName).countACardInDeck(Card.getCardByName(cardName)) == 3) {
+        else if (GlobalVariable.getPlayer().getDeckByName(deckName).countACardInDeck
+                (GlobalVariable.getPlayer().getCardByName(cardName)) == 3) {
             return "there are already three cards with name " + cardName + " in deck " + deckName;
         } else {
-            GlobalVariable.getPlayer().getDeckByName(deckName).addCard(Card.getCardByName(cardName), position);
+            GlobalVariable.getPlayer().getDeckByName(deckName).addCard(GlobalVariable.getPlayer().getCardByName(cardName), position);
             GlobalVariable.getPlayer().getDeckByName(deckName).setIsValid();
             return "card added to deck successfully";
         }
@@ -72,7 +73,7 @@ public class DeckController  {
             return "card with name " + cardName + " does not exist";
 
          else {
-             GlobalVariable.getPlayer().getDeckByName(deckName).removeCard(Card.getCardByName(cardName), position);
+             GlobalVariable.getPlayer().getDeckByName(deckName).removeCard(GlobalVariable.getPlayer().getCardByName(cardName), position);
              GlobalVariable.getPlayer().getDeckByName(deckName).setIsValid();
             return "card removed from deck successfully";
         }

@@ -3,8 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Deck {
-    private ArrayList<Card> mainDeck ;
-    private ArrayList<Card> sideDeck ;
+    private ArrayList<Card> mainDeck;
+    private ArrayList<Card> sideDeck;
     private boolean isValid;
     private String name;
 
