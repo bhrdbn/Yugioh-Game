@@ -1,8 +1,8 @@
-/* package model;
+ package tests;
 
 import controller.GlobalVariable;
 import org.junit.jupiter.api.Test;
-
+import model.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +51,6 @@ class PlayBoardTest {
             GlobalVariable.setPlayer(p);
             p.addDeck(deck);
             p.setActivatedDeck(deck);
-
-
             PlayBoard pl = new PlayBoard(p);
             PlayBoard Opl = new PlayBoard(op);
             Board board = new Board(pl,Opl);
@@ -292,4 +290,4 @@ playBoard.setDeck(player1);
     void isPositionChanged() {
         assertTrue(playBoard.isPositionChanged());
     }
-} */
+}

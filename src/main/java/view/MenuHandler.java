@@ -1,5 +1,7 @@
 package view;
 
+import java.io.IOException;
+
 public class MenuHandler {
     public static void runBack(Menu menu) {
         switch (menu) {
@@ -42,7 +44,11 @@ public class MenuHandler {
                 Duel.getInstance().run();
                 break;
             case SHOP:
-                Shop.getInstance().run();
+                try {
+                    Shop.getInstance().run();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
         }
