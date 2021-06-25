@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LoginControllerTest {
-    private static LoginController loginController = null;
+    LoginController loginController = LoginController.getInstance();
     Player player = new Player("ali","pop","sir");
     @Test
     void getInstance() {
         assertEquals(loginController,loginController.getInstance());
-        assertNull(loginController.getInstance());
+        assertNotNull(loginController.getInstance());
     }
 
     @Test
@@ -25,12 +25,12 @@ class LoginControllerTest {
 
     @Test
     void checkUserName() {
-        assertFalse(loginController.checkUserName("ali"));
+        assertTrue(loginController.checkUserName("ali"));
     }
 
     @Test
     void checkNickName() {
-        assertFalse(loginController.checkNickName("mom"));
+        assertTrue(loginController.checkNickName("mom"));
     }
 
     @Test

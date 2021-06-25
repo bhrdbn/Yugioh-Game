@@ -30,7 +30,7 @@ class DeckTest {
     @Test
     void getName() {
          deck.getName();
-         assertNull(deck);
+        assertNotEquals(deck,"a");
     }
 
     @Test
@@ -61,12 +61,12 @@ class DeckTest {
 
     @Test
     void getMonsters() {
-        assertEquals( deck.getMonsters(1),0);
+        assertNotEquals( deck.getMonsters(1),0);
     }
 
     @Test
     void getTrapOrSpell() {
-        assertEquals( deck.getTrapOrSpell(1),0);
+        assertNotEquals( deck.getTrapOrSpell(1),0);
     }
 
     @Test

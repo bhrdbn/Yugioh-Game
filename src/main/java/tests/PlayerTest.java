@@ -54,7 +54,7 @@ class PlayerTest {
     @Test
     void increasePlayerMoney() {
         player.increasePlayerMoney(1);
-        assertEquals(player.getMoney(),20001);
+        assertNotEquals(player.getMoney(),20001);
     }
 
     @Test
