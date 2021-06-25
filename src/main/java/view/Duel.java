@@ -145,13 +145,13 @@ public class Duel {
     }
 
     public void setPosDEF(Matcher matchersetPosDEF) {
-        System.out.println(duelController.changePosition(matchersetPosDEF, duelController.selectOwnMonster(Integer.parseInt(matcherSelect.group(1)))));
+        System.out.println(duelController.changePosition(matchersetPosDEF));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
 
     public void setPosATK(Matcher matchersetPosATK) {
-        System.out.println(duelController.changePosition(matchersetPosATK, duelController.selectOwnMonster(Integer.parseInt(matcherSelect.group(1)))));
+        System.out.println(duelController.changePosition(matchersetPosATK));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
