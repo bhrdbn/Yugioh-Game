@@ -139,7 +139,7 @@ public class Duel {
     }
 
     public void flipSummons(Matcher matcherflipSummon) {
-        System.out.println(duelController.flipSummon(matcherSelect.group(1)));
+        System.out.println(duelController.flipSummon());
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
