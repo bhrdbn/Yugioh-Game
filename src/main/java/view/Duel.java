@@ -50,6 +50,7 @@ public class Duel {
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
             Matcher matcherAttack = getCommand(input, "attack (\\s)");
             Matcher matcherDirectAttack = getCommand(input, "direct attack");
+            Matcher activateEffect = getCommand(input, "activate effect");
             Matcher matcherSetSpell = getCommand(input, "setSpell");
             Matcher matcherSetTrap = getCommand(input, "SetTrap");
             Matcher showGraveyard = getCommand(input, "show graveyard");
@@ -113,11 +114,17 @@ public class Duel {
                 attack(matcherAttack);
             else if(matcherDirectAttack.find())
                 directAttack(matcherDirectAttack);
+            else if(activateEffect.find())
+                activateEffect(activateEffect);
             else if(matcherSetSpell.find())
                 setSpell(matcherSetSpell);
             else
                 System.out.println("invalid command");
         }
+    }
+
+    public void activateEffect(Matcher activateEffect) {
+            System.out.println(duelController.activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard()));
     }
 
     public void setSpell(Matcher matcherSetSpell) {
