@@ -44,12 +44,12 @@ MonsterCard cards = new MonsterCard(name,number,type,describe,side,price,attack,
 
     public void writeJSON(MonsterCard card) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("src/project-team-31/resources/json_car.json"), card);
+        mapper.writeValue(new File("src/project-team-31/csvjsonmonster.json"), card);
     }
 
     public MonsterCard readJSON() throws JsonParseException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
-        MonsterCard card = mapper.readValue(new File("src/project-team-31/resources/json_car.json"),MonsterCard.class);
+        MonsterCard card = mapper.readValue(new File("src/project-team-31/csvjsonmonster.json"),MonsterCard.class);
         return card;
     }
 
