@@ -145,14 +145,12 @@ public class Duel {
     }
 
     public void setPosDEF(Matcher matchersetPosDEF) {
-        if(duelController.changePosition(matchersetPosDEF)!=null)
             System.out.println(duelController.changePosition(matchersetPosDEF));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
 
     public void setPosATK(Matcher matchersetPosATK) {
-        if(duelController.changePosition(matchersetPosATK)!=null)
             System.out.println(duelController.changePosition(matchersetPosATK));
         System.out.println(GlobalVariable.getBoard().toString());
 
