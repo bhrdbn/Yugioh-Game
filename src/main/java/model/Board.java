@@ -155,8 +155,9 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
 
     }
 
-//    public boolean isFieldZoneFull(){
-//    }
+    public boolean isFieldZoneFull(){
+    return getPlayBoardByTurn().getFields() != null;
+    }
 //
 //    public boolean wasSommoned(MonsterCard card)
 //    {
