@@ -1,5 +1,6 @@
-package controller;
+package tests;
 
+import controller.GraveyardController;
 import model.GraveYard;
 import org.junit.jupiter.api.Test;
 

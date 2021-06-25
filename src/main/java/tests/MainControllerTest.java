@@ -1,5 +1,7 @@
-package controller;
+package tests;
 
+import controller.GlobalVariable;
+import controller.MainController;
 import model.Board;
 import model.PlayBoard;
 import model.Player;

@@ -1,5 +1,6 @@
-package controller;
+package tests;
 
+import controller.LoginController;
 import model.Player;
 import org.junit.jupiter.api.Test;
 
