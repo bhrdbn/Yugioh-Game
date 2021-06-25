@@ -338,17 +338,17 @@ public class DuelController {
         else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 &&
                 GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't do this action in this phase";
-        else if(phase.equals("set -- position attack") && !GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isSide())
+        else if(phase.group(1).equals("attack") && !GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isSide())
             return "this card is already in the wanted position";
-        else if(phase.equals("set -- position defense") && GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isAttack())
+        else if(phase.group(1).equals("defense") && GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isAttack())
             return "this card is already in the wanted position";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isPositionChanged())
             return "you already changed this card position in this turn";
-        else if(phase.equals("set -- position attack")){
+        else if(phase.group(1).equals("attack")){
             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).setIsAttack(true);
             return "set successfully";
         }
-        else if(phase.equals("set -- position defense")){
+        else if(phase.group(1).equals("defense")){
             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).setSide(true);
             return "set successfully";
         }

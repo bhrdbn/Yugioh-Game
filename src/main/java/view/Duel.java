@@ -48,8 +48,8 @@ public class Duel {
             Matcher matchersummon = getCommand(input, "summon");
             Matcher matcherstandbyPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matcherSet = getCommand(input, "set");
-            Matcher matchersetPosATK = getCommand(input, "set -- position attack");
-            Matcher matchersetPosDEF = getCommand(input, "set -- position defence");
+            Matcher matchersetPosATK = getCommand(input, "set -- position (attack)");
+            Matcher matchersetPosDEF = getCommand(input, "set -- position (defence)");
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
             Matcher matcherAttack = getCommand(input, "attack (\\s)");
             Matcher matcherDirectAttack = getCommand(input, "direct attack");
