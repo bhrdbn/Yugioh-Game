@@ -352,6 +352,7 @@ public class DuelController {
             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).setSide(true);
             return "set successfully";
         }
+
         return null;
     }
 
