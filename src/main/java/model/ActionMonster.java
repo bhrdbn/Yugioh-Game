@@ -6,29 +6,27 @@ public class ActionMonster {
     public void setAction(int cardControllerNumber, MonsterCard monsterCard, Deck deck) {
         if (cardControllerNumber == 1) {
             increaseAttackAll(monsterCard);
-        }
-        if (cardControllerNumber == 2) {
+        } else if (cardControllerNumber == 2) {
             invinsibleTillOtherMonstersExist(monsterCard, deck);
-        }
-        if (cardControllerNumber == 3) {
+        } else if (cardControllerNumber == 3) {
             attack(monsterCard);
-        }
-        if (cardControllerNumber == 4) {
+        } else if (cardControllerNumber == 4) {
             defence(monsterCard);
-        }
-        if (cardControllerNumber == 5) {
+        } else if (cardControllerNumber == 5) {
             ifFaceupcanuseOnce(monsterCard);
-        }
-        if (cardControllerNumber == 6) {
+        } else if (cardControllerNumber == 6) {
             upperDefence(monsterCard);
-        }
-        if (cardControllerNumber == 7) {
+        } else if (cardControllerNumber == 7) {
             upperAttack(monsterCard);
+        } else if (cardControllerNumber == 8) {
+            sendFromsideDECK(monsterCard, deck);
+        } else if (cardControllerNumber == 9) {
+            getInBoardWithSacrifices(monsterCard, deck);
+        } else if (cardControllerNumber == 10) {
+            getInBoardWithSacrifices2(monsterCard, deck);
+        } else if (cardControllerNumber == 11) {
+            canNotBeAttacked(monsterCard);
         }
-        if (cardControllerNumber == 8) {
-            sendToGraveYard(monsterCard,deck);
-        }
-
 
     }
 
@@ -73,7 +71,7 @@ public class ActionMonster {
         monsterCard.setAttack(9000);
     }
 
-    public void sendToGraveYard(MonsterCard monsterCard, Deck deck) //8
+    public void sendFromsideDECK(MonsterCard monsterCard, Deck deck) //8
     {
         deck.getMainDeck().add(deck.getSideDeck().get(1));
     }
@@ -81,24 +79,30 @@ public class ActionMonster {
     public void run() {
 
     }
-    /*
 
 
-    public void getInBoardWithSacrifices(int cardControllerNumber) //10
+    public void getInBoardWithSacrifices(MonsterCard monsterCard, Deck deck) //10
     {
+        MonsterCard monsterCard1 = new MonsterCard("CrabTurtle", 1, "effect", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
 
+        deck.removeCard(monsterCard, 1);
+        deck.addCard(monsterCard1, 1);
     }
 
-    public void transformFromTheGraveyardOpponent(int cardControllerNumber) //11
+    public void getInBoardWithSacrifices2(MonsterCard monsterCard, Deck deck) //25
     {
+        MonsterCard monsterCard1 = new MonsterCard("GateGuardian", 1, "effect", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
 
+        deck.removeCard(monsterCard, 1);
+        deck.addCard(monsterCard1, 1);
     }
 
-    public void canNotBeAttacked(int cardControllerNumber) //12
+
+    public void canNotBeAttacked(MonsterCard monsterCard) //12
     {
-
+        monsterCard.setIsAttack(false);
     }
-
+/*
     public void decreaseAttackWithOutSacrifices(int cardControllerNumber) //13
     {
 
@@ -144,14 +148,6 @@ public class ActionMonster {
 
     }
 
-    public void lowerAttack(int cardControllerNumber) //22
-    {
+ */
 
-    }
-
-    public void lowerDefence(int cardControllerNumber) //23
-    {
-
-    }
-     */
 }
