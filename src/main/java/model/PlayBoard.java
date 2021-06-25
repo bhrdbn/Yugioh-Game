@@ -15,6 +15,7 @@ public class PlayBoard {
     private boolean isCardAttacked;
     private boolean isPositionChanged;
     private boolean isCardActivated;
+    private MonsterCard setSummonedMonster;
     private ArrayList<Card> graveyard=new ArrayList<>();
     private SpellCard fields;
     private Deck deck; ;
@@ -41,6 +42,14 @@ public class PlayBoard {
             hand.get(i).setLocation(Location.HAND);
             deck.getMainDeck().remove(0);
         }
+    }
+
+    public MonsterCard getSetSummonedMonster() {
+        return setSummonedMonster;
+    }
+
+    public void setSetSummonedMonster(MonsterCard setSummonedMonster) {
+        this.setSummonedMonster = setSummonedMonster;
     }
 
     public void setSelectedOpponentCard(Card selectedOpponentCard) {

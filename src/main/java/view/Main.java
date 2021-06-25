@@ -1,5 +1,7 @@
 package view;
 
+import model.Card;
+
 import java.util.Scanner;
 
 public class Main {

@@ -45,7 +45,7 @@ public class Duel {
             Matcher matcherSelect3 = getCommand(input, "select opponent monster (\\d)");
             Matcher matcherMainPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matcherEndPhase = getCommand(input, "new card added to the hand : (\\w+)");
-            Matcher matchersummon = getCommand(input, "summon");
+            Matcher matchersummon = getCommand(input, "^summon$");
             Matcher matcherstandbyPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matcherSet = getCommand(input, "^set$");
             Matcher matchersetPosATK = getCommand(input, "set -- position (attack)");
