@@ -32,7 +32,7 @@ public class MenuHandler {
       Duel.getInstance().run();
     }
 
-    public static void runNextMain(Menu menu) {
+    public static void runNextMain(Menu menu)  {
         switch (menu) {
             case PROFILE:
                 Profile.getInstance().run();

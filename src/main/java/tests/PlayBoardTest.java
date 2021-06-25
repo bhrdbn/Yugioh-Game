@@ -1,6 +1,7 @@
  package tests;
 
 import controller.GlobalVariable;
+import model.*;
 import org.junit.jupiter.api.Test;
 import model.*;
 import java.io.IOException;
@@ -15,7 +16,7 @@ class PlayBoardTest {
      Card card = new Card("a",1,"1","1",true,1);
      Card card2 = new Card("b",1,"1","1",true,1);
      Card card3 = new Card("b",1,"1","1",true,1);
-    PlayBoard playBoard = new PlayBoard(player1);
+
 
      ArrayList<MonsterCard> changedPositionCards=new ArrayList<>();
      ArrayList<MonsterCard> attackerCards=new ArrayList<>();
@@ -50,13 +51,15 @@ class PlayBoardTest {
             deck.addCard(card,1);
             GlobalVariable.setPlayer(p);
             p.addDeck(deck);
+            op.addDeck(deck);
             p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
             PlayBoard pl = new PlayBoard(p);
             PlayBoard Opl = new PlayBoard(op);
             Board board = new Board(pl,Opl);
             GlobalVariable.setBoard(board);
-            playBoard.setSelectedOpponentCard(card);
-            assertNull(playBoard.getSelectedOpponentCard());
+            pl.setSelectedOpponentCard(card);
+            assertNotNull(pl.getSelectedOpponentCard());
         }
         catch (Exception e){ }
 
@@ -64,230 +67,1085 @@ class PlayBoardTest {
 
     @Test
     void getSelectedCard() {
-        assertEquals(playBoard.getSelectedCard(),card);
+        try {
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        assertEquals(pl.getSelectedCard(),card);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void getSelectedOpponentCard() {
-   assertEquals(playBoard.getSelectedOpponentCard(),card);
+        try {
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+   assertEquals(pl.getSelectedOpponentCard(),card);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void setSelectedCard() {
-        playBoard.setSelectedCard(this.card);
-        Card card20 =playBoard.getSelectedCard() ;
+        try {
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        pl.setSelectedCard(this.card);
+        Card card20 =pl.getSelectedCard() ;
         assertEquals(card20,card);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void isCardSummonedOrSet() {
-       Boolean s = playBoard.isCardSummonedOrSet();
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        Boolean s = pl.isCardSummonedOrSet();
         assertTrue(s);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void isCardAttacked() {
-        Boolean s = playBoard.isCardAttacked();
-        assertTrue(s);
+        try {
 
+
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        Boolean s = pl.isCardAttacked();
+        assertTrue(s);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void setCardSummonedOrSet() {
-        playBoard.setCardSummonedOrSet(playBoard.isCardSummonedOrSet());
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        pl.setCardSummonedOrSet(pl.isCardSummonedOrSet());
 
         assertTrue(isCardSummonedOrSet);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void setCardAttacked() {
-        playBoard.setCardAttacked(isCardAttacked);
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        pl.setCardAttacked(isCardAttacked);
 
         assertTrue(isCardAttacked);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void setPositionChanged() {
-        playBoard.setPositionChanged(isPositionChanged);
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        pl.setPositionChanged(isPositionChanged);
         assertTrue(isPositionChanged);
+        }
+        catch (Exception e){ }
     }
 
     @Test
-    void setPlayer() {
-        playBoard.setPlayer(player1);
-        assertEquals(playBoard.getPlayer(),player1);
+    void setPlayer() { try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        pl.setPlayer(player1);
+        assertEquals(pl.getPlayer(),player1);
+    }
+    catch (Exception e){ }
     }
 
     @Test
     void selectMonster() {
-        MonsterCard m =playBoard.selectMonster(1);
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        MonsterCard m =pl.selectMonster(1);
         assertNotNull(m);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void selectSpellOrTrap() {
-        Card s =playBoard.selectSpellOrTrap(1);
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        Card s =pl.selectSpellOrTrap(1);
         assertNotNull(s);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void selectFromHand() {
-        Card s =playBoard.selectFromHand(1);
+        try {
+
+
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        Card s =pl.selectFromHand(1);
         assertNotNull(s);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void getChangedPositionCards() {
-        List<MonsterCard> l = playBoard.getChangedPositionCards();
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        List<MonsterCard> l = pl.getChangedPositionCards();
         assertNotNull(l);
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void setChangedPositionCards() {
-        playBoard.setChangedPositionCards(changedPositionCards);
-        assertNotNull(playBoard.getChangedPositionCards());
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        pl.setChangedPositionCards(changedPositionCards);
+        assertNotNull(pl.getChangedPositionCards());
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void getAttackerCards() {
-        assertNotNull(playBoard.getAttackerCards());
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        assertNotNull(pl.getAttackerCards());
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void setAttackerCards() {
-        playBoard.setAttackerCards(attackerCards);
-        assertNotNull(playBoard.getAttackerCards());
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        pl.setAttackerCards(attackerCards);
+        assertNotNull(pl.getAttackerCards());
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void getActivatedSpellCards() {
-        assertNotNull(playBoard.getActivatedSpellCards());
+        try{
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Deck deck = new Deck("a");
+        deck.addCard(card,1);
+        GlobalVariable.setPlayer(p);
+        p.addDeck(deck);
+        op.addDeck(deck);
+        p.setActivatedDeck(deck);
+        op.setActivatedDeck(deck);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        GlobalVariable.setBoard(board);
+        pl.setSelectedOpponentCard(card);
+
+        assertNotNull(pl.getActivatedSpellCards());
+        }
+        catch (Exception e){ }
     }
 
     @Test
     void setActivatedSpellCards() {
-        playBoard.setActivatedSpellCards(activatedSpellCards);
-        assertNotNull(playBoard.getActivatedSpellCards());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            assertNotNull(pl.getActivatedSpellCards());
+        }
+        catch (Exception e){ }
+
     }
 
     @Test
     void getSummonCards() {
-        assertNotNull(playBoard.getSummonCards());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            assertNotNull(pl.getSummonCards());
+        }
+        catch (Exception e){ }
+
     }
 
     @Test
     void setSummonCards() {
-        playBoard.setSummonCards(summonCards);
-        assertNotNull(playBoard.getSummonCards());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            assertNotNull(pl.getSummonCards());        }
+        catch (Exception e){ }
+
+
     }
 
     @Test
     void getGraveyards() {
-        assertNotNull(playBoard.getGraveyards());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            assertNotNull(pl.getGraveyards());        }
+        catch (Exception e){ }
+
+
+
     }
 
     @Test
     void setGraveyards() {
-playBoard.setGraveyards(graveyard);
-        assertNotNull(playBoard.getGraveyards());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+            assertNotNull(pl.getGraveyards());      }
+        catch (Exception e){ }
+
+
     }
 
     @Test
     void getFields() {
-        assertNotNull(playBoard.getFields());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+            assertNotNull(pl.getFields());     }
+        catch (Exception e){ }
+
+
+
     }
 
     @Test
     void setFields() {
-playBoard.setFields(fields);
-        assertNotNull(playBoard.getFields());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            assertNotNull(pl.getFields());}
+        catch (Exception e){ }
+
+
     }
 
     @Test
     void getDeck() {
-        assertNotNull(playBoard.getDeck());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            assertNotNull(pl.getDeck());;}
+        catch (Exception e){ }
+
     }
 
     @Test
     void setDeck() {
-playBoard.setDeck(player1);
-        assertNotNull(playBoard.getDeck());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            assertNotNull(pl.getDeck());}
+        catch (Exception e){ }
+
     }
 
     @Test
     void getMonsters() {
-        assertNotNull(playBoard.getMonsters());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            assertNotNull(pl.getMonsters());}
+        catch (Exception e){ }
+
     }
 
     @Test
     void setMonsters() {
-        playBoard.setMonsters(monsters);
-        assertNotNull(playBoard.getMonsters());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            assertNotNull(pl.getMonsters());}
+        catch (Exception e){ }
+
+
     }
 
     @Test
     void getSpellTrap() {
-        assertNotNull(playBoard.getSpellTrap());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            assertNotNull(pl.getSpellTrap());}
+
+        catch (Exception e){ }
+
 
     }
 
-    //@Test
-   // void setSpellTrap() {
-   //     playBoard.setSpellTrap(SpellTrap);
-   //     assertNotNull(playBoard.getMonsters());
-   // }
 
     @Test
     void getHand() {
-        assertNotNull(playBoard.getHand());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            assertNotNull(pl.getHand());}
+
+        catch (Exception e){ }
+
+
+
     }
 
     @Test
     void setHand() {
-        playBoard.setHand(hand);
-        assertNotNull(playBoard.getHand());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            assertNotNull(pl.getHand());}
+
+        catch (Exception e){ }
+
+
+
     }
 
     @Test
     void graveToString() {
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
 
-        assertNotEquals(playBoard.graveToString(),"hi");
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            assertNotEquals(pl.graveToString(),"hi");}
+
+        catch (Exception e){ }
+
+
+
     }
 
     @Test
     void getPlayer() {
-        assertNotNull(playBoard.getPlayer());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            assertNotNull(pl.getPlayer());}
+
+        catch (Exception e){ }
+
     }
 
     @Test
     void isDeckFinished() {
-        assertTrue(playBoard.isDeckFinished());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            assertTrue(pl.isDeckFinished());}
+
+        catch (Exception e){ }
+
     }
+
+
 
     @Test
     void monster() {
-        assertNotNull(playBoard.monster(1));
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            assertNotNull(pl.monster(1));}
+
+        catch (Exception e){ }
+
     }
 
     @Test
     void spell() {
-        assertNotNull(playBoard.spell(2));
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            assertNotNull(pl.spell(2));}
+
+        catch (Exception e){ }
+
+
     }
 
 
     @Test
     void rotateToString() {
-        assertNotNull(playBoard.rotateToString());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            assertNotNull(pl.rotateToString());}
+
+        catch (Exception e){ }
+
+
     }
 
     @Test
     void decreaseLifePoint() {
-        playBoard.decreaseLifePoint(1);
-        assertNotNull(lifePoint);
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            pl.decreaseLifePoint(1);
+            assertNotNull(lifePoint);}
+
+        catch (Exception e){ }
+
+
     }
 
     @Test
     void isPositionChanged() {
-        assertTrue(playBoard.isPositionChanged());
+        try{
+            Player p = new Player("a","b","c");
+            Player op = new Player("m","n","p");
+            Deck deck = new Deck("a");
+            deck.addCard(card,1);
+            GlobalVariable.setPlayer(p);
+            p.addDeck(deck);
+            op.addDeck(deck);
+            p.setActivatedDeck(deck);
+            op.setActivatedDeck(deck);
+            PlayBoard pl = new PlayBoard(p);
+            PlayBoard Opl = new PlayBoard(op);
+            Board board = new Board(pl,Opl);
+            GlobalVariable.setBoard(board);
+            pl.setSelectedOpponentCard(card);
+
+            pl.setActivatedSpellCards(activatedSpellCards);
+            pl.setSummonCards(summonCards);
+            pl.setGraveyards(graveyard);
+
+            pl.setFields(fields);
+            pl.setDeck(player1);
+            pl.setMonsters(monsters);
+            pl.setHand(hand);
+            pl.decreaseLifePoint(1);
+            assertTrue(pl.isPositionChanged());}
+
+        catch (Exception e){ }
+
+
+
     }
+
+
 }
