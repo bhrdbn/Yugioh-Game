@@ -22,26 +22,34 @@ public class CheatSheet extends Player {
     public void cheet(int code) {
         if (code == 1) {
             this.setMoney(9999999);
+            System.out.println("successful code activation");
+
         }
         if (code == 2) {
             this.setMoney(8888888);
+            System.out.println("successful code activation");
         }
         if (code == 3) {
             this.setMoney(333333);
+            System.out.println("successful code activation");
         }
         if (code ==5)
         {
             this.setMoney(2);
+            System.out.println("successful code activation");
         }
         if (code == 4) {
             setScore(1000000);
+            System.out.println("successful code activation");
         }
-        if (code ==5){
+        if (code ==7){
             this.setScore(999999);
+            System.out.println("successful code activation");
         }
         if (code == 6)
         {
             this.setMoney(2000);
+            System.out.println("successful code activation");
         }
     }
 
