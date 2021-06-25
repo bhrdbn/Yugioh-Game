@@ -84,43 +84,16 @@ public class MonsterCard extends Card {
         this.monsterType = card.monsterType;
     }
 
-    //String json = new String(Files.readAllBytes(Paths.get("resources//csvjsonmonster.json")));
-    //     ArrayList<MonsterCard> monstersOBJECT  = new Gson().fromJson(json,new TypeToken<List<MonsterCard>>(){}.getType());
         public int getAttack() {
             return atk;
 
         }
-
-      // public ArrayList<MonsterCard> getMonstersOBJECT() {
-
-      //     return monstersOBJECT;
-      // }
-
-      // public void setMonstersOBJECT(ArrayList<MonsterCard> monstersOBJECT) {
-      //     this.monstersOBJECT = monstersOBJECT;
-      //     for(int i = 0; i <monstersOBJECT.size() ; i++)
-      //     {
-      //         MonsterCard monster =(monstersOBJECT.get(i));
-      //         monster.setName(monstersOBJECT.get(i).name);
-      //         monster.setType(monstersOBJECT.get(i).cardType);
-      //         monster.setSide(monstersOBJECT.get(i).side);
-      //         monster.setPrice(monstersOBJECT.get(i).price);
-      //         monster.setCardDescription(monstersOBJECT.get(i).description);
-      //         monster.setAttack(monstersOBJECT.get(i).atk);
-      //         monster.setDefence(monstersOBJECT.get(i).def);
-      //         monster.setAttribute(monstersOBJECT.get(i).attribute);
-
-      //     }
-      // }
     /*
-
 action 7,2 == 32
 action 12,22 == 33
 action 22,10,14 ==34
 action 12,15 == 35
 action 1,12 ==36
-
-
      */
 
     //emtiazi
