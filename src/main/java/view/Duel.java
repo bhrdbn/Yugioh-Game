@@ -157,7 +157,7 @@ public class Duel {
     }
 
     public void set(Matcher matcherSet) {
-        System.out.println(duelController.setMonster(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1)))));
+        System.out.println(duelController.setMonster(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedMonsterCard()));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }

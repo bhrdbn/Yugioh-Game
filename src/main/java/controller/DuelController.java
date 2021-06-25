@@ -206,6 +206,7 @@ public class DuelController {
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
                             set(i,(MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
                     break;
                 }
             }
@@ -230,6 +231,7 @@ public class DuelController {
                             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
                                     set(i,(MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
+                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
                             break;
                         }
 
@@ -265,6 +267,7 @@ public class DuelController {
                             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
                                     set(i,(MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
+                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
                             break;
                         }
                     }
@@ -303,7 +306,7 @@ public class DuelController {
             return "you can't set this card";
         else if((GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()
                 instanceof MonsterCard) &&
-        (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 || GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
+        (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
             return "you can't do this action in this phase";
         else if(GlobalVariable.getBoard().isMonsterZoneFull())
             return "monster card zone is full";
@@ -324,7 +327,7 @@ public class DuelController {
             return "no card is selected yet";
         else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
             return "you can't change this card position";
-        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 ||
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 &&
                 GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't do this action in this phase";
         else if(phase.equals("set -- position attack") && !GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(cardCardMatcher)).equals("DO"))
@@ -351,7 +354,7 @@ public class DuelController {
             return "no card is selected yet";
         else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
             return "you can't change this card position";
-        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 ||
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 &&
                 GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't do this action in this phase";
         else if(!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(Integer.parseInt(place)).isSide())
@@ -368,7 +371,7 @@ public class DuelController {
                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
-                getLocation() != Location.HAND || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
+                getLocation() != Location.HAND && GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
                 getLocation() != Location.MONSTERS)
             return "you can’t attack this card";
         else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
@@ -408,7 +411,7 @@ public class DuelController {
             return "no card is selected yet";
         else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.SPELL)
             return "activate effect is only for spell cards";
-        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 || GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
+        else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't activate effect on this turn";
         else if(GlobalVariable.getBoard().getPlayBoardByTurn().isCardActivated())
             return "you have already activated this card";
