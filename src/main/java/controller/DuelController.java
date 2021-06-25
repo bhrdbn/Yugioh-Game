@@ -81,8 +81,9 @@ public class DuelController {
 
     public String selectOpponentSpell(int number) {
         if (number > 5) return "selection is invalid";
-        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi")) return
-                "no card found in the given position";
+        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi"))
+            return
+                    "no card found in the given position";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
                     setSelectedOpponentCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number));
@@ -92,7 +93,7 @@ public class DuelController {
 
     public String selectHand(int number) {
         if (number > 6) return "selection is invalid";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getHand().size()<number) return
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getHand().size() < number) return
                 "no card found in the given position";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
@@ -125,9 +126,8 @@ public class DuelController {
         Phase phase = GlobalVariable.getBoard().getPhase();
         switch (phase) {
             case DRAW:
-                GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn());
-                return "draw phase";
-
+                return "draw phase\n" +
+                        (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
             case STANDBY:
                 return "standby phase";
 
@@ -172,42 +172,70 @@ public class DuelController {
             return "card deselected";
         }
     }
+
+    public int countNokhodi() {
+        int number = 0;
+        for (MonsterCard monster : GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters()) {
+            if (monster.getName().equals("nokhodi")) number++;
+        }
+        return number;
+    }
 // ** monster ba ehzare vizhe ro nazadam **
 
     public String summon() {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null&&
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
                 getLocation() != Location.HAND || !(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()
                 instanceof MonsterCard))
             return "you can’t summon this card";
         else if (!(GlobalVariable.getBoard().getPhase() == Phase.MAIN1 ||
                 GlobalVariable.getBoard().getPhase() == Phase.MAIN2))
             return "action not allowed in this phase";
-        else if (GlobalVariable.getBoard().isMonsterZoneFull())
+        else if (countNokhodi()==0)
             return ("monster card zone is full");
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet())
             return ("you already summoned/set on this turn");
         else if (((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getLevel() <= 4) {
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add
-                    ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+            for (int i = 0; i < 5; i++) {
+
+                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
+                            set(i,(MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
+                    break;
+                }
+            }
+            GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
+                    getOpponentPlayBoardByTurn().getSelectedCard());
             return "summoned successfully";
         } else if (((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getLevel() <= 6) {
-            if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().size() == 0)
+            if (countNokhodi() == 5)
                 return "there are not enough cards for tribute";
             else {
                 int monster = Integer.parseInt(Main.scanner.nextLine());
-                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster) == null)
+                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1).getName().equals("nokhodi"))
                     return "there no monsters one this address";
                 else {
-                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster);
+                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card);
-                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster);
+                    setNokhodi(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster-1));
                     GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add
-                            ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    for (int i = 0; i < 5; i++) {
+
+                        if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
+                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
+                                    set(i,(MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
+                            break;
+                        }
+
+                    }
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
+                            getOpponentPlayBoardByTurn().getSelectedCard());
                     return "summoned successfully";
 
                 }
@@ -215,24 +243,33 @@ public class DuelController {
             }
 
         } else {
-            if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().size() < 2)
+            if (countNokhodi() > 3)
                 return "there are not enough cards for tribute";
             else {
                 int monster = Integer.parseInt(Main.scanner.nextLine());
                 int monster1 = Integer.parseInt(Main.scanner.nextLine());
-                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster) == null ||
-                        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1) == null)
+                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1).getName().equals("nokhodi") ||
+                        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1 - 1).getName().equals("nokhodi"))
                     return "there no monsters one this address";
                 else {
-                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster);
-                    Card card1 = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1);
+                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1);
+                    Card card1 = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1 - 1);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card1);
-                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster);
-                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster1);
+                    setNokhodi(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1));
+                    setNokhodi(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster1 - 1));
                     GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().add
-                            ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    for (int i = 0; i < 5; i++) {
+
+                        if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
+                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
+                                    set(i,(MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
+                            break;
+                        }
+                    }
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
+                            getOpponentPlayBoardByTurn().getSelectedCard());
                     return "summoned successfully";
 
                 }
@@ -241,6 +278,10 @@ public class DuelController {
 
         }
 
+    }
+
+    public void setNokhodi(Card card) {
+        card = new Card("nokhodi", 1, "ff", "aa", false, 1);
     }
 
     public void tributeMonsters(int monser) {
