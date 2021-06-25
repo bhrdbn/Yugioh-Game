@@ -71,6 +71,8 @@ public class PlayBoard {
         return selectedSpellCard;
     }
 
+    //public void setSelectedTrapCard(TrapCard trapCard)
+
     public MonsterCard getSelectedMonsterCard(){
         return selectedMonsterCard;
     }
@@ -304,4 +306,6 @@ public class PlayBoard {
     public boolean isPositionChanged() {
         return isPositionChanged;
     }
+
+
 }

@@ -314,7 +314,16 @@ public class DuelController {
             return "you already summoned/set on this turn";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-            MonsterCard.set(monster);
+            for (int i = 0; i < 5; i++) {
+                if(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")){
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setSide(true);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    break;
+                }
+
+            }
         return "set successfully";
         }
 
