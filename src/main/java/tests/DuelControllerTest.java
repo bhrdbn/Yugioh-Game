@@ -309,7 +309,7 @@ try {
         Phase phase = GlobalVariable.getBoard().getPhase();
 Matcher matcher = null;
         phase = GlobalVariable.getBoard().getPhase();
-        assertNotNull(duelController.changePosition(matcher,"s"));
+        assertNotNull(duelController.changePosition(matcher));
     }catch (Exception e){int i=1;
             assertEquals(i,1);}}
 
