@@ -69,7 +69,7 @@ public class DeckController  {
 
          if (!GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName))
             return "deck with name " + deckName + " does not exist";
-        else if (GlobalVariable.getPlayer().getDeckByName(deckName).doesHaveCard(cardName,position))
+        else if (!GlobalVariable.getPlayer().getDeckByName(deckName).doesHaveCard(cardName,position))
             return "card with name " + cardName + " does not exist";
 
          else {

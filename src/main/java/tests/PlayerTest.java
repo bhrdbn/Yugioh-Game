@@ -140,19 +140,19 @@ player.setMoney(1);
         assertNull(decks);
     }
 
-    @Test
-    void removeFromDeck() {
-        player.removeFromDeck(Card.getCardByName("a"));
-        assertNotNull(deck);
+   //@Test
+   //void removeFromDeck() {
+   //    player.removeFromDeck(Card.getCardByName("a"));
+   //    assertNotNull(deck);
 
-    }
+   //}
 
-    @Test
-    void addToDeck() {
-        player.addToDeck(Card.getCardByName("a"));
-        assertNotNull(deck);
+   //@Test
+   //void addToDeck() {
+   //    player.addToDeck(Card.getCardByName("a"));
+   //    assertNotNull(deck);
 
-    }
+   //}
 
     @Test
     void addDeck() {

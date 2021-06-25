@@ -21,7 +21,7 @@ public class SpellCard extends Card{
     private String status;
 
 
-    public SpellCard(String status,String name, int number, String type, String cardDescription, boolean side, int price,  String icon) throws IOException {
+    public SpellCard(String status,String name, int number, String type, String cardDescription, boolean side, int price,  String icon) {
         super(name, number, type, cardDescription, side, price);
         this.icon=icon;
         this.status=status;

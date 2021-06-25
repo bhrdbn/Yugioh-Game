@@ -28,7 +28,7 @@ public class Shop {
         System.out.println("welcome to shop menu");
         while (true) {
             String input = Main.scanner.nextLine();
-            Matcher matcher1 = getCommand(input, "shop buy ([a-zA-Z]+)");
+            Matcher matcher1 = getCommand(input, "^shop buy ([a-zA-Z\\s]+)$");
             Matcher matcher2 = getCommand(input, "shop show --all");
             Matcher matcher3 = getCommand(input, "exit");
             if (matcher1.find())

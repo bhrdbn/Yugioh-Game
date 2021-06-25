@@ -27,7 +27,7 @@ public class Player {
 
     public Player(String nickname, String password, String username) {
         this.nickname = nickname;
-        this.money = 20000;
+        this.money = 400000;
         this.password = password;
         this.username = username;
         decks=new ArrayList<>();
@@ -137,10 +137,10 @@ public class Player {
     public void removeDeck(Deck deck){
         decks.remove(deck);
 
-        if(activatedDeck!=null&&!deck.getName().equals(activatedDeck.getName())) {
-            otherDecks.remove(deck);
+        if(activatedDeck!=null&&activatedDeck.getName().equals(deck.getName())) {
+            activatedDeck=null;
         }
-        else activatedDeck=null;
+        else otherDecks.remove(deck);
     }
     public void removeFromDeck(Card card){
         cards.add(card);

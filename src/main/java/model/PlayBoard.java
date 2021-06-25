@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +32,14 @@ public class PlayBoard {
         setDeck(player);
         lifePoint=8000;
         setPlayer(player);
+        for (int i=0;i<5;i++) {
+            monsters.add( new MonsterCard("nokhodi",1,"a","dd",true,12345,0,0,null,"aa",1,"ww"));
+            SpellTrap.add(new SpellCard("s","nokhodi",1,"t","t",true,1,"d"));
+        }
+        for(int i=0;i<4;i++){
+            hand.add(deck.getMainDeck().get(0));
+            deck.getMainDeck().remove(0);
+        }
     }
 
     public void setSelectedOpponentCard(Card selectedOpponentCard) {
@@ -98,6 +107,7 @@ public class PlayBoard {
     }
     public MonsterCard selectMonster(int number)
     {
+
         return (MonsterCard) getMonsters().get(number-1);
 
     }

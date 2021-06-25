@@ -47,7 +47,7 @@ public class DuelController {
 
     public String selectOwnMonster(int number) {
         if (number > 5) return "selection is invalid";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(number) == null) return
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(number).getName().equals("nokhodi")) return
                 "no card found in the given position";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
@@ -58,7 +58,8 @@ public class DuelController {
 
     public String selectOpponentMonster(int number) {
         if (number > 5) return "selection is invalid";
-        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectMonster(number) == null) return
+        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectMonster(number).getName().equals("nokhodi"))
+            return
                 "no card found in the given position";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
@@ -69,7 +70,7 @@ public class DuelController {
 
     public String selectOwnSpell(int number) {
         if (number > 5) return "selection is invalid";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number) == null) return
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi")) return
                 "no card found in the given position";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
@@ -80,7 +81,7 @@ public class DuelController {
 
     public String selectOpponentSpell(int number) {
         if (number > 5) return "selection is invalid";
-        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number) == null) return
+        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi")) return
                 "no card found in the given position";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().
@@ -91,7 +92,7 @@ public class DuelController {
 
     public String selectHand(int number) {
         if (number > 6) return "selection is invalid";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number) == null) return
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi")) return
                 "no card found in the given position";
         else {
             GlobalVariable.getBoard().getPlayBoardByTurn().

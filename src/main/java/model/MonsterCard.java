@@ -63,7 +63,7 @@ public class MonsterCard extends Card {
         this.level = level;
     }
 
-    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, long price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType) throws IOException {
+    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, long price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType)  {
         super(name, number, type, cardDescription, side, price);
         this.atk = attack;
         this.def = defence;

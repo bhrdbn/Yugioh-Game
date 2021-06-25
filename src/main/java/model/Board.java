@@ -1,5 +1,7 @@
 package model;
 
+import controller.GlobalVariable;
+
 import java.util.regex.Matcher;
 
 public class Board {
@@ -9,8 +11,10 @@ public class Board {
     private PlayBoard playBoard1;
     private PlayBoard playBoard2;
 public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
+    turn= GlobalVariable.getPlayer();
     playBoard1=playBoardPlayer;
     playBoard2=playBoardOpponent;
+    phase=Phase.DRAW;
 }
 
 
