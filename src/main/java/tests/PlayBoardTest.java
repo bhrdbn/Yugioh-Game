@@ -37,19 +37,63 @@ class PlayBoardTest {
      Card selectedCard;
      Card selectedOpponentCard;
 
-    PlayBoardTest() throws IOException {
+
+    @Test
+    void hand(){
+
+        Player p = new Player("a","b","c");
+        Player op = new Player("m","n","p");
+        Card card1 = new Card("a",1,"1","1",true,1);
+        Card card2 = new Card("b",1,"1","1",true,1);
+        Card card3 = new Card("c",1,"1","1",true,1);
+        Card card4 = new Card("d",1,"1","1",true,1);
+        Card card5 = new Card("e",1,"1","1",true,1);
+        Card card6 = new Card("f",1,"1","1",true,1);
+        Card cardo1 = new Card("g",1,"1","1",true,1);
+        Card cardo2 = new Card("h",1,"1","1",true,1);
+        Card cardo3 = new Card("i",1,"1","1",true,1);
+        Card cardo4 = new Card("j",1,"1","1",true,1);
+        Card cardo5 = new Card("k",1,"1","1",true,1);
+        Card cardo6 = new Card("l",1,"1","1",true,1);
+        Deck deckp = new Deck("a");
+        Deck deckop = new Deck("a");
+        op.setActivatedDeck(deckop);
+        p.setActivatedDeck(deckp);
+        deckp.addCard(card1,1);
+        deckp.addCard(card2,2);
+        deckp.addCard(card3,3);
+        deckp.addCard(card4,4);
+        deckp.addCard(card5,5);
+        deckp.addCard(card6,6);
+        deckop.addCard(cardo1,1);
+        deckop.addCard(cardo2,2);
+        deckop.addCard(cardo3,3);
+        deckop.addCard(cardo4,4);
+        deckop.addCard(cardo5,5);
+        deckop.addCard(cardo6,6);
+        GlobalVariable.setPlayer(p);
+        GlobalVariable.setPlayer(op);
+
+        p.addDeck(deckp);
+        op.addDeck(deckop);
+        PlayBoard pl = new PlayBoard(p);
+        PlayBoard Opl = new PlayBoard(op);
+        Board board = new Board(pl,Opl);
+        pl.setHand(hand);
+        assertNotNull(pl.getHand());
 
     }
 
 
-    @Test
-    void setSelectedOpponentCard() {
-        try {
+   /* void setSelectedOpponentCard() {
+
             Player p = new Player("a","b","c");
             Player op = new Player("m","n","p");
             Deck deck = new Deck("a");
-            deck.addCard(card,1);
+        Card card1 = new Card("a",1,"1","1",true,1);
+            deck.addCard(card1,1);
             GlobalVariable.setPlayer(p);
+            GlobalVariable.setPlayer(op);
             p.addDeck(deck);
             op.addDeck(deck);
             p.setActivatedDeck(deck);
@@ -58,13 +102,12 @@ class PlayBoardTest {
             PlayBoard Opl = new PlayBoard(op);
             Board board = new Board(pl,Opl);
             GlobalVariable.setBoard(board);
-            pl.setSelectedOpponentCard(card);
+            pl.setSelectedOpponentCard(card1);
             assertNotNull(pl.getSelectedOpponentCard());
-        }
-        catch (Exception e){ }
+
 
     }
-
+*/
     @Test
     void getSelectedCard() {
         try {
