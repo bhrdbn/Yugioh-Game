@@ -47,7 +47,7 @@ public class Duel {
             Matcher matcherEndPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matchersummon = getCommand(input, "summon");
             Matcher matcherstandbyPhase = getCommand(input, "new card added to the hand : (\\w+)");
-            Matcher matcherSet = getCommand(input, "set");
+            Matcher matcherSet = getCommand(input, "^set$");
             Matcher matchersetPosATK = getCommand(input, "set -- position (attack)");
             Matcher matchersetPosDEF = getCommand(input, "set -- position (defence)");
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
@@ -145,13 +145,15 @@ public class Duel {
     }
 
     public void setPosDEF(Matcher matchersetPosDEF) {
-        System.out.println(duelController.changePosition(matchersetPosDEF));
+        if(duelController.changePosition(matchersetPosDEF)!=null)
+            System.out.println(duelController.changePosition(matchersetPosDEF));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
 
     public void setPosATK(Matcher matchersetPosATK) {
-        System.out.println(duelController.changePosition(matchersetPosATK));
+        if(duelController.changePosition(matchersetPosATK)!=null)
+            System.out.println(duelController.changePosition(matchersetPosATK));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
