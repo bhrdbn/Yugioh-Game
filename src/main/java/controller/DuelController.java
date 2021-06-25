@@ -345,11 +345,25 @@ public class DuelController {
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isPositionChanged())
             return "you already changed this card position in this turn";
         else if(phase.group(1).equals("attack")){
-            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).setIsAttack(true);
+            for (int i = 0; i < 5; i++) {
+                if(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).isSide()){
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(false);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
+                    break;
+                }
+            }
             return "monster card position changed successfully";
         }
         else if(phase.group(1).equals("defense")){
-            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).setSide(true);
+            for (int i = 0; i < 5; i++) {
+                if(!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).isAttack()){
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setSide(true);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
+                    break;
+                }
+            }
             return "monster card position changed successfully";
         }
 
@@ -365,11 +379,17 @@ public class DuelController {
         else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 &&
                 GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't do this action in this phase";
-        else if(!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(Integer.parseInt(place)).isSide())
+        else if(!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isSide() || !GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isAttack())
                 return "you can't flip summon this card";
         else {
-            GlobalVariable.getBoard().getPlayBoardByTurn().monster(Integer.parseInt(place));
-            return "flip summoned successfully";
+            for (int i = 0; i < 5; i++) {
+                if(!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).isSide()){
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(false);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
+                    break;
+                }
+            }            return "flip summoned successfully";
         }
 
     }
