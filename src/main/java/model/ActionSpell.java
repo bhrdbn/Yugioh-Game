@@ -8,39 +8,54 @@ import java.util.ArrayList;
 public class ActionSpell {
     private int cardControllerNumber;
 
-    public void setAction(int cardControllerNumber, SpellCard spellCard, MonsterCard monsterCard) {
+    public void setAction(int cardControllerNumber, SpellCard spellCard, MonsterCard monsterCard, Deck deck, Deck side) {
 
         if (cardControllerNumber == 1) {
             addFieldSpellFromDeck(spellCard);
-        } else if (cardControllerNumber == 2) {
+        }  if (cardControllerNumber == 2) {
             stopSpell();
-        } else if (cardControllerNumber == 3) {
+        }  if (cardControllerNumber == 3) {
             spellcasterATKplus(monsterCard);
-        } else if (cardControllerNumber == 4) {
+        }  if (cardControllerNumber == 4) {
             fiendATKplus(monsterCard);
-        } else if (cardControllerNumber == 5) {
+        }  if (cardControllerNumber == 5) {
             spellcasterDEFplus(monsterCard);
-        } else if (cardControllerNumber == 6) {
+        }  if (cardControllerNumber == 6) {
             fiendDefplus(monsterCard);
-        } else if (cardControllerNumber == 7) {
+        }  if (cardControllerNumber == 7) {
             fairyATKlose(monsterCard);
-        } else if (cardControllerNumber == 8) {
+        }  if (cardControllerNumber == 8) {
             InsectAtkplus(monsterCard);
-        } else if (cardControllerNumber == 9) {
+        }  if (cardControllerNumber == 9) {
             BeastAtkplus(monsterCard);
-        } else if (cardControllerNumber == 10) {
+        }  if (cardControllerNumber == 10) {
             BeastWarriorAtkplus(monsterCard);
-        }  else if (cardControllerNumber == 16) {
+        }  if (cardControllerNumber == 16) {
             ritualSummon(spellCard);
+        }  if (cardControllerNumber == 17) {
+            Insectdefplus(monsterCard);
+        } if (cardControllerNumber == 18) {
+            addCard(deck, side);
+        } if (cardControllerNumber == 19) {
+            aquaAtkplus(monsterCard);
+        } if (cardControllerNumber == 20) {
+            aquadeflos(monsterCard);
+        } if (cardControllerNumber == 21) {
+            equiprd(monsterCard);
         }
 
 
     }
 
-
+ // 1 terraforming
+    //2 pot of greed
+    // 4 5 6 yami
+ // 15 16 17 forest
+    // 18 19 umiruka
+    // 20 black pendant
     public void addFieldSpellFromDeck(SpellCard spellCard) {
         GlobalVariable.getPlayer().addToDeck(spellCard);
-    }
+    } //1
 
 
     public void stopSpell() {
@@ -48,17 +63,25 @@ public class ActionSpell {
         GlobalVariable.getPlayer().getActivatedDeck().getMainDeck().get(1).setType("NORMAL");
 
     }
+    public void addCard(Deck deck, Deck side) { //2
+        deck.getMainDeck().add(deck.getSideDeck().get(1));
+deck.getSideDeck().remove(1);
+        deck.getMainDeck().add(deck.getSideDeck().get(2));
+        deck.getSideDeck().remove(2);
 
 
-    public void spellcasterATKplus(MonsterCard monsterCard) {
+    }
+
+    public void spellcasterATKplus(MonsterCard monsterCard) { //5
 
         monsterCard.setAttack(8000);
 
     }
+
 
     public void fiendATKplus(MonsterCard monsterCard) {
-        monsterCard.setAttack(8000);
-    }
+        monsterCard.setAttack(monsterCard.getAttack()+400);
+    } //4
 
     public void spellcasterDEFplus(MonsterCard monsterCard) {
         monsterCard.setDefence(8000);
@@ -69,20 +92,29 @@ public class ActionSpell {
     }
 
     public void fairyATKlose(MonsterCard monsterCard) {
-        monsterCard.setAttack(8000);
-    }
+        monsterCard.setAttack(monsterCard.getAttack()-200);
+    } //6
 
     public void InsectAtkplus(MonsterCard monsterCard) {
-        monsterCard.setAttack(8000);
-    }
+        monsterCard.setAttack(monsterCard.getAttack()+200);
+    } //17
+    public void aquaAtkplus(MonsterCard monsterCard) {
+        monsterCard.setAttack(monsterCard.getAttack()+500);
+    } //18
+    public void aquadeflos(MonsterCard monsterCard) {
+        monsterCard.setDefence(monsterCard.getDefence()-400);
+    } //19
+    public void equiprd(MonsterCard monsterCard) {
+        monsterCard.setAttack(monsterCard.getAttack()+500);
+    } //20
 
     public void BeastAtkplus(MonsterCard monsterCard) {
-        monsterCard.setAttack(8000);
-    }
+        monsterCard.setAttack(monsterCard.getAttack()+200);
+    } //16
 
     public void BeastWarriorAtkplus(MonsterCard monsterCard) {
-        monsterCard.setAttack(8000);
-    }
+        monsterCard.setAttack(monsterCard.getAttack()+200);
+    } //15
 
     public void Insectdefplus(MonsterCard monsterCard) {
         monsterCard.setDefence(8000);

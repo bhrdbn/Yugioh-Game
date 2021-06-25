@@ -3,37 +3,44 @@ package model;
 import java.util.ArrayList;
 
 public class ActionMonster {
-    public void setAction(int cardControllerNumber, MonsterCard monsterCard, Deck deck) {
+    public void setAction(int cardControllerNumber, MonsterCard monsterCard, Deck deck,MonsterCard monsterCard1,MonsterCard monsterCard2) {
         if (cardControllerNumber == 1) {
             increaseAttackAll(monsterCard);
-        } else if (cardControllerNumber == 2) {
+        }  if (cardControllerNumber == 2) {
             invinsibleTillOtherMonstersExist(monsterCard, deck);
-        } else if (cardControllerNumber == 3) {
+        }  if (cardControllerNumber == 3) {
             attack(monsterCard);
-        } else if (cardControllerNumber == 4) {
+        }  if (cardControllerNumber == 4) {
             defence(monsterCard);
-        } else if (cardControllerNumber == 5) {
+        }  if (cardControllerNumber == 5) {
             ifFaceupcanuseOnce(monsterCard);
-        } else if (cardControllerNumber == 6) {
+        }  if (cardControllerNumber == 6) {
             upperDefence(monsterCard);
-        } else if (cardControllerNumber == 7) {
+        }  if (cardControllerNumber == 7) {
             upperAttack(monsterCard);
-        } else if (cardControllerNumber == 8) {
+        }  if (cardControllerNumber == 8) {
             sendFromsideDECK(monsterCard, deck);
-        } else if (cardControllerNumber == 9) {
+        }  if (cardControllerNumber == 9) {
             getInBoardWithSacrifices(monsterCard, deck);
-        } else if (cardControllerNumber == 10) {
-            getInBoardWithSacrifices2(monsterCard, deck);
-        } else if (cardControllerNumber == 11) {
+        }  if (cardControllerNumber == 10) {
+            getInBoardWithSacrifices2(monsterCard,monsterCard2,monsterCard1, deck);
+        }  if (cardControllerNumber == 11) {
             canNotBeAttacked(monsterCard);
+        } if (cardControllerNumber == 12) {
+            getInBoardWithSacrifices3(monsterCard,deck);
         }
 
-    }
 
+    }
+// 1 ,2 COMMANDKNIGHT
+    // 12 SUIJIN
+    //10 CRABTURTLE
+    // 25 GATE GUARDIAN
+    //26 skull guardian
 
     public void increaseAttackAll(MonsterCard monsterCard) //1
     {
-        monsterCard.setAttack(5000);
+        monsterCard.setAttack(monsterCard.getAttack()+400);
     }
 
     public void invinsibleTillOtherMonstersExist(MonsterCard monsterCard, Deck deck) //2
@@ -44,7 +51,7 @@ public class ActionMonster {
 
     public void attack(MonsterCard monsterCard) //3
     {
-        monsterCard.setAttack(6000);
+        monsterCard.setAttack(monsterCard.getAttack()+1900);
     }
 
     public void defence(MonsterCard monsterCard) //4
@@ -83,20 +90,30 @@ public class ActionMonster {
 
     public void getInBoardWithSacrifices(MonsterCard monsterCard, Deck deck) //10
     {
-        MonsterCard monsterCard1 = new MonsterCard("CrabTurtle", 1, "effect", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
+        MonsterCard monsterCard1 = new MonsterCard("CrabTurtle", 1, "Ritual", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
 
         deck.removeCard(monsterCard, 1);
         deck.addCard(monsterCard1, 1);
     }
 
-    public void getInBoardWithSacrifices2(MonsterCard monsterCard, Deck deck) //25
+    public void getInBoardWithSacrifices2(MonsterCard monsterCard,MonsterCard monsterCard2,MonsterCard monsterCard3 ,Deck deck) //25
     {
-        MonsterCard monsterCard1 = new MonsterCard("GateGuardian", 1, "effect", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
+        MonsterCard monsterCard1 = new MonsterCard("GateGuardian", 1, "Ritual", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
 
         deck.removeCard(monsterCard, 1);
+        deck.removeCard(monsterCard2, 2);
+        deck.removeCard(monsterCard3, 3);
         deck.addCard(monsterCard1, 1);
     }
+    public void getInBoardWithSacrifices3(MonsterCard monsterCard,Deck deck) //25
+    {
+        MonsterCard monsterCard1 = new MonsterCard("SkullGuardian", 1, "Ritual", "description This monster can only be Ritual Summoned with the Ritual Spell Card, \"Novox's Prayer\". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.",
+ true, 7900, 2050, 2500, null, "LIGHT", 7, "Warrior");
 
+        deck.removeCard(monsterCard, 1);
+
+        deck.addCard(monsterCard1, 1);
+    }
 
     public void canNotBeAttacked(MonsterCard monsterCard) //12
     {
