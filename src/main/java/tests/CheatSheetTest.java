@@ -10,14 +10,14 @@ class CheatSheetTest {
 
     @Test
     void getCode() {
-        CheatSheet cheatSheet = new CheatSheet("a","a","a");
+        CheatSheet cheatSheet = new CheatSheet("a","a","a",1);
         cheatSheet.setCode(1);
         assertEquals(cheatSheet.getCode(),1);
     }
 
     @Test
     void setCode() {
-        CheatSheet cheatSheet = new CheatSheet("a","a","a");
+        CheatSheet cheatSheet = new CheatSheet("a","a","a",1);
         cheatSheet.setCode(1);
         assertEquals(cheatSheet.getCode(),1);
     }
@@ -25,7 +25,7 @@ class CheatSheetTest {
     @Test
     void cheet() {
         Player player = new Player("a","a","a");
-        CheatSheet cheatSheet = new CheatSheet("a","a","a");
+        CheatSheet cheatSheet = new CheatSheet("a","a","a",1);
         cheatSheet.cheet(1);
         assertNotEquals(player.getMoney(),1);
         cheatSheet.cheet(2);

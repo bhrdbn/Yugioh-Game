@@ -8,6 +8,7 @@ import java.util.regex.*;
 
 import controller.*;
 import model.Card;
+import model.CheatSheet;
 
 public class Shop {
 
@@ -33,6 +34,7 @@ public class Shop {
             Matcher matcher1 = getCommand(input, "^shop buy ([a-zA-Z\\s]+)$");
             Matcher matcher2 = getCommand(input, "shop show --all");
             Matcher matcher3 = getCommand(input, "exit");
+            Matcher matcher4 = getCommand(input, "cheet BAP ([a-zA-Z]+) and ([a-zA-Z]+) and ([a-zA-Z]+) code ([0-9]) ");
             Matcher matcher6 = getCommand(input, "Card serialize name ([a-zA-Z]+) describe ([a-zA-Z]+) number ([0-9]) attack ([0-9]) defence ([0-9]) price ([0-9]) attribute ([a-zA-Z]+) level ([0-9]) type ([a-zA-Z]+)");
             if (matcher1.find())
                 buy(matcher1);
@@ -41,6 +43,12 @@ public class Shop {
             else if (matcher3.find()) MenuHandler.runBack(Menu.SHOP);
             else if (matcher6.find()) {ImprotExport improtExport = new ImprotExport();
                 improtExport.serialize(matcher6.group(0),matcher6.group(1),Integer.parseInt(matcher6.group(2)),Integer.parseInt(matcher6.group(3)),Integer.parseInt(matcher6.group(4)),Integer.parseInt(matcher6.group(5)),matcher6.group(7),Integer.parseInt(matcher6.group(8)), matcher6.group(9),null,true);
+            }
+            else if (matcher4.find()) {
+                if (matcher4.group(0).equals("bahar") && matcher4.group(1).equals("ayla") && matcher4.group(2).equals("pardis")) {
+                    CheatSheet cheatSheet = new CheatSheet(matcher4.group(0), matcher4.group(1), matcher4.group(2), Integer.parseInt(matcher4.group(3)));
+                    cheatSheet.cheet(Integer.parseInt(matcher4.group(3)));
+                }
             }
             else
                 System.out.println("invalid command");

@@ -85,7 +85,7 @@ class PlayBoardTest {
     }
 
 
-   /* void setSelectedOpponentCard() {
+   void setSelectedOpponentCard() {
 
             Player p = new Player("a","b","c");
             Player op = new Player("m","n","p");
@@ -107,7 +107,7 @@ class PlayBoardTest {
 
 
     }
-*/
+
     @Test
     void getSelectedCard() {
         try {
