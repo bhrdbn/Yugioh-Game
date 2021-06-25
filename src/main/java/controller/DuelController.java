@@ -317,7 +317,7 @@ public class DuelController {
             for (int i = 0; i < 5; i++) {
                 if(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")){
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setSide(true);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setSide(false);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                     break;
