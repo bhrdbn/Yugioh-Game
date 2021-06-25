@@ -96,13 +96,14 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
         return getPlayBoardByTurn().getDeck().getMainDeck().size()==0;
     }
 
-    public void addToHand(PlayBoard playBoard)
+    public String addToHand(PlayBoard playBoard)
     {
 
         Card card=playBoard.getDeck().getMainDeck().get(0);
         playBoard.getHand().add(card);
         card.setLocation(Location.HAND);
         playBoard.getDeck().getMainDeck().remove(0);
+        return card.getName()+" added to hand";
 
     }
 

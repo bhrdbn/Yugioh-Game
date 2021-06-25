@@ -38,6 +38,7 @@ public class PlayBoard {
         }
         for(int i=0;i<6;i++){
             hand.add(deck.getMainDeck().get(0));
+            hand.get(i).setLocation(Location.HAND);
             deck.getMainDeck().remove(0);
         }
     }
@@ -249,22 +250,21 @@ public class PlayBoard {
         else playBoard.append("O");
         playBoard.append("\t\t\t\t\t\t");
         playBoard.append(graveyard.size()).append("\n");
-        for (int i : new int[]{5, 3, 1, 2, 4}) {
+        for (int i : new int[]{4, 2, 0, 1, 3}) {
             playBoard.append(monster(i));
         }
         playBoard.append("\n");
-        for (int i : new int[]{5, 3, 1, 2, 4}) {
+        for (int i : new int[]{4, 2, 0, 1, 3}) {
             playBoard.append(spell(i));
         }
         playBoard.append("\n");
         playBoard.append("\t\t\t\t\t\t");
         playBoard.append(deck.getMainDeck().size()).append("\n");
 
-
         for(Card card:hand){
-            playBoard.append("C\t");
+            playBoard.append(card.getName()).append(" ").append(card.getType()).append("\t");
         }
-
+        playBoard.append("\n");
         playBoard.append(player.getNickname()).append(":");
         playBoard.append(lifePoint);
 
@@ -280,11 +280,11 @@ public class PlayBoard {
         }
         playBoard.append("\n");
         playBoard.append(deck.getMainDeck().size()).append("\n");
-        for (int i : new int[]{4, 2, 1, 3, 5}) {
+        for (int i : new int[]{3, 1, 0, 2, 4}) {
             playBoard.append(spell(i));
         }
         playBoard.append("\n");
-        for (int i : new int[]{4, 2, 1, 3, 5}) {
+        for (int i : new int[]{3, 1, 2, 0, 4}) {
             playBoard.append(monster(i));
         }
         playBoard.append("\n");
