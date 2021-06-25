@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import controller.*;
 import model.*;
 public class CheatSheet extends Player {
-    public CheatSheet(String nickname, String password, String username) {
-        super(nickname, password, username);
-    }
-   private int code;
-
-    public CheatSheet(String nickname, String password, String username, int code) {
+    private int code;
+    public CheatSheet(String nickname, String password, String username,int code) {
         super(nickname, password, username);
         this.code = code;
     }
+
 
     public int getCode() {
         return code;
