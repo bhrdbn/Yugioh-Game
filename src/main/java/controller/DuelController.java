@@ -365,7 +365,7 @@ public class DuelController {
 
     }
 
-    public String flipSummon(String place) {
+    public String flipSummon() {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
