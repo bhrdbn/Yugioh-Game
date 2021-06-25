@@ -160,6 +160,7 @@ public class Duel {
         else
             System.out.println(DuelController.getInstance().newDuel(Integer.parseInt
                 (matcherPlayer.group(1)),matcherPlayer.group(2),GlobalVariable.getPlayer().getUsername()));
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void goNextPhase(){
         System.out.println(duelController.goNextPhase());
@@ -167,46 +168,59 @@ public class Duel {
 
     public void selectOwnMonster(int number) {
         System.out.println(duelController.selectOwnMonster(number));
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void selectOpponentMonster(int number) {
         System.out.println(duelController.selectOpponentMonster(number));
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void selectOwnSpell(int number) {
         System.out.println(DuelController.getInstance().selectOwnSpell(number));
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void selectOpponentSpell(int number) {
         System.out.println(duelController.selectOpponentSpell(number));
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void selectField() {
         System.out.println(duelController.selectField());
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void selectOpponentField() {
         System.out.println(duelController.selectOpponentField());
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void selectHand(int number) {
         System.out.println(duelController.selectHand(number));
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void deselect() {
         System.out.println(duelController.deselect());
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void showGrave()
     {
         System.out.println(GraveyardController.getInstance().showMyGraveyard());
         GraveView.getInstance().run();
+        System.out.println(GlobalVariable.getBoard().toString());
     }
     public void showOpponentGrave()
     {
         System.out.println(GraveyardController.getInstance().showOpponentGraveyard());
         GraveView.getInstance().run();
+        System.out.println(GlobalVariable.getBoard().toString());
     }
 
     public void showCard()
     {
         System.out.println(duelController.showCard());
+        System.out.println(GlobalVariable.getBoard().toString());
     }
 
     public void summon(Matcher matcherPlayer)
     {
+        System.out.println(DuelController.getInstance().summon());
+        System.out.println(GlobalVariable.getBoard().toString());
 
     }
 

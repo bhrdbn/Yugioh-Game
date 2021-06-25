@@ -32,11 +32,11 @@ public class PlayBoard {
         setDeck(player);
         lifePoint=8000;
         setPlayer(player);
-        for (int i=0;i<5;i++) {
+        for (int i=0;i<6;i++) {
             monsters.add( new MonsterCard("nokhodi",1,"a","dd",true,12345,0,0,null,"aa",1,"ww"));
             SpellTrap.add(new SpellCard("s","nokhodi",1,"t","t",true,1,"d"));
         }
-        for(int i=0;i<4;i++){
+        for(int i=0;i<6;i++){
             hand.add(deck.getMainDeck().get(0));
             deck.getMainDeck().remove(0);
         }
@@ -226,7 +226,7 @@ public class PlayBoard {
         return deck.getMainDeck().size()==0;
     }
     public String monster(int number){
-        if(monsters.get(number)==null) return "\tE";
+        if(monsters.get(number).getName().equals("nokhodi")) return "\tE";
         else if(monsters.get(number).isAttack()){
             return "\tOO";
         }
@@ -234,7 +234,7 @@ public class PlayBoard {
         else return "\tDH";
     }
     public String spell(int number){
-        if(SpellTrap.get(number)==null) return "\tE";
+        if(SpellTrap.get(number).getName().equals("nokhodi")) return "\tE";
         else if(SpellTrap.get(number).isSide()){
             return "\tO";
         }
@@ -264,7 +264,7 @@ public class PlayBoard {
         for(Card card:hand){
             playBoard.append("C\t");
         }
-        playBoard.append("\n");
+
         playBoard.append(player.getNickname()).append(":");
         playBoard.append(lifePoint);
 
@@ -274,13 +274,16 @@ public class PlayBoard {
         StringBuilder playBoard= new StringBuilder();
         playBoard.append(player.getNickname()).append(":");
         playBoard.append(lifePoint);
+        playBoard.append("\n");
         for(Card card:hand){
             playBoard.append("\tC");
         }
+        playBoard.append("\n");
         playBoard.append(deck.getMainDeck().size()).append("\n");
         for (int i : new int[]{4, 2, 1, 3, 5}) {
             playBoard.append(spell(i));
         }
+        playBoard.append("\n");
         for (int i : new int[]{4, 2, 1, 3, 5}) {
             playBoard.append(monster(i));
         }

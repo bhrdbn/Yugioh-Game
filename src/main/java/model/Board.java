@@ -25,6 +25,8 @@ public Board(PlayBoard playBoardPlayer,PlayBoard playBoardOpponent){
     public String toString() {
         String board="";
         board+=getOpponentPlayBoardByTurn().rotateToString();
+        board+="\n----------------------\n";
+        board+=getPlayBoardByTurn().toString();
         board+="\n\n----------------------\n\n";
         return board;
     }

@@ -29,7 +29,7 @@ public class DeckView  {
             String input= Main.scanner.nextLine();
             Matcher matcher = getCommand(input, "deck create (\\w+)");
             Matcher matcher1 = getCommand(input, "deck delete (\\w+)");
-            Matcher matcher2 = getCommand(input, "^deck set-activate (\\w+)$");
+            Matcher matcher2 = getCommand(input, "^deck set-activate (\\w+)");
             Matcher matcher3= getCommand(input, "^deck add-card card ([a-zA-Z\\s]+) deck (\\w+)$");
             Matcher matcher3_1= getCommand(input, "^deck add-card deck (\\w+) card ([a-zA-Z\\s]+)$");
             Matcher matcher4=getCommand(input, "^deck add-card deck (\\w+) card ([a-zA-Z\\s]+) side$");
