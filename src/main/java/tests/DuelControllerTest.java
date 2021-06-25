@@ -317,7 +317,7 @@ Matcher matcher = null;
     void flipSummon() {
         try{
         DuelController duelController = DuelController.getInstance();
-        assertNotNull(duelController.flipSummon("deck"));
+        assertNotNull(duelController.flipSummon());
     } catch (Exception e){int i=1;
             assertEquals(i,1);}}
 
