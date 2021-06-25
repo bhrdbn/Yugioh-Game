@@ -400,8 +400,8 @@ public class DuelController {
 
  //  }
 
-   public String setSpellCard(SpellCard spell, String phase) {
-        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
+   public String setSpellCard(SpellCard spell, Phase phase) {
+        if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard() == null)
             return "no card is selected yet";
         else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
             return "you can't set this card";
