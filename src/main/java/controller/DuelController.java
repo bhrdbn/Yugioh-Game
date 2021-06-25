@@ -366,15 +366,14 @@ public class DuelController {
     }
 
     public String flipSummon() {
-        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
             return "you can't change this card position";
         else if(GlobalVariable.getBoard().getPhase() != Phase.MAIN1 &&
                 GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't do this action in this phase";
-        else if (!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isSide() || !GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isAttack())
+        else if (!GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isSide() && !GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).isAttack())
             return "you can't flip summon this card";
         else {
             ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).setIsAttack(true);
