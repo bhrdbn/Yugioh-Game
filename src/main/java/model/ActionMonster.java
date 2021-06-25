@@ -1,53 +1,88 @@
 package model;
 
+import java.util.ArrayList;
+
 public class ActionMonster {
-    private int cardControllerNumber;
+    public void setAction(int cardControllerNumber, MonsterCard monsterCard, Deck deck) {
+        if (cardControllerNumber == 1) {
+            increaseAttackAll(monsterCard);
+        }
+        if (cardControllerNumber == 2) {
+            invinsibleTillOtherMonstersExist(monsterCard, deck);
+        }
+        if (cardControllerNumber == 3) {
+            attack(monsterCard);
+        }
+        if (cardControllerNumber == 4) {
+            defence(monsterCard);
+        }
+        if (cardControllerNumber == 5) {
+            ifFaceupcanuseOnce(monsterCard);
+        }
+        if (cardControllerNumber == 6) {
+            upperDefence(monsterCard);
+        }
+        if (cardControllerNumber == 7) {
+            upperAttack(monsterCard);
+        }
+        if (cardControllerNumber == 8) {
+            sendToGraveYard(monsterCard,deck);
+        }
 
-
-    public void increaseAttackAll(int cardControllerNumber) //1
-    {
 
     }
 
-    public void invinsibleTillOtherMonstersExist(int cardControllerNumber) //2
+
+    public void increaseAttackAll(MonsterCard monsterCard) //1
     {
+        monsterCard.setAttack(5000);
+    }
+
+    public void invinsibleTillOtherMonstersExist(MonsterCard monsterCard, Deck deck) //2
+    {
+        if (deck.getMonsters(1).size() + deck.getMonsters(2).size() + deck.getMonsters(3).size() > 1)
+            monsterCard.setDefence(5000);
+    }
+
+    public void attack(MonsterCard monsterCard) //3
+    {
+        monsterCard.setAttack(6000);
+    }
+
+    public void defence(MonsterCard monsterCard) //4
+    {
+        monsterCard.setDefence(6000);
+    }
+
+
+    public void ifFaceupcanuseOnce(MonsterCard monsterCard) //5
+    {
+        monsterCard.setAttack(10000);
+        monsterCard.setSide(false);
 
     }
 
-    public void attack(int cardControllerNumber) //3
-    {
 
+    public void upperDefence(MonsterCard monsterCard) //6
+    {
+        monsterCard.setDefence(9000);
     }
 
-    public void defence(int defence1, int cardControllerNumber) //4
+    public void upperAttack(MonsterCard monsterCard) //7
     {
-
+        monsterCard.setAttack(9000);
     }
 
-    public void destroyTheAttacker(int cardControllerNumber) //5
+    public void sendToGraveYard(MonsterCard monsterCard, Deck deck) //8
     {
-
+        deck.getMainDeck().add(deck.getSideDeck().get(1));
     }
 
-    public void minimizeTheAttackPoints(int cardControllerNumber) //6
-    {
+    public void run() {
 
     }
+    /*
 
-    public void ifFaceupcanuseOnce(int cardControllerNumber) //7
-    {
-
-    }
-
-    public void Ritual(int cardControllerNumber) //8
-    {
-
-    }
-
-    public void whenTurnedDestroys(int cardControllerNumber) //9
-    {
-
-    }
 
     public void getInBoardWithSacrifices(int cardControllerNumber) //10
     {
@@ -79,7 +114,7 @@ public class ActionMonster {
 
     }
 
-    public void attackIStheSumOfFrontCards (int cardControllerNumber) //16
+    public void attackIStheSumOfFrontCards(int cardControllerNumber) //16
     {
 
     }
@@ -118,24 +153,5 @@ public class ActionMonster {
     {
 
     }
-
-    public void upperDefence(int cardControllerNumber) //24
-    {
-
-    }
-
-    public void upperAttack(int cardControllerNumber) //25
-    {
-
-    }
-
-    public void sendToGraveYard(int cardControllerNumber) //26
-    {
-
-    }
-
-    public void run()
-    {
-
-    }
+     */
 }
