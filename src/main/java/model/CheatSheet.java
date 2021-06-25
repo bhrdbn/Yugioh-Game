@@ -34,7 +34,7 @@ public class CheatSheet extends Player {
         }
         if (code ==5)
         {
-            this.setCode(2);
+            this.setMoney(2);
         }
         if (code == 4) {
             setScore(1000000);

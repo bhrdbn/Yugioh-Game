@@ -50,7 +50,8 @@ public class Duel {
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
             Matcher matcherAttack = getCommand(input, "attack (\\s)");
             Matcher matcherDirectAttack = getCommand(input, "direct attack");
-            Matcher matcherSetSpell = getCommand(input, "setTrap");
+            Matcher activateEffect = getCommand(input, "activate effect");
+            Matcher matcherSetSpell = getCommand(input, "setSpell");
             Matcher matcherSetTrap = getCommand(input, "SetTrap");
             Matcher showGraveyard = getCommand(input, "show graveyard");
             Matcher showOpponentGraveyard = getCommand(input, "show opponent graveyard");
@@ -113,10 +114,23 @@ public class Duel {
                 attack(matcherAttack);
             else if(matcherDirectAttack.find())
                 directAttack(matcherDirectAttack);
+            else if(activateEffect.find())
+                activateEffect(activateEffect);
+            else if(matcherSetSpell.find())
+                setSpell(matcherSetSpell);
             else
                 System.out.println("invalid command");
         }
     }
+
+    public void activateEffect(Matcher activateEffect) {
+            System.out.println(duelController.activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard()));
+    }
+
+    public void setSpell(Matcher matcherSetSpell) {
+        System.out.println(duelController.setSpellCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard(), GlobalVariable.getBoard().getPhase()));
+    }
+
     public void directAttack(Matcher matcherDirectAttack){
         System.out.println(duelController.directAttack(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect2.group(1))), GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1)))));
     }

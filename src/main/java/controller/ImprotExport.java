@@ -18,7 +18,7 @@ public class ImprotExport {
 
 
 
-    public void serialize(MonsterCard card, String name, String describe, int number , List<Integer> list, int attack, int deffence, int price, String attribute, int level, String type, ArrayList<MonsterCard> monsterlist, boolean side, boolean isattackes,String json)
+    public void serialize(String name, String describe, int number , int attack, int deffence, int price, String attribute, int level, String type, ArrayList<MonsterCard> monsterlist, boolean side)
     {
         ImprotExport tester = new ImprotExport();
         try {
@@ -42,14 +42,14 @@ MonsterCard cards = new MonsterCard(name,number,type,describe,side,price,attack,
         }
     }
 
-    private void writeJSON(MonsterCard card) throws JsonGenerationException, JsonMappingException, IOException{
+    public void writeJSON(MonsterCard card) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("src/project-team-31/resources/json_car.json"), card);
+        mapper.writeValue(new File("src/project-team-31/csvjsonmonster.json"), card);
     }
 
-    private MonsterCard readJSON() throws JsonParseException, JsonMappingException, IOException{
+    public MonsterCard readJSON() throws JsonParseException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
-        MonsterCard card = mapper.readValue(new File("src/project-team-31/resources/json_car.json"),MonsterCard.class);
+        MonsterCard card = mapper.readValue(new File("src/project-team-31/csvjsonmonster.json"),MonsterCard.class);
         return card;
     }
 
