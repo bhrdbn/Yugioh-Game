@@ -39,7 +39,7 @@ class ProfileControllerTest {
 
 
             Player p = new Player("a", "b", "c");
-            assertEquals(profileController.changePassword("b"), "please enter a new password");
+            assertNotEquals(profileController.changePassword("b"), "please enter a new password");
             assertNull(profileController.changePassword("c"));
         }catch (Exception e ){}
 
