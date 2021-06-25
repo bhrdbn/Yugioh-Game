@@ -286,7 +286,7 @@ public class PlayBoard {
             playBoard.append(spell(i));
         }
         playBoard.append("\n");
-        for (int i : new int[]{3, 1, 2, 0, 4}) {
+        for (int i : new int[]{3, 1, 0, 2, 4}) {
             playBoard.append(monster(i));
         }
         playBoard.append("\n");
