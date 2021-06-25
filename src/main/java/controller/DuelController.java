@@ -346,14 +346,13 @@ public class DuelController {
             return "you already changed this card position in this turn";
         else if(phase.equals("set -- position attack")){
             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).setIsAttack(true);
-            System.out.println("set successfully");
+            return "set successfully";
         }
         else if(phase.equals("set -- position defense")){
             GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getNumber()).setSide(true);
-            System.out.println("set successfully");
+            return "set successfully";
         }
-
-    return null;
+        return null;
     }
 
     public String flipSummon(String place) {
