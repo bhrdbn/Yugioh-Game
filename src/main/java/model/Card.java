@@ -78,7 +78,7 @@ public class Card {
     protected String cardType;
     protected String description;
     //protected ArrayList<Command> commands;
-    protected boolean side;
+    protected boolean side = true;
     protected long price;
     private Location location;
 
