@@ -607,7 +607,7 @@ public class DuelController {
     public String activateCard(SpellCard card) {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.SPELL)
+        else if (!(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof SpellCard))
             return "activate effect is only for spell cards";
         else if (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't activate effect on this turn";
@@ -691,32 +691,32 @@ public class DuelController {
    }
 
  //  }
-  // public String activateCardAndChangeTurn(SpellCard card) {
-  //     if(isConditionMet(card)) {
-  //         System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
-  //         System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
-  //         System.out.println("do you want to activate your trap and spell?");
-  //         String input= Main.scanner.nextLine();
-  //         String activation= Main.scanner.nextLine();
-  //         if(input.equals("no")) {
-  //             System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
-  //             System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
-  //         }
-  //         else{
-  //             if(activation.equals("activate spell") || activation.equals("activate trap")) {
-  //                 if (isConditionMet(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard())) {
-  //                     activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard());
-  //                     return "spell/trap activated";
-  //                 }
-  //                 else
-  //                     return "it's not your turn to play this kind of moves";
-  //             }
+   public String activateCardAndChangeTurn(SpellCard card) {
+       if(isSpellConditionMet(card)) {
+           System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
+           System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
+           System.out.println("do you want to activate your trap and spell?");
+           String input= Main.scanner.nextLine();
+           String activation= Main.scanner.nextLine();
+           if(input.equals("no")) {
+               System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
+               System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
+           }
+           else{
+               if(activation.equals("activate spell") || activation.equals("activate trap")) {
+                   if (isSpellConditionMet(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard())) {
+                       activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard());
+                       return "spell/trap activated";
+                   }
+                   else
+                       return "it's not your turn to play this kind of moves";
+               }
 
-  //         }
+           }
 
-  //     }
-  //return null;
-  // }
+       }
+  return null;
+   }
 
   //public String ritualSummon(SpellCard card) {
   //     if(!isConditionMet(card))
