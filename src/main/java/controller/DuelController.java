@@ -283,10 +283,11 @@ public class DuelController {
         GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
         GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000+ max);
         GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
+        System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won whole match");
         MainView.getInstance().run();
     }
     public void lose(){
-        System.out.println("you lost\n");
+        System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won this round");
         if(rounds==1){
             GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000+
@@ -370,6 +371,25 @@ public class DuelController {
             if (monster.getName().equals("nokhodi")) number++;
         }
         return number;
+    }
+    public void setWin(){
+        if(rounds==1){
+            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
+            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000+
+                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
+            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
+            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won this round");
+            MainView.getInstance().run();
+        }
+        else{
+            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
+            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000+
+                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
+            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
+            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won whole match");
+            MainView.getInstance().run();
+        }
+
     }
 // ** monster ba ehzare vizhe ro nazadam **
 

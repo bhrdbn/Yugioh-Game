@@ -118,6 +118,9 @@ public class Duel {
             else if(matcherSetTrap.find()){
                 setTrap(matcherSetTrap);
             }
+            else if(surrender.find()){
+                setWin();
+            }
             else
                 System.out.println("invalid command");
         }
@@ -133,6 +136,10 @@ public class Duel {
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
+    public void setWin(){
+        duelController.setWin();
+    }
+
 
     public void activateEffect(Matcher activateEffect) {
         System.out.println(duelController.activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard()));
