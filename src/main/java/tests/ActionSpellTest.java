@@ -14,7 +14,6 @@ ActionSpell actionSpell = new ActionSpell();
     void setAction() {
         try {
 
-
             int card1 = 1;
             int card2 = 2;
             int card3 = 3;
@@ -43,7 +42,7 @@ ActionSpell actionSpell = new ActionSpell();
             p.addDeck(deck);
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
-            actionSpell.setAction(card1, null, null, null, null, null, null, null);
+            actionSpell.setAction(card1,null);
        assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -80,7 +79,7 @@ ActionSpell actionSpell = new ActionSpell();
             p.addDeck(deck);
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
-            actionSpell.setAction(card2, null, null, null, null, null, null, null);
+            actionSpell.setAction(card2, null);
 
         }catch (Exception e){}
     }
@@ -118,7 +117,7 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card3, null, null, null, null, null, null, null);
+            actionSpell.setAction(card3, null);
 
             assertNotNull(actionSpell);
         }catch (Exception e){}
@@ -157,7 +156,7 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card4, null, null, null, null, null, null, null);
+            actionSpell.setAction(card4, null);
 
             assertNotNull(actionSpell);
         }catch (Exception e){}
@@ -196,7 +195,7 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card5, null, null, null, null, null, null, null);
+            actionSpell.setAction(card5, null);
 
             assertNotNull(actionSpell);
         }catch (Exception e){}
@@ -235,8 +234,8 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card6, null, null, null, null, null, null, null);
-            actionSpell.setAction(card7, null, null, null, null, null, null, null);
+            actionSpell.setAction(card6, null);
+            actionSpell.setAction(card7, null);
 
         }catch (Exception e){}
     }
@@ -274,9 +273,9 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card7, null, null, null, null, null, null, null);
+            actionSpell.setAction(card7, null);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -314,15 +313,15 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card8, null, null, null, null, null, null, null);
-            actionSpell.setAction(card9, null, null, null, null, null, null, null);
-            actionSpell.setAction(card10, null, null, null, null, null, null, null);
-            actionSpell.setAction(card11, null, null, null, null, null, null, null);
-            actionSpell.setAction(card12, null, null, null, null, null, null, null);
-            actionSpell.setAction(card13, null, null, null, null, null, null, null);
-            actionSpell.setAction(card14, null, null, null, null, null, null, null);
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
-            actionSpell.setAction(card16, null, null, null, null, null, null, null);
+            actionSpell.setAction(card8, null);
+            actionSpell.setAction(card9, null);
+            actionSpell.setAction(card10, null);
+            actionSpell.setAction(card11, null);
+            actionSpell.setAction(card12, null);
+            actionSpell.setAction(card13, null);
+            actionSpell.setAction(card14, null);
+            actionSpell.setAction(card15, null);
+            actionSpell.setAction(card16, null);
 
             assertNotNull(actionSpell);
         }catch (Exception e){}
@@ -361,13 +360,13 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card9, null, null, null, null, null, null, null);
-            actionSpell.setAction(card10, null, null, null, null, null, null, null);
-            actionSpell.setAction(card11, null, null, null, null, null, null, null);
-            actionSpell.setAction(card12, null, null, null, null, null, null, null);
-            actionSpell.setAction(card13, null, null, null, null, null, null, null);
-            actionSpell.setAction(card14, null, null, null, null, null, null, null);
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
+            actionSpell.setAction(card9, null);
+            actionSpell.setAction(card10, null);
+            actionSpell.setAction(card11, null);
+            actionSpell.setAction(card12, null);
+            actionSpell.setAction(card13, null);
+            actionSpell.setAction(card14, null);
+            actionSpell.setAction(card15, null);
 
             assertNotNull(actionSpell);
         }catch (Exception e){}
@@ -406,13 +405,13 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card10, null, null, null, null, null, null, null);
-            actionSpell.setAction(card11, null, null, null, null, null, null, null);
-            actionSpell.setAction(card12, null, null, null, null, null, null, null);
-            actionSpell.setAction(card13, null, null, null, null, null, null, null);
-            actionSpell.setAction(card14, null, null, null, null, null, null, null);
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
-            actionSpell.setAction(card16, null, null, null, null, null, null, null);
+            actionSpell.setAction(card10, null);
+            actionSpell.setAction(card11, null);
+            actionSpell.setAction(card12, null);
+            actionSpell.setAction(card13, null);
+            actionSpell.setAction(card14, null);
+            actionSpell.setAction(card15, null);
+            actionSpell.setAction(card16, null);
 
             assertNotNull(actionSpell);
         }catch (Exception e){}
@@ -451,12 +450,12 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card11, null, null, null, null, null, null, null);
-            actionSpell.setAction(card12, null, null, null, null, null, null, null);
-            actionSpell.setAction(card13, null, null, null, null, null, null, null);
-            actionSpell.setAction(card14, null, null, null, null, null, null, null);
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
-            actionSpell.setAction(card16, null, null, null, null, null, null, null);
+            actionSpell.setAction(card11, null);
+            actionSpell.setAction(card12, null);
+            actionSpell.setAction(card13, null);
+            actionSpell.setAction(card14, null);
+            actionSpell.setAction(card15, null);
+            actionSpell.setAction(card16, null);
 
             assertNotNull(actionSpell);
         }catch (Exception e){}
@@ -495,14 +494,14 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card12, null, null, null, null, null, null, null);
-            actionSpell.setAction(card13, null, null, null, null, null, null, null);
-            actionSpell.setAction(card14, null, null, null, null, null, null, null);
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
-            actionSpell.setAction(card16, null, null, null, null, null, null, null);
-            actionSpell.setAction(card17, null, null, null, null, null, null, null);
+            actionSpell.setAction(card12, null);
+            actionSpell.setAction(card13, null);
+            actionSpell.setAction(card14, null);
+            actionSpell.setAction(card15, null);
+            actionSpell.setAction(card16, null);
+            actionSpell.setAction(card17, null);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -540,13 +539,13 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card13, null, null, null, null, null, null, null);
-            actionSpell.setAction(card14, null, null, null, null, null, null, null);
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
-            actionSpell.setAction(card16, null, null, null, null, null, null, null);
-            actionSpell.setAction(card17, null, null, null, null, null, null, null);
+            actionSpell.setAction(card13, null);
+            actionSpell.setAction(card14, null);
+            actionSpell.setAction(card15, null);
+            actionSpell.setAction(card16, null);
+            actionSpell.setAction(card17, null);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -584,10 +583,10 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card14, null, null, null, null, null, null, null);
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
+            actionSpell.setAction(card14, null);
+            actionSpell.setAction(card15, null);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -625,11 +624,11 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card15, null, null, null, null, null, null, null);
-            actionSpell.setAction(card16, null, null, null, null, null, null, null);
-            actionSpell.setAction(card17, null, null, null, null, null, null, null);
+            actionSpell.setAction(card15, null);
+            actionSpell.setAction(card16, null);
+            actionSpell.setAction(card17, null);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -667,10 +666,10 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card16, null, null, null, null, null, null, null);
-            actionSpell.setAction(card17, null, null, null, null, null, null, null);
+            actionSpell.setAction(card16, null);
+            actionSpell.setAction(card17, null);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -708,9 +707,9 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card17, null, null, null, null, null, null, null);
+            actionSpell.setAction(card17, null);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -747,7 +746,7 @@ ActionSpell actionSpell = new ActionSpell();
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
 
-            actionSpell.setAction(card18, null, null, null, null, null, null, null);
+            actionSpell.setAction(card18, null);
             assertNotNull(actionSpell);
         }catch (Exception e){}
     }
@@ -771,7 +770,7 @@ ActionSpell actionSpell = new ActionSpell();
         op.setActivatedDeck(deck);
         PlayBoard playBoard = new PlayBoard(p);
         playBoard.setMonsters(monsterCards);
-        actionSpell.supply(playBoard,deck);
+        actionSpell.supply();
         assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -823,7 +822,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.addFieldSpellFromDeck(playBoard);
+            actionSpell.addFieldSpellFromDeck();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -853,7 +852,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.destroytrapspelloponent(deck);
+            actionSpell.destroytrapspelloponent();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -883,7 +882,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.spelllife(playBoard);
+            actionSpell.spelllife();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -913,7 +912,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.destroyopmon(playBoard);
+            actionSpell.destroyopmon();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -943,7 +942,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.reborn(null,null);
+            actionSpell.reborn();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -973,7 +972,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.addCard(null,null);
+            actionSpell.addCard();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1003,7 +1002,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.spellcasterATKplus(null);
+            actionSpell.spellcasterATKplus();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1033,7 +1032,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.fiendATKplus(null);
+            actionSpell.fiendATKplus();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1063,7 +1062,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.fairyATKlose(null);
+            actionSpell.fairyATKlose();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1093,7 +1092,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.InsectAtkplus(monsterCards);
+            actionSpell.InsectAtkplus();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1123,7 +1122,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.aquaAtkplus(null);
+            actionSpell.aquaAtkplus();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1153,7 +1152,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.aquadeflos(null);
+            actionSpell.aquadeflos();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1183,7 +1182,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.closed(playBoard,monsterCards);
+            actionSpell.closed();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1214,7 +1213,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.BeastAtkplus(monsterCards);
+            actionSpell.BeastAtkplus();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1244,7 +1243,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.BeastWarriorAtkplus(monsterCards);
+            actionSpell.BeastWarriorAtkplus();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
@@ -1274,7 +1273,7 @@ ActionSpell actionSpell = new ActionSpell();
             op.setActivatedDeck(deck);
             PlayBoard playBoard = new PlayBoard(p);
             playBoard.setMonsters(monsterCards);
-            actionSpell.des(playBoard,playBoard);
+            actionSpell.des();
             assertNotNull(monsterCards);
         }
         catch (Exception e){}
