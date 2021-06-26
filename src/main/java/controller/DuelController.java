@@ -636,17 +636,18 @@ public class DuelController {
 
     public boolean isSpellConditionMet(SpellCard spellCard) {
         boolean isConditionMet = false;
-        switch (spellCard.getSpellType()) {
-            case EQUIP:
-            case RITUAL:
-            case COUNTER:
+        switch (spellCard.getType()) {
+            case "Equip":
+            case "Ritual":
+            case "Counter":
+            case "Normal":
                 isConditionMet = GlobalVariable.getBoard().getPlayBoardByTurn().isCardActivated();
                 break;
-            case CONTINOUS:
-            case FIELD:
+            case "Continuous":
+            case "Field":
                 isConditionMet = spellCard.isSide();
                 break;
-            case QUICKPLAY:
+            case "Quick-play":
                 isConditionMet = GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet();
                 break;
         }
