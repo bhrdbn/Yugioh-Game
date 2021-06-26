@@ -754,7 +754,7 @@ public class DuelController {
     }
 
    public String setTrapCard(TrapCard trap){
-       if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedTrapCard() == null)
+       if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
            return "no card is selected yet";
        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
            return "you can't set this card";
