@@ -490,7 +490,7 @@ public class DuelController {
 
     public String attack(int number) {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+                GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
             return "no card is selected yet";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
                 getLocation() != Location.HAND && GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
@@ -503,7 +503,7 @@ public class DuelController {
         else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
             return "there is no card to attack here";
         else
-            return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number), number);
+            return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1), number);
     }
 
   //  public String setDamage(MonsterCard card2, MonsterCard card1) {
