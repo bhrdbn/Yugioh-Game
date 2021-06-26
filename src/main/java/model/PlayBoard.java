@@ -23,10 +23,12 @@ public class PlayBoard {
 
     private ArrayList<MonsterCard> monsters=new ArrayList<>();
     private ArrayList<SpellCard> SpellTrap=new ArrayList<>();
+    private ArrayList<TrapCard> trap = new ArrayList<>();
     private ArrayList<Card> hand=new ArrayList<>();
     private Card selectedCard;
     private SpellCard selectedSpellCard;
     private MonsterCard selectedMonsterCard;
+    private TrapCard selectedTrapCard;
     private Card selectedOpponentCard;
     public PlayBoard(Player player){
         deck =new Deck(player.getActivatedDeck().getName());
@@ -80,10 +82,16 @@ public class PlayBoard {
         return selectedSpellCard;
     }
 
-    //public void setSelectedTrapCard(TrapCard trapCard)
+    public void setSelectedTrapCard(TrapCard trapCard){
+        this.selectedTrapCard = trapCard;
+    }
 
     public MonsterCard getSelectedMonsterCard(){
         return selectedMonsterCard;
+    }
+
+    public TrapCard getSelectedTrapCard(){
+        return selectedTrapCard;
     }
 
     public boolean isCardSummonedOrSet() {
@@ -209,6 +217,14 @@ public class PlayBoard {
 
     public List<SpellCard> getSpellTrap() {
         return SpellTrap;
+    }
+
+    public List<TrapCard> getTrap(){
+        return trap;
+    }
+
+    public void setTrap(ArrayList<TrapCard> trap){
+        this.trap = trap;
     }
 
     public void setSpellTrap(ArrayList<SpellCard> spellTrap) {

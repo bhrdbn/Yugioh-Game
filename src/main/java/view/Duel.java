@@ -114,10 +114,18 @@ public class Duel {
             else if(matcherAI.find()){
                 newDuelAI(matcherAI);
             }
+            else if(matcherSetTrap.find()){
+                setTrap(matcherSetTrap);
+            }
             else
                 System.out.println("invalid command");
         }
     }
+
+    public void setTrap(Matcher matcherSetTrap) {
+        System.out.println(duelController.setTrapCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedTrapCard()));
+    }
+
     public void newDuelAI(Matcher matcher){
         int rounds=Integer.parseInt(matcher.group(1));
         System.out.println(duelController.newDuelAI(rounds,GlobalVariable.getPlayer().getUsername()));
