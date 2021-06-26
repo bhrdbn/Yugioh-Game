@@ -134,7 +134,7 @@ action 1,12 ==36
             if (currentMonster.getAttack() > opponentMonster.getAttack()) {
                 GlobalVariable.getBoard().lowerOpponentLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
                 GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(number);
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().setLocation(Location.GRAVEYARD);
+                GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number).setLocation(Location.GRAVEYARD);
                 GlobalVariable.getBoard().getPlayBoardByTurn().setCardAttacked(true);
                 return "your opponent monster is destroyed and your opponent receives " + (currentMonster.getAttack() - opponentMonster.getAttack()) + " battle damage";
             }
@@ -153,7 +153,7 @@ action 1,12 ==36
         }
         else if(!opponentMonster.isAttack() && opponentMonster.isSide()){
             if(currentMonster.getAttack() > opponentMonster.getDefence()){
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().setLocation(Location.GRAVEYARD);
+                GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number).setLocation(Location.GRAVEYARD);
                 GlobalVariable.getBoard().getPlayBoardByTurn().setCardAttacked(true);
                 return "the defense position monster is destroyed";
             }
@@ -169,7 +169,7 @@ action 1,12 ==36
         }
         else if(!opponentMonster.isAttack() && !opponentMonster.isSide()){
             if(currentMonster.getAttack() > opponentMonster.getDefence()){
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().setLocation(Location.GRAVEYARD);
+                GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number).setLocation(Location.GRAVEYARD);
                 GlobalVariable.getBoard().getPlayBoardByTurn().setCardAttacked(true);
                 return "opponent monster card was " + opponentMonster.getName() + " and the defense position monster is destroyed";
             }

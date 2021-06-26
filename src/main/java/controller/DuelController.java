@@ -422,6 +422,7 @@ public class DuelController {
                 if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setSide(false);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(false);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                     break;
@@ -499,7 +500,7 @@ public class DuelController {
             return "you can't do this action in this phase";
         else if (((MonsterCard)GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack())
             return "this card already attacked";
-        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number) == null)
+        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
             return "there is no card to attack here";
         else
             return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number), number);
