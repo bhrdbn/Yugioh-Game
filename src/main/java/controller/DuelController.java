@@ -618,7 +618,7 @@ public class DuelController {
             return "spell card zone is full";
         else if (!isSpellConditionMet((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()))
             return "preparations of this spell are not done yet";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.FIELD) {
+        else if (((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard()).getIcon().equals("Field")) {
             GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
             return "spell activated";
