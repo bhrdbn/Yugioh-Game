@@ -25,6 +25,7 @@ public class MonsterCard extends Card {
     private int level;
     private String monsterType;
     private boolean isAttack;
+    private int action;
 
 
 
@@ -59,11 +60,15 @@ public class MonsterCard extends Card {
         return level;
     }
 
+    public int getAction() {
+        return action;
+    }
+
     public void setLevel(int level) {
         this.level = level;
     }
 
-    public MonsterCard(String name, int number, String type, String cardDescription, boolean side, long price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType)  {
+    public MonsterCard(String name, int number, String type, int action,String cardDescription, boolean side, long price, int attack, int defence, ArrayList<MonsterCard> monsters, String attribute, int level, String monsterType)  {
         super(name, number, type, cardDescription, side, price);
         this.atk = attack;
         this.def = defence;
@@ -71,6 +76,7 @@ public class MonsterCard extends Card {
         this.attribute = attribute;
         this.level = level;
         this.monsterType = monsterType;
+        this.action=action;
 
 
     }
@@ -82,11 +88,11 @@ public class MonsterCard extends Card {
         this.attribute = card.attribute;
         this.level = card.level;
         this.monsterType = card.monsterType;
+        this.action=card.getAction();
     }
 
         public int getAttack() {
             return atk;
-
         }
     /*
 action 7,2 == 32

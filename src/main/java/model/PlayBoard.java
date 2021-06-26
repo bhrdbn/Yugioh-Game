@@ -34,7 +34,7 @@ public class PlayBoard {
         lifePoint=8000;
         setPlayer(player);
         for (int i=0;i<6;i++) {
-            monsters.add( new MonsterCard("nokhodi",1,"a","dd",true,12345,0,0,null,"aa",1,"ww"));
+            monsters.add( new MonsterCard("nokhodi",1,"a",2,"dd",true,12345,0,0,null,"aa",1,"ww"));
             SpellTrap.add(new SpellCard("s","nokhodi",1,"t","t",true,1,"d"));
         }
         for(int i=0;i<6;i++){

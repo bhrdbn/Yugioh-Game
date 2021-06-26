@@ -14,13 +14,20 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TrapCard extends Card{
-    private int number;
     private ArrayList<TrapCard> traps;
+    private String icon;
+    private  String status;
 
-    public TrapCard(String name, int number, String type, String cardDescription, boolean side, long price, int number1, ArrayList<TrapCard> traps) throws IOException {
+
+    public TrapCard(String name, int number, String type, String cardDescription, boolean side, long price, String icon,String status) throws IOException {
         super(name, number, type, cardDescription, side, price);
-        this.number = number1;
-        this.traps = traps;
+        this.icon=icon;
+        this.status=status;
+    }
+    public TrapCard(TrapCard card){
+        super(card.name,card.number,card.cardType,card.description,card.side,card.price);
+        this.icon=card.icon;
+        this.status=card.status;
     }
  // String json = new String(Files.readAllBytes(Paths.get("resources//csvjsontrap.json")));
  // ArrayList<SpellCard> trapsOBJECT  = new Gson().fromJson(json,new TypeToken<List<TrapCard>>(){}.getType());

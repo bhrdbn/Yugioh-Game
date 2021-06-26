@@ -18,11 +18,11 @@ public class ImprotExport {
 
 
 
-    public void serialize(String name, String describe, int number , int attack, int deffence, int price, String attribute, int level, String type, ArrayList<MonsterCard> monsterlist, boolean side)
+    public void serialize(String name, String describe, int number , int attack, int deffence, int price,int action, String attribute, int level, String type, ArrayList<MonsterCard> monsterlist, boolean side)
     {
         ImprotExport tester = new ImprotExport();
         try {
-MonsterCard cards = new MonsterCard(name,number,type,describe,side,price,attack,deffence,monsterlist,attribute,level,type);
+MonsterCard cards = new MonsterCard(name,number,type,action,describe,side,price,attack,deffence,monsterlist,attribute,level,type);
             cards.setName(name);
             cards.setCardDescription(describe);
             cards.setPrice(price);
