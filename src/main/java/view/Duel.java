@@ -133,7 +133,7 @@ public class Duel {
     }
 
     public void attack(Matcher matcherAttack) {
-        System.out.println(duelController.attack(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1))), GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect2.group(1)))));
+        System.out.println(duelController.attack(Integer.parseInt(matcherAttack.group(1))));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
