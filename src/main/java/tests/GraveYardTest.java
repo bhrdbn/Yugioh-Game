@@ -91,7 +91,7 @@ class GraveYardTest {
 
     @Test
     void getTraps() throws IOException {
-        TrapCard trapCard = new TrapCard("s",1,"A","s",true,1,1,traps);
+        TrapCard trapCard = new TrapCard("s",1,"A","s",true,1,"d","s");
         lostCards.add(trapCard);
         graveYard.setLostCards(lostCards);
         graveYard.setActiveGraveYard(true);

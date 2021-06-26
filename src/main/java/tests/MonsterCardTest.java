@@ -18,7 +18,7 @@ class MonsterCardTest {
     void setAttack() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1, TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1, TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setAttack(1);
         assertNotNull(monsterCard.getAttack());
@@ -28,7 +28,7 @@ class MonsterCardTest {
     void setIsAttack() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setIsAttack(true);
         assertNotNull(monsterCard.getAttack());
@@ -38,7 +38,7 @@ class MonsterCardTest {
     void typeOfMonsterCard() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
        assertNotNull(monsterCard.typeOfMonsterCard());
     }
 
@@ -46,7 +46,7 @@ class MonsterCardTest {
     void getDefence() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setDefence(1);
         assertNotNull(monsterCard.getDefence());
@@ -57,7 +57,7 @@ class MonsterCardTest {
     void setDefence() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setDefence(1);
         assertNotNull(monsterCard.getDefence());
@@ -67,7 +67,7 @@ class MonsterCardTest {
     void getAttribute() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setAttribute("a");
         assertNotNull(monsterCard.getAttribute());
@@ -77,7 +77,7 @@ class MonsterCardTest {
     void setAttribute() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setAttribute("a");
         assertNotNull(monsterCard.getAttribute());
@@ -87,7 +87,7 @@ class MonsterCardTest {
     void getLevel() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setLevel(1);
         assertNotNull(monsterCard.getLevel());
@@ -97,7 +97,7 @@ class MonsterCardTest {
     void setLevel() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setLevel(1);
         assertNotNull(monsterCard.getLevel());
@@ -107,7 +107,7 @@ class MonsterCardTest {
     void getAttack() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setAttack(1);
         assertNotNull(monsterCard.getAttack());
@@ -116,9 +116,9 @@ class MonsterCardTest {
     @Test
     void attack() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
-        MonsterCard omonsterCard = new MonsterCard("b",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard omonsterCard = new MonsterCard("b",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
        MonsterCard.Attack(monsterCard,omonsterCard,1);
        assertNotNull(monsterCard);
@@ -127,9 +127,9 @@ class MonsterCardTest {
     @Test
     void directAttack() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
-        MonsterCard omonsterCard = new MonsterCard("b",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard omonsterCard = new MonsterCard("b",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setDefence(1);
         MonsterCard.directAttack();
@@ -142,7 +142,7 @@ class MonsterCardTest {
     void isAttack() throws IOException {
         ArrayList<MonsterCard> monsterCards = new ArrayList<>();
 
-        MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
+        MonsterCard monsterCard = new MonsterCard("a",1,"a",2,"a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
         monsterCard.setDefence(1);
         monsterCard.isAttack();

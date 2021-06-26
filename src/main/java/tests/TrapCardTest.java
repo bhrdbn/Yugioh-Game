@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TrapCardTest {
     ArrayList<TrapCard> trapCards = new ArrayList<>();
-TrapCard trapCard = new TrapCard("ali",1,"a","b",true,1,1,trapCards);
+TrapCard trapCard = new TrapCard("ali",1,"a","b",true,1,"ss","a");
 
     TrapCardTest() throws IOException {
     }

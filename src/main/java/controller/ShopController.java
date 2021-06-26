@@ -22,6 +22,7 @@ public class ShopController {
     private static TrapCard trapCard = null;
     ArrayList<MonsterCard> allMonsters = new ArrayList<>();
     ArrayList<SpellCard> allSpells = new ArrayList<>();
+    ArrayList<TrapCard> allTraps=new ArrayList<>();
 
     private ShopController() {
         String json = null;
@@ -37,6 +38,14 @@ public class ShopController {
         try {
             json1 = new String(Files.readAllBytes(Paths.get("csvjsonspell.json")));
             allSpells = new Gson().fromJson(json1, new TypeToken<List<SpellCard>>() {
+            }.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String json2 = null;
+        try {
+            json2 = new String(Files.readAllBytes(Paths.get("csvjsontrap.json")));
+            allTraps = new Gson().fromJson(json2, new TypeToken<List<TrapCard>>() {
             }.getType());
         } catch (IOException e) {
             e.printStackTrace();
@@ -95,6 +104,17 @@ public class ShopController {
                 return "card added successfully";
             }
         }
+        for (TrapCard card : allTraps) {
+            if (card.getName().equals(cardName)) {
+                if (GlobalVariable.getPlayer().getMoney() < card.getPrice()) {
+                    System.out.println(card.getPrice()+" "+GlobalVariable.getPlayer().getMoney());
+                    return "no enough money";
+                }
+                GlobalVariable.getPlayer().getCards().add(new TrapCard(card));
+                GlobalVariable.getPlayer().decreaseMoney(card.getPrice());
+                return "card added successfully";
+            }
+        }
 
 
         return "there is no card with this name";
@@ -112,6 +132,9 @@ public class ShopController {
         Comparator<SpellCard> alphabetComparator1 = Comparator.comparing(SpellCard::getName);
         ArrayList<SpellCard> sortedAllSpells = (ArrayList<SpellCard>) allSpells.stream().sorted(alphabetComparator1).
                 collect(Collectors.toList());
+        Comparator<TrapCard> alphabetComparator2 = Comparator.comparing(TrapCard::getName);
+        ArrayList<TrapCard> sortedAllTraps = (ArrayList<TrapCard>) allTraps.stream().sorted(alphabetComparator2).
+                collect(Collectors.toList());
         System.out.println("monster cards:\n");
 
 
@@ -121,6 +144,11 @@ public class ShopController {
         showCard += "\n\nspell cards:\n";
 
         for (SpellCard card : sortedAllSpells) {
+            showCard += card.getName() + " : " + card.getPrice() + "\n";
+        }
+        showCard += "\n\ntrap cards:\n";
+
+        for (TrapCard card : sortedAllTraps) {
             showCard += card.getName() + " : " + card.getPrice() + "\n";
         }
         return showCard;

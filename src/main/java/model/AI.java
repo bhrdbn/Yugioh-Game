@@ -11,7 +11,7 @@ public class AI extends Player {
         super(nickname, password, username);
         Deck deck=new Deck("AIDeck");
         for (MonsterCard card : ShopController.getInstance().getAllMonsters()) {
-            if(card.getAction()==0)deck.getMainDeck().add(card);
+            if(card.getAction()==0)deck.getMainDeck().add(new MonsterCard(card));
         }
         setActivatedDeck(deck);
     }

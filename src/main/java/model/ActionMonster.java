@@ -74,7 +74,7 @@ public class ActionMonster {
 
     public void getInBoardWithSacrifices(MonsterCard monsterCard, Deck deck) //3
     {
-        MonsterCard monsterCard1 = new MonsterCard("CrabTurtle", 1, "Ritual", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
+        MonsterCard monsterCard1 = new MonsterCard("CrabTurtle", 1, "Ritual", 2,"description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
 
         deck.removeCard(monsterCard, 1);
         deck.addCard(monsterCard1, 1);
@@ -82,7 +82,7 @@ public class ActionMonster {
 
     public void getInBoardWithSacrifices2(ArrayList<MonsterCard> monsterCards, Deck deck) //4
     {
-        MonsterCard monsterCard1 = new MonsterCard("GateGuardian", 1, "Ritual", "description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
+        MonsterCard monsterCard1 = new MonsterCard("GateGuardian", 1, "Ritual", 2,"description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
         if (monsterCards.size() > 3) {
             monsterCards.remove(1);
             monsterCards.remove(2);
@@ -97,7 +97,7 @@ public class ActionMonster {
 
     public void getInBoardWithSacrifices3(MonsterCard monsterCard, Deck deck) //5
     {
-        MonsterCard monsterCard1 = new MonsterCard("SkullGuardian", 1, "Ritual", "description This monster can only be Ritual Summoned with the Ritual Spell Card, \"Novox's Prayer\". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.",
+        MonsterCard monsterCard1 = new MonsterCard("SkullGuardian", 1, "Ritual",2, "description This monster can only be Ritual Summoned with the Ritual Spell Card, \"Novox's Prayer\". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.",
                 true, 7900, 2050, 2500, null, "LIGHT", 7, "Warrior");
 
         deck.removeCard(monsterCard, 1);
