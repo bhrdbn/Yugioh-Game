@@ -5,6 +5,16 @@ import controller.GlobalVariable;
 import java.util.ArrayList;
 
 public class Card {
+
+    protected String name;
+    protected int number;
+    protected String cardType;
+    protected String description;
+    //protected ArrayList<Command> commands;
+    protected boolean side=true;
+    protected long price;
+    private Location location;
+
     public void setName(String name) {
         this.name = name;
     }
@@ -39,7 +49,7 @@ public class Card {
         this.cardType = type;
         this.description = cardDescription;
      //   this.commands = new ArrayList<>();
-        this.side = side;
+        this.side = true;
         this.price = price;
     }
 
@@ -73,14 +83,6 @@ public class Card {
         this.price = price;
     }
 
-    protected String name;
-    protected int number;
-    protected String cardType;
-    protected String description;
-    //protected ArrayList<Command> commands;
-    protected boolean side = true;
-    protected long price;
-    private Location location;
 
   //  private  static ArrayList<Card> allCards=new ArrayList<>();
 

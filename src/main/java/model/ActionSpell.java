@@ -98,6 +98,7 @@ public void ring(Board board)
     public void addFieldSpellFromDeck() {
         playBoard.getHand().add(
                 playBoard.getFields());
+        System.out.println("successfully");
 
     } //1
 public void destroytrapspelloponent()
@@ -108,9 +109,11 @@ public void destroytrapspelloponent()
       GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSpellTrap().remove(i);
       i++;
   }
+    System.out.println("successfully");
 } //24
     public void spelllife() {
         playBoard.decreaseLifePoint(-500);
+        System.out.println("successfully");
     } //7
 
     public void destroyopmon() {
@@ -120,6 +123,7 @@ public void destroytrapspelloponent()
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(i);
             i++;
         }
+        System.out.println("successfully");
 
     } //3
 public void reborn()
@@ -127,6 +131,7 @@ public void reborn()
     Card card;
     card=graveYard.get(0);
     deck.getSideDeck().add(card);
+    System.out.println("successfully");
 
 }
     public void addCard() { //2
@@ -134,6 +139,7 @@ public void reborn()
         deck.getSideDeck().remove(1);
         deck.getMainDeck().add(deck.getSideDeck().get(2));
         deck.getSideDeck().remove(2);
+        System.out.println("successfully");
     }
 
     public void spellcasterATKplus() {
@@ -148,7 +154,7 @@ public void reborn()
         for (MonsterCard monsterCardd : spellcasters) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
-
+        System.out.println("successfully");
     }
 
 
@@ -163,7 +169,7 @@ public void reborn()
         for (MonsterCard monsterCardd : fieldmonsterCards) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
-
+        System.out.println("successfully");
     } //4
 
     public void fairyATKlose() {
@@ -177,6 +183,7 @@ public void reborn()
         for (MonsterCard monsterCardd : fairymonsters) {
             monsterCardd.setAttack(monsterCardd.getAttack() - 200);
         }
+        System.out.println("successfully");
     } //6
 
     public void InsectAtkplus() {
@@ -190,6 +197,7 @@ public void reborn()
         for (MonsterCard monsterCardd : insectmonsters) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
+        System.out.println("successfully");
     } //17
 
     public void aquaAtkplus() {
@@ -203,6 +211,7 @@ public void reborn()
         for (MonsterCard monsterCardd : aquamonsters) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 500);
         }
+        System.out.println("successfully");
     } //18
 
     public void aquadeflos() {
@@ -216,6 +225,7 @@ public void reborn()
         for (MonsterCard monsterCardd : aquamonsters) {
             monsterCardd.setAttack(monsterCardd.getDefence() - 400);
         }
+        System.out.println("successfully");
     } //19
 
     public void closed() {
@@ -231,6 +241,7 @@ public void reborn()
                 monsterCard.setAttack(monsterCard.getAttack() + 100);
             }
         }
+        System.out.println("successfully");
     }
 
     public void BeastAtkplus() {
@@ -244,6 +255,7 @@ public void reborn()
         for (MonsterCard monsterCardd : beastCards) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
+        System.out.println("successfully");
     } //16
 
     public void BeastWarriorAtkplus() {
@@ -257,6 +269,7 @@ public void reborn()
         for (MonsterCard monsterCardd : beastCards) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
+        System.out.println("successfully");
     } //15
 public void des()
 {
@@ -271,6 +284,7 @@ public void des()
         GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(i);
         i++;
     }
+    System.out.println("successfully");
 }
 /*
     public void BeastATKincreaseforGraveYard(int cardControllerNumber) {

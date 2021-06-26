@@ -46,7 +46,7 @@ public class TrapAction {
     }
 
     public void destroyop() {
-        playBoard.getAttackerCards().clear();
+        OPplayboard.getMonsters().clear();
     }
 
     public void timeseal() {
@@ -54,7 +54,7 @@ public class TrapAction {
     }
 
     public void destroyattacker() {
-        playBoard.getAttackerCards().remove(1);
+        OPplayboard.getAttackerCards().remove(1);
     }
 
     public void solemn( ) {
