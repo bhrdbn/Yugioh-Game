@@ -134,7 +134,6 @@ action 1,12 ==36
         if(opponentMonster.isAttack()) {
             if (currentMonster.getAttack() > opponentMonster.getAttack()) {
                 GlobalVariable.getBoard().lowerOpponentLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
-                GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(number - 1);
                 GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).setLocation(Location.GRAVEYARD);
                 GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
                 DuelController.getInstance().setNokhodi(opponentMonster);
