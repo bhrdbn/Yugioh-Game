@@ -519,8 +519,17 @@ public class DuelController {
             return "you can't do this action in this phase";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
             return "this card already attacked";
-        else
-            return MonsterCard.directAttack();
+        else{
+            int counter = 0;
+            for (int i = 0; i < 5; i++) {
+                if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi"))
+                    counter++;
+            }
+            if(counter == 5)
+                return "you can't attack the opponent directly";
+            else
+                return MonsterCard.directAttack();
+        }
     }
 
     public String activateCard(SpellCard card) {

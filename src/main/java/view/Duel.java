@@ -52,7 +52,7 @@ public class Duel {
             Matcher matchersetPosDEF = getCommand(input, "set -- position (defence)");
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
             Matcher matcherAttack = getCommand(input, "attack (\\d)");
-            Matcher matcherDirectAttack = getCommand(input, "direct attack");
+            Matcher matcherDirectAttack = getCommand(input, "attack direct$");
             Matcher activateEffect = getCommand(input, "activate effect");
             Matcher matcherSetSpell = getCommand(input, "setSpell");
             Matcher matcherSetTrap = getCommand(input, "SetTrap");
