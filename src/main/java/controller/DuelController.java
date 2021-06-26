@@ -498,7 +498,7 @@ public class DuelController {
             return "you can’t attack this card";
         else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
             return "you can't do this action in this phase";
-        else if (((MonsterCard)GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack())
+        else if ((GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked()))
             return "this card already attacked";
         else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
             return "there is no card to attack here";
