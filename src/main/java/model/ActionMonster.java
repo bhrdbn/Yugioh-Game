@@ -56,7 +56,7 @@ public class ActionMonster {
     //5 skull guardian
     //6 yomi ship
     //7 man eater bug
-    //8 9 king barbaros
+    //8 9 king barbaros >>>>31
     //10 calculator
 //11 herald of creation
     public void increaseAttackAll(ArrayList<MonsterCard> monsterCards,MonsterCard monsterCard) //1
