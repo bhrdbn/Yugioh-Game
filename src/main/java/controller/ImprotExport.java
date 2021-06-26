@@ -45,13 +45,13 @@ MonsterCard cards = new MonsterCard(name,number,type,action,describe,side,price,
     public void writeJSON(MonsterCard card) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File("csvjsonmonster.json"), card);
-        System.out.println("import was succesfull!!!");
+        System.out.println("import was successful!!!");
     }
 
     public MonsterCard readJSON() throws JsonParseException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
         MonsterCard card = mapper.readValue(new File("csvjsonmonster.json"),MonsterCard.class);
-        System.out.println("exort was succesfull!!!");
+        System.out.println("export was successful!!!");
         return card;
     }
 

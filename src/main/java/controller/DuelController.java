@@ -378,7 +378,8 @@ public class DuelController {
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000+
                     GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
-            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won this round");
+            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won the game : "+
+                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
             MainView.getInstance().run();
         }
         else{
@@ -386,7 +387,8 @@ public class DuelController {
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000+
                     GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
-            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won whole match");
+            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won whole match : "+
+                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
             MainView.getInstance().run();
         }
 
