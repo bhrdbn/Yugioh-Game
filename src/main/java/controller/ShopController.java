@@ -44,6 +44,15 @@ public class ShopController {
 
     }
 
+    public ArrayList<MonsterCard> getAllMonsters() {
+        return allMonsters;
+    }
+
+
+    public ArrayList<SpellCard> getAllSpells() {
+        return allSpells;
+    }
+
     public static ShopController getInstance() {
         if (shopController == null)
             shopController = new ShopController();

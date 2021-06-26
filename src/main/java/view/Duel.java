@@ -39,7 +39,7 @@ public class Duel {
             Matcher deselect = getCommand(input, "select -d");
             Matcher nextPhase = getCommand(input, "next phase");
 
-            Matcher matcherAI = getCommand(input, "duel --new --ai --rounds(\\w+)");
+            Matcher matcherAI = getCommand(input, "duel new ai rounds (\\w+)");
             matcherSelect = getCommand(input, "select monster (\\d)");
             matcherSelect2 = getCommand(input, "select monster (\\d) opponent");
             Matcher matcherSelect3 = getCommand(input, "select opponent monster (\\d)");
@@ -51,7 +51,7 @@ public class Duel {
             Matcher matchersetPosATK = getCommand(input, "set -- position (attack)");
             Matcher matchersetPosDEF = getCommand(input, "set -- position (defence)");
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
-            Matcher matcherAttack = getCommand(input, "attack (\\s)");
+            Matcher matcherAttack = getCommand(input, "attack (\\d)");
             Matcher matcherDirectAttack = getCommand(input, "direct attack");
             Matcher activateEffect = getCommand(input, "activate effect");
             Matcher matcherSetSpell = getCommand(input, "setSpell");
@@ -111,9 +111,18 @@ public class Duel {
                 activateEffect(activateEffect);
             else if (matcherSetSpell.find())
                 setSpell(matcherSetSpell);
+            else if(matcherAI.find()){
+                newDuelAI(matcherAI);
+            }
             else
                 System.out.println("invalid command");
         }
+    }
+    public void newDuelAI(Matcher matcher){
+        int rounds=Integer.parseInt(matcher.group(1));
+        System.out.println(duelController.newDuelAI(rounds,GlobalVariable.getPlayer().getUsername()));
+        System.out.println(GlobalVariable.getBoard().toString());
+
     }
 
     public void activateEffect(Matcher activateEffect) {
@@ -157,7 +166,7 @@ public class Duel {
     }
 
     public void set(Matcher matcherSet) {
-        System.out.println(duelController.setMonster(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedMonsterCard()));
+        System.out.println(duelController.setMonster());
         System.out.println(GlobalVariable.getBoard().toString());
 
     }

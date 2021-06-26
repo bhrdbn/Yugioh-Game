@@ -57,7 +57,7 @@ public class CheatSheet extends Player {
             System.out.println("successful code activation");
         }
         if (code == 8)
-        { MonsterCard monsterCard = new MonsterCard("Haniwa",1,"Normal","An earthen figure that protects the tomb of an ancient ruler.",true,600,500,500,null,"EARTH",2,"Rock");
+        { MonsterCard monsterCard = new MonsterCard("Haniwa",1,"Normal",2,"An earthen figure that protects the tomb of an ancient ruler.",true,600,500,500,null,"EARTH",2,"Rock");
             CheatSheet.getCurrentPlayer().addToDeck(monsterCard);
             System.out.println("successful code activation");
         }
