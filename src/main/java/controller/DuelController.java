@@ -616,7 +616,7 @@ public class DuelController {
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() == Location.HAND &&
                 GlobalVariable.getBoard().isSpellZoneFull() && GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.FIELD)
             return "spell card zone is full";
-        else if (!isSpellConditionMet(card))
+        else if (!isSpellConditionMet((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()))
             return "preparations of this spell are not done yet";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.FIELD) {
             GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
