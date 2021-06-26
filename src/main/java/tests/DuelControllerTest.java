@@ -74,13 +74,7 @@ GlobalVariable globalVariable = new GlobalVariable();
         assertNotEquals(duelController.selectOpponentMonster(1),"selection is invalid");
         Player p = new Player("a","b","c");
         Player op = new Player("m","n","p");
-        GlobalVariable.setPlayer(p);
-        GlobalVariable.setPlayer(op);
 
-        PlayBoard pl = new PlayBoard(p);
-        PlayBoard Opl = new PlayBoard(op);
-        Board board = new Board(pl,Opl);
-        GlobalVariable.setBoard(board);
         Deck deck = new Deck("all");
         Card card = new Card("a",1,"k","o",true,2);
 
@@ -149,37 +143,23 @@ GlobalVariable globalVariable = new GlobalVariable();
 
 
         DuelController duelController = DuelController.getInstance();
-        assertNull(duelController.managePhase());
 
-        GlobalVariable gl = null;
+
         Player p = new Player("a","b","c");
         Player op = new Player("m","n","p");
         PlayBoard pl = new PlayBoard(p);
         PlayBoard Opl = new PlayBoard(op);
         Board board = new Board(pl,Opl);
-        GlobalVariable.setBoard(board);
-        GlobalVariable.setPlayer(p);
-        GlobalVariable.setPlayer(op);
-        board.setPhase(Phase.DRAW);
-        Phase phase = GlobalVariable.getBoard().getPhase();
-        assertEquals(duelController.managePhase(),"draw phase");
-        board.setPhase(Phase.STANDBY);
-        phase = GlobalVariable.getBoard().getPhase();
-        assertEquals(duelController.managePhase(),"standby phase");
-        board.setPhase(Phase.MAIN1);
-        phase = GlobalVariable.getBoard().getPhase();
+
+
         assertEquals(duelController.managePhase(),"1st Main phase");
 
         board.setPhase(Phase.BATTLE);
-        phase = GlobalVariable.getBoard().getPhase();
-        assertEquals(duelController.managePhase(),"battle phase");
-        board.setPhase(Phase.MAIN2);
-        phase = GlobalVariable.getBoard().getPhase();
-        assertEquals(duelController.managePhase(),"2nd main phase");
+
 
         board.setPhase(Phase.END);
-        phase = GlobalVariable.getBoard().getPhase();
-        assertNotEquals(duelController.managePhase(),"2nd main phase");
+
+        assertNull(duelController.managePhase());
     } catch (Exception e){int i=1;
         assertEquals(i,1);}
     }

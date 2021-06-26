@@ -76,9 +76,13 @@ public class ActionSpell {
     // 22 dark hole
     //23 monster reborn
     //24 Harpie’s Feather Duster
+    //25
     public void supply(PlayBoard playBoard, Deck deck) {
         if (playBoard.getMonsters().size() < 2) {
             playBoard.setHand(deck.getMonsters(1));
+
+        }else{
+            System.out.println("cannot activate");
         }
     } //33
 public void ring(Board board)
@@ -92,23 +96,23 @@ public void ring(Board board)
     } //1
 public void destroytrapspelloponent(Deck deckop)
 {
-   if (deckop.getMonsters(1).size()!=0)
+   if (deckop.getMonsters(1).size()!=1)
    {
        deckop.getMainDeck().remove(1);
    }
-   else if (deckop.getMonsters(2).size()!=0)
+   else if (deckop.getMonsters(2).size()!=1)
     {
         deckop.getMainDeck().remove(2);
     }
-   else if (deckop.getMonsters(3).size()!=0)
+   else if (deckop.getMonsters(3).size()!=1)
     {
         deckop.getMainDeck().remove(3);
     }
-   else if (deckop.getMonsters(4).size()!=0)
+   else if (deckop.getMonsters(4).size()!=1)
     {
         deckop.getMainDeck().remove(4);
     }
-   else if (deckop.getMonsters(5).size()!=0)
+   else if (deckop.getMonsters(5).size()!=1)
     {
         deckop.getMainDeck().remove(5);
     }

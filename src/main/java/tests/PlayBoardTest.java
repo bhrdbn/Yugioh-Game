@@ -874,18 +874,7 @@ catch (Exception e)
             p.setActivatedDeck(deck);
             op.setActivatedDeck(deck);
             PlayBoard pl = new PlayBoard(p);
-            PlayBoard Opl = new PlayBoard(op);
-            Board board = new Board(pl,Opl);
-            GlobalVariable.setBoard(board);
-            pl.setSelectedOpponentCard(card);
 
-            pl.setActivatedSpellCards(activatedSpellCards);
-            pl.setSummonCards(summonCards);
-            pl.setGraveyards(graveyard);
-
-            pl.setFields(fields);
-            pl.setDeck(player1);
-            pl.setMonsters(monsters);
             assertNotNull(pl.getHand());}
 
         catch (Exception e){ }
@@ -908,18 +897,7 @@ catch (Exception e)
             op.setActivatedDeck(deck);
             PlayBoard pl = new PlayBoard(p);
             PlayBoard Opl = new PlayBoard(op);
-            Board board = new Board(pl,Opl);
-            GlobalVariable.setBoard(board);
-            pl.setSelectedOpponentCard(card);
 
-            pl.setActivatedSpellCards(activatedSpellCards);
-            pl.setSummonCards(summonCards);
-            pl.setGraveyards(graveyard);
-
-            pl.setFields(fields);
-            pl.setDeck(player1);
-            pl.setMonsters(monsters);
-            pl.setHand(hand);
             assertNotNull(pl.getHand());}
 
         catch (Exception e){ }
@@ -942,18 +920,7 @@ catch (Exception e)
             op.setActivatedDeck(deck);
             PlayBoard pl = new PlayBoard(p);
             PlayBoard Opl = new PlayBoard(op);
-            Board board = new Board(pl,Opl);
-            GlobalVariable.setBoard(board);
-            pl.setSelectedOpponentCard(card);
 
-            pl.setActivatedSpellCards(activatedSpellCards);
-            pl.setSummonCards(summonCards);
-            pl.setGraveyards(graveyard);
-
-            pl.setFields(fields);
-            pl.setDeck(player1);
-            pl.setMonsters(monsters);
-            pl.setHand(hand);
             assertNotEquals(pl.graveToString(),"hi");}
 
         catch (Exception e){ }
@@ -976,17 +943,7 @@ catch (Exception e)
             op.setActivatedDeck(deck);
             PlayBoard pl = new PlayBoard(p);
             PlayBoard Opl = new PlayBoard(op);
-            Board board = new Board(pl,Opl);
-            GlobalVariable.setBoard(board);
-            pl.setSelectedOpponentCard(card);
 
-            pl.setActivatedSpellCards(activatedSpellCards);
-            pl.setSummonCards(summonCards);
-            pl.setGraveyards(graveyard);
-
-            pl.setFields(fields);
-            pl.setDeck(player1);
-            pl.setMonsters(monsters);
             pl.setHand(hand);
             assertNotNull(pl.getPlayer());}
 
@@ -1008,16 +965,7 @@ catch (Exception e)
             op.setActivatedDeck(deck);
             PlayBoard pl = new PlayBoard(p);
             PlayBoard Opl = new PlayBoard(op);
-            Board board = new Board(pl,Opl);
-            GlobalVariable.setBoard(board);
-            pl.setSelectedOpponentCard(card);
 
-            pl.setActivatedSpellCards(activatedSpellCards);
-            pl.setSummonCards(summonCards);
-            pl.setGraveyards(graveyard);
-
-            pl.setFields(fields);
-            pl.setDeck(player1);
             pl.setMonsters(monsters);
             pl.setHand(hand);
             assertTrue(pl.isDeckFinished());}
@@ -1043,17 +991,7 @@ catch (Exception e)
             PlayBoard pl = new PlayBoard(p);
             PlayBoard Opl = new PlayBoard(op);
             Board board = new Board(pl,Opl);
-            GlobalVariable.setBoard(board);
-            pl.setSelectedOpponentCard(card);
 
-            pl.setActivatedSpellCards(activatedSpellCards);
-            pl.setSummonCards(summonCards);
-            pl.setGraveyards(graveyard);
-
-            pl.setFields(fields);
-            pl.setDeck(player1);
-            pl.setMonsters(monsters);
-            pl.setHand(hand);
             assertNotNull(pl.monster(1));}
 
         catch (Exception e){ }
@@ -1151,8 +1089,7 @@ catch (Exception e)
 
             pl.setFields(fields);
             pl.setDeck(player1);
-            pl.setMonsters(monsters);
-            pl.setHand(hand);
+
             pl.decreaseLifePoint(1);
             assertNotNull(lifePoint);}
 
