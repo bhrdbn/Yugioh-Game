@@ -129,7 +129,7 @@ action 1,12 ==36
         System.out.println("your opponent's monster is destroyed and your opponent receives " + damage  + "battle damage");
     }
 
-    public static String Attack(MonsterCard opponentMonster, MonsterCard currentMonster, int number) {
+    public static String Attack(MonsterCard currentMonster, MonsterCard opponentMonster, int number) {
         if(opponentMonster.isAttack()) {
             if (currentMonster.getAttack() > opponentMonster.getAttack()) {
                 GlobalVariable.getBoard().lowerOpponentLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());

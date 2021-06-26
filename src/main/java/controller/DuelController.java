@@ -499,7 +499,7 @@ public class DuelController {
             return "you can't do this action in this phase";
         else if (((MonsterCard)GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack())
             return "this card already attacked";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number) == null)
             return "there is no card to attack here";
         else
             return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number), number);
