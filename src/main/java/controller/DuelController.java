@@ -804,7 +804,7 @@ public class DuelController {
             return "no card is selected yet";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
             return "you can't set this card";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof SpellCard && (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
+        else if (!(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof SpellCard) && (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
             return "you can't do this action in this phase";
         else if (GlobalVariable.getBoard().isSpellZoneFull())
             return "spell card zone is full";
