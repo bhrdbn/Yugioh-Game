@@ -80,7 +80,6 @@ public class Card {
     //protected ArrayList<Command> commands;
     protected boolean side;
     protected long price;
-    boolean canBeAttacked;
     private Location location;
 
   //  private  static ArrayList<Card> allCards=new ArrayList<>();

@@ -56,6 +56,16 @@ public class ActionMonster {
 
 
     }
+    // 1  COMMANDKNIGHT
+    // 2 SUIJIN
+    //3 CRABTURTLE
+    // 4 GATE GUARDIAN
+    //5 skull guardian
+    //6 yomi ship
+    //7 man eater bug
+    //8 9 king barbaros >>>>31
+    //10 calculator
+//11 herald of creation
 // 1  CommandKnight 4-
     // 2 Suijin 7
     //3 CrabTurtle 8
@@ -223,7 +233,7 @@ public class ActionMonster {
 
             if (monsterCardd.getLevel() > i)
             {i = monsterCardd.getLevel();
-            t.equals(monsterCardd.name);
+                t.equals(monsterCardd.name);
             }
 
         }

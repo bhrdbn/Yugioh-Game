@@ -46,6 +46,10 @@ public class PlayBoard {
         }
     }
 
+    public int getLifePoint() {
+        return lifePoint;
+    }
+
     public MonsterCard getSetSummonedMonster() {
         return setSummonedMonster;
     }

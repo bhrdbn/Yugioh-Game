@@ -49,6 +49,9 @@ public class Player {
         return false;
 
     }
+    public void increaseScore(int increase){
+        score+=increase;
+    }
     public Card getCardByName(String name) {
         for(Card card:cards){
             if(card.getName().equals(name))return card;
