@@ -636,7 +636,7 @@ public class DuelController {
 
     public boolean isSpellConditionMet(SpellCard spellCard) {
         boolean isConditionMet = false;
-        switch (spellCard.getType()) {
+        switch (spellCard.getIcon()) {
             case "Equip":
             case "Ritual":
             case "Counter":

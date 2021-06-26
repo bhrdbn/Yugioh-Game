@@ -57,6 +57,14 @@ public class SpellCard extends Card{
         this.number = number;
     }
 
+    public void setIcon(String icon){
+        this.icon = icon;
+    }
+
+    public String getIcon(){
+        return icon;
+    }
+
     public ArrayList<SpellCard> getSpells() {
         return spells;
     }
