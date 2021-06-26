@@ -55,10 +55,10 @@ public class ActionSpell {
         if (cardControllerNumber == 22) {
             des(playBoard,opl);
         }
-        if (cardControllerNumber == 23) {
-            des(playBoard,opl);
-        }
         if (cardControllerNumber == 24) {
+            destroytrapspelloponent(deck);
+        }
+        if (cardControllerNumber == 23) {
             reborn(graveYard,deck);
         }
     }
@@ -75,6 +75,7 @@ public class ActionSpell {
     // 21 ring of defence
     // 22 dark hole
     //23 monster reborn
+    //24 Harpie’s Feather Duster
     public void supply(PlayBoard playBoard, Deck deck) {
         if (playBoard.getMonsters().size() < 2) {
             playBoard.setHand(deck.getMonsters(1));
@@ -89,7 +90,29 @@ public void ring(Board board)
                 playBoard.getFields());
 
     } //1
-
+public void destroytrapspelloponent(Deck deckop)
+{
+   if (deckop.getMonsters(1).size()!=0)
+   {
+       deckop.getMainDeck().remove(1);
+   }
+   else if (deckop.getMonsters(2).size()!=0)
+    {
+        deckop.getMainDeck().remove(2);
+    }
+   else if (deckop.getMonsters(3).size()!=0)
+    {
+        deckop.getMainDeck().remove(3);
+    }
+   else if (deckop.getMonsters(4).size()!=0)
+    {
+        deckop.getMainDeck().remove(4);
+    }
+   else if (deckop.getMonsters(5).size()!=0)
+    {
+        deckop.getMainDeck().remove(5);
+    }
+} //24
     public void spelllife(PlayBoard playBoard) {
         playBoard.decreaseLifePoint(-500);
     } //7
