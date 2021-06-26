@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class ActionSpell {
-    public void setAction(int cardControllerNumber, ArrayList<MonsterCard> monsters, MonsterCard monsterCard, Deck deck, Deck side, PlayBoard playBoard) {
+    public void setAction(int cardControllerNumber,PlayBoard opl,GraveYard graveYard, ArrayList<MonsterCard> monsters,Board board,Deck deck, Deck side, PlayBoard playBoard) {
         if (cardControllerNumber == 1) {
             addFieldSpellFromDeck(playBoard);
         }
@@ -49,11 +49,18 @@ public class ActionSpell {
         if (cardControllerNumber == 20) {
             closed(playBoard, monsters);
         }
-        if (cardControllerNumber == 1) {
-
+        if (cardControllerNumber == 21) {
+            ring(board);
         }
-
-
+        if (cardControllerNumber == 22) {
+            des(playBoard,opl);
+        }
+        if (cardControllerNumber == 23) {
+            des(playBoard,opl);
+        }
+        if (cardControllerNumber == 24) {
+            reborn(graveYard,deck);
+        }
     }
 
     // 1 terraforming
@@ -65,12 +72,18 @@ public class ActionSpell {
     //20 closed forest
     //7 spell absorption
     //33 supply squad
+    // 21 ring of defence
+    // 22 dark hole
+    //23 monster reborn
     public void supply(PlayBoard playBoard, Deck deck) {
         if (playBoard.getMonsters().size() < 2) {
             playBoard.setHand(deck.getMonsters(1));
         }
     } //33
-
+public void ring(Board board)
+{
+    board.reverseTurn();
+} //21
     public void addFieldSpellFromDeck(PlayBoard playBoard) {
         playBoard.getHand().add(
                 playBoard.getFields());
@@ -88,7 +101,13 @@ public class ActionSpell {
         }
 
     } //3
+public void reborn(GraveYard graveYard,Deck deck)
+{
+    Card card;
+    card=graveYard.getLostCards().get(1);
+    deck.getSideDeck().add(card);
 
+}
     public void addCard(Deck deck, Deck side) { //2
         deck.getMainDeck().add(deck.getSideDeck().get(1));
         deck.getSideDeck().remove(1);
@@ -156,7 +175,11 @@ public class ActionSpell {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
     } //15
-
+public void des(PlayBoard playBoard,PlayBoard opl)
+{
+    playBoard.getAttackerCards().clear();
+    opl.getAttackerCards().clear();
+}
 /*
     public void BeastATKincreaseforGraveYard(int cardControllerNumber) {
 
