@@ -418,24 +418,21 @@ public class DuelController {
 //
   //  }
 
-    public String directAttack(MonsterCard opponentMonster, MonsterCard currentMonster) {
-        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+    public String directAttack() {
+        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
+        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
+            return "you can't attack with this card";
         else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
             return "you can't do this action in this phase";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
             return "this card already attacked";
         else
-            MonsterCard.directAttack(opponentMonster, currentMonster);
-        return null;
-
-
+            return MonsterCard.directAttack();
     }
 
     public String activateCard(SpellCard card) {
-        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
+        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.SPELL)
             return "activate effect is only for spell cards";
