@@ -105,8 +105,8 @@ public class Duel {
                 flipSummons(matcherflipSummon);
             } else if (matcherAttack.find())
                 attack(matcherAttack);
-           // else if (matcherDirectAttack.find())
-           //     directAttack(matcherDirectAttack);
+            else if (matcherDirectAttack.find())
+                directAttack(matcherDirectAttack);
             else if (activateEffect.find())
                 activateEffect(activateEffect);
             else if (matcherSetSpell.find())
