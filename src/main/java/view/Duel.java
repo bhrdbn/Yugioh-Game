@@ -60,6 +60,7 @@ public class Duel {
             Matcher showOpponentGraveyard = getCommand(input, "show opponent graveyard");
             Matcher showCard = getCommand(input, "show card");
             Matcher matcherback = getCommand(input, "back");
+            Matcher surrender = getCommand(input,"surrender");
             if (matcherPlayer0.find()) {
                 newDuel(matcherPlayer0, 0);
             } else if (matcherPlayer1.find()) {

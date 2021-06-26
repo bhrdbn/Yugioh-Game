@@ -4,6 +4,7 @@ package controller;
 import com.google.gson.stream.JsonToken;
 import model.*;
 import view.Main;
+import view.MainView;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -11,6 +12,14 @@ import java.util.regex.Matcher;
 public class DuelController {
     private static DuelController duelController = null;
     int rounds;
+    Player firstWinner;
+    Player secondWinner;
+    Player thirdWinner;
+    int firstLp;
+    int secondLp;
+    int thirdLP;
+
+
 
     private DuelController() {
 
@@ -270,24 +279,72 @@ public class DuelController {
         }
         return position;
     }
+    public void setWinner(int max){
+        GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
+        GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000+ max);
+        GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
+        MainView.getInstance().run();
+    }
     public void lose(){
-        int lp= GlobalVariable.getBoard().getPlayBoardByTurn().getLifePoint();
-        int opLp=GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint();
+        System.out.println("you lost\n");
         if(rounds==1){
             GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000+
                     GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
+            MainView.getInstance().run();
+        }
+        else{
+            System.out.println("next round started");
+            if(firstWinner!=null){
+                if(secondWinner!=null) {
+                    thirdWinner=GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer();
+                    thirdLP=GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint();
+                    if(firstWinner.getUsername().equals(thirdWinner.getUsername())){
+                        int max=firstLp;
+                        if(firstLp<thirdLP)max=thirdLP;
+                        setWinner(max);
+                    }
+                    else {
+                        int max=secondLp;
+                        if(secondLp<thirdLP)max=thirdLP;
+                        setWinner(max);
+                    }
+                }
+                else {
+                    secondWinner=GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer();
+                    secondLp=GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint();
+                    if(secondWinner.getUsername().equals(firstWinner.getUsername())){
+                        int max= firstLp;
+                        if(firstLp<secondLp)max=secondLp;
+                        setWinner(max);
+                    }
+                    else getNewBoard();
+
+                }
+            }
+            else {
+                firstWinner=GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer();
+                firstLp=GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint();
+                getNewBoard();
+            }
         }
 
 
+    }
+
+    private void getNewBoard() {
+        PlayBoard playBoard=new PlayBoard(GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer());
+        PlayBoard playBoard1=new PlayBoard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer());
+        Board board= new Board(playBoard,playBoard1);
+        GlobalVariable.setBoard(board);
     }
 
     public String goNextPhase() {
         if (GlobalVariable.getBoard().getPhase() == Phase.MAIN2 && (GlobalVariable.getBoard().isDeckFinished()||
                 GlobalVariable.getBoard().getPlayBoardByTurn().getLifePoint()<=0) ){
             lose();
-            return "you lost";
+
         }
         GlobalVariable.getBoard().changePhase(GlobalVariable.getBoard().getPhase());
         return managePhase();
@@ -353,7 +410,12 @@ public class DuelController {
             if (countNokhodi() == 5)
                 return "there are not enough cards for tribute";
             else {
-                int monster = Integer.parseInt(Main.scanner.nextLine());
+                String s=Main.scanner.nextLine();
+                if(s.equals("cancel")){
+                    deselect();
+                    return "";
+                }
+                int monster = Integer.parseInt(s);
                 if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1).getName().equals("nokhodi"))
                     return "there no monsters one this address";
                 else {
