@@ -44,6 +44,7 @@ public class DuelController {
             return "duel created";
         }
     }
+
     public String newDuelAI(int round, String usernamePlayer) {
 
         if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
@@ -165,10 +166,9 @@ public class DuelController {
                 GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(false);
                 GlobalVariable.getBoard().getPlayBoardByTurn().setSetSummonedMonster(null);
                 GlobalVariable.getBoard().reverseTurn();
-                if(GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer() instanceof AI){
+                if (GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer() instanceof AI) {
                     return manageAIPhaseAndPlay();
-                }
-               else return "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn"+"\n"+
+                } else return "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn" + "\n" +
                         "draw phase\n" +
                         (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
 
@@ -176,20 +176,28 @@ public class DuelController {
                 return "";
         }
     }
+
     public String manageAIPhaseAndPlay() {
-        String finalOut = "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn"+"\n"+
+        String finalOut = "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn" + "\n" +
                 "draw phase\n" +
                 (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
         GlobalVariable.getBoard().setPhase(Phase.STANDBY);
         finalOut += "standby phase\n";
         GlobalVariable.getBoard().setPhase(Phase.MAIN1);
         finalOut += "1st Main phase\n";
-        if (getMaxAttack().getAttack() > getMinOpponentAttack().getAttack()) {
+        if (getMinOpponentAttack()!=null&&getMaxAttack().getAttack() > getMinOpponentAttack().getAttack()) {
             GlobalVariable.getBoard().getPlayBoardByTurn().setSelectedCard(getMaxAttack());
-            finalOut += summon()+"\n";
+            finalOut += summon() + "\n";
             GlobalVariable.getBoard().setPhase(Phase.BATTLE);
             finalOut += "battle phase\n";
-            //finalOut+=attack()
+            finalOut += MonsterCard.Attack(getMaxAttack(), getMinOpponentAttack(), getMinOpponentAttackIndex())+"\n";
+
+        }
+        else if(getMinOpponentAttack()==null){
+            GlobalVariable.getBoard().getPlayBoardByTurn().setSelectedCard(getMaxAttack());
+            GlobalVariable.getBoard().setPhase(Phase.BATTLE);
+            finalOut += "battle phase\n";
+            MonsterCard.directAttack();
         }
         else {
             GlobalVariable.getBoard().setPhase(Phase.BATTLE);
@@ -199,12 +207,13 @@ public class DuelController {
         GlobalVariable.getBoard().setPhase(Phase.MAIN2);
         if (!GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet()) {
             GlobalVariable.getBoard().getPlayBoardByTurn().setSelectedCard(getMaxDefense());
-            finalOut+=setMonster()+"\n";
+            finalOut += setMonster() + "\n";
         }
         GlobalVariable.getBoard().setPhase(Phase.END);
-        finalOut+=managePhase();
+        finalOut += managePhase();
         return finalOut;
     }
+
     public MonsterCard getMaxAttack() {
         int max = 0;
         MonsterCard monster = null;
@@ -238,13 +247,26 @@ public class DuelController {
         MonsterCard monster = null;
         for (MonsterCard card : GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters()) {
             if (!card.getName().equals("nokhodi")) {
-                if (min >  card.getDefence()) {
-                    min =  card.getDefence();
+                if (min > card.getDefence()) {
+                    min = card.getDefence();
                     monster = card;
                 }
             }
         }
         return monster;
+    }
+
+    public int getMinOpponentAttackIndex() {
+        int min = 99999;
+        int position=0;
+        MonsterCard monster = null;
+        for (int i = 0; i < 5; i++) {
+            if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(i).getDefence() < min) {
+                min = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(i).getDefence();
+                position=i+1;
+            }
+        }
+        return position;
     }
 
     public String goNextPhase() {
@@ -393,13 +415,13 @@ public class DuelController {
 
     }
 
-  //  public boolean isMonsterForTribute(String turn) {
+    //  public boolean isMonsterForTribute(String turn) {
 //
-  //  }
+    //  }
 //
-  //  public boolean isMonserInPosition(int place) {
+    //  public boolean isMonserInPosition(int place) {
 //
-  //  }
+    //  }
 //
     public String setMonster() {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
@@ -422,7 +444,6 @@ public class DuelController {
                 if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setSide(false);
-                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(false);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
                     GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
                     break;
@@ -477,15 +498,15 @@ public class DuelController {
                 GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
             return "you can't do this action in this phase";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().isSide()
-                || ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack()||
-        GlobalVariable.getBoard().getPlayBoardByTurn().getSetSummonedMonster()==
-                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard())
+                || ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack() ||
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSetSummonedMonster() ==
+                        GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard())
             return "you can't flip summon this card";
         else {
             ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).setIsAttack(true);
             return "flip summoned successfully";
         }
-        }
+    }
 
 
     public String attack(int number) {
@@ -506,26 +527,26 @@ public class DuelController {
             return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1), number);
     }
 
-  //  public String setDamage(MonsterCard card2, MonsterCard card1) {
+    //  public String setDamage(MonsterCard card2, MonsterCard card1) {
 //
-  //  }
+    //  }
 
     public String directAttack() {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
-        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
+        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
             return "you can't attack with this card";
         else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
             return "you can't do this action in this phase";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
             return "this card already attacked";
-        else{
+        else {
             int counter = 0;
             for (int i = 0; i < 5; i++) {
                 if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi"))
                     counter++;
             }
-            if(counter == 5)
+            if (counter != 5)
                 return "you can't attack the opponent directly";
             else
                 return MonsterCard.directAttack();
@@ -618,75 +639,75 @@ public class DuelController {
 //       }
 //   }
 
- //  }
-  // public String activateCardAndChangeTurn(SpellCard card) {
-  //     if(isConditionMet(card)) {
-  //         System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
-  //         System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
-  //         System.out.println("do you want to activate your trap and spell?");
-  //         String input= Main.scanner.nextLine();
-  //         String activation= Main.scanner.nextLine();
-  //         if(input.equals("no")) {
-  //             System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
-  //             System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
-  //         }
-  //         else{
-  //             if(activation.equals("activate spell") || activation.equals("activate trap")) {
-  //                 if (isConditionMet(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard())) {
-  //                     activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard());
-  //                     return "spell/trap activated";
-  //                 }
-  //                 else
-  //                     return "it's not your turn to play this kind of moves";
-  //             }
+    //  }
+    // public String activateCardAndChangeTurn(SpellCard card) {
+    //     if(isConditionMet(card)) {
+    //         System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
+    //         System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
+    //         System.out.println("do you want to activate your trap and spell?");
+    //         String input= Main.scanner.nextLine();
+    //         String activation= Main.scanner.nextLine();
+    //         if(input.equals("no")) {
+    //             System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
+    //             System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
+    //         }
+    //         else{
+    //             if(activation.equals("activate spell") || activation.equals("activate trap")) {
+    //                 if (isConditionMet(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard())) {
+    //                     activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard());
+    //                     return "spell/trap activated";
+    //                 }
+    //                 else
+    //                     return "it's not your turn to play this kind of moves";
+    //             }
 
-  //         }
+    //         }
 
-  //     }
-  //return null;
-  // }
+    //     }
+    //return null;
+    // }
 
-  //public String ritualSummon(SpellCard card) {
-  //     if(!isConditionMet(card))
-  //         return "there is no way you could ritual summon a monster";
-  //     else if(isConditionMet(card) && (!GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() .equals("Ritual") || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedMonsterCard().typeOfMonsterCard() .equals("Ritual") ))
-  //         return "you should ritual summon right now";
-  //     else{
-  //         System.out.println("please enter the cards that you want to tribute");
-  //         String input = Main.scanner.nextLine();
-  //         if(!isMonsterForTribute(input))
-  //             return "selected monsters levels don't match with ritual monster";
-  //         else{
-  //             tributeMonsters(Integer.parseInt(input));
-  //             //tavize halat
-  //             return "summoned successfully";
-  //         }
-
-
-  //     }
+    //public String ritualSummon(SpellCard card) {
+    //     if(!isConditionMet(card))
+    //         return "there is no way you could ritual summon a monster";
+    //     else if(isConditionMet(card) && (!GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() .equals("Ritual") || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedMonsterCard().typeOfMonsterCard() .equals("Ritual") ))
+    //         return "you should ritual summon right now";
+    //     else{
+    //         System.out.println("please enter the cards that you want to tribute");
+    //         String input = Main.scanner.nextLine();
+    //         if(!isMonsterForTribute(input))
+    //             return "selected monsters levels don't match with ritual monster";
+    //         else{
+    //             tributeMonsters(Integer.parseInt(input));
+    //             //tavize halat
+    //             return "summoned successfully";
+    //         }
 
 
-  //}
+    //     }
 
- //  public boolean isLevelMatched(int level) {
 
- //  }
+    //}
 
- //  public boolean areThereMatchedLevels(int level) {
+    //  public boolean isLevelMatched(int level) {
 
- //  }
+    //  }
 
-   //public String SpecialSummon(Card card) {
+    //  public boolean areThereMatchedLevels(int level) {
+
+    //  }
+
+    //public String SpecialSummon(Card card) {
 //
-   //}
+    //}
 
- //  public void showGrave() {
+    //  public void showGrave() {
 
- //  }
+    //  }
 
- //  public String Surrender(String turn) {
+    //  public String Surrender(String turn) {
 
- //  }
+    //  }
 
     public String showCard() {
         if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() != null) {
