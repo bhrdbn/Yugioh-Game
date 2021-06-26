@@ -122,6 +122,14 @@ public class Board {
 
     }
 
+    public void addToTrap(TrapCard trap){
+        for (int i = 0; i < getPlayBoardByTurn().getTrap().size(); i++) {
+            if (getPlayBoardByTurn().getTrap().get(i) == null)
+                getPlayBoardByTurn().getTrap().add(trap);
+            break;
+        }
+    }
+
     public void removeToGrave(Card card) {
 
     }
