@@ -4,62 +4,67 @@ import controller.GlobalVariable;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActionSpell {
-    public void setAction(int cardControllerNumber,PlayBoard opl,GraveYard graveYard, ArrayList<MonsterCard> monsters,Board board,Deck deck, Deck side, PlayBoard playBoard) {
+    PlayBoard playBoard = GlobalVariable.getBoard().getPlayBoardByTurn();
+    Deck deck = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getDeck();
+    PlayBoard OPplayboard = GlobalVariable.getBoard().getOpponentPlayBoardByTurn();
+    List<Card> graveYard = GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards();
+    public void setAction(int cardControllerNumber,Board board) {
         if (cardControllerNumber == 1) {
-            addFieldSpellFromDeck(playBoard);
+            addFieldSpellFromDeck();
         }
         if (cardControllerNumber == 2) {
-            addCard(deck, side);
+            addCard();
         }
         if (cardControllerNumber == 3) {
-            destroyopmon(playBoard);
+            destroyopmon();
         }
         if (cardControllerNumber == 33) {
-            supply(playBoard, deck);
+            supply();
         }
         if (cardControllerNumber == 7) {
-            spelllife(playBoard);
+            spelllife();
         }
         if (cardControllerNumber == 4) {
-            fiendATKplus(monsters);
+            fiendATKplus();
         }
         if (cardControllerNumber == 5) {
-            spellcasterATKplus(monsters);
+            spellcasterATKplus();
         }
         if (cardControllerNumber == 6) {
-            fairyATKlose(monsters);
+            fairyATKlose();
         }
         if (cardControllerNumber == 15) {
-            BeastWarriorAtkplus(monsters);
+            BeastWarriorAtkplus();
         }
         if (cardControllerNumber == 16) {
-            BeastAtkplus(monsters);
+            BeastAtkplus();
         }
         if (cardControllerNumber == 17) {
-            InsectAtkplus(monsters);
+            InsectAtkplus();
         }
         if (cardControllerNumber == 18) {
-            aquaAtkplus(monsters);
+            aquaAtkplus();
         }
         if (cardControllerNumber == 19) {
-            aquadeflos(monsters);
+            aquadeflos();
         }
         if (cardControllerNumber == 20) {
-            closed(playBoard, monsters);
+            closed();
         }
         if (cardControllerNumber == 21) {
             ring(board);
         }
         if (cardControllerNumber == 22) {
-            des(playBoard,opl);
+            des();
         }
         if (cardControllerNumber == 24) {
-            destroytrapspelloponent(deck);
+            destroytrapspelloponent();
         }
         if (cardControllerNumber == 23) {
-            reborn(graveYard,deck);
+            reborn();
         }
     }
 
@@ -77,9 +82,10 @@ public class ActionSpell {
     //23 monster reborn
     //24 Harpie’s Feather Duster
     //25
-    public void supply(PlayBoard playBoard, Deck deck) {
+    public void supply() {
+
         if (playBoard.getMonsters().size() < 2) {
-            playBoard.setHand(deck.getMonsters(1));
+            GlobalVariable.getBoard().getPlayBoardByTurn().getHand().add(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(1));
 
         }else{
             System.out.println("cannot activate");
@@ -89,62 +95,56 @@ public void ring(Board board)
 {
     board.reverseTurn();
 } //21
-    public void addFieldSpellFromDeck(PlayBoard playBoard) {
+    public void addFieldSpellFromDeck() {
         playBoard.getHand().add(
                 playBoard.getFields());
 
     } //1
-public void destroytrapspelloponent(Deck deckop)
-{
-   if (deckop.getMonsters(1).size()!=1)
-   {
-       deckop.getMainDeck().remove(1);
-   }
-   else if (deckop.getMonsters(2).size()!=1)
-    {
-        deckop.getMainDeck().remove(2);
-    }
-   else if (deckop.getMonsters(3).size()!=1)
-    {
-        deckop.getMainDeck().remove(3);
-    }
-   else if (deckop.getMonsters(4).size()!=1)
-    {
-        deckop.getMainDeck().remove(4);
-    }
-   else if (deckop.getMonsters(5).size()!=1)
-    {
-        deckop.getMainDeck().remove(5);
-    }
+public void destroytrapspelloponent()
+{ int i=0;
+
+  while (i<GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSpellTrap().size())
+  {
+      GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSpellTrap().remove(i);
+      i++;
+  }
 } //24
-    public void spelllife(PlayBoard playBoard) {
+    public void spelllife() {
         playBoard.decreaseLifePoint(-500);
     } //7
 
-    public void destroyopmon(PlayBoard playBoard) {
-        for (MonsterCard monsterCard : playBoard.getAttackerCards()
-        ) {
-            playBoard.getAttackerCards().remove(monsterCard);
+    public void destroyopmon() {
+        int i=0;
+        while (i<GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().size())
+        {
+            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(i);
+            i++;
         }
 
     } //3
-public void reborn(GraveYard graveYard,Deck deck)
+public void reborn()
 {
     Card card;
-    card=graveYard.getLostCards().get(1);
+    card=graveYard.get(0);
     deck.getSideDeck().add(card);
 
 }
-    public void addCard(Deck deck, Deck side) { //2
+    public void addCard() { //2
         deck.getMainDeck().add(deck.getSideDeck().get(1));
         deck.getSideDeck().remove(1);
         deck.getMainDeck().add(deck.getSideDeck().get(2));
         deck.getSideDeck().remove(2);
-
-
     }
 
-    public void spellcasterATKplus(ArrayList<MonsterCard> spellcasters) { //5
+    public void spellcasterATKplus() {
+        //5
+        ArrayList<MonsterCard> spellcasters =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("SPELLCASTER"))
+            {
+                spellcasters.add((MonsterCard) card);
+            }
+        }
         for (MonsterCard monsterCardd : spellcasters) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
@@ -152,38 +152,80 @@ public void reborn(GraveYard graveYard,Deck deck)
     }
 
 
-    public void fiendATKplus(ArrayList<MonsterCard> fieldmonsterCards) {
+    public void fiendATKplus( ) {
+        ArrayList<MonsterCard> fieldmonsterCards =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("FIEND"))
+            {
+                fieldmonsterCards.add((MonsterCard) card);
+            }
+        }
         for (MonsterCard monsterCardd : fieldmonsterCards) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
 
     } //4
 
-    public void fairyATKlose(ArrayList<MonsterCard> fairymonsters) {
+    public void fairyATKlose() {
+        ArrayList<MonsterCard> fairymonsters =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("FIEND"))
+            {
+                fairymonsters.add((MonsterCard) card);
+            }
+        }
         for (MonsterCard monsterCardd : fairymonsters) {
             monsterCardd.setAttack(monsterCardd.getAttack() - 200);
         }
     } //6
 
-    public void InsectAtkplus(ArrayList<MonsterCard> insectmonsters) {
+    public void InsectAtkplus() {
+        ArrayList<MonsterCard> insectmonsters =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("INSECT"))
+            {
+                insectmonsters.add((MonsterCard) card);
+            }
+        }
         for (MonsterCard monsterCardd : insectmonsters) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
     } //17
 
-    public void aquaAtkplus(ArrayList<MonsterCard> aquamonsters) {
+    public void aquaAtkplus() {
+        ArrayList<MonsterCard> aquamonsters =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("AQUA"))
+            {
+                aquamonsters.add((MonsterCard) card);
+            }
+        }
         for (MonsterCard monsterCardd : aquamonsters) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 500);
         }
     } //18
 
-    public void aquadeflos(ArrayList<MonsterCard> aquamonsters) {
+    public void aquadeflos() {
+        ArrayList<MonsterCard> aquamonsters =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("AQUA"))
+            {
+                aquamonsters.add((MonsterCard) card);
+            }
+        }
         for (MonsterCard monsterCardd : aquamonsters) {
             monsterCardd.setAttack(monsterCardd.getDefence() - 400);
         }
     } //19
 
-    public void closed(PlayBoard playBoard, ArrayList<MonsterCard> beastCards) {
+    public void closed() {
+        ArrayList<MonsterCard> beastCards =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("BEAST"))
+            {
+                beastCards.add((MonsterCard) card);
+            }
+        }
         for (Card card : playBoard.getGraveyards()) {
             for (MonsterCard monsterCard : beastCards) {
                 monsterCard.setAttack(monsterCard.getAttack() + 100);
@@ -191,21 +233,44 @@ public void reborn(GraveYard graveYard,Deck deck)
         }
     }
 
-    public void BeastAtkplus(ArrayList<MonsterCard> beastmonsters) {
-        for (MonsterCard monsterCardd : beastmonsters) {
+    public void BeastAtkplus() {
+        ArrayList<MonsterCard> beastCards =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("BEAST"))
+            {
+                beastCards.add((MonsterCard) card);
+            }
+        }
+        for (MonsterCard monsterCardd : beastCards) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
     } //16
 
-    public void BeastWarriorAtkplus(ArrayList<MonsterCard> bwmonsters) {
-        for (MonsterCard monsterCardd : bwmonsters) {
+    public void BeastWarriorAtkplus() {
+        ArrayList<MonsterCard> beastCards =null;
+        for (Card card:playBoard.getHand()) {
+            if (card.getType().equals("BEASTWARRIOR"))
+            {
+                beastCards.add((MonsterCard) card);
+            }
+        }
+        for (MonsterCard monsterCardd : beastCards) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 200);
         }
     } //15
-public void des(PlayBoard playBoard,PlayBoard opl)
+public void des()
 {
-    playBoard.getAttackerCards().clear();
-    opl.getAttackerCards().clear();
+    int i=0;
+    while (i<GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().size())
+    {
+        GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(i);
+        i++;
+    }
+    while (i<GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().size())
+    {
+        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(i);
+        i++;
+    }
 }
 /*
     public void BeastATKincreaseforGraveYard(int cardControllerNumber) {
