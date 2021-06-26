@@ -28,12 +28,15 @@ public class Login  {
             Matcher matcher1_2 = getCommand(input, "user create username (\\w+) password (\\w+) nickname (\\w+)");
             Matcher matcher1_3 = getCommand(input, "user create nickname (\\w+) password (\\w+) username (\\w+)");
             Matcher matcher1_4 = getCommand(input, "user create password (\\w+) username (\\w+) nickname (\\w+)");
+            Matcher matcher1_6=getCommand(input,"create -u (\\w+) -n (\\w+) -p (\\w+)");
+            Matcher matcher1_7=getCommand(input,"login -u (\\w+) -p (\\w+)");
+
             Matcher matcher1_5 = getCommand(input, "user create password (\\w+) nickname (\\w+) username (\\w+)");
             Matcher matcher2 = getCommand(input, "user login username (\\w+) password (\\w+)");
             Matcher matcher2_1 = getCommand(input, "user login password (\\w+) username (\\w+)");
             Matcher matcher5 = getCommand(input, "menu show-current");
             Matcher matcher6=getCommand(input, "exit");
-            if (matcher1.find()) {
+            if (matcher1.find()||matcher1_6.find()) {
                 createUser(matcher1, 0);
                 b = 9;
             } else if (matcher1_1.find())
@@ -46,8 +49,9 @@ public class Login  {
                 createUser(matcher1_4, 4);
             else if (matcher1_5.find())
                 createUser(matcher1_5, 5);
-            else if (matcher2.find())
+            else if (matcher2.find()||matcher1_7.find())
                 loginUser(matcher2, 0);
+
             else if (matcher2_1.find())
                 loginUser(matcher2_1, 1);
 
