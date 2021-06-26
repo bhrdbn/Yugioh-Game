@@ -571,6 +571,14 @@ public class DuelController {
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.FIELD) {
             GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
+            if (card.getName().equals("Terraforming")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(1, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("PotofGreed")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(2, GlobalVariable.getBoard());
+            }
             return "spell activated";
         } else {
             if (GlobalVariable.getBoard().isFieldZoneFull())
@@ -711,10 +719,9 @@ public class DuelController {
  //  }
 
     public String showCard() {
-        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() != null) {
-            return (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().toString());
-        }
-        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() != null) {
+        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null) {
+            return "no card is selected yet";        }
+        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSelectedCard() != null) {
             return (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().toString());
         }
         return "no card is selected yet";
