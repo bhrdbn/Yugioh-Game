@@ -617,16 +617,94 @@ public class DuelController {
                 GlobalVariable.getBoard().isSpellZoneFull() && ((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field"))
             return "spell card zone is full";
         else if (!isSpellConditionMet((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()))
-            return "preparations of this spell are not done yet";
+            return "preparations of this spell are not done yet " + ((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getType();
         else if (((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field")) {
             GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
+
+
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("Forest")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(15, GlobalVariable.getBoard());
+                actionSpell.setAction(16, GlobalVariable.getBoard());
+                actionSpell.setAction(17, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("Umiiruka")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(18, GlobalVariable.getBoard());
+                actionSpell.setAction(19, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("ClosedForest")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(20, GlobalVariable.getBoard());
+
+            }
+
             return "spell activated";
         } else {
             if (GlobalVariable.getBoard().isFieldZoneFull())
                 GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
             GlobalVariable.getBoard().getPlayBoardByTurn().setFields(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("Terraforming")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(1, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("PotofGreed")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(2, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("Raigeki")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(3, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("SpellAbsorption")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(7, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("SupplySquad")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(33, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("Ringofdefense")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(21, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("DarkHole")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(22, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("MonsterReborn")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(23, GlobalVariable.getBoard());
+
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("HarpiesFeatherDuster")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(24, GlobalVariable.getBoard());
+
+            }
             return "spell activated";
 
         }

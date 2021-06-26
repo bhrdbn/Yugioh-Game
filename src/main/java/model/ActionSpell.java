@@ -69,7 +69,7 @@ public class ActionSpell {
     }
 
     // 1 terraforming
-    //2 pot of greed
+    //2 PotofGreed
     //3  Raigeki
     // 4 5 6 Yami
     // 15 16 17 Forest
