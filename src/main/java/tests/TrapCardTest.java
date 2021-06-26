@@ -30,7 +30,9 @@ TrapCard trapCard = new TrapCard("ali",1,"a","b",true,1,"ss","a");
 
     @Test
     void getTraps() {
-assertNotNull(trapCard.getTraps());
+        trapCards.add(trapCard);
+        trapCard.setTraps(trapCards);
+        assertNotNull(trapCard.getTraps());
     }
 
     @Test

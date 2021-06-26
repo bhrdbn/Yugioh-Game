@@ -35,14 +35,14 @@ public class Shop {
             Matcher matcher2 = getCommand(input, "shop show --all");
             Matcher matcher3 = getCommand(input, "exit");
             Matcher matcher4 = getCommand(input, "cheat BAP ([a-zA-Z\\s]+) and ([a-zA-Z\\s]+) and ([a-zA-Z\\s]+) code ([0-9])");
-            Matcher matcher6 = getCommand(input, "Card serialize name ([a-zA-Z\\s]+) describe ([a-zA-Z\\s]+) number ([0-9]) attack ([0-9]) defence ([0-9]) price ([0-9]) attribute ([a-zA-Z\\s]+) level ([0-9]) type ([a-zA-Z\\s]+)");
+            Matcher matcher6 = getCommand(input, "Card serialize name ([a-zA-Z\\s]+) describe ([a-zA-Z\\s]+) effect ([0-9]) number ([0-9]) attack ([0-9]) defence ([0-9]) price ([0-9]) attribute ([a-zA-Z\\s]+) level ([0-9]) type ([a-zA-Z\\s]+)");
             if (matcher1.find())
                 buy(matcher1);
             else if (matcher2.find())
                 showAll();
             else if (matcher3.find()) MenuHandler.runBack(Menu.SHOP);
             else if (matcher6.find()) {ImprotExport improtExport = new ImprotExport();
-                improtExport.serialize(matcher6.group(0),matcher6.group(1),2,Integer.parseInt(matcher6.group(2)),Integer.parseInt(matcher6.group(3)),Integer.parseInt(matcher6.group(4)),Integer.parseInt(matcher6.group(5)),matcher6.group(7),Integer.parseInt(matcher6.group(8)), matcher6.group(9),null,true);
+                improtExport.serialize(matcher6.group(1),matcher6.group(2),Integer.parseInt(matcher6.group(3)),Integer.parseInt(matcher6.group(4)),Integer.parseInt(matcher6.group(5)),Integer.parseInt(matcher6.group(6)),Integer.parseInt(matcher6.group(7)),matcher6.group(8),Integer.parseInt(matcher6.group(8)), matcher6.group(10),null,true);
             }
             else if (matcher4.find()) {
                 if (matcher4.group(1).equals("bahar") && matcher4.group(2).equals("ayla") && matcher4.group(3).equals("pardis")) {
