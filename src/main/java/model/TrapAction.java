@@ -42,24 +42,29 @@ public class TrapAction {
         Card card;
         card = graveYard.get(1);
         deck.getMainDeck().add(card);
+        System.out.println("succesfully");
 
     }
 
     public void destroyop() {
         OPplayboard.getMonsters().clear();
+        System.out.println("succesfully");
     }
 
     public void timeseal() {
         board.reverseTurn();
+        System.out.println("succesfully");
     }
 
     public void destroyattacker() {
         OPplayboard.getAttackerCards().remove(1);
+        System.out.println("succesfully");
     }
 
     public void solemn( ) {
         playBoard.decreaseLifePoint(2000);
         deckop.removeCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getHand().get(1), 2);
+        System.out.println("succesfully");
     }
 }
    /* public void destroyAllAttackModes() {

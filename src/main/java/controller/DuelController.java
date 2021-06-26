@@ -701,9 +701,10 @@ public class DuelController {
         else if (!isSpellConditionMet((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()))
             return "preparations of this spell are not done yet " + ((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getType();
         else if (((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field")) {
-            GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
+            if (GlobalVariable.getBoard().isFieldZoneFull())
+                GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
+            GlobalVariable.getBoard().getPlayBoardByTurn().setFields(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
-
 
             if (GlobalVariable.getBoard().
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Forest")){
@@ -729,9 +730,8 @@ public class DuelController {
 
             return "spell activated";
         } else {
-            if (GlobalVariable.getBoard().isFieldZoneFull())
-                GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
-            GlobalVariable.getBoard().getPlayBoardByTurn().setFields(card);
+
+            GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
             if (GlobalVariable.getBoard().
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Terraforming")){
@@ -824,7 +824,7 @@ public class DuelController {
             return "no card is selected yet";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
             return "you can't set this card";
-        else if (!(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof SpellCard) && (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
+        else if (!(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof SpellCard) || (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
             return "you can't do this action in this phase";
         else if (GlobalVariable.getBoard().isSpellZoneFull())
             return "spell card zone is full";
@@ -840,7 +840,7 @@ public class DuelController {
            return "no card is selected yet";
        else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
            return "you can't set this card";
-       else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof TrapCard && (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 || GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
+       else if(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof TrapCard && (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
            return "you can't do this action in this phase";
        else if(GlobalVariable.getBoard().isSpellZoneFull())
            return "spell card zone is full";
@@ -867,6 +867,38 @@ public class DuelController {
                if(activation.equals("activate spell") || activation.equals("activate trap")) {
                    if (isSpellConditionMet(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard())) {
                        activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard());
+                       GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
+                       GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
+                       if (GlobalVariable.getBoard().
+                               getPlayBoardByTurn().getSelectedCard().getName().equals("CallofTheHaunted")){
+                           TrapAction trapAction = new TrapAction();
+                           trapAction.setAction(1);
+
+                       }
+                       if (GlobalVariable.getBoard().
+                               getPlayBoardByTurn().getSelectedCard().getName().equals("Torrential Tribute")){
+                           TrapAction trapAction = new TrapAction();
+                           trapAction.setAction(2);
+
+                       }
+                       if (GlobalVariable.getBoard().
+                               getPlayBoardByTurn().getSelectedCard().getName().equals("TimeSeal")){
+                           TrapAction trapAction = new TrapAction();
+                           trapAction.setAction(3);
+
+                       }
+                       if (GlobalVariable.getBoard().
+                               getPlayBoardByTurn().getSelectedCard().getName().equals("TrapHole")){
+                           TrapAction trapAction = new TrapAction();
+                           trapAction.setAction(4);
+
+                       }
+                       if (GlobalVariable.getBoard().
+                               getPlayBoardByTurn().getSelectedCard().getName().equals("SolemnWarning")){
+                           TrapAction trapAction = new TrapAction();
+                           trapAction.setAction(5);
+
+                       }
                        return "spell/trap activated";
                    }
                    else
