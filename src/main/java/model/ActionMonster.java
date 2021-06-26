@@ -1,12 +1,19 @@
 package model;
 
+import controller.GlobalVariable;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActionMonster {
-    public void setAction(int cardControllerNumber, MonsterCard monsterCard, Deck deck,  PlayBoard playBoard, ArrayList<MonsterCard> monsterCards,int pos) {
+    PlayBoard playBoard = GlobalVariable.getBoard().getPlayBoardByTurn();
+    Deck deck = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getDeck();
+    PlayBoard OPplayboard = GlobalVariable.getBoard().getOpponentPlayBoardByTurn();
+    List<Card> graveYard = GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards();
+    public void setAction(int cardControllerNumber,MonsterCard monsterCard) {
     if (cardControllerNumber==1)
     {
-        increaseAttackAll(monsterCards,monsterCard);
+        increaseAttackAll(monsterCard);
     }
     if (cardControllerNumber==2)
     {
@@ -14,35 +21,35 @@ public class ActionMonster {
     }
     if (cardControllerNumber==3)
     {
-        getInBoardWithSacrifices(monsterCard,deck);
+        getInBoardWithSacrifices(monsterCard);
     }
     if (cardControllerNumber==4)
     {
-        getInBoardWithSacrifices2(monsterCards,deck);
+        getInBoardWithSacrifices2();
     }
     if (cardControllerNumber==5)
     {
-        getInBoardWithSacrifices3(monsterCard,deck);
+        getInBoardWithSacrifices3(monsterCard);
     }
     if (cardControllerNumber==6)
     {
-        diewhenattack(monsterCard,playBoard);
+        diewhenattack(monsterCard);
     }
     if (cardControllerNumber==7)
     {
-        acardwhenturned(monsterCard,playBoard);
+        acardwhenturned(monsterCard);
     }
     if (cardControllerNumber==8)
-    {barbaroswithoutsac(monsterCards,monsterCard,deck,pos);}
+    {barbaroswithoutsac(monsterCard);}
     if (cardControllerNumber==9)
-    {barbaroswitsac(monsterCards,monsterCard,deck,pos);}
+    {barbaroswitsac(monsterCard);}
     if (cardControllerNumber==10)
     {
-        calculate(monsterCards,monsterCard);
+        calculate(monsterCard);
     }
     if (cardControllerNumber==11)
     {
-        sacraficeOneToget(playBoard,deck,pos,monsterCards);
+        sacraficeOneToget();
     }
 
 
@@ -59,8 +66,13 @@ public class ActionMonster {
     //8 9 king barbaros >>>>31
     //10 calculator
 //11 herald of creation
-    public void increaseAttackAll(ArrayList<MonsterCard> monsterCards,MonsterCard monsterCard) //1
-    {
+    public void increaseAttackAll(MonsterCard monsterCard) //1
+    { ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         for (MonsterCard monsterCardd : monsterCards) {
             monsterCardd.setAttack(monsterCardd.getAttack() + 400);
 
@@ -72,16 +84,28 @@ public class ActionMonster {
     }
 
 
-    public void getInBoardWithSacrifices(MonsterCard monsterCard, Deck deck) //3
+    public void getInBoardWithSacrifices(MonsterCard monsterCard) //3
     {
+        ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         MonsterCard monsterCard1 = new MonsterCard("CrabTurtle", 1, "Ritual", 2,"description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
 
-        deck.removeCard(monsterCard, 1);
-        deck.addCard(monsterCard1, 1);
+        monsterCards.remove(monsterCard);
+        monsterCards.add(monsterCard1);
     }
 
-    public void getInBoardWithSacrifices2(ArrayList<MonsterCard> monsterCards, Deck deck) //4
+    public void getInBoardWithSacrifices2() //4
     {
+        ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         MonsterCard monsterCard1 = new MonsterCard("GateGuardian", 1, "Ritual", 2,"description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
         if (monsterCards.size() > 3) {
             monsterCards.remove(1);
@@ -95,14 +119,20 @@ public class ActionMonster {
 
     }
 
-    public void getInBoardWithSacrifices3(MonsterCard monsterCard, Deck deck) //5
+    public void getInBoardWithSacrifices3(MonsterCard monsterCard) //5
     {
+        ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         MonsterCard monsterCard1 = new MonsterCard("SkullGuardian", 1, "Ritual",2, "description This monster can only be Ritual Summoned with the Ritual Spell Card, \"Novox's Prayer\". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.",
                 true, 7900, 2050, 2500, null, "LIGHT", 7, "Warrior");
 
-        deck.removeCard(monsterCard, 1);
+        monsterCards.remove(monsterCard);
 
-        deck.addCard(monsterCard1, 1);
+        monsterCards.add(monsterCard1);
     }
 
     public void canNotBeAttacked(MonsterCard monsterCard) //2
@@ -110,8 +140,14 @@ public class ActionMonster {
         monsterCard.setIsAttack(false);
     }
 
-    public void diewhenattack(MonsterCard monsterCard, PlayBoard playBoard) //6
-    {
+    public void diewhenattack(MonsterCard monsterCard) //6
+    { ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
+
         if (monsterCard.getAttack() < playBoard.getSelectedMonsterCard().getAttack()) {
             if (monsterCard.getDefence() == 0) {
                 playBoard.getSelectedMonsterCard().setDefence(0);
@@ -119,22 +155,32 @@ public class ActionMonster {
         }
     }
 
-    public void acardwhenturned(MonsterCard monsterCard, PlayBoard playBoard) //7
+    public void acardwhenturned(MonsterCard monsterCard) //7
     {
         monsterCard.setSide(true);
         playBoard.getAttackerCards().remove(2);
     }
 
 
-    public void barbaroswithoutsac(ArrayList<MonsterCard> monsterCards, MonsterCard monsterCard, Deck deck, int pos) //8
-    {
+    public void barbaroswithoutsac(MonsterCard monsterCard) //8
+    { ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         monsterCard.setAttack(1900);
-        deck.addCard(monsterCard, pos);
+        deck.addCard(monsterCard,1);
 
     }
 
-    public void barbaroswitsac(ArrayList<MonsterCard> monsterCards, MonsterCard monsterCard, Deck deck, int pos) //9
-    {
+    public void barbaroswitsac(MonsterCard monsterCard) //9
+    {ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         if (monsterCards.size() >= 3) {
             monsterCards.remove(1);
             monsterCards.remove(2);
@@ -147,8 +193,13 @@ public class ActionMonster {
 
     }
 
-    public void calculate(ArrayList<MonsterCard> monsterCards, MonsterCard monsterCard) //10
-    {
+    public void calculate( MonsterCard monsterCard) //10
+    { ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         int sum = 0;
         for (MonsterCard monsterCardd : monsterCards) {
             sum = sum + monsterCardd.getAttack();
@@ -158,11 +209,16 @@ public class ActionMonster {
     }
 
 
-    public void sacraficeOneToget(PlayBoard playBoard, Deck deck, int num, ArrayList<MonsterCard> monsterCards) //11
-    {
+    public void sacraficeOneToget() //11
+    { ArrayList<MonsterCard> monsterCards =null;
+        for (Card card:playBoard.getHand()) {
+
+            monsterCards.add((MonsterCard) card);
+
+        }
         int i = 0,m=0;
         String t = "";
-        deck.getMainDeck().remove(num);
+        deck.getMainDeck().remove(2);
         for (MonsterCard monsterCardd : monsterCards) {
 
             if (monsterCardd.getLevel() > i)
