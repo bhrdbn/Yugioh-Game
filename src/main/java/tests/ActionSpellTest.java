@@ -15,23 +15,7 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
             int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
-            int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -51,24 +35,9 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
+
             int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
-            int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -88,24 +57,9 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
+
             int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
-            int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -127,24 +81,8 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
             int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
-            int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -166,24 +104,8 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
             int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
-            int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -205,24 +127,9 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
             int card6 = 6;
             int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
-            int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -244,23 +151,9 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
+
             int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
-            int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
+
             int card18 = 18;
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
@@ -284,13 +177,7 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
+
             int card8 = 8;
             int card9 = 9;
             int card10 = 10;
@@ -300,8 +187,7 @@ ActionSpell actionSpell = new ActionSpell();
             int card14 = 14;
             int card15 = 15;
             int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -330,15 +216,6 @@ ActionSpell actionSpell = new ActionSpell();
     void setAction9() {
         try {
 
-
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
             int card9 = 9;
             int card10 = 10;
             int card11 = 11;
@@ -346,9 +223,7 @@ ActionSpell actionSpell = new ActionSpell();
             int card13 = 13;
             int card14 = 14;
             int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -376,15 +251,7 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
+
             int card10 = 10;
             int card11 = 11;
             int card12 = 12;
@@ -392,8 +259,7 @@ ActionSpell actionSpell = new ActionSpell();
             int card14 = 14;
             int card15 = 15;
             int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -421,24 +287,14 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
+
             int card11 = 11;
             int card12 = 12;
             int card13 = 13;
             int card14 = 14;
             int card15 = 15;
             int card16 = 16;
-            int card17 = 17;
-            int card18 = 18;
+
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
             Deck deck = new Deck("a");
@@ -465,17 +321,6 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
             int card12 = 12;
             int card13 = 13;
             int card14 = 14;
@@ -509,19 +354,6 @@ ActionSpell actionSpell = new ActionSpell();
     void setAction13() {
         try {
 
-
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
             int card13 = 13;
             int card14 = 14;
             int card15 = 15;
@@ -553,24 +385,8 @@ ActionSpell actionSpell = new ActionSpell();
     void setAction14() {
         try {
 
-
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
             int card14 = 14;
             int card15 = 15;
-            int card16 = 16;
-            int card17 = 17;
             int card18 = 18;
             Player p = new Player("a", "b", "c");
             Player op = new Player("m", "n", "p");
@@ -595,20 +411,6 @@ ActionSpell actionSpell = new ActionSpell();
         try {
 
 
-            int card1 = 1;
-            int card2 = 2;
-            int card3 = 3;
-            int card4 = 4;
-            int card5 = 5;
-            int card6 = 6;
-            int card7 = 7;
-            int card8 = 8;
-            int card9 = 9;
-            int card10 = 10;
-            int card11 = 11;
-            int card12 = 12;
-            int card13 = 13;
-            int card14 = 14;
             int card15 = 15;
             int card16 = 16;
             int card17 = 17;

@@ -56,16 +56,16 @@ public class ActionMonster {
 
 
     }
-// 1  COMMANDKNIGHT
-    // 2 SUIJIN
-    //3 CRABTURTLE
-    // 4 GATE GUARDIAN
-    //5 skull guardian
-    //6 yomi ship
-    //7 man eater bug
-    //8 9 king barbaros >>>>31
-    //10 calculator
-//11 herald of creation
+// 1  CommandKnight 4-
+    // 2 Suijin 7
+    //3 CrabTurtle 8
+    // 4 GateGuardian 11
+    //5 SkullGuardian 7
+    //6 YomiShip 3-
+    //7 ManEaterBug 2-
+    //8 9 BeastKingBarbaros 8
+    //10 TheCalculator 2-
+//11 HeraldofCreation 4 -
     public void increaseAttackAll(MonsterCard monsterCard) //1
     { ArrayList<MonsterCard> monsterCards =null;
         for (Card card:playBoard.getHand()) {

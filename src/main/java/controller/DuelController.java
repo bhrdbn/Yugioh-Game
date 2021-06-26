@@ -332,6 +332,38 @@ public class DuelController {
             }
             GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
                     getPlayBoardByTurn().getSelectedCard());
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("CommandKnight")){
+                ActionMonster actionMonster = new ActionMonster();
+                actionMonster.setAction(1,(MonsterCard) GlobalVariable.getBoard().
+                        getPlayBoardByTurn().getSelectedCard());
+            }
+
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("YomiShip")){
+                ActionMonster actionMonster = new ActionMonster();
+                actionMonster.setAction(6,(MonsterCard) GlobalVariable.getBoard().
+                        getPlayBoardByTurn().getSelectedCard());
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("ManEaterBug")){
+                ActionMonster actionMonster = new ActionMonster();
+                actionMonster.setAction(7,(MonsterCard) GlobalVariable.getBoard().
+                        getPlayBoardByTurn().getSelectedCard());
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("TheCalculator")){
+                ActionMonster actionMonster = new ActionMonster();
+                actionMonster.setAction(10,(MonsterCard) GlobalVariable.getBoard().
+                        getPlayBoardByTurn().getSelectedCard());
+            }
+            if (GlobalVariable.getBoard().
+                    getPlayBoardByTurn().getSelectedCard().getName().equals("HeraldofCreation")){
+                ActionMonster actionMonster = new ActionMonster();
+                actionMonster.setAction(11,(MonsterCard) GlobalVariable.getBoard().
+                        getPlayBoardByTurn().getSelectedCard());
+            }
+
             return "summoned successfully";
         } else if (((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getLevel() <= 6) {
             if (countNokhodi() == 5)
@@ -360,6 +392,41 @@ public class DuelController {
                     }
                     GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
                             getPlayBoardByTurn().getSelectedCard());
+                    if (GlobalVariable.getBoard().
+                            getPlayBoardByTurn().getSelectedCard().getName().equals("Suijin")){
+                        ActionMonster actionMonster = new ActionMonster();
+                        actionMonster.setAction(2,(MonsterCard) GlobalVariable.getBoard().
+                                getPlayBoardByTurn().getSelectedCard());
+                    }
+                    if (GlobalVariable.getBoard().
+                            getPlayBoardByTurn().getSelectedCard().getName().equals("CrabTurtle")){
+                        ActionMonster actionMonster = new ActionMonster();
+                        actionMonster.setAction(3,(MonsterCard) GlobalVariable.getBoard().
+                                getPlayBoardByTurn().getSelectedCard());
+                    }
+                    if (GlobalVariable.getBoard().
+                            getPlayBoardByTurn().getSelectedCard().getName().equals("GateGuardian")){
+                        ActionMonster actionMonster = new ActionMonster();
+                        actionMonster.setAction(4,(MonsterCard) GlobalVariable.getBoard().
+                                getPlayBoardByTurn().getSelectedCard());
+                    }
+                    if (GlobalVariable.getBoard().
+                            getPlayBoardByTurn().getSelectedCard().getName().equals("SkullGuardian")){
+                        ActionMonster actionMonster = new ActionMonster();
+                        actionMonster.setAction(5,(MonsterCard) GlobalVariable.getBoard().
+                                getPlayBoardByTurn().getSelectedCard());
+                    }
+                    if (GlobalVariable.getBoard().
+                            getPlayBoardByTurn().getSelectedCard().getName().equals("BeastKingBarbaros")){
+                        int i;
+                        System.out.println("please enter which mode you want to sacrifice press 1 else 0");
+                        i=Main.scanner.nextInt();
+                        ActionMonster actionMonster = new ActionMonster();
+                        if (i==0){ actionMonster.setAction(8,(MonsterCard) GlobalVariable.getBoard().
+                                getPlayBoardByTurn().getSelectedCard());}
+                        else {actionMonster.setAction(9,(MonsterCard) GlobalVariable.getBoard().
+                                getPlayBoardByTurn().getSelectedCard());}
+                    }
                     return "summoned successfully";
 
                 }
@@ -451,6 +518,7 @@ public class DuelController {
                 }
 
             }
+
             return "set successfully";
         }
 
@@ -578,6 +646,57 @@ public class DuelController {
             if (card.getName().equals("PotofGreed")){
                 ActionSpell actionSpell = new ActionSpell();
                 actionSpell.setAction(2, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("PotofGreed")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(3, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("Raigeki")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(2, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("Yami")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(4, GlobalVariable.getBoard());
+                actionSpell.setAction(5, GlobalVariable.getBoard());
+                actionSpell.setAction(6, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("Forest")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(15, GlobalVariable.getBoard());
+                actionSpell.setAction(16, GlobalVariable.getBoard());
+                actionSpell.setAction(17, GlobalVariable.getBoard());
+
+            }
+            if (card.getName().equals("Umiiruka")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(18, GlobalVariable.getBoard());
+                actionSpell.setAction(19, GlobalVariable.getBoard());
+
+            }
+            if (card.getName().equals("ClosedForest")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(20, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("SpellAbsorption")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(7, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("SupplySquad")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(33, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("Ringofdefense")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(21, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("MonsterReborn")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(23, GlobalVariable.getBoard());
+            }
+            if (card.getName().equals("HarpiesFeatherDuster")){
+                ActionSpell actionSpell = new ActionSpell();
+                actionSpell.setAction(24, GlobalVariable.getBoard());
             }
             return "spell activated";
         } else {

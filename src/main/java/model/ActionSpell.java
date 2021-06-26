@@ -70,18 +70,18 @@ public class ActionSpell {
 
     // 1 terraforming
     //2 pot of greed
-    //3 raigeki
-    // 4 5 6 yami
-    // 15 16 17 forest
-    // 18 19 umiruka
-    //20 closed forest
-    //7 spell absorption
-    //33 supply squad
-    // 21 ring of defence
-    // 22 dark hole
-    //23 monster reborn
-    //24 Harpie’s Feather Duster
-    //25
+    //3  Raigeki
+    // 4 5 6 Yami
+    // 15 16 17 Forest
+    // 18 19 Umiiruka
+    //20 ClosedForest
+    //7 SpellAbsorption
+    //33 SupplySquad
+    // 21 Ringofdefense
+    // 22 DarkHole
+    //23 MonsterReborn
+    //24 HarpiesFeatherDuster
+
     public void supply() {
 
         if (playBoard.getMonsters().size() < 2) {
