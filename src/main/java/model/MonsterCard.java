@@ -123,23 +123,51 @@ action 1,12 ==36
         System.out.println("your opponent's monster is destroyed and your opponent receives " + damage  + "battle damage");
     }
 
-    public static void Attack(MonsterCard opponentMonster, MonsterCard currentMonster){
-        if(currentMonster.atk > opponentMonster.atk) {
-            lowerAttack(opponentMonster, currentMonster);
+    public static String Attack(MonsterCard opponentMonster, MonsterCard currentMonster, int number) {
+        if(opponentMonster.isAttack()) {
+            if (currentMonster.getAttack() > opponentMonster.getAttack()) {
+                GlobalVariable.getBoard().lowerOpponentLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
+                GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(number);
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().setLocation(Location.GRAVEYARD);
+                return "your opponent monster is destroyed and your opponent receives " + (currentMonster.getAttack() - opponentMonster.getAttack()) + " battle damage";
+            }
+            else if(currentMonster.getAttack() == opponentMonster.getAttack()){
+                currentMonster.setLocation(Location.GRAVEYARD);
+                opponentMonster.setLocation(Location.GRAVEYARD);
+                return "both you and your opponent monster cards are destroyed and no one receives damage";
+            }
+            else{
+                GlobalVariable.getBoard().lowerLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setLocation(Location.GRAVEYARD);
+                return "your monster card is destroyed and you received " + (currentMonster.getAttack() - opponentMonster.getAttack()) + " battle damage";
+            }
         }
-        else if(currentMonster.atk == opponentMonster.atk){
-            GraveYard.setCards(opponentMonster);
-            GraveYard.setCards(currentMonster);
-            System.out.println("both you and your opponent monster cards are destroyed and no one receives damage");
+        else if(!opponentMonster.isAttack() && opponentMonster.isSide()){
+            if(currentMonster.getAttack() > opponentMonster.getDefence()){
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().setLocation(Location.GRAVEYARD);
+                    return "the defense position monster is destroyed";
+            }
+            else if(currentMonster.getAttack() == opponentMonster.getDefence())
+                return "no card is destroyed";
+            else{
+                GlobalVariable.getBoard().lowerLifePoint(opponentMonster.getDefence() - currentMonster.getAttack());
+                return "no card is destroyed and you received " + (opponentMonster.getDefence() - currentMonster.getAttack()) + " battle damage";
+            }
         }
-        else{
-            int damage = opponentMonster.atk - currentMonster.atk ;
-            GlobalVariable.getBoard().lowerLifePoint(damage);
-            GraveYard.setCards(currentMonster);
-            System.out.println("Your monster card is destroyed and you received " + damage + "battle damage");
+        else if(!opponentMonster.isAttack() && !opponentMonster.isSide()){
+            if(currentMonster.getAttack() > opponentMonster.getDefence()){
+                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().setLocation(Location.GRAVEYARD);
+                return "opponent monster card was " + opponentMonster.getName() + " and the defense position monster is destroyed";
+            }
+            else if(currentMonster.getAttack() == opponentMonster.getDefence())
+                return "opponent monster card was " + opponentMonster.getName() + " and no card is destroyed";
+            else{
+                GlobalVariable.getBoard().lowerLifePoint(opponentMonster.getDefence() - currentMonster.getAttack());
+                return "opponent monster card was " + opponentMonster.getName() + " and no card is destroyed and you received " + (opponentMonster.getDefence() - currentMonster.getAttack()) + " battle damage";
+            }
         }
+    return null;
     }
-
     public static void directAttack(MonsterCard opponentMonster, MonsterCard currentMonster){
         if(currentMonster.atk > opponentMonster.atk) {
             lowerAttack(opponentMonster, currentMonster);

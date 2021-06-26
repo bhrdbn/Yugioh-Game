@@ -45,7 +45,7 @@ public class Duel {
             Matcher matcherSelect3 = getCommand(input, "select opponent monster (\\d)");
             Matcher matcherMainPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matcherEndPhase = getCommand(input, "new card added to the hand : (\\w+)");
-            Matcher matchersummon = getCommand(input, "summon");
+            Matcher matchersummon = getCommand(input, "^summon$");
             Matcher matcherstandbyPhase = getCommand(input, "new card added to the hand : (\\w+)");
             Matcher matcherSet = getCommand(input, "^set$");
             Matcher matchersetPosATK = getCommand(input, "set -- position (attack)");
@@ -133,7 +133,7 @@ public class Duel {
     }
 
     public void attack(Matcher matcherAttack) {
-        System.out.println(duelController.attack(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1))), GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect2.group(1)))));
+        System.out.println(duelController.attack(Integer.parseInt(matcherAttack.group(1))));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
