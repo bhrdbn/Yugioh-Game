@@ -91,6 +91,7 @@ public class ActionMonster {
             monsterCard.setIsAttack(false);
         else
             monsterCard.setIsAttack(true);
+        System.out.println("succesfully");
     }
 
 
@@ -106,6 +107,7 @@ public class ActionMonster {
 
         monsterCards.remove(monsterCard);
         monsterCards.add(monsterCard1);
+        System.out.println("succesfully");
     }
 
     public void getInBoardWithSacrifices2() //4
@@ -114,6 +116,7 @@ public class ActionMonster {
         for (Card card:playBoard.getHand()) {
 
             monsterCards.add((MonsterCard) card);
+
 
         }
         MonsterCard monsterCard1 = new MonsterCard("GateGuardian", 1, "Ritual", 2,"description:This monster can only be Ritual Summoned with the Ritual Spell Card, \"Turtle Oath\". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.", true, 10200, 2550, 2500, null, "WATER", 8, "Aqua");
@@ -126,7 +129,7 @@ public class ActionMonster {
         } else {
             System.out.println("you cant summon");
         }
-
+        System.out.println("succesfully");
     }
 
     public void getInBoardWithSacrifices3(MonsterCard monsterCard) //5
@@ -143,11 +146,13 @@ public class ActionMonster {
         monsterCards.remove(monsterCard);
 
         monsterCards.add(monsterCard1);
+        System.out.println("succesfully");
     }
 
     public void canNotBeAttacked(MonsterCard monsterCard) //2
     {
         monsterCard.setIsAttack(false);
+        System.out.println("succesfully");
     }
 
     public void diewhenattack(MonsterCard monsterCard) //6
@@ -163,12 +168,14 @@ public class ActionMonster {
                 playBoard.getSelectedMonsterCard().setDefence(0);
             }
         }
+        System.out.println("succesfully");
     }
 
     public void acardwhenturned(MonsterCard monsterCard) //7
     {
         monsterCard.setSide(true);
         playBoard.getAttackerCards().remove(2);
+        System.out.println("succesfully");
     }
 
 
@@ -181,7 +188,7 @@ public class ActionMonster {
         }
         monsterCard.setAttack(1900);
         deck.addCard(monsterCard,1);
-
+        System.out.println("succesfully");
     }
 
     public void barbaroswitsac(MonsterCard monsterCard) //9
@@ -200,7 +207,7 @@ public class ActionMonster {
         }
         monsterCards.add(monsterCard);
         deck.addCard(monsterCard, 1);
-
+        System.out.println("succesfully");
     }
 
     public void calculate( MonsterCard monsterCard) //10
@@ -216,6 +223,7 @@ public class ActionMonster {
         }
         sum = sum * 300;
         monsterCard.setAttack(sum);
+        System.out.println("succesfully");
     }
 
 
@@ -244,6 +252,7 @@ public class ActionMonster {
             }
         }
         playBoard.getGraveyards().get(m);
+        System.out.println("succesfully");
     }
 
 
