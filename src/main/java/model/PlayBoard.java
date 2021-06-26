@@ -22,7 +22,7 @@ public class PlayBoard {
     private int lifePoint;
 
     private ArrayList<MonsterCard> monsters=new ArrayList<>();
-    private ArrayList<SpellCard> SpellTrap=new ArrayList<>();
+    private ArrayList<Card> SpellTrap=new ArrayList<>();
     private ArrayList<TrapCard> trap = new ArrayList<>();
     private ArrayList<Card> hand=new ArrayList<>();
     private Card selectedCard;
@@ -219,7 +219,7 @@ public class PlayBoard {
         this.monsters = monsters;
     }
 
-    public List<SpellCard> getSpellTrap() {
+    public List<Card> getSpellTrap() {
         return SpellTrap;
     }
 
@@ -231,7 +231,7 @@ public class PlayBoard {
         this.trap = trap;
     }
 
-    public void setSpellTrap(ArrayList<SpellCard> spellTrap) {
+    public void setSpellTrap(ArrayList<Card> spellTrap) {
         SpellTrap = spellTrap;
     }
 
