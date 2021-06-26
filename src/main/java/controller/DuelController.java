@@ -614,11 +614,11 @@ public class DuelController {
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardActivated())
             return "you have already activated this card";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() == Location.HAND &&
-                GlobalVariable.getBoard().isSpellZoneFull() && GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard().getSpellType() != TypeOfSpellCard.FIELD)
+                GlobalVariable.getBoard().isSpellZoneFull() && ((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field"))
             return "spell card zone is full";
         else if (!isSpellConditionMet((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()))
             return "preparations of this spell are not done yet";
-        else if (((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard()).getIcon().equals("Field")) {
+        else if (((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field")) {
             GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
             return "spell activated";
@@ -660,7 +660,7 @@ public class DuelController {
 //   }
 
     public String setSpellCard(SpellCard spell, Phase phase) {
-        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard() == null)
+        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
             return "you can't set this card";
