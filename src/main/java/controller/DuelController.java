@@ -406,14 +406,12 @@ public class DuelController {
             return "you can’t attack this card";
         else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
             return "you can't do this action in this phase";
-        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
+        else if (((MonsterCard)GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack())
             return "this card already attacked";
         else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "there is no card to attack here";
         else
-            MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number));
-
-        return null;
+            return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number), number);
     }
 
   //  public String setDamage(MonsterCard card2, MonsterCard card1) {

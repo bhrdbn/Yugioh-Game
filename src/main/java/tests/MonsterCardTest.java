@@ -120,7 +120,7 @@ class MonsterCardTest {
 
         MonsterCard monsterCard = new MonsterCard("a",1,"a","a",true,1,1,1,monsterCards,"a",1,TypeOfMonsterCard.AQUA.name());
         monsterCards.add(monsterCard);
-       MonsterCard.Attack(monsterCard,omonsterCard);
+       MonsterCard.Attack(monsterCard,omonsterCard,1);
        assertNotNull(monsterCard);
     }
 

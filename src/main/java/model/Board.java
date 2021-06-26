@@ -186,5 +186,9 @@ public class Board {
         getPlayBoardByTurn().decreaseLifePoint(damage);
     }
 
+    public void lowerOpponentLifePoint(int damage) {
+        getOpponentPlayBoardByTurn().decreaseLifePoint(damage);
+    }
+
 
 }
