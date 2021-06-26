@@ -52,7 +52,7 @@ public class Duel {
             Matcher matchersetPosDEF = getCommand(input, "set -- position (defence)");
             Matcher matcherflipSummon = getCommand(input, "flip-summon");
             Matcher matcherAttack = getCommand(input, "attack (\\s)");
-            Matcher matcherDirectAttack = getCommand(input, "direct attack");
+            Matcher matcherDirectAttack = getCommand(input, "attack direct$");
             Matcher activateEffect = getCommand(input, "activate effect");
             Matcher matcherSetSpell = getCommand(input, "setSpell");
             Matcher matcherSetTrap = getCommand(input, "SetTrap");
@@ -127,7 +127,7 @@ public class Duel {
     }
 
     public void directAttack(Matcher matcherDirectAttack) {
-        System.out.println(duelController.directAttack(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect2.group(1))), GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(Integer.parseInt(matcherSelect.group(1)))));
+        System.out.println(duelController.directAttack());
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
