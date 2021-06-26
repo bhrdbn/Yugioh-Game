@@ -1,57 +1,65 @@
 package model;
 
+import controller.GlobalVariable;
 import view.GraveView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrapAction {
-    public void setAction(int cardControllerNumber, Board board, MonsterCard monsterCard, ArrayList<MonsterCard> monsters, Deck deck, PlayBoard playBoard, GraveYard graveYard) {
+    PlayBoard playBoard = GlobalVariable.getBoard().getPlayBoardByTurn();
+    Deck deck = GlobalVariable.getBoard().getPlayBoardByTurn().getDeck();
+    Deck deckop = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getDeck();
+    PlayBoard OPplayboard = GlobalVariable.getBoard().getOpponentPlayBoardByTurn();
+    List<Card> graveYard = GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards();
+    Board board = GlobalVariable.getBoard();
+    public void setAction(int cardControllerNumber) {
         if (cardControllerNumber == 1) {
-            getfromgrave(graveYard, deck);
+            getfromgrave();
         }
         if (cardControllerNumber == 2) {
-            destroyop(playBoard);
+            destroyop();
         }
         if (cardControllerNumber == 3) {
-            timeseal(board);
+            timeseal();
         }
         if (cardControllerNumber == 4) {
-            destroyattacker(playBoard);
+            destroyattacker();
         }
         if (cardControllerNumber == 5) {
-            solemn(playBoard, monsterCard, deck);
+            solemn();
         }
 
 
     }
 
-    //1 call of the haunted
+    //1 CallofTheHaunted
     //2  Torrential Tribute
-    //3 time seal
-    //4 trap hole
-    //5 solemn warning
-    public void getfromgrave(GraveYard graveYard, Deck deck) {
+    //3 TimeSeal
+    //4 TrapHole
+    //5 SolemnWarning
+    public void getfromgrave() {
         Card card;
-        card = graveYard.getLostCards().get(1);
+        card = graveYard.get(1);
         deck.getMainDeck().add(card);
 
     }
 
-    public void destroyop(PlayBoard playBoard) {
+    public void destroyop() {
         playBoard.getAttackerCards().clear();
     }
 
-    public void timeseal(Board board) {
+    public void timeseal() {
         board.reverseTurn();
     }
 
-    public void destroyattacker(PlayBoard playBoard) {
+    public void destroyattacker() {
         playBoard.getAttackerCards().remove(1);
     }
 
-    public void solemn(PlayBoard playBoard, MonsterCard monsterCard, Deck deckop) {
+    public void solemn( ) {
         playBoard.decreaseLifePoint(2000);
-        deckop.removeCard(monsterCard, 2);
+        deckop.removeCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getHand().get(1), 2);
     }
 }
    /* public void destroyAllAttackModes() {
