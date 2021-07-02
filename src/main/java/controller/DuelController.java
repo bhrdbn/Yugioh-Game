@@ -378,7 +378,8 @@ public class DuelController {
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000+
                     GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
-            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won this round");
+            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won the game : "+
+                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
             MainView.getInstance().run();
         }
         else{
@@ -386,7 +387,8 @@ public class DuelController {
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000+
                     GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
             GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
-            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won whole match");
+            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername()+" won whole match : "+
+                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
             MainView.getInstance().run();
         }
 
@@ -699,12 +701,13 @@ public class DuelController {
                 GlobalVariable.getBoard().isSpellZoneFull() && ((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field"))
             return "spell card zone is full";
         else if (!isSpellConditionMet((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()))
-            return "preparations of this spell are not done yet " + ((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getType();
+            return "preparations of this spell are not done yet ";
         else if (((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field")) {
             if (GlobalVariable.getBoard().isFieldZoneFull())
                 GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
             GlobalVariable.getBoard().getPlayBoardByTurn().setFields(card);
             GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
+
 
             if (GlobalVariable.getBoard().
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Forest")){
@@ -812,6 +815,11 @@ public class DuelController {
                 break;
         }
 
+        if(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSpellTrap().contains(spellCard)) {
+            activateCardAndChangeTurn(spellCard);
+            return true;
+        }
+
         return isConditionMet;
     }
 
@@ -829,8 +837,16 @@ public class DuelController {
         else if (GlobalVariable.getBoard().isSpellZoneFull())
             return "spell card zone is full";
         else {
-            GlobalVariable.getBoard().addToSpell(spell);
-            GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(false);
+            GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
+            for (int i = 0; i < 5; i++) {
+                if(GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).getName().equals("nokhodi")){
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().set(i, GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(false);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).setLocation(Location.SPELL);
+                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                }
+
+            }
             return "set successfully";
         }
     }
@@ -844,16 +860,24 @@ public class DuelController {
            return "you can't do this action in this phase";
        else if(GlobalVariable.getBoard().isSpellZoneFull())
            return "spell card zone is full";
-       else{
-           GlobalVariable.getBoard().addToTrap(trap);
-           GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(false);
+       else {
+           GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
+           for (int i = 0; i < 5; i++) {
+               if(GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).getName().equals("nokhodi")){
+                   GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().set(i, GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+                   GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(false);
+                   GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).setLocation(Location.SPELL);
+                   GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
+               }
+
+           }
            return "set successfully";
        }
    }
 
- //  }
-   public String activateCardAndChangeTurn(SpellCard card) {
-       if(isSpellConditionMet(card)) {
+
+   public void activateCardAndChangeTurn(Card card) {
+       if(isSpellConditionMet((SpellCard) card)) {
            System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
            System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
            System.out.println("do you want to activate your trap and spell?");
@@ -899,16 +923,15 @@ public class DuelController {
                            trapAction.setAction(5);
 
                        }
-                       return "spell/trap activated";
+                       System.out.println("spell/trap activated");
                    }
                    else
-                       return "it's not your turn to play this kind of moves";
+                       System.out.println("it's not your turn to play this kind of moves");
                }
 
            }
 
        }
-  return null;
    }
 
   //public String ritualSummon(SpellCard card) {
