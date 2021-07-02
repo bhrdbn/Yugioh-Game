@@ -4,6 +4,8 @@ package Graphic.view;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import  controller.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import model.*;
 import view.Main;
 
@@ -64,5 +66,16 @@ public class MainView {
                 MenuHandler.runNextMain(Menu.SHOP);
                 break;
         }
+    }
+    private static MediaPlayer backgroundMediaPlayer;
+
+    private static void initializeBackgroundMusic() {
+        String path = MainView.class.getResource("background-music.mp3").toString();
+        Media media = new Media(path);
+        backgroundMediaPlayer = new MediaPlayer(media);
+        backgroundMediaPlayer.play();
+        backgroundMediaPlayer.autoPlayProperty().setValue(true);
+        backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        backgroundMediaPlayer.setOnEndOfMedia(backgroundMediaPlayer::play);
     }
 }
