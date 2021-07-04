@@ -22,6 +22,7 @@ public class MenuHandler {
         }
     }
 
+
     public static void runNextLogin() {
 
         MainView.getInstance().run();

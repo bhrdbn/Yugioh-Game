@@ -12,7 +12,7 @@
 
 
 
-<GridPane fx:controller="controller.LoginController"
+<GridPane fx:controller="Graphic.view.Login"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" style="-fx-background-image:url(ds.jpg)">
 <padding>
     <Insets top="88" right="100" bottom="10" left="25"/>

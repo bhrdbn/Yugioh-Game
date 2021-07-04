@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.net.URL;
 import java.util.Scanner;
 
 public class Main extends Application {
@@ -16,8 +18,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        URL url = new File("src/main/java/Graphic/view/login.fxml").toURI().toURL();
         stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/Graphic/view/login.fxml"));
+        Parent root = FXMLLoader.load(url);
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root, 1000, 760));
         primaryStage.show();

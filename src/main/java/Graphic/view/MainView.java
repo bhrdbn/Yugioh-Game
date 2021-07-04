@@ -23,6 +23,10 @@ public class MainView {
     }
 
     MainController mainController=MainController.getInstance();
+    public void run(){};
+    public void newGameTapped(){};
+    public void logoutTapped(){};
+
 
 
 

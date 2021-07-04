@@ -21,6 +21,11 @@ public class Login  {
     }
 
     public static int b;
+    public void run(){}
+    public void loginTapped(){}
+    public void signupTapped(){}
+    public void removeAccountTapped(){}
+    public void changePasswordTapped(){}
 
 
 
