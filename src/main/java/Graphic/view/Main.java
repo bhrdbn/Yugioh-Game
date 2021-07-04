@@ -28,7 +28,6 @@ public class Main extends Application {
     public static Scanner scanner=new Scanner(System.in);
 
    public static void main(String[] args) {
-
-        Login.getInstance().run();
+        launch(args);
     }
 }

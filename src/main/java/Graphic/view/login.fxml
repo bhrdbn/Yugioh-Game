@@ -61,7 +61,6 @@
 
 <HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #ffffff; -fx-effect: dropshadow( gaussian , rgb(62,12,12) , 4,4,4,4 ); "
       GridPane.columnIndex="4" GridPane.rowIndex="8" GridPane.columnSpan="6">
-    <Button text="play"
-            onAction="#playwithoutlogin"/>
+    
 </HBox>
 </GridPane>
