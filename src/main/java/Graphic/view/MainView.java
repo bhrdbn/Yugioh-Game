@@ -23,20 +23,7 @@ public class MainView {
     }
 
     MainController mainController=MainController.getInstance();
-    public void run(){
-        while(true){
-            String input= Main.scanner.nextLine();
-            Matcher matcher = getCommand(input, "scoreboard show");
-            Matcher matcher1 = getCommand(input, "user logout");
-            Matcher matcher2 = getCommand(input, "exit");
-            Matcher matcher3 = getCommand(input, "enter menu (\\w+)");
-            if(matcher.find())showScoreboard();
-            else if(matcher1.find()||matcher2.find())logoutUser();
-            else if(matcher3.find())navigateMenu(matcher3.group(1));
-            else System.out.println("invalid command");
 
-        }
-    }
 
 
     public void showScoreboard() {
