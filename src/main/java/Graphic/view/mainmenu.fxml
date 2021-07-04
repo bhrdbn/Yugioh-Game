@@ -11,7 +11,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="MainMenuController"
+          fx:controller="Graphic.view.MainView"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" style="-fx-background-image:url(lok.jpg)">
           alignment="center" hgap="10" vgap="10">
 
@@ -31,7 +31,7 @@
     <HBox spacing="10" alignment="top_left"
           GridPane.columnIndex="0" GridPane.rowIndex="1">
         <Button fx:id="btnSeeScoreboard" text="See scoreboard"
-                onAction="#seeScoreboardTapped"/>
+                onAction="#showScoreboard"/>
     </HBox>
     <Text fx:id="txtScoreboard" text="Scoreboard" style="-fx-font: BOLD 20 Tahoma;"
           GridPane.columnIndex="0" GridPane.rowIndex="2"
