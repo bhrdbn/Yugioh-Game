@@ -8,7 +8,7 @@ module projectap2021 {
     requires com.fasterxml.jackson.databind;
     requires java.desktop;
     requires com.google.gson;
-    opens Graphic to javafx.fxml;
+    opens Graphic.view to javafx.fxml;
     exports Graphic.view;
 
 }
