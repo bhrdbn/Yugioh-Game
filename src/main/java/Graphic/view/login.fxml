@@ -1,66 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-
-<GridPane fx:controller="Graphic.view.Login"
+<GridPane fx:controller="Graphic.view.LoginController2"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" style="-fx-background-image:url(ds.jpg)">
-<padding>
-    <Insets top="88" right="100" bottom="10" left="25"/>
-</padding>
-<Text text=""  style="-fx-font: BOLD 20 Tahoma #ffffff; -fx-background-color: #ffffff "
+    <padding>
+        <Insets top="88" right="25" bottom="10" left="25"/>
+    </padding>
+    <Text text="PACMAN"  style="-fx-font: BOLD 20 Tahoma; -fx-background-color: purple "
 
-      GridPane.columnIndex="2" GridPane.rowIndex="0"
-      GridPane.columnSpan="6"/>
+          GridPane.columnIndex="1" GridPane.rowIndex="0"
+          GridPane.columnSpan="2"/>
 
-<Label text="Username:" style="-fx-font-style: ITALIC 30 Tahoma #ffffff;  -fx-effect: dropshadow( gaussian , rgb(246,0,255) , 0,0,0,1 );"
-       GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+    <Label text="Username:" style="-fx-font-style: ITALIC 15 Tahoma #37ffe5;  -fx-effect: dropshadow( gaussian , rgb(0,0,0) , 0,0,0,1 );"
+           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-<TextField fx:id="nametxt" style="-fx-background-color: #fd9595 ; -fx-effect: dropshadow( gaussian , rgb(0,0,0) , 3,3,3,3 ); -fx-font-style: ITALIC 30 Tahoma #000000; "
-           GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+    <TextField fx:id="nametxt" style="-fx-background-color: #00ffae ; -fx-effect: dropshadow( gaussian , rgb(0,0,0) , 3,3,3,3 );"
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-<Label text="Password:"  style="-fx-font-style: ITALIC 30 Tahoma #ffffff ;  -fx-effect: dropshadow( gaussian , rgb(28,84,196) , 0,0,0,1 );"
-       GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+    <Label text="Password:"  style="-fx-font-style: ITALIC 15 Tahoma #06ffff ;  -fx-effect: dropshadow( gaussian , rgb(0,0,0) , 0,0,0,1 );"
+           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
-<PasswordField fx:id="passtxt" style="-fx-background-color: #7fa4ee; -fx-effect: dropshadow( gaussian , rgb(0,0,0) , 3,3,3,3 );"
-               GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+    <PasswordField fx:id="passtxt" style="-fx-background-color: #a9f331; -fx-effect: dropshadow( gaussian , rgb(0,0,0) , 3,3,3,3 );"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-<HBox spacing="10" alignment="bottom_right" style="-fx-font-style:ITALIC 15 Tahoma #ffffff; -fx-effect: dropshadow( gaussian , rgb(21,0,105) , 3,3,3,3 ); "
-      GridPane.columnIndex="5" GridPane.rowIndex="4">
-    <Button text="Login"
-            onAction="#loginTapped"/>
-</HBox>
+    <HBox spacing="10" alignment="bottom_right" style="-fx-font-style:ITALIC 15 Tahoma #06ffff; -fx-effect: dropshadow( gaussian , rgb(236,205,0) , 3,3,3,3 ); "
+          GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button text="Login"
+                onAction="#loginTapped"/>
+    </HBox>
 
 
-<HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #ffffff; -fx-effect: dropshadow( gaussian , rgb(23,43,74) , 3,3,3,3 ); "
-      GridPane.columnIndex="4" GridPane.rowIndex="4">
-    <Button text="Sign up"
-            onAction="#signupTapped"/>
-</HBox>
+    <HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #06ffff; -fx-effect: dropshadow( gaussian , rgb(236,205,0) , 3,3,3,3 ); "
+          GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <Button text="Sign up"
+                onAction="#signupTapped"/>
+    </HBox>
 
-<HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #ffffff; -fx-effect: dropshadow( gaussian , rgb(115,16,16) , 3,3,3,3 ); "
-      GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.columnSpan="6">
-    <Button text="Remove this account"
-            onAction="#removeAccountTapped"/>
-</HBox>
+    <HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #06ffff; -fx-effect: dropshadow( gaussian , rgb(236,205,0) , 3,3,3,3 ); "
+          GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2">
+        <Button text="Remove this account"
+                onAction="#removeAccountTapped"/>
+    </HBox>
 
-<HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #ffffff; -fx-effect: dropshadow( gaussian , rgb(39,54,78) , 4,4,4,4 ); "
-      GridPane.columnIndex="4" GridPane.rowIndex="6" GridPane.columnSpan="6">
-    <Button text="Change password"
-            onAction="#changePasswordTapped"/>
-</HBox>
+    <HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #06ffff; -fx-effect: dropshadow( gaussian , rgb(181,0,255) , 4,4,4,4 ); "
+          GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="2">
+        <Button text="Change password"
+                onAction="#changePasswordTapped"/>
+    </HBox>
 
-<HBox spacing="10" alignment="bottom_center" style="-fx-font-style:ITALIC 15 Tahoma #ffffff; -fx-effect: dropshadow( gaussian , rgb(62,12,12) , 4,4,4,4 ); "
-      GridPane.columnIndex="4" GridPane.rowIndex="8" GridPane.columnSpan="6">
-
-</HBox>
 </GridPane>

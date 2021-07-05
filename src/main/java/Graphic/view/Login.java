@@ -5,7 +5,7 @@ import java.util.regex.*;
 
 import controller.*;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,10 +14,6 @@ import model.Player;
 import view.Main;
 
 public class Login  {
-    @FXML
-    public TextField txtUsername;
-    @FXML
-    public PasswordField txtPassword;
 
     private static Login login = null;
 
@@ -33,61 +29,9 @@ public class Login  {
 
     public static int b;
     public void run(){}
-    public void loginTapped(){}
-    public void signupTapped(){}
-    public void removeAccountTapped(){}
-    public void changePasswordTapped(){}
 
 
 
-    @FXML
-    public void signupTapped(ActionEvent actionEvent) {
-        String nickname = txtUsername.getText();
-        String username = txtUsername.getText(), password = txtPassword.getText();
-        createNewUser(nickname, password, username);
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        String message = createUser(username, nickname, password);
-        alert.setTitle(message);
-        alert.setHeaderText(message);
-        alert.show();
-    }
-
-    @FXML
-    public void loginTapped(ActionEvent actionEvent) {
-        String nickname = txtUsername.getText();
-        String username = txtUsername.getText(), password = txtPassword.getText();
-        loginUser(username, password);
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        String message = loginUser(username, password);
-        alert.setTitle(message);
-        alert.setHeaderText(message);
-        alert.show();
-    }
-    public void removeAccountTapped(ActionEvent actionEvent) {
-        String username = txtUsername.getText(), password = txtPassword.getText();
-        Player user = Player.getPlayerByUser(username);
-        if (user == null) return;
-        Player.getAllPlayers().remove(user);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Successfully removed account");
-        alert.setHeaderText("Successfully removed account");
-        alert.show();
-    }
-
-    public void changePasswordTapped(ActionEvent actionEvent) {
-        String username = txtUsername.getText();
-        Player user = Player.getPlayerByUser(username);
-        if (user == null) return;
-        TextInputDialog textInputDialog = new TextInputDialog("");
-        textInputDialog.setHeaderText("Enter your new password");
-        textInputDialog.showAndWait();
-        String newPassword = textInputDialog.getEditor().getText();
-        user.setPassword(newPassword);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Successfully changed password");
-        alert.setHeaderText("Successfully changed password");
-        alert.show();
-    }
 
     public void loginUser(Matcher matcher, int flag) {
         if (flag == 0) {

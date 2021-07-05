@@ -24,7 +24,60 @@ public class LoginController {
     private LoginController() {
 
     }
+    @FXML
+    public TextField txtUsername;
+    @FXML
+    public PasswordField txtPassword;
 
+
+    @FXML
+    public void signupTapped(ActionEvent actionEvent) {
+        String nickname = txtUsername.getText();
+        String username = txtUsername.getText(), password = txtPassword.getText();
+        createNewUser(nickname, password, username);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+      String message = createUser(username, nickname, password);
+        alert.setTitle(message);
+        alert.setHeaderText(message);
+        alert.show();
+    }
+
+    @FXML
+    public void loginTapped(ActionEvent actionEvent) {
+        String nickname = txtUsername.getText();
+        String username = txtUsername.getText(), password = txtPassword.getText();
+        loginUser(username, password);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        String message = loginUser(username, password);
+        alert.setTitle(message);
+        alert.setHeaderText(message);
+        alert.show();
+    }
+    public void removeAccountTapped(ActionEvent actionEvent) {
+        String username = txtUsername.getText(), password = txtPassword.getText();
+        Player user = Player.getPlayerByUser(username);
+        if (user == null) return;
+        Player.getAllPlayers().remove(user);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successfully removed account");
+        alert.setHeaderText("Successfully removed account");
+        alert.show();
+    }
+
+    public void changePasswordTapped(ActionEvent actionEvent) {
+        String username = txtUsername.getText();
+        Player user = Player.getPlayerByUser(username);
+        if (user == null) return;
+        TextInputDialog textInputDialog = new TextInputDialog("");
+        textInputDialog.setHeaderText("Enter your new password");
+        textInputDialog.showAndWait();
+        String newPassword = textInputDialog.getEditor().getText();
+        user.setPassword(newPassword);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successfully changed password");
+        alert.setHeaderText("Successfully changed password");
+        alert.show();
+    }
     public static LoginController getInstance() {
         if (loginController == null)
             loginController = new LoginController();
