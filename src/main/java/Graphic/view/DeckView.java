@@ -19,6 +19,8 @@ public class DeckView  {
 
         return deckView;
     }
+    public void showDeck(){}
+
 
 
 
@@ -49,10 +51,10 @@ public class DeckView  {
             Matcher matcher11=getCommand(input, "deck show cards");
             Matcher matcher12=getCommand(input, "exit");
 
-            if (matcher.find()) createDeck(matcher);
-            else if (matcher1.find()) deleteDeck(matcher1);
-            else if (matcher2.find()) activateDeck(matcher2);
-            else if (matcher3.find()) addCardToDeck(matcher3,0);
+         //   if (matcher.find()) createDeck(matcher);
+          //  else if (matcher1.find()) deleteDeck(matcher1);
+           // else if (matcher2.find()) activateDeck(matcher2);
+             if (matcher3.find()) addCardToDeck(matcher3,0);
             else if(matcher3_1.find()) addCardToDeck(matcher3_1,1);
             else if(matcher4.find())   addCardToDeck(matcher4,2);
             else if(matcher4_1.find())   addCardToDeck(matcher4_1,3);
@@ -77,14 +79,14 @@ public class DeckView  {
         }
     }
 
-    public void createDeck(Matcher matcher) {
-        System.out.println(deckController.createDeck(matcher.group(1)));
+    public void createDeck() {
+
     }
-    public void deleteDeck(Matcher matcher) {
-        System.out.println(deckController.deleteDeck(matcher.group(1)));
+    public void deleteDeck() {
+
     }
-    public void activateDeck(Matcher matcher){
-        System.out.println(deckController.activateDeck(matcher.group(1)));
+    public void activateDeck(){
+
     }
     public void addCardToDeck(Matcher matcher,int flag){
         if(flag==0)
