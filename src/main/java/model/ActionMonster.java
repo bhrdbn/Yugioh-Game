@@ -1,7 +1,8 @@
 package model;
 
-import Graphic.view.Main;
+
 import controller.GlobalVariable;
+import view.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -270,7 +271,7 @@ public class ActionMonster {
     public void trick() //12
     {
         System.out.println("please enter the (index)monster you want from hand to drop");
-        int num=Main.scanner.nextInt();
+        int num= Main.scanner.nextInt();
         playBoard.getHand().remove(num);
         System.out.println("succesfully");
     }
