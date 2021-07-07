@@ -32,7 +32,7 @@
 
       GridPane.columnIndex="2" GridPane.rowIndex="0"
       GridPane.columnSpan="6"/>
-<Label text="Username:" style="-fx-font-style: BOLD 30 Tahoma #000000;"
+<Label text="Deckname:" style="-fx-font-style: BOLD 30 Tahoma #000000;"
        GridPane.columnIndex="4" GridPane.rowIndex="1"/>
 
 <TextField fx:id="deckname" style="-fx-background-color: #fd9595 ; -fx-font-style: BOLD 30 Tahoma #000000; "
