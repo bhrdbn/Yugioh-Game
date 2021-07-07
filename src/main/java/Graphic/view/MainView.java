@@ -40,24 +40,7 @@ public class MainView {
         Matcher matcher = pattern.matcher(input);
         return matcher;
     }
-    public void logoutUser(){
-        System.out.println(mainController.logoutUser());
-        MenuHandler.runBack(Menu.Main);
 
-    }
-    public void navigateMenu(String menu){
-        switch (menu){
-            case "profile":
-                MenuHandler.runNextMain(Menu.PROFILE);
-                break;
-            case "deck":
-                MenuHandler.runNextMain(Menu.DECK);
-                break;
-            case "shop":
-                MenuHandler.runNextMain(Menu.SHOP);
-                break;
-        }
-    }
     private static MediaPlayer backgroundMediaPlayer;
 
     private static void initializeBackgroundMusic() {
