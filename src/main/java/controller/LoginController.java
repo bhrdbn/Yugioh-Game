@@ -1,13 +1,18 @@
 package controller;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
+import javafx.stage.Stage;
 import model.*;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Matcher;
@@ -16,68 +21,45 @@ import java.util.stream.Collectors;
 
 import view.*;
 
+import javax.swing.text.html.ImageView;
+
 
 public class LoginController {
+    @FXML
+    private ImageView closeBtn;
+    @FXML
+    private Button singInBtn;
+    @FXML
+    private TextField username;
+    @FXML
+    private PasswordField password;
+    @FXML
+    private Label warnLabel;
+    @FXML
+    private Label warnLableClose;
+
+    @FXML
+    private void closeBtnMouseEntered(MouseEvent e){
+//        closeBtn.setCursor(Cursor.HAND_CURSOR);
+    }
+
+    @FXML
+    private void closeBtnMouseCliecked(MouseEvent e){
+        System.exit(0);
+    }
+
+    @FXML
+    private void singInBtnAction(ActionEvent e){
+
+    }
+
 
     private static LoginController loginController = null;
 
     private LoginController() {
 
     }
-    @FXML
-    public TextField txtUsername;
-    @FXML
-    public PasswordField txtPassword;
 
-
-    @FXML
-    public void signupTapped(ActionEvent actionEvent) {
-        String nickname = txtUsername.getText();
-        String username = txtUsername.getText(), password = txtPassword.getText();
-        createNewUser(nickname, password, username);
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-      String message = createUser(username, nickname, password);
-        alert.setTitle(message);
-        alert.setHeaderText(message);
-        alert.show();
-    }
-
-    @FXML
-    public void loginTapped(ActionEvent actionEvent) {
-        String nickname = txtUsername.getText();
-        String username = txtUsername.getText(), password = txtPassword.getText();
-        loginUser(username, password);
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        String message = loginUser(username, password);
-        alert.setTitle(message);
-        alert.setHeaderText(message);
-        alert.show();
-    }
-    public void removeAccountTapped(ActionEvent actionEvent) {
-        String username = txtUsername.getText(), password = txtPassword.getText();
-        Player user = Player.getPlayerByUser(username);
-        if (user == null) return;
-        Player.getAllPlayers().remove(user);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Successfully removed account");
-        alert.setHeaderText("Successfully removed account");
-        alert.show();
-    }
-
-    public void changePasswordTapped(ActionEvent actionEvent) {
-        String username = txtUsername.getText();
-        Player user = Player.getPlayerByUser(username);
-        if (user == null) return;
-        TextInputDialog textInputDialog = new TextInputDialog("");
-        textInputDialog.setHeaderText("Enter your new password");
-        textInputDialog.showAndWait();
-        String newPassword = textInputDialog.getEditor().getText();
-        user.setPassword(newPassword);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Successfully changed password");
-        alert.setHeaderText("Successfully changed password");
-        alert.show();
-    }
     public static LoginController getInstance() {
         if (loginController == null)
             loginController = new LoginController();
@@ -139,4 +121,11 @@ public class LoginController {
                 return ("Username and password didn't match!");
         } else return ("Username and password didn't match!");
     }
+
+    private void logIn(){
+        String username = this.username.getText().toString();
+        String password = this.password.getText().toString();
+    }
+
+
 }
