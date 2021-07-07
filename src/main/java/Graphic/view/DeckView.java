@@ -71,7 +71,7 @@ public class DeckView  {
             else if(matcher9.find()) showADeck(2,matcher9);
             else if(matcher10.find()) showADeck(3,matcher10);
             else if(matcher11.find())  showAllCards();
-            else if(matcher12.find())  MenuHandler.runBack(Menu.DECK);
+
             else System.out.println("invalid command");
 
 
