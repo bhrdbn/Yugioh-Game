@@ -29,7 +29,7 @@ public class playerdeck  extends JFrame{
         private static final int DEFAULT_VERTICAL_PADDING = 20;
 
         // The background color
-        private static final Color bgColor = new Color(155, 62, 151);
+        private  final Color bgColor = new Color(155, 62, 151);
 
         // The name of the nexus
         private JTextField nexusName;
@@ -47,7 +47,6 @@ public class playerdeck  extends JFrame{
             headerPanel.setBackground(Color.BLACK);
 
             JLabel nexusIcon = new JLabel("");
-            nexusIcon.setIcon(new ImageIcon(SpriteManager.getSprite(SpriteManager.NEXUS_PORTRAIT)));
             headerPanel.add(nexusIcon);
 
             add(headerPanel, BorderLayout.NORTH);
@@ -143,8 +142,7 @@ public class playerdeck  extends JFrame{
                 setVisible(false);
 
                 // Create the game's window and display it
-                new GameFrame(MainMenu.this, nexusName.getText(), spawnRate)
-                        .setVisible(true);
+
             }
 
         }
