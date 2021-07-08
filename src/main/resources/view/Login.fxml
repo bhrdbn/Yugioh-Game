@@ -57,11 +57,11 @@
                                     <!--<Image url="@../images/login.jpeg" />-->
                                 </image>
                             </ImageView>
-                            <ImageView fx:id="closeBtn" fitHeight="25.0" fitWidth="21.0" layoutX="415.0" layoutY="4.0" onMouseClicked="#closeBtnMouseCliecked" onMouseEntered="#closeBtnMouseEntered" pickOnBounds="true" preserveRatio="true">
-                                <image>
-<!--                                    Image url="@../images/close.jpeg"/>-->
-                                </image>
-                            </ImageView>
+<!--                           <ImageView fx:id="closeBtn" fitHeight="25.0" fitWidth="21.0" layoutX="415.0" layoutY="4.0" onMouseClicked="#closeBtnMouseCliecked" onMouseEntered="#closeBtnMouseEntered" pickOnBounds="true" preserveRatio="true">-->
+<!--                               <image>-->
+<!--&lt;!&ndash;                                   Image url="@../images/close.jpeg"/>&ndash;&gt;-->
+<!--                               </image>-->
+<!--                           </ImageView>-->
                             <Label fx:id="warnLabel" layoutX="48.0" layoutY="400.0" prefHeight="35.0" prefWidth="357.0" textFill="antiquewhite" visible="false" wrapText="true">
                                 <font>
                                     <Font size="14.0" />
