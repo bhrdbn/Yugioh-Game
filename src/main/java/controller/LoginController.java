@@ -25,6 +25,33 @@ import javax.swing.text.html.ImageView;
 
 
 public class LoginController {
+    @FXML
+    private ImageView closeBtn;
+    @FXML
+    private Button singInBtn;
+    @FXML
+    private TextField username;
+    @FXML
+    private PasswordField password;
+    @FXML
+    private Label warnLabel;
+    @FXML
+    private Label warnLableClose;
+
+    @FXML
+    private void closeBtnMouseEntered(MouseEvent e){
+//        closeBtn.setCursor(Cursor.HAND_CURSOR);
+    }
+
+    @FXML
+    private void closeBtnMouseCliecked(MouseEvent e){
+        System.exit(0);
+    }
+
+    @FXML
+    private void singInBtnAction(ActionEvent e){
+
+    }
 
 
     private static LoginController loginController = null;
@@ -95,6 +122,10 @@ public class LoginController {
         } else return ("Username and password didn't match!");
     }
 
-    
+    private void logIn(){
+        String username = this.username.getText().toString();
+        String password = this.password.getText().toString();
+    }
+
 
 }

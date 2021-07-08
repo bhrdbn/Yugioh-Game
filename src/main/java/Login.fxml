@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Button?>
+<AnchorPane fx:id="loginAnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+    <children>
+        <HBox prefHeight="500.0" prefWidth="800.0" spacing="5.0">
+            <StackPane prefHeight="500.0" prefWidth="360.0">
+                <children>
+                    <Pane prefHeight="200.0" prefWidth="200.0">
+                        <children>
+                            <Label layoutX="54.0" layoutY="179.0" prefHeight="17.0" prefWidth="196.0" text="Welcome" textFill="blue">
+                                <font>
+                                    <Font size="16.0" />
+                                </font>
+                            </Label>
+                            <Text fill="blue" layoutX="53.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description ...." wrappingWidth="285" />
+                            <Line endX="-50.0" layoutX="154.0" layoutY="212.0" startX="-100.0" stroke="blue" />
+                            <Text layoutX="131.0" layoutY="469.0" opacity="0.2" strokeType="OUTSIDE" strokeWidth="0.0" text="@.." textAlignment="CENTER">
+                                <fill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                        <stops>
+                                            <Stop color="#2960e1" />
+                                            <Stop color="blue" offset="1.0" />
+                                        </stops>
+                                    </LinearGradient>
+                                </fill>
+                            </Text>
+                        </children>
+                    </Pane>
+                </children>
+            </StackPane>
+            <StackPane prefHeight="500.0" prefWidth="454.0">
+                <children>
+                    <Pane prefHeight="500.0" prefWidth="455.0">
+                        <children>
+                            <TextField fx:id="username" layoutX="79.0" layoutY="191.0" onMouseClicked="#textFieldMouseClicked" prefHeight="35.0" prefWidth="310.0" promptText="Enter Username" />
+                            <PasswordField fx:id="password" layoutX="79.0" layoutY="244.0" onMouseClicked="#textFieldMouseClicked" prefHeight="35.0" prefWidth="310.0" promptText="Enter Password" />
+                            <Button fx:id="singInBtn" layoutX="184.0" layoutY="299.0" mnemonicParsing="false" onAction="#singInBtnAction" prefHeight="35.0" prefWidth="100.0" text="LOGIN"/>
+
+                            <ImageView fitHeight="204.0" fitWidth="67.0" layoutX="12.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!--<Image url="@../images/login.jpeg" />-->
+                                </image>
+                            </ImageView>
+                            <ImageView fx:id="closeBtn" fitHeight="25.0" fitWidth="21.0" layoutX="415.0" layoutY="4.0" onMouseClicked="#closeBtnMouseCliecked" onMouseEntered="#closeBtnMouseEntered" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/close.jpeg"/>
+                                </image>
+                            </ImageView>
+                            <Label fx:id="warnLabel" layoutX="48.0" layoutY="400.0" prefHeight="35.0" prefWidth="357.0" textFill="antiquewhite" visible="false" wrapText="true">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Label>
+                            <Label fx:id="warnLableClose" layoutX="392.0" layoutY="400.0" onMouseClicked="#warnLableCloseMouseClicked" onMouseEntered="warnLableCloseMouseEntered" prefHeight="17.0" prefWidth="10.0" text="X" textFill="black" visible="false"/>
+                        </children>
+                    </Pane>
+                </children>
+            </StackPane>
+        </HBox>
+    </children>
+</AnchorPane>
