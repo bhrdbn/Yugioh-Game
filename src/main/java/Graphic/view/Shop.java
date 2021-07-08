@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import java.util.regex.*;
 import controller.*;
+import javafx.event.ActionEvent;
 
 public class Shop {
 
@@ -53,4 +54,11 @@ public class Shop {
         return matcher;
     }
 
+    public void showAllCards(ActionEvent actionEvent) {
+        view.Shop.getInstance().showAll();
+    }
+
+    public void buy(ActionEvent actionEvent) {
+        view.Shop.getInstance().buy();
+    }
 }
