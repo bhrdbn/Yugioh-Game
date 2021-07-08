@@ -28,7 +28,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("com.yugioh.fxml/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
             Scene scene = new Scene(root);
             root.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
@@ -52,7 +52,7 @@ public class Main extends Application {
             stage.show();
 
         } catch (Exception e){
-            e.getStackTrace();
+            e.printStackTrace();
         }
 
     }

@@ -44,7 +44,7 @@ public class LoginController {
     }
 
     @FXML
-    private void closeBtnMouseCliecked(MouseEvent e){
+    private void closeBtnMouseCliecked(){
         System.exit(0);
     }
 
@@ -126,6 +126,10 @@ public class LoginController {
         String username = this.username.getText().toString();
         String password = this.password.getText().toString();
     }
+    public void textFieldMouseClicked(){
+
+    }
+    public void warnLableCloseMouseClicked(){}
 
 
 }

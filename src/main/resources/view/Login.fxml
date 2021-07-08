@@ -30,7 +30,7 @@
                             </Label>
                             <Text fill="blue" layoutX="53.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description ...." wrappingWidth="285" />
                             <Line endX="-50.0" layoutX="154.0" layoutY="212.0" startX="-100.0" stroke="blue" />
-                            <Text layoutX="131.0" layoutY="469.0" opacity="0.2" strokeType="OUTSIDE" strokeWidth="0.0" text="@.." textAlignment="CENTER">
+                            <Text layoutX="131.0" layoutY="469.0" opacity="0.2" strokeType="OUTSIDE" strokeWidth="0.0" text="@../.." textAlignment="CENTER">
                                 <fill>
                                     <LinearGradient endX="1.0" endY="1.0">
                                         <stops>
@@ -59,7 +59,7 @@
                             </ImageView>
                             <ImageView fx:id="closeBtn" fitHeight="25.0" fitWidth="21.0" layoutX="415.0" layoutY="4.0" onMouseClicked="#closeBtnMouseCliecked" onMouseEntered="#closeBtnMouseEntered" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../images/close.jpeg"/>
+<!--                                    Image url="@../images/close.jpeg"/>-->
                                 </image>
                             </ImageView>
                             <Label fx:id="warnLabel" layoutX="48.0" layoutY="400.0" prefHeight="35.0" prefWidth="357.0" textFill="antiquewhite" visible="false" wrapText="true">
