@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="1101.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+    <children>
+        <Pane prefHeight="564.0" prefWidth="417.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="75.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <!--<Image url="@../images/icons8_Google_Wallet_50px.png" />-->
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" layoutX="140.0" layoutY="54.0" prefHeight="23.0" prefWidth="173.0" text="Yu Gi Oh Game" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="148.0" layoutY="77.0" prefHeight="23.0" prefWidth="114.0" text="User List" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI" size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtFirstname" layoutX="75.0" layoutY="159.0" prefHeight="32.0" prefWidth="278.0" promptText="firstname" />
+                <TextField fx:id="txtLastname" layoutX="75.0" layoutY="217.0" prefHeight="32.0" prefWidth="278.0" promptText="lastname" />
+                <TextField fx:id="txtEmail" layoutX="75.0" layoutY="276.0" prefHeight="32.0" prefWidth="278.0" promptText="email" />
+                <DatePicker fx:id="txtDOB" layoutX="75.0" layoutY="390.0" prefHeight="32.0" prefWidth="278.0" promptText="dob" />
+                <Button fx:id="btnSave" layoutX="222.0" layoutY="449.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="131.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Save" />
+                <ComboBox fx:id="txtGender" editable="true" layoutX="76.0" layoutY="334.0" prefHeight="32.0" prefWidth="278.0" promptText="gender">
+                </ComboBox>
+                <Button fx:id="btnHome" layoutX="73.0" layoutY="449.0" mnemonicParsing="false" onMouseClicked="#HandleEventsHome" prefHeight="32.0" prefWidth="130.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Home" />
+            </children>
+        </Pane>
+        <TableView fx:id="tblData" layoutX="428.0" layoutY="159.0" prefHeight="400.0" prefWidth="661.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="428.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="159.0">
+            <columnResizePolicy>
+                <Table<?xml version="1.0" encoding="UTF-8"?>
+
+            <?import javafx.scene.control.Button?>
+            <?import javafx.scene.control.Label?>
+            <?import javafx.scene.control.TextField?>
+            <?import javafx.scene.layout.AnchorPane?>
+            <?import javafx.scene.layout.Pane?>
+            <?import javafx.scene.text.Font?>
+
+            <AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="430.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+                <children>
+                    <Pane prefHeight="575.0" prefWidth="429.0" style="-fx-background-color: #040404;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <children>
+                            <Label alignment="CENTER" layoutX="128.0" layoutY="36.0" prefHeight="23.0" prefWidth="173.0" text="Yu Gi Oh" textFill="WHITE">
+                                <font>
+                                    <Font size="29.0" />
+                                </font>
+                            </Label>
+                            <Label alignment="CENTER" layoutX="157.0" layoutY="77.0" prefHeight="23.0" prefWidth="114.0" text="sin up" textFill="WHITE">
+                                <font>
+                                    <Font size="24.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="txtNickname" layoutX="75.0" layoutY="159.0" prefHeight="32.0" prefWidth="278.0" promptText="nickname" />
+                            <TextField fx:id="txtUsername" layoutX="75.0" layoutY="217.0" prefHeight="32.0" prefWidth="278.0" promptText="username" />
+                            <TextField fx:id="txtPassword" layoutX="75.0" layoutY="276.0" prefHeight="32.0" prefWidth="278.0" promptText="password" />
+                            <Button fx:id="btnSave" layoutX="215.0" layoutY="344.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="138.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Save" />
+                            <Button fx:id="btnHome" layoutX="76.0" layoutY="344.0" mnemonicParsing="false" onMouseClicked="#HandleEventsHome" prefHeight="32.0" prefWidth="130.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Home" />
+                        </children>
+                    </Pane>
+                </children>
+            </AnchorPane>sizePolicy>
+        </TableView>
+        <Label fx:id="lblStatus" layoutX="428.0" layoutY="116.0" prefHeight="32.0" prefWidth="354.0" text="Status :" />
+        <Button layoutX="441.0" layoutY="28.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="92.0" text="Shop" />
+        <Button layoutX="541.0" layoutY="28.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="92.0" text="Deck" />
+        <Button layoutX="641.0" layoutY="28.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="92.0" text="New" />
+        <Button layoutX="743.0" layoutY="28.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="92.0" text="Logout" />
+    </children>
+</AnchorPane>

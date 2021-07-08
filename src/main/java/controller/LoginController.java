@@ -4,6 +4,10 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,8 +17,11 @@ import model.*;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
@@ -24,37 +31,73 @@ import view.*;
 import javax.swing.text.html.ImageView;
 
 
-public class LoginController {
+public class LoginController implements Initializable {
     @FXML
-    private ImageView closeBtn;
+    private Label lblErrors;
     @FXML
-    private Button singInBtn;
+    private TextField txtUsername;
     @FXML
-    private TextField username;
+    private TextField txtPassword;
     @FXML
-    private PasswordField password;
+    private Button btnSignin;
     @FXML
     private Label warnLabel;
     @FXML
-    private Label warnLableClose;
-
+    private TextField txtNickname;
     @FXML
-    private void closeBtnMouseEntered(MouseEvent e){
-//        closeBtn.setCursor(Cursor.HAND_CURSOR);
-    }
-
+    private TextField getTxtUsername;
     @FXML
-    private void closeBtnMouseCliecked(){
-        System.exit(0);
-    }
-
-    @FXML
-    private void singInBtnAction(ActionEvent e){
-
-    }
-
+    private TextField getTxtPassword;
 
     public static LoginController loginController = null;
+
+    @FXML
+    public void handleButtonAction(javafx.scene.input.MouseEvent event) {
+        if (event.getSource() == btnSignin) {
+            try {
+                String username = txtUsername.getText();
+                String password = txtPassword.getText();
+
+                if (loginUser(username, password).equals("user logged in successfully!")) {
+
+
+                    //add you loading or delays - ;-)
+                    Node node = (Node) event.getSource();
+                    Stage stage = (Stage) node.getScene().getWindow();
+                    //stage.setMaximized(true);
+                    stage.close();
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/OnBoard.fxml")));
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    warnLabel.setVisible(true);
+                    warnLabel.setStyle("-fx-text-fill: white;-fx-background-color: #FF6978;-fx-padding: 10 10 10 10;");
+                    warnLabel.setText("Invalid username or password");
+                }
+
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+            }
+
+        }
+
+
+
+    }
+    @FXML
+    public void handleButtonActionSignup(javafx.scene.input.MouseEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            stage.close();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Sinup.fxml")));
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
 
 
     public static LoginController getInstance() {
@@ -119,16 +162,22 @@ public class LoginController {
         } else return ("Username and password didn't match!");
     }
 
-    private void logIn(){
-        String username = this.username.getText().toString();
-        String password = this.password.getText().toString();
-    }
-    public void textFieldMouseClicked(){
+    public void textFieldMouseClicked() {
 
     }
-    public void warnLableCloseMouseClicked(){}
-    public void warnLableCloseMouseEntered(){}
-    public void closeBtnMouseEntered(){}
+
+    public void warnLableCloseMouseClicked() {
+    }
+
+    public void warnLableCloseMouseEntered() {
+    }
+
+    public void closeBtnMouseEntered() {
+    }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
