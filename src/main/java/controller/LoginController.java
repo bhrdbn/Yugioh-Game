@@ -54,11 +54,8 @@ public class LoginController {
     }
 
 
-    private static LoginController loginController = null;
+    public static LoginController loginController = null;
 
-    private LoginController() {
-
-    }
 
     public static LoginController getInstance() {
         if (loginController == null)
@@ -130,6 +127,8 @@ public class LoginController {
 
     }
     public void warnLableCloseMouseClicked(){}
+    public void warnLableCloseMouseEntered(){}
+    public void closeBtnMouseEntered(){}
 
 
 }

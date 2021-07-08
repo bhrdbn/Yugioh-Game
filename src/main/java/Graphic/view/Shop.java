@@ -54,11 +54,11 @@ public class Shop {
         return matcher;
     }
 
-    public void showAllCards(ActionEvent actionEvent) {
-        view.Shop.getInstance().showAll();
-    }
-
-    public void buy(ActionEvent actionEvent) {
-        view.Shop.getInstance().buy();
-    }
+  //  public void showAllCards(ActionEvent actionEvent) {
+  //      view.Shop.getInstance().showAll();
+  //  }
+//
+  //  public void buy(ActionEvent actionEvent) {
+  //      view.Shop.getInstance().buy();
+  //  }
 }

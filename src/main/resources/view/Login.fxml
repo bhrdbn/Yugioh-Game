@@ -67,7 +67,7 @@
                                     <Font size="14.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="warnLableClose" layoutX="392.0" layoutY="400.0" onMouseClicked="#warnLableCloseMouseClicked" onMouseEntered="warnLableCloseMouseEntered" prefHeight="17.0" prefWidth="10.0" text="X" textFill="black" visible="false"/>
+                            <Label fx:id="warnLableClose" layoutX="392.0" layoutY="400.0" onMouseClicked="#warnLableCloseMouseClicked" onMouseEntered="#warnLableCloseMouseEntered" prefHeight="17.0" prefWidth="10.0" text="X" textFill="black" visible="false"/>
                         </children>
                     </Pane>
                 </children>
