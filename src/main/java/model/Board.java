@@ -10,7 +10,6 @@ public class Board {
     private Phase phase;
     private PlayBoard playBoard1;
     private PlayBoard playBoard2;
-
     public Board(PlayBoard playBoardPlayer, PlayBoard playBoardOpponent) {
         turn = GlobalVariable.getPlayer();
         playBoard1 = playBoardPlayer;

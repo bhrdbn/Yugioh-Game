@@ -4,8 +4,6 @@ package Graphic.view;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import  controller.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import model.*;
 import view.Main;
 
@@ -23,11 +21,20 @@ public class MainView {
     }
 
     MainController mainController=MainController.getInstance();
-    public void run(){};
-    public void newGameTapped(){};
-    public void logoutTapped(){};
+    public void run(){
+        while(true){
+            String input= Main.scanner.nextLine();
+            Matcher matcher = getCommand(input, "scoreboard show");
+            Matcher matcher1 = getCommand(input, "user logout");
+            Matcher matcher2 = getCommand(input, "exit");
+            Matcher matcher3 = getCommand(input, "enter menu (\\w+)");
+            if(matcher.find())showScoreboard();
+            else if(matcher1.find()||matcher2.find())logoutUser();
+            else if(matcher3.find())navigateMenu(matcher3.group(1));
+            else System.out.println("invalid command");
 
-
+        }
+    }
 
 
     public void showScoreboard() {
@@ -40,16 +47,22 @@ public class MainView {
         Matcher matcher = pattern.matcher(input);
         return matcher;
     }
+    public void logoutUser(){
+        System.out.println(mainController.logoutUser());
+        MenuHandler.runBack(Menu.Main);
 
-    private static MediaPlayer backgroundMediaPlayer;
-
-    private static void initializeBackgroundMusic() {
-        String path = MainView.class.getResource("background-music.mp3").toString();
-        Media media = new Media(path);
-        backgroundMediaPlayer = new MediaPlayer(media);
-        backgroundMediaPlayer.play();
-        backgroundMediaPlayer.autoPlayProperty().setValue(true);
-        backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        backgroundMediaPlayer.setOnEndOfMedia(backgroundMediaPlayer::play);
+    }
+    public void navigateMenu(String menu){
+        switch (menu){
+            case "profile":
+                MenuHandler.runNextMain(Menu.PROFILE);
+                break;
+            case "deck":
+                MenuHandler.runNextMain(Menu.DECK);
+                break;
+            case "shop":
+                MenuHandler.runNextMain(Menu.SHOP);
+                break;
+        }
     }
 }

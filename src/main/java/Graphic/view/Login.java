@@ -1,63 +1,15 @@
 package Graphic.view;
-import javafx.animation.PauseTransition;
-import javafx.animation.TranslateTransition;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.nio.channels.NetworkChannel;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import java.util.regex.*;
 
 import controller.*;
-import javafx.animation.PauseTransition;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Cursor;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import model.Player;
 import view.Main;
 
-public class Login  extends Application {
-
+public class Login  {
     private static Login login = null;
 
-    public Login() {
+    private Login() {
     }
 
     public static Login getInstance() {
@@ -67,215 +19,85 @@ public class Login  extends Application {
         return login;
     }
 
+    public static int b;
 
-    private static Stage mainStage;
+    public void run() {
+        while (true) {
+            String input= Main.scanner.nextLine();
+            Matcher matcher1 = getCommand(input, "user create username (\\w+) nickname (\\w+) password (\\w+)");
+            Matcher matcher1_1 = getCommand(input, "user create nickname (\\w+) username (\\w+) password (\\w+)");
+            Matcher matcher1_2 = getCommand(input, "user create username (\\w+) password (\\w+) nickname (\\w+)");
+            Matcher matcher1_3 = getCommand(input, "user create nickname (\\w+) password (\\w+) username (\\w+)");
+            Matcher matcher1_4 = getCommand(input, "user create password (\\w+) username (\\w+) nickname (\\w+)");
+            Matcher matcher1_5 = getCommand(input, "user create password (\\w+) nickname (\\w+) username (\\w+)");
+            Matcher matcher2 = getCommand(input, "user login username (\\w+) password (\\w+)");
+            Matcher matcher2_1 = getCommand(input, "user login password (\\w+) username (\\w+)");
+            Matcher matcher5 = getCommand(input, "menu show-current");
+            Matcher matcher6=getCommand(input, "exit");
+            if (matcher1.find()) {
+                createUser(matcher1, 0);
+                b = 9;
+            } else if (matcher1_1.find())
+                createUser(matcher1_1, 1);
+            else if (matcher1_2.find())
+                createUser(matcher1_2, 2);
+            else if (matcher1_3.find())
+                createUser(matcher1_3, 3);
+            else if (matcher1_4.find())
+                createUser(matcher1_4, 4);
+            else if (matcher1_5.find())
+                createUser(matcher1_5, 5);
+            else if (matcher2.find())
+                loginUser(matcher2, 0);
+            else if (matcher2_1.find())
+                loginUser(matcher2_1, 1);
 
+            else if (matcher5.find())
+                System.out.println("Login Menu");
+            else if(matcher6.find())
+                MenuHandler.runBack(Menu.LOGIN);
+            else
+                System.out.println("invalid command");
+        }
 
-    public static void main(String[] args) {
-        launch(args);
     }
 
-    public static Stage getMainStage() {
-        return mainStage;
+
+    public void loginUser(Matcher matcher, int flag) {
+        if (flag == 0) {
+            System.out.println(LoginController.getInstance().loginUser(matcher.group(1), matcher.group(2)));
+            if(LoginController.getInstance().loginUser(matcher.group(1), matcher.group(2)).equals("user logged in successfully!")){
+                MenuHandler.runNextLogin();
+            }
+            b = 8;
+        } else {
+            System.out.println(LoginController.getInstance().loginUser(matcher.group(2), matcher.group(1)));
+            if(LoginController.getInstance().loginUser(matcher.group(2), matcher.group(1)).equals("user logged in successfully!")){
+                MenuHandler.runNextLogin();
+            }
+        }
     }
 
+    public void createUser(Matcher matcher, int flag) {
+        if (flag == 0) {
+            System.out.println(LoginController.getInstance().createUser(matcher.group(1), matcher.group(2), matcher.group(3)));
+            b = 6;
+        } else if (flag == 1) {
+            System.out.println(LoginController.getInstance().createUser(matcher.group(2), matcher.group(1), matcher.group(3)));
+        } else if (flag == 2) {
+            System.out.println(LoginController.getInstance().createUser(matcher.group(1), matcher.group(3), matcher.group(2)));
+        } else if (flag == 3) {
+            System.out.println(LoginController.getInstance().createUser(matcher.group(3), matcher.group(1), matcher.group(2)));
+        } else if (flag == 4) {
+            System.out.println(LoginController.getInstance().createUser(matcher.group(2), matcher.group(3), matcher.group(1)));
+        } else if (flag == 5) {
+            System.out.println(LoginController.getInstance().createUser(matcher.group(3), matcher.group(2), matcher.group(1)));
+        }
+    }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        mainStage = stage;
-        final Group group = new Group();
-        Group group1 = new Group();
-        Scene login = new Scene(group1, 400, 400);
-        Label label = new Label();
-        label.setText("welcome to yugioh");
-        label.setLayoutX(170);
-        label.setScaleX(2);
-        label.setScaleY(2);
-        label.setScaleZ(0.5);
-        label.setTextFill(Color.LAWNGREEN);
-        login.setFill(new ImagePattern(new Image(getClass().getResource("/Graphic/view/ds.jpg").toExternalForm())));
-        Button button = new Button();
-        button.setLayoutX(20);
-        button.setLayoutY(355);
-        button.setTextFill(Color.PINK);
-        BackgroundFill background_fill = new BackgroundFill(Color.CRIMSON,
-                CornerRadii.EMPTY, Insets.EMPTY);
-        button.setBorder(new Border(new BorderStroke(Color.CYAN, BorderStrokeStyle.SOLID, new CornerRadii(1.0), BorderStroke.MEDIUM)));
-        button.setText("create new account");
-        button.setBackground(new Background(background_fill));
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                button.setCursor(Cursor.HAND);
-                button.setEffect(new DropShadow(20, Color.WHITE));
-            }
-        });
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                button.setEffect(null);
-            }
-        });
-        Button button1 = new Button();
-        group1.getChildren().addAll(label, button, button1);
-        button1.setLayoutX(300);
-        button1.setLayoutY(355);
-        button1.setTextFill(Color.PINK);
-        button1.setBorder(new Border(new BorderStroke(Color.CYAN, BorderStrokeStyle.SOLID, new CornerRadii(1.0), BorderStroke.MEDIUM)));
-        button1.setText("login");
-        button1.setMinWidth(50);
-        button1.setBackground(new Background(background_fill));
-        button1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                button1.setCursor(Cursor.HAND);
-                button1.setEffect(new DropShadow(20, Color.WHITE));
-            }
-        });
-        button1.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                button1.setEffect(null);
-            }
-        });
-        button1.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                Group login = new Group();
-                Scene loginAccount = new Scene(login, 400, 400);
-                loginAccount.setFill(new ImagePattern(new Image(getClass().getResource("/Test/hi.jpg").toExternalForm())));
-                Label getName = new Label("enter your name");
-                getName.setLayoutY(10);
-                getName.setTextFill(Color.WHITE);
-                TextField textField = new TextField();
-                textField.setLayoutY(30);
-                Label getPass = new Label("enter your password");
-                getPass.setLayoutY(70);
-                getPass.setTextFill(Color.WHITE);
-                TextField textField1 = new TextField();
-                textField1.setLayoutY(90);
-                Button button2 = new Button("login and play!");
-                button2.setTextFill(Color.WHITE);
-                button2.setBackground(new Background(new BackgroundFill(Color.RED,
-                        CornerRadii.EMPTY, Insets.EMPTY)));
-                button2.setCursor(Cursor.HAND);
-                button2.setLayoutX(20);
-                button2.setLayoutY(130);
-                stage.setScene(loginAccount);
-                login.getChildren().addAll(getName, textField, getPass, textField1, button2);
-                button2.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-
-                        if (textField.getText().equals("") || textField1.getText().equals("")) {
-                            Label label1 = new Label("fill the blanks");
-                            label1.setLayoutY(0);
-                            label1.setTextFill(Color.PINK);
-                            Popup popup = new Popup();
-                            popup.getContent().add(label1);
-                            PauseTransition delay = new PauseTransition(Duration.seconds(2));
-                            delay.setOnFinished(e -> popup.hide());
-                            popup.show(stage);
-                            delay.play();
-                        } else {
-
-                            Label label1 = new Label(LoginController.getInstance().loginUser(
-                                    textField.getText(), textField1.getText()));
-                            label1.setLayoutY(0);
-                            label1.setTextFill(Color.PINK);
-                            textField.setText("");
-                            textField1.setText("");
-                            Popup popup = new Popup();
-                            popup.getContent().add(label1);
-                            PauseTransition delay = new PauseTransition(Duration.seconds(2));
-                            delay.setOnFinished(e -> popup.hide());
-                            popup.show(stage);
-                            delay.play();
-
-                        }
-
-                    }
-
-
-                });
-            }
-        });
-        // button.setOnMousePressed(new EventHandler<MouseEvent>() {
-        //     @Override
-        //     public void handle(MouseEvent mouseEvent) {
-        //         Group create = new Group();
-        //         Scene createAccount = new Scene(create, 400, 400);
-        //         createAccount.setFill(new ImagePattern(new Image(getClass().getResource("/Test/10.png").toExternalForm())));
-        //         Label getName = new Label("set your name");
-        //         getName.setLayoutY(10);
-        //         TextField textField = new TextField();
-        //         textField.setLayoutY(30);
-        //         Label getPass = new Label("set your password");
-        //         getPass.setLayoutY(70);
-        //         TextField textField1 = new TextField();
-        //         textField1.setLayoutY(90);
-        //         Button button2 = new Button("submit");
-        //         button2.setLayoutX(20);
-        //         button2.setLayoutY(130);
-        //         stage.setScene(createAccount);
-        //         create.getChildren().addAll(getName, textField, getPass, textField1, button2);
-        //     button2.setOnMousePressed(new EventHandler<MouseEvent>() {
-        //  @Override
-        //             public void handle(MouseEvent mouseEvent) {
-//
-        //                     if (textField.getText().equals("") || textField1.getText().equals("")) {
-        //                         Label label1 = new Label("fill the blanks");
-        //                         label1.setTextFill(Color.RED);
-        //                         Popup popup = new Popup();
-        //                         popup.getContent().add(label1);
-        //                         PauseTransition delay = new PauseTransition(Duration.seconds(2));
-        //                         delay.setOnFinished(e -> popup.hide());
-        //                         popup.show(stage);
-        //                         delay.play();
-        //                     } else if (new CreateAccount().makeAccount(textField.getText(), textField1.getText()) == 1) {
-        //                         Label label1 = new Label("your account is ready!");
-        //                         label1.setTextFill(Color.LIGHTGREEN);
-        //                         label1.setLayoutY(10);
-        //                         label1.setLayoutX(10);
-        //                         stage.setScene(welcome);
-        //                         Popup popup = new Popup();
-        //                         popup.getContent().add(label1);
-        //                         PauseTransition delay = new PauseTransition(Duration.seconds(2));
-        //                         delay.setOnFinished(e -> popup.hide());
-        //                         popup.show(stage);
-        //                         delay.play();
-//
-        //                     } else {
-        //                         Label label1 = new Label("this username already exists");
-        //                         label1.setTextFill(Color.RED);
-        //                         textField.setText("");
-        //                         textField1.setText("");
-        //                         Popup popup = new Popup();
-        //                         popup.getContent().add(label1);
-        //                         PauseTransition delay = new PauseTransition(Duration.seconds(2));
-        //                         delay.setOnFinished(e -> popup.hide());
-        //                         popup.show(stage);
-        //                         delay.play();
-//
-        //                     }
-//
-        //                 }
-//
-//
-        //             });
-//
-//
-        //         }
-        //     });
-        //  stage.setTitle("pacman game");
-        // stage.setScene(login);
-        // stage.show();
-
-        //  }
-
+    public Matcher getCommand(String input, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher;
     }
 }
-
-
-

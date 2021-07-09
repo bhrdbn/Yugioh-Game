@@ -1,8 +1,6 @@
 package model;
 
-
 import controller.GlobalVariable;
-import view.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +51,8 @@ public class ActionMonster {
     {
         sacraficeOneToget();
     }
-        if (cardControllerNumber==12)
-        {
-            trick();
-        }
-        if (cardControllerNumber==13)
-        {
-            terratiger();
-        }
+
+
 
 
     }
@@ -84,9 +76,6 @@ public class ActionMonster {
     //8 9 BeastKingBarbaros 8
     //10 TheCalculator 2-
 //11 HeraldofCreation 4 -
-    //12 the tricky
-    //13 TERRATIGER
-
     public void increaseAttackAll(MonsterCard monsterCard) //1
     { ArrayList<MonsterCard> monsterCards =null;
         for (Card card:playBoard.getHand()) {
@@ -267,25 +256,44 @@ public class ActionMonster {
     }
 
 
-
-    public void trick() //12
+/*
+    public void attack(MonsterCard monsterCard) //3
     {
-        System.out.println("please enter the (index)monster you want from hand to drop");
-        int num= Main.scanner.nextInt();
-        playBoard.getHand().remove(num);
-        System.out.println("succesfully");
+        monsterCard.setAttack(monsterCard.getAttack() + 1900);
     }
 
-    public void terratiger() //13
+    public void defence(MonsterCard monsterCard) //4
     {
-        System.out.println("please enter the (index)monster you want from hand to put in defence");
-        int num=Main.scanner.nextInt();
-        playBoard.setSelectedMonsterCard((MonsterCard) playBoard.getHand().get(num));
-        System.out.println("succesfully");
+        monsterCard.setDefence(6000);
     }
 
+
+    public void ifFaceupcanuseOnce(MonsterCard monsterCard) //5
+    {
+        if (monsterCard.isSide())
+            monsterCard.setAttack(monsterCard.getAttack() + 500);
+        monsterCard.setSide(false);
+
+    }
+
+
+    public void upperDefence(MonsterCard monsterCard) //6
+    {
+        monsterCard.setDefence(9000);
+    }
+
+    public void upperAttack(MonsterCard monsterCard) //7
+    {
+        monsterCard.setAttack(9000);
+    }
+
+    public void sendFromsideDECK(MonsterCard monsterCard, Deck deck) //8
+    {
+        deck.getMainDeck().add(deck.getSideDeck().get(1));
+    }
 
     public void run() {
 
     }
+*/
 }

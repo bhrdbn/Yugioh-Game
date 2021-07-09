@@ -18,8 +18,11 @@ public class GraveView {
     public void run(){
         while(true){
             String input= Main.scanner.nextLine();
-
-             System.out.println("invalid command");
+            if(input.equals("back")){
+                MenuHandler.runBack(Menu.GRAVEYARD);
+                break;
+            }
+            else System.out.println("invalid command");
         }
     }
 }

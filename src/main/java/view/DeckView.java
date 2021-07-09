@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 import controller.*;
 
 public class DeckView  {
-    private static view.DeckView deckView=null;
+    private static DeckView deckView=null;
     private DeckView(){
 
     }
-    public static view.DeckView getInstance()
+    public static DeckView getInstance()
     {
         if (deckView == null)
-            deckView = new view.DeckView();
+            deckView = new DeckView();
 
         return deckView;
     }

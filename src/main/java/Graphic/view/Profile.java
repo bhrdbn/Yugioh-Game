@@ -34,7 +34,7 @@ public class Profile {
                 changePassword(matcher2, 0);
             else if(matcher2_1.find())
                 changePassword(matcher2_1, 1);
-
+            else if(matcher3.find()) MenuHandler.runBack(Menu.PROFILE);
             else
                 System.out.println("invalid command");
 
