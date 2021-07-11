@@ -1,6 +1,6 @@
 [
   {
-    "name": "Battle OX",
+    "name": "BattleOX",
     "level": 4,
     "attribute": "EARTH",
     "monsterType": "Beast-Warrior",
@@ -12,7 +12,7 @@
     "action": 0
   },
   {
-    "name": "Axe Raider",
+    "name": "AxeRaider",
     "level": 4,
     "attribute": "EARTH",
     "monsterType": "Warrior",
@@ -48,7 +48,7 @@
     "action": 0
   },
   {
-    "name": "Silver Fang",
+    "name": "SilverFang",
     "level": 3,
     "attribute": "EARTH",
     "monsterType": "Beast",

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+    <children>
+        <AnchorPane fx:id="pane" layoutX="-52.0" prefHeight="503.0" prefWidth="338.0" style="-fx-background-color: #000;" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-52.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="321.0" fitWidth="255.0" layoutX="67.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Yugioh.jpg" />
+                    </image>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </ImageView>
+            </children>
+            
+
+
+            <effect>
+                <Reflection />
+            </effect>
+        </AnchorPane>
+        <Pane layoutX="488.0" layoutY="100.0" AnchorPane.bottomAnchor="73.0" AnchorPane.topAnchor="100.0">
+            <children>
+                <TextField fx:id="txtUsername" layoutX="7.0" prefHeight="34.0" prefWidth="275.0" promptText="username or email" />
+                <PasswordField fx:id="txtPassword" layoutX="7.0" layoutY="61.0" prefHeight="34.0" prefWidth="275.0" promptText="password" stylesheets="@../styling/fullpackstyling.css" />
+                <Button fx:id="btnSignin" layoutX="153.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: grey;" stylesheets="@../styling/fullpackstyling.css" text="Sign in" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow height="48.41" radius="25.195" width="54.37">
+                     <color>
+                        <Color red="0.08916301280260086" green="0.22368420660495758" blue="0.04432261362671852" />
+                     </color>
+                  </DropShadow>
+               </effect></Button>
+                <Button fx:id="btnSignup" layoutX="14.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#handleButtonActionSignup" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: grey;" stylesheets="@../styling/fullpackstyling.css" text="Sign up" textFill="WHITE">
+               <effect>
+                  <DropShadow height="28.15" radius="15.9575" width="37.68">
+                     <color>
+                        <Color red="0.25526314973831177" green="0.08410290628671646" blue="0.06854288280010223" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Separator layoutX="8.0" layoutY="118.0" prefHeight="7.0" prefWidth="275.0" />
+                <Label fx:id="lblErrors" alignment="CENTER" layoutX="8.0" layoutY="95.0" prefHeight="23.0" prefWidth="275.0" textFill="#ff6354">
+                    <font>
+                        <Font name="Segoe UI" size="10.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Label alignment="CENTER" layoutX="394.0" layoutY="466.0" prefHeight="23.0" prefWidth="93.0" text="Design by 23" textFill="#5b5a5a" AnchorPane.bottomAnchor="14.0">
+            <font>
+                <Font name="Segoe UI" size="12.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="703.0" layoutY="466.0" prefHeight="23.0" prefWidth="137.0" text="GAME" textFill="#a6b1cc" AnchorPane.bottomAnchor="14.0">
+            <font>
+                <Font name="Segoe UI" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="warnLabel" layoutX="48.0" layoutY="400.0" prefHeight="35.0" prefWidth="357.0" textFill="#f8f8f8" visible="false" wrapText="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
