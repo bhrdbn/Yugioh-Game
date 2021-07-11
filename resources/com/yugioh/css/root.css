@@ -1,0 +1,38 @@
+.border {
+    -fx-border-color: black;
+    -fx-border-width: 1.7;
+    -fx-border-style: solid;
+}
+
+.body {
+    -fx-font-family: 'Helvetica', 'Arial', sans-serif;
+    -fx-padding: 20px;
+    -fx-padding-bottom: 0px;
+    -fx-margin: 0px;
+    -fx-font-color: #DFE4E8;
+    -fx-font-size: 50;
+}
+
+.bold {
+    -fx-font-weight: bold;
+}
+
+.size18 {
+    -fx-font-size: 18;
+}
+
+.red-progress-bar .bar {
+    -fx-background-color: red;
+}
+
+.red-field-cell {
+    -fx-border-color: red;
+    -fx-border-width: 1.7;
+    -fx-border-style: solid;
+}
+
+.blue-field-cell {
+    -fx-border-color: blue;
+    -fx-border-width: 1.7;
+    -fx-border-style: solid;
+}
