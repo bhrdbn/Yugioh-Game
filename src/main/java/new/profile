@@ -1,0 +1,318 @@
+package Client;
+
+import Model.Post;
+import Whatever.Message;
+import Whatever.Time;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class Profile implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 19841212603990502L;
+    private final String username;
+    private String name;
+    private String lastname;
+    private String password;
+    private String ForgettablePassword = null;
+    private LocalDate birthDate;
+    private Gender gender;
+    byte[] ProfilePhoto;
+    String email = null;
+    String phoneNumber = null;
+    String location = null;
+    public List<Post> posts = new ArrayList<>();
+    public List<Profile> followings = new CopyOnWriteArrayList<>();
+    public List<Profile> followers = new CopyOnWriteArrayList<>();
+    public List<Profile> Blocked = new CopyOnWriteArrayList<>();
+    public List<Profile> Mute = new CopyOnWriteArrayList<>();
+    public Map<String, List<Message>> Messages = new ConcurrentHashMap<>();
+    public Map<String, Integer> NotSeen = new ConcurrentHashMap<>();
+    public Map<String, Message> LastMessage = new ConcurrentHashMap<>();
+
+    public Map<String, Message> getLastMessage() {
+        return LastMessage;
+    }
+
+    public Profile(String username) {
+        this.username = username;
+    }
+
+    public Map<String, Integer> getNotSeen() {
+        return NotSeen;
+    }
+
+    public Profile authenticate(String username, String password) {
+        if (this.username.equals(username) && this.password.equals(password)) return this;
+        return null;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setProfilePhoto(byte[] profilePhoto) {
+        ProfilePhoto = profilePhoto;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setForgettablePassword(String forgettablePassword) {
+        ForgettablePassword = forgettablePassword;
+    }
+
+
+    public List<Profile> getFollowers() {
+        return followers;
+    }
+
+    public List<Profile> getFollowings() {
+        return followings;
+    }
+
+
+    public Map<String, List<Message>> getMessages() {
+        return Messages;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public byte[] getProfilePhoto() {
+        return ProfilePhoto;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public Integer getAge() {
+        return LocalDateTime.now().getYear() - birthDate.getYear();
+    }
+
+    public List<Profile> getBlocked() {
+        return Blocked;
+    }
+
+    public String getForgettablePassword() {
+        return ForgettablePassword;
+    }
+
+    public List<Profile> getMute() {
+        return Mute;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Profile)) return false;
+        Profile profile = (Profile) o;
+        return Objects.equals(username, profile.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+}
+
+public class UpdateProfileController {
+    public JFXTextField EmailField;
+    public JFXTextField NameField;
+    public JFXTextField LastNameField;
+    public JFXTextField PhoneNumberField;
+    public JFXTextField LocationField;
+    public Ellipse ProfilePhotoField;
+    public RadioButton malebutton;
+    public RadioButton female_button;
+    private Image image = null;
+    private byte[] bytes = null;
+
+    public void initialize() {
+        ProfilePhotoField.setFill(new ImagePattern(new Image(new ByteArrayInputStream(thisClient.profile.getProfilePhoto()))));
+    }
+
+    public void EditProfilePhoto(ActionEvent actionEvent) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(new Popup());
+        if (file == null) {
+            return;
+        }
+        FileInputStream fileInputStream = new FileInputStream(file);
+        bytes = fileInputStream.readAllBytes();
+        image = new Image(new ByteArrayInputStream(bytes));
+        ProfilePhotoField.setFill(new ImagePattern(image));
+    }
+
+    public void SaveNewProfile(ActionEvent actionEvent) {
+        if (!Errors.isPhoneNumberValid(PhoneNumberField.getText())) return;
+        if (!Errors.isEmailValid(EmailField.getText())) return;
+        if (malebutton.isSelected() && female_button.isSelected()) {
+            Errors.ShowInvalidChooseGenderDialog();
+            return;
+        }
+        String newName = NameField.getText();
+        String newLastName = LastNameField.getText();
+        String email = EmailField.getText();
+        String phoneNumber = PhoneNumberField.getText();
+        String location = LocationField.getText();
+        if (LastNameField.getText().isEmpty()) {
+            newLastName = "null";
+        }
+        if (NameField.getText().isEmpty()) {
+            newName = "null";
+        }
+        if (EmailField.getText().isEmpty()) {
+            email = "Not mentioned";
+        }
+        if (PhoneNumberField.getText().isEmpty()) {
+            phoneNumber = "Not mentioned";
+        }
+        if (LocationField.getText().isEmpty()) {
+            location = "Not mentioned";
+        }
+        Gender gender = selectGender();
+        if (!ConfirmationAlert()) {
+            return;
+        }
+        Profile prof = ClientManager.UpdateProfile(thisClient.getUserName(), email, newName, newLastName, phoneNumber, location, gender, bytes);
+        thisClient.setProfile(prof);
+    }
+
+    private Gender selectGender() {
+        Gender gender = null;
+        if (malebutton.isSelected()) {
+            gender = Gender.Male;
+        } else if (female_button.isSelected()) {
+            gender = Gender.Female;
+        }
+        return gender;
+    }
+
+    public boolean ConfirmationAlert() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Changing profile");
+        alert.setHeaderText("Please confirm!");
+        alert.setContentText("Are you sure want to Save these changes?");
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            return true;
+        }
+        return false;
+    }
+
+    public void BackToProfilePage(MouseEvent mouseEvent) throws IOException {
+        new PageLoader().load("ProfilebythisUser");
+    }
+}
+@FXML
+    public void loginTapped() {
+        String username = nametxt.getText(), password = passtxt.getText();
+        if (!userValidation(username, password)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            String message = "Invalid username";
+            alert.setTitle(message);
+            alert.setHeaderText(message);
+            alert.show();
+            return;
+        }
+
+deck
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="304.0" prefWidth="480.0" style="-fx-background-color: #1d3557;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="304.0" prefWidth="159.0" style="-fx-background-color: #27436B;">
+         <children>
+            <VBox layoutX="30.0" layoutY="69.0" prefHeight="217.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #00A8A8;" text="show deck" textFill="WHITE" />
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" style="-fx-background-color: #00A8A8;" text="add deck" textFill="WHITE" />
+                  <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="105.0" style="-fx-background-color: #00A8A8;" text="active decks" textFill="WHITE" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #00A8A8;" text="remove decks" textFill="WHITE" />
+                  <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: #00A8A8;" text="back" textFill="WHITE" />
+               </children>
+            </VBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb11f" height="46.0" layoutX="20.0" layoutY="8.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="120.0" />
+            <TextField layoutX="37.0" layoutY="16.0" prefHeight="30.0" prefWidth="85.0" promptText="deck menu" text="deck menu">
+               <font>
+                  <Font name="Bauhaus 93" size="13.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4ebfbb" height="229.0" layoutX="206.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" width="230.0" />
+   </children>
+</AnchorPane>
