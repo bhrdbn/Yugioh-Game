@@ -24,7 +24,7 @@
     "price": 2000
   },
   {
-    "name": "Mind Crush",
+    "name": "MindCrush",
     "cardType": "Trap",
     "icon": "Normal",
     "description": "Declare 1 card name; if that card is in your opponent's hand, they must discard all copies of it, otherwise you discard 1 random card.",
@@ -32,7 +32,7 @@
     "price": 2000
   },
   {
-    "name": "Torrential Tribute",
+    "name": "TorrentialTribute",
     "cardType": "Trap",
     "icon": "Normal",
     "description": "When a monster(s) is Summoned: Destroy all monsters on the field.",
@@ -64,7 +64,7 @@
     "price": 3000
   },
   {
-    "name": "MagicJamamer",
+    "name": "MagicJammer",
     "cardType": "Trap",
     "icon": "Counter",
     "description": "When a Spell Card is activated: Discard 1 card; negate the activation, and if you do, destroy it.",
@@ -72,7 +72,7 @@
     "price": 3000
   },
   {
-    "name": "CallofTheHaunted",
+    "name": "CallOfTheHunted",
     "cardType": "Trap",
     "icon": "Continuous",
     "description": "Activate this card by targeting 1 monster in your GY; Special Summon that target in Attack Position. When this card leaves the field, destroy that monster. When that monster is destroyed, destroy this card.",
@@ -88,7 +88,7 @@
     "price": 3500
   },
   {
-    "name": "WallofRevealingLight",
+    "name": "WallOfRevealingLight",
     "cardType": "Trap",
     "icon": "Continuous",
     "description": "Activate by paying any multiple of 1000 Life Points. Monsters your opponent controls cannot attack if their ATK is less than or equal to the amount you paid.",

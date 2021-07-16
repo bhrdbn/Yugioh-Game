@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+    <children>
+        <AnchorPane fx:id="pane" layoutX="-50.0" prefHeight="503.0" prefWidth="338.0" style="-fx-background-color: #000;" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-50.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <ImageView fitHeight="321.0" fitWidth="255.0" layoutX="67.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Yugioh.jpg" />
+               </image>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </ImageView>
+            </children>
+            <effect>
+                <Reflection />
+            </effect>
+        </AnchorPane>
+        <Pane layoutX="292.0" layoutY="86.0" AnchorPane.bottomAnchor="87.0" AnchorPane.topAnchor="86.0">
+            <children>
+                <TextField fx:id="txtCurrentPassword" layoutX="293.0" layoutY="10.0" prefHeight="34.0" prefWidth="275.0" promptText="current password" />
+                <TextField fx:id="txtNewPassword" layoutX="293.0" layoutY="71.0" prefHeight="34.0" prefWidth="275.0" promptText="new password" />
+                <Button fx:id="btnSignin" layoutX="369.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: black;" text="change" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Label fx:id="lblErrors" alignment="CENTER" layoutX="8.0" layoutY="95.0" prefHeight="23.0" prefWidth="275.0" textFill="#ff6354">
+                    <font>
+                        <Font name="Segoe UI" size="10.0" />
+                    </font>
+                </Label>
+              <Label fx:id="warn" layoutX="-127.0" layoutY="237.0" prefHeight="35.0" prefWidth="357.0" textFill="WHITE" visible="false" wrapText="true">
+                  <font>
+                      <Font size="14.0" />
+                  </font>
+              </Label>
+            <TextField fx:id="txtNickname" layoutX="371.0" layoutY="249.0" promptText="set a nickname @" />
+            <Separator layoutX="328.0" layoutY="212.0" prefWidth="200.0" style="-fx-background-color: red;" />
+            <Button layoutX="419.0" layoutY="284.0" mnemonicParsing="false" onMouseClicked="#handleEventsNick" style="-fx-background-color: black;" text="submit" textFill="#fdf8f8">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="73.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#uploadImageActionPerformed" style="-fx-background-color: black;" text="upload an image" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="img" layoutX="75" layoutY="20" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </Pane>
+        <Label alignment="CENTER" layoutX="703.0" layoutY="466.0" prefHeight="23.0" prefWidth="137.0" text="GAME" textFill="#a6b1cc" AnchorPane.bottomAnchor="14.0">
+            <font>
+                <Font name="Segoe UI" size="12.0" />
+            </font>
+        </Label>
+      <Label layoutX="577.0" layoutY="57.0" prefHeight="23.0" prefWidth="282.0" text="if you want to change the pass word fill the blanks" />
+      <Button layoutX="607.0" layoutY="453.0" mnemonicParsing="false" onMouseClicked="#back" style="-fx-background-color: black;" text="home" textFill="#fdfdfd">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+    </children>
+</AnchorPane>

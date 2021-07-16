@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="433.0" prefWidth="627.0" style="-fx-background-color: #1d3557;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeckController">
+    <children>
+        <AnchorPane layoutX="-17.0" prefHeight="434.0" prefWidth="224.0" style="-fx-background-color: #27436B;">
+            <children>
+                <VBox layoutX="63.0" layoutY="67.0" prefHeight="370.0" prefWidth="164.0" spacing="10.0">
+                    <children>
+                        <Button fx:id="btn1" onAction="#handleButtonAction" mnemonicParsing="false"    prefHeight="60.0" prefWidth="200.0" stylesheets="@DeckCSS.css" text="show decks" textFill="WHITE">
+                            <font>
+                                <Font size="23.0" />
+                            </font></Button>
+                        <Button fx:id="btn2" onAction="#actionAddDeck" mnemonicParsing="false"  prefHeight="60.0" prefWidth="200.0" stylesheets="@DeckCSS.css" text="add deck" textFill="WHITE">
+                            <font>
+                                <Font size="25.0" />
+                            </font></Button>
+                        <Button fx:id="btn3" onAction="#actionActivatedDeck" mnemonicParsing="false"  prefHeight="60.0" prefWidth="200.0" stylesheets="@DeckCSS.css" text="active decks" textFill="WHITE">
+                            <font>
+                                <Font size="21.0" />
+                            </font></Button>
+                        <Button fx:id="btn5" onAction="#handleButtonAction" mnemonicParsing="false"  prefHeight="60.0" prefWidth="200.0" stylesheets="@DeckCSS.css" text="back" textFill="WHITE" onMouseClicked="#back">
+                            <font>
+                                <Font size="26.0" />
+                            </font></Button>
+                    </children>
+                </VBox>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb11f" height="47.0" layoutX="37.0" layoutY="8.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="178.0" />
+                <TextField layoutX="54.0" layoutY="10.0" prefHeight="44.0" prefWidth="143.0" promptText="deck menu" text="deck menu">
+                    <font>
+                        <Font name="Bauhaus 93" size="23.0" />
+                    </font>
+                </TextField>
+            </children>
+        </AnchorPane>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4ebfbb" height="382.0" layoutX="224.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="379.0" />
+    </children>
+</AnchorPane>

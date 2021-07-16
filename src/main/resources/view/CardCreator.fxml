@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CardCreator">
+   <children>
+      <ChoiceBox fx:id="level" layoutX="243.0" layoutY="101.0" prefWidth="150.0" style="-fx-background-color: purple;" />
+      <Label layoutX="144.0" layoutY="106.0" prefHeight="18.0" prefWidth="73.0" text="level" />
+      <Label layoutX="144.0" layoutY="140.0" prefHeight="18.0" prefWidth="73.0" text="attack" />
+      <Label layoutX="144.0" layoutY="67.0" prefHeight="18.0" prefWidth="73.0" text="name" />
+      <TextField fx:id="name" layoutX="244.0" layoutY="63.0" promptText="name" />
+      <TextField fx:id="attack" layoutX="244.0" layoutY="136.0" promptText="attack" />
+      <Label layoutX="144.0" layoutY="177.0" prefHeight="18.0" prefWidth="73.0" text="defense" />
+      <TextField fx:id="defense" layoutX="244.0" layoutY="172.0" promptText="defense" />
+      <Label fx:id="description" layoutX="442.0" layoutY="-2.0" prefHeight="700.0" prefWidth="761.0" style="-fx-background-color: purple;" text="description:" textFill="#e1cde8">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ChoiceBox fx:id="action" layoutX="243.0" layoutY="210.0" prefWidth="150.0" style="-fx-background-color: purple;" />
+      <Label layoutX="144.0" layoutY="216.0" prefHeight="18.0" prefWidth="73.0" text="action" />
+       <Button layoutX="240.0" layoutY="284.0" onMouseClicked="#back" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: purple;" text="back" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="346.0" layoutY="284.0" onMouseClicked="#submit" style="-fx-background-color: purple;" text="submit" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="warn" layoutX="216.0" layoutY="347.0" prefHeight="26.0" prefWidth="174.0" text="Label" visible="false" />
+   </children>
+</AnchorPane>

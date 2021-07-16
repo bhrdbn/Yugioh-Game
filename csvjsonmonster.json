@@ -285,7 +285,7 @@
     "def": 0,
     "description": "Once per turn, you can select 1 of your opponent's monsters that is removed from play. Until the End Phase, this card's name is treated as the selected monster's name, and this card has the same Attribute, Level, ATK, and DEF as the selected monster. If this card is removed from the field while this effect is applied, remove it from play.",
     "price": 8000,
-    "action": 11
+    "action": 78
   },
   {
     "name": "Bitron",
@@ -444,7 +444,7 @@
     "action": 0
   },
   {
-    "name": "TerratigertheEmpoweredWarrior",
+    "name": "Terratiger",
     "level": 4,
     "attribute": "EARTH",
     "monsterType": "Warrior",
@@ -453,7 +453,7 @@
     "def": 1200,
     "description": "When this card is Normal Summoned: You can Special Summon 1 Level 4 or lower Normal Monster from your hand in Defense Position.",
     "price": 3200,
-    "action": 26
+    "action": 13
   },
   {
     "name": "TheTricky",
@@ -465,7 +465,7 @@
     "def": 1200,
     "description": "You can Special Summon this card (from your hand) by discarding 1 card.",
     "price": 4300,
-    "action": 18
+    "action": 12
   },
   {
     "name": "SpiralSerpent",
