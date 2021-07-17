@@ -1,6 +1,7 @@
 package model;
 
 import controller.GlobalVariable;
+import view.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,12 @@ public class ActionMonster {
     {
         sacraficeOneToget();
     }
+        if (cardControllerNumber == 12) {
+            trick();
+        }
+        if (cardControllerNumber == 13) {
+            terratiger();
+        }
 
 
 
@@ -91,6 +98,21 @@ public class ActionMonster {
             monsterCard.setIsAttack(false);
         else
             monsterCard.setIsAttack(true);
+        System.out.println("succesfully");
+    }
+    public void trick() //12
+    {
+        System.out.println("please enter the (index)monster you want from hand to drop");
+        int num= Main.scanner.nextInt();
+        playBoard.getHand().remove(num);
+        System.out.println("succesfully");
+    }
+
+    public void terratiger() //13
+    {
+        System.out.println("please enter the (index)monster you want from hand to put in defence");
+        int num=Main.scanner.nextInt();
+        playBoard.setSelectedMonsterCard((MonsterCard) playBoard.getHand().get(num));
         System.out.println("succesfully");
     }
 

@@ -42,7 +42,7 @@ public class Shop {
                 showAll();
             else if (matcher3.find()) MenuHandler.runBack(Menu.SHOP);
             else if (matcher6.find()) {ImprotExport improtExport = new ImprotExport();
-                improtExport.serialize(matcher6.group(1),matcher6.group(2),Integer.parseInt(matcher6.group(3)),Integer.parseInt(matcher6.group(4)),Integer.parseInt(matcher6.group(5)),Integer.parseInt(matcher6.group(6)),Integer.parseInt(matcher6.group(7)),matcher6.group(8),Integer.parseInt(matcher6.group(8)), matcher6.group(10),null,true);
+                improtExport.serialize(matcher6.group(1),matcher6.group(2),Integer.parseInt(matcher6.group(3)),Integer.parseInt(matcher6.group(4)),Integer.parseInt(matcher6.group(5)),Integer.parseInt(matcher6.group(6)),Integer.parseInt(matcher6.group(7)),matcher6.group(8),Integer.parseInt(matcher6.group(9)), matcher6.group(10),null,true);
             }
             else if (matcher4.find()) {
                 if (matcher4.group(1).equals("bahar") && matcher4.group(2).equals("ayla") && matcher4.group(3).equals("pardis")) {

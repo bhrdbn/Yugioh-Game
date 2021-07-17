@@ -9,8 +9,7 @@ import view.Main;
 public class Login  {
     private static Login login = null;
 
-    private Login() {
-    }
+
 
     public static Login getInstance() {
         if (login == null)

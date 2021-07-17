@@ -1,8 +1,12 @@
 package controller;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -11,6 +15,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import model.Card;
 import model.MonsterCard;
 
@@ -28,10 +34,9 @@ MonsterCard cards = new MonsterCard(name,number,type,action,describe,side,price,
             cards.setPrice(price);
             cards.setSide(side);
             cards.setType(type);
-            tester.writeJSON(cards);
-
-            MonsterCard card1 = tester.readJSON();
-            System.out.println(card1);
+            ArrayList<MonsterCard>myCards=new ArrayList<>();
+            myCards.add(cards);
+            tester.writeJSON(myCards);
 
         } catch (JsonParseException e) {
             e.printStackTrace();
@@ -42,17 +47,33 @@ MonsterCard cards = new MonsterCard(name,number,type,action,describe,side,price,
         }
     }
 
-    public void writeJSON(MonsterCard card) throws JsonGenerationException, JsonMappingException, IOException{
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("csvjsonmonster.json"), card);
-        System.out.println("import was successful!!!");
+    public void writeJSON(ArrayList<MonsterCard>cards ) throws JsonGenerationException, JsonMappingException, IOException{
+        try {
+            FileWriter myWriter = new FileWriter("json.json",true);
+            myWriter.write(new Gson().toJson(cards.get(0)));
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public MonsterCard readJSON() throws JsonParseException, JsonMappingException, IOException{
-        ObjectMapper mapper = new ObjectMapper();
-        MonsterCard card = mapper.readValue(new File("csvjsonmonster.json"),MonsterCard.class);
-        System.out.println("export was successful!!!");
-        return card;
+    public void readJSON() throws JsonParseException, JsonMappingException, IOException{
+        try {
+            String json = new String(Files.readAllBytes(Paths.get("json.json")));
+            ArrayList<MonsterCard> mons;
+            MonsterCard[] vehiclesArray = new Gson().fromJson(json,
+                    new TypeToken<List<MonsterCard>>(){}.getType()
+                    // Vehicle[].class
+            );
+            mons = (ArrayList<MonsterCard>) Arrays.asList(vehiclesArray);
+            for (MonsterCard vehicle : mons) {
+                System.out.println(vehicle.getName());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

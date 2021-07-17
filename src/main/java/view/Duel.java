@@ -61,6 +61,11 @@ public class Duel {
             Matcher showCard = getCommand(input, "show card");
             Matcher matcherback = getCommand(input, "back");
             Matcher surrender = getCommand(input,"surrender");
+            Matcher matcherRitualSummon = getCommand(input, "ritual summon");
+            if(matcherRitualSummon.find()){
+                ritualSommun();
+            }
+
             if (matcherPlayer0.find()) {
                 newDuel(matcherPlayer0, 0);
             } else if (matcherPlayer1.find()) {
@@ -125,7 +130,9 @@ public class Duel {
                 System.out.println("invalid command");
         }
     }
-
+    public void ritualSommun() {
+        System.out.println(duelController.ritualSummon());
+    }
     public void setTrap(Matcher matcherSetTrap) {
         System.out.println(duelController.setTrapCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedTrapCard()));
     }
@@ -151,11 +158,11 @@ public class Duel {
         System.out.println(GlobalVariable.getBoard().toString());
     }
 
-   public void directAttack(Matcher matcherDirectAttack) {
-       System.out.println(duelController.directAttack());
-       System.out.println(GlobalVariable.getBoard().toString());
+    public void directAttack(Matcher matcherDirectAttack) {
+        System.out.println(duelController.directAttack());
+        System.out.println(GlobalVariable.getBoard().toString());
 
-   }
+    }
 
     public void attack(Matcher matcherAttack) {
         System.out.println(duelController.attack(Integer.parseInt(matcherAttack.group(1))));
@@ -170,13 +177,13 @@ public class Duel {
     }
 
     public void setPosDEF(Matcher matchersetPosDEF) {
-            System.out.println(duelController.changePosition(matchersetPosDEF));
+        System.out.println(duelController.changePosition(matchersetPosDEF));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
 
     public void setPosATK(Matcher matchersetPosATK) {
-            System.out.println(duelController.changePosition(matchersetPosATK));
+        System.out.println(duelController.changePosition(matchersetPosATK));
         System.out.println(GlobalVariable.getBoard().toString());
 
     }
