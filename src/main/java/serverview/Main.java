@@ -88,7 +88,28 @@ public class Main {
             return Controller.getInstance().setAllowed(parts[2]);
         else if(command.startsWith("sell"))
             return Controller.getInstance().sell(parts[1],parts[2]);
-
+        else if(command.startsWith("deck create"))
+            return Controller.getInstance().createDeck(parts[2], parts[3]);
+        else if(command.startsWith("deck delete"))
+            return Controller.getInstance().deleteDeck(parts[2], parts[3]);
+        else if(command.startsWith("deck-set activate"))
+            return Controller.getInstance().activateDeck(parts[2], parts[3]);
+        else if(command.startsWith("deck add-card") && command.contains("side"))
+            return Controller.getInstance().addCardToDeck(parts[5], parts[3], 0, parts[7]);
+        else if(command.startsWith("deck add-card") && !command.contains("side"))
+            return Controller.getInstance().addCardToDeck(parts[5], parts[3], 1, parts[6]);
+        else if(command.startsWith("deck rm-card") && command.contains("side"))
+            return Controller.getInstance().removeCardFromDeck(parts[5], parts[3], 0, parts[7]);
+        else if(command.startsWith("deck rm-card") && !command.contains("side"))
+            return Controller.getInstance().removeCardFromDeck(parts[5], parts[3], 1, parts[6]);
+        else if(command.equals("deck show all"))
+            return Controller.getInstance().showDecks(parts[3]);
+        else if(command.startsWith("deck show deck-name") && command.contains("side"))
+            return Controller.getInstance().showADeck(parts[3], 0, parts[5]);
+        else if(command.startsWith("deck show deck-name") && !command.contains("side"))
+            return Controller.getInstance().showADeck(parts[3], 1, parts[4]);
+        else if(command.equals("deck show cards"))
+            return Controller.getInstance().showAllCards(parts[3]);
         return "";
     }
 }
