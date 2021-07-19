@@ -1,9 +1,5 @@
 package model;
 
-import controller.GlobalVariable;
-
-import java.util.ArrayList;
-
 public class Card {
 
     protected String name;
@@ -14,9 +10,29 @@ public class Card {
     protected boolean side=true;
     protected long price;
     private Location location;
-
+    protected boolean isForbidden=false;
+    protected int countInShop=10;
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setForbidden(boolean forbidden) {
+        isForbidden = forbidden;
+    }
+
+    public int getCountInShop() {
+        return countInShop;
+    }
+
+    public boolean isForbidden() {
+        return isForbidden;
+    }
+
+    public void addCountInShop() {
+        countInShop++;
+    }
+    public void decCountInShop() {
+        countInShop--;
     }
 
     public int getNumber() {

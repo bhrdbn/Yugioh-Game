@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import controller.*;
+
 import model.*;
 public class CheatSheet extends Player {
     private int code;

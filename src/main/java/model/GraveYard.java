@@ -1,6 +1,6 @@
 package model;
 
-import view.Main;
+import clientview.Main;
 
 import java.util.ArrayList;
 

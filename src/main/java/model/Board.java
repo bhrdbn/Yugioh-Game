@@ -1,9 +1,5 @@
 package model;
 
-import controller.GlobalVariable;
-
-import java.util.regex.Matcher;
-
 public class Board {
 
     private Player turn;

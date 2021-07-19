@@ -257,21 +257,21 @@ public class PlayBoard {
     public boolean isDeckFinished(){
         return deck.getMainDeck().size()==0;
     }
-    public String monster(int number){
-        if(monsters.get(number).getName().equals("nokhodi")) return "\tE";
-        else if(monsters.get(number).isAttack()){
-            return "\tOO";
-        }
-        else if(monsters.get(number).isSide()) return "\tDO";
-        else return "\tDH";
-    }
-    public String spell(int number){
-        if(SpellTrap.get(number).getName().equals("nokhodi")) return "\tE";
-        else if(SpellTrap.get(number).isSide()){
-            return "\tO";
-        }
-        else return "\tH";
-    }
+//    public String monster(int number){
+//        if(monsters.get(number).getName().equals("nokhodi")) return "\tE";
+//        else if(monsters.get(number).isAttack()){
+//            return "\tOO";
+//        }
+//        else if(monsters.get(number).isSide()) return "\tDO";
+//        else return "\tDH";
+//    }
+//    public String spell(int number){
+//        if(SpellTrap.get(number).getName().equals("nokhodi")) return "\tE";
+//        else if(SpellTrap.get(number).isSide()){
+//            return "\tO";
+//        }
+//        else return "\tH";
+//    }
     @Override
     public String toString() {
         StringBuilder playBoard= new StringBuilder();
