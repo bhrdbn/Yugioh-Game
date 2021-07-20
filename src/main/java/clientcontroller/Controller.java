@@ -279,7 +279,31 @@ public class Controller {
 
         }
     }
-     //TODO : connect to server from here:
+
+
+    public String createDeck(String deckName) {
+       try{
+           dataOutputStream.writeUTF("deck create " + deckName + " " + token);
+           dataOutputStream.flush();
+           String result = dataInputStream.readUTF();
+           return result;
+       }catch (IOException ioException){
+           ioException.printStackTrace();
+           return "exception";
+       }
+    }
+
+    public String deleteDeck(String deckName) {
+        try{
+            dataOutputStream.writeUTF("deck delete " + deckName + " " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        }catch (IOException ioException){
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
 
 //    public String createDeck(String deckName) {
 //        if (GlobalVariable.getPlayer().doesHaveDeckWithThisName(deckName))
