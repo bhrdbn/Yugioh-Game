@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
@@ -442,6 +444,70 @@ public class Controller {
         }
         return cards.toString();
     }
+
+    public String request(String token, String round) {
+        if (GlobalVariable.getPlayers().get(token).getActivatedDeck() == null) {
+            return " you have no active deck";
+        } else if (!GlobalVariable.getPlayers().get(token).getActivatedDeck().isValid()) {
+            return "your deck is invalid";
+        } else {
+            Player player;
+            GlobalVariable.getWaitingList().put(token,round);
+            LocalDateTime now0=LocalDateTime.now();
+            while(ChronoUnit.SECONDS.between(now0,LocalDateTime.now())<=15){
+             player=getOpponent(token,round);
+            if (player!=null) {
+                String boardToken = setBoard(token, player);
+                return "duel created with " + player.getUsername() + " " + boardToken;
+            }
+            }
+            while(true){
+                player=getOpponentRound(token,round);
+                if (player!=null) {
+                    String boardToken = setBoard(token, player);
+                    return "duel created with " + player.getUsername() + " " + boardToken;
+                }
+            }
+
+            }
+
+        }
+
+
+    private String setBoard(String token, Player player) {
+        PlayBoard playBoard1 = new PlayBoard(player);
+        PlayBoard playBoard2 = new PlayBoard(GlobalVariable.getPlayers().get(token));
+        Board board = new Board(playBoard2, playBoard1);
+        String boardToken = UUID.randomUUID().toString();
+        GlobalVariable.getBoards().put(boardToken, board);
+        GlobalVariable.getWaitingList().remove(token);
+        return boardToken;
+    }
+
+    public Player getOpponent(String token,String round) {
+        Player player=null;
+        for (Map.Entry<String,String> entry : GlobalVariable.getWaitingList().entrySet()) {
+            if(entry.getValue().equals(round)&&
+                    Math.abs(GlobalVariable.getPlayers().get(entry.getKey()).getScore()-GlobalVariable.getPlayers().get(token).getScore())<=1500) {
+                player=GlobalVariable.getPlayers().get(entry.getKey());
+                GlobalVariable.getWaitingList().remove(entry.getKey());
+                return player;
+            }
+    }
+        return null;
+}
+    public Player getOpponentRound(String token,String round) {
+        Player player=null;
+        for (Map.Entry<String,String> entry : GlobalVariable.getWaitingList().entrySet()) {
+            if(entry.getValue().equals(round) ){
+                player=GlobalVariable.getPlayers().get(entry.getKey());
+                GlobalVariable.getWaitingList().remove(entry.getKey());
+                return player;
+            }
+        }
+        return null;
+    }
+
 
 
 

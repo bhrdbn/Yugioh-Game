@@ -9,8 +9,8 @@ public class Board {
     private PlayBoard playBoard1;
     private PlayBoard playBoard2;
 
-    public Board(PlayBoard playBoardPlayer, PlayBoard playBoardOpponent, String token) {
-        turn = GlobalVariable.getPlayers().get(token);
+    public Board(PlayBoard playBoardPlayer, PlayBoard playBoardOpponent) {
+
         playBoard1 = playBoardPlayer;
         playBoard2 = playBoardOpponent;
         phase = Phase.DRAW;
