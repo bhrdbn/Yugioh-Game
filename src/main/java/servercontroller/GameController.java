@@ -481,67 +481,67 @@ public class GameController {
                             getPlayBoardByTurn().getSelectedCard().getName().equals("Suijin")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(2, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("CrabTurtle")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(3, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("GateGuardian")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(4, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("SkullGuardian")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(5, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("CommandKnight")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(1, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("YomiShip")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(6, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("ManEaterBug")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(7, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("TheCalculator")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(10, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("HeraldofCreation")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(11, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("TheTricky")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(12, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("Terratiger")) {
                         ActionMonster actionMonster = new ActionMonster();
                         actionMonster.setAction(13, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                getPlayBoardByTurn().getSelectedCard());
+                                getPlayBoardByTurn().getSelectedCard(), token);
                     }
                     if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                             getPlayBoardByTurn().getSelectedCard().getName().equals("BeastKingBarbaros")) {
@@ -551,10 +551,10 @@ public class GameController {
                         ActionMonster actionMonster = new ActionMonster();
                         if (i == 0) {
                             actionMonster.setAction(8, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                    getPlayBoardByTurn().getSelectedCard());
+                                    getPlayBoardByTurn().getSelectedCard(), token);
                         } else {
                             actionMonster.setAction(9, (MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
-                                    getPlayBoardByTurn().getSelectedCard());
+                                    getPlayBoardByTurn().getSelectedCard(), token);
                         }
                     }
                     return "summoned successfully";
@@ -710,7 +710,7 @@ public class GameController {
         else if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
             return "there is no card to attack here";
         else
-            return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number - 1), number);
+            return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number - 1), number, token);
     }
 
     //  public String setDamage(MonsterCard card2, MonsterCard card1) {
@@ -735,7 +735,7 @@ public class GameController {
             if (counter != 5)
                 return "you can't attack the opponent directly";
             else
-                return MonsterCard.directAttack();
+                return MonsterCard.directAttack(token);
         }
     }
 
@@ -763,22 +763,22 @@ public class GameController {
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Forest")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(15, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
-                actionSpell.setAction(16, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
-                actionSpell.setAction(17, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(15, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
+                actionSpell.setAction(16, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
+                actionSpell.setAction(17, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Umiiruka")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(18, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
-                actionSpell.setAction(19, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(18, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
+                actionSpell.setAction(19, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("ClosedForest")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(20, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(20, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
 
@@ -790,63 +790,63 @@ public class GameController {
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Terraforming")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(1, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(1, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("PotofGreed")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(2, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(2, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Raigeki")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(3, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(3, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("SpellAbsorption")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(7, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(7, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("SupplySquad")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(33, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(33, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Yami")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(4, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
-                actionSpell.setAction(5, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
-                actionSpell.setAction(6, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(4, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
+                actionSpell.setAction(5, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
+                actionSpell.setAction(6, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("Ringofdefense")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(21, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(21, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("DarkHole")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(22, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(22, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("MonsterReborn")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(23, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(23, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                     getPlayBoardByTurn().getSelectedCard().getName().equals("HarpiesFeatherDuster")) {
                 ActionSpell actionSpell = new ActionSpell();
-                actionSpell.setAction(24, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)));
+                actionSpell.setAction(24, GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)), token);
 
             }
             return "spell activated";
@@ -954,31 +954,31 @@ public class GameController {
                         if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                                 getPlayBoardByTurn().getSelectedCard().getName().equals("CallofTheHaunted")) {
                             TrapAction trapAction = new TrapAction();
-                            trapAction.setAction(1);
+                            trapAction.setAction(1, token);
 
                         }
                         if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                                 getPlayBoardByTurn().getSelectedCard().getName().equals("Torrential Tribute")) {
                             TrapAction trapAction = new TrapAction();
-                            trapAction.setAction(2);
+                            trapAction.setAction(2, token);
 
                         }
                         if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                                 getPlayBoardByTurn().getSelectedCard().getName().equals("TimeSeal")) {
                             TrapAction trapAction = new TrapAction();
-                            trapAction.setAction(3);
+                            trapAction.setAction(3, token);
 
                         }
                         if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                                 getPlayBoardByTurn().getSelectedCard().getName().equals("TrapHole")) {
                             TrapAction trapAction = new TrapAction();
-                            trapAction.setAction(4);
+                            trapAction.setAction(4, token);
 
                         }
                         if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).
                                 getPlayBoardByTurn().getSelectedCard().getName().equals("SolemnWarning")) {
                             TrapAction trapAction = new TrapAction();
-                            trapAction.setAction(5);
+                            trapAction.setAction(5, token);
 
                         }
                         System.out.println("spell/trap activated");

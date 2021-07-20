@@ -1,5 +1,7 @@
 package model;
 
+import servercontroller.GlobalVariable;
+
 public class Board {
 
     private Player turn;

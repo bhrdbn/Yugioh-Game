@@ -1,67 +1,65 @@
 package model;
 
+import servercontroller.GlobalVariable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ActionSpell {
-    PlayBoard playBoard = GlobalVariable.getBoard().getPlayBoardByTurn();
-    Deck deck = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getDeck();
-    PlayBoard OPplayboard = GlobalVariable.getBoard().getOpponentPlayBoardByTurn();
-    List<Card> graveYard = GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards();
-    public void setAction(int cardControllerNumber,Board board) {
+    public void setAction(int cardControllerNumber,Board board, String token) {
         if (cardControllerNumber == 1) {
-            addFieldSpellFromDeck();
+            addFieldSpellFromDeck(token);
         }
         if (cardControllerNumber == 2) {
-            addCard();
+            addCard(token);
         }
         if (cardControllerNumber == 3) {
-            destroyopmon();
+            destroyopmon(token);
         }
         if (cardControllerNumber == 33) {
-            supply();
+            supply(token);
         }
         if (cardControllerNumber == 7) {
-            spelllife();
+            spelllife(token);
         }
         if (cardControllerNumber == 4) {
-            fiendATKplus();
+            fiendATKplus(token);
         }
         if (cardControllerNumber == 5) {
-            spellcasterATKplus();
+            spellcasterATKplus(token);
         }
         if (cardControllerNumber == 6) {
-            fairyATKlose();
+            fairyATKlose(token);
         }
         if (cardControllerNumber == 15) {
-            BeastWarriorAtkplus();
+            BeastWarriorAtkplus(token);
         }
         if (cardControllerNumber == 16) {
-            BeastAtkplus();
+            BeastAtkplus(token);
         }
         if (cardControllerNumber == 17) {
-            InsectAtkplus();
+            InsectAtkplus(token);
         }
         if (cardControllerNumber == 18) {
-            aquaAtkplus();
+            aquaAtkplus(token);
         }
         if (cardControllerNumber == 19) {
-            aquadeflos();
+            aquadeflos(token);
         }
         if (cardControllerNumber == 20) {
-            closed();
+            closed(token);
         }
         if (cardControllerNumber == 21) {
-            ring(board);
+            ring(board, token);
         }
         if (cardControllerNumber == 22) {
-            des();
+            des(token);
         }
         if (cardControllerNumber == 24) {
-            destroytrapspelloponent();
+            destroytrapspelloponent(token);
         }
         if (cardControllerNumber == 23) {
-            reborn();
+            reborn(token);
         }
     }
 
@@ -79,70 +77,70 @@ public class ActionSpell {
     //23 MonsterReborn
     //24 HarpiesFeatherDuster
 
-    public void supply() {
+    public void supply(String token) {
 
-        if (playBoard.getMonsters().size() < 2) {
-            GlobalVariable.getBoard().getPlayBoardByTurn().getHand().add(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(1));
+        if (GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getMonsters().size() < 2) {
+            GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand().add(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getMonsters().get(1));
 
         }else{
             System.out.println("cannot activate");
         }
     } //33
-public void ring(Board board)
+public void ring(Board board, String token)
 {
     board.reverseTurn();
 } //21
-    public void addFieldSpellFromDeck() {
-        playBoard.getHand().add(
-                playBoard.getFields());
+    public void addFieldSpellFromDeck(String token) {
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand().add(
+                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getFields());
         System.out.println("successfully");
 
     } //1
-public void destroytrapspelloponent()
+public void destroytrapspelloponent(String token)
 { int i=0;
 
-  while (i<GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSpellTrap().size())
+  while (i<GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getSpellTrap().size())
   {
-      GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSpellTrap().remove(i);
+      GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getSpellTrap().remove(i);
       i++;
   }
     System.out.println("successfully");
 } //24
-    public void spelllife() {
-        playBoard.decreaseLifePoint(-500);
+    public void spelllife(String token) {
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().decreaseLifePoint(-500);
         System.out.println("successfully");
     } //7
 
-    public void destroyopmon() {
+    public void destroyopmon(String token) {
         int i=0;
-        while (i<GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().size())
+        while (i<GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().size())
         {
-            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(i);
+            GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().remove(i);
             i++;
         }
         System.out.println("successfully");
 
     } //3
-public void reborn()
+public void reborn(String token)
 {
     Card card;
-    card=graveYard.get(0);
-    deck.getSideDeck().add(card);
+    card=GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getGraveyards().get(0);
+    GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getSideDeck().add(card);
     System.out.println("successfully");
 
 }
-    public void addCard() { //2
-        deck.getMainDeck().add(deck.getSideDeck().get(1));
-        deck.getSideDeck().remove(1);
-        deck.getMainDeck().add(deck.getSideDeck().get(2));
-        deck.getSideDeck().remove(2);
+    public void addCard(String token) { //2
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getMainDeck().add(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getSideDeck().get(1));
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getSideDeck().remove(1);
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getMainDeck().add(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getSideDeck().get(2));
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getSideDeck().remove(2);
         System.out.println("successfully");
     }
 
-    public void spellcasterATKplus() {
+    public void spellcasterATKplus(String token) {
         //5
         ArrayList<MonsterCard> spellcasters =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("SPELLCASTER"))
             {
                 spellcasters.add((MonsterCard) card);
@@ -155,9 +153,9 @@ public void reborn()
     }
 
 
-    public void fiendATKplus( ) {
+    public void fiendATKplus( String token) {
         ArrayList<MonsterCard> fieldmonsterCards =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("FIEND"))
             {
                 fieldmonsterCards.add((MonsterCard) card);
@@ -169,9 +167,9 @@ public void reborn()
         System.out.println("successfully");
     } //4
 
-    public void fairyATKlose() {
+    public void fairyATKlose(String token) {
         ArrayList<MonsterCard> fairymonsters =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("FIEND"))
             {
                 fairymonsters.add((MonsterCard) card);
@@ -183,9 +181,9 @@ public void reborn()
         System.out.println("successfully");
     } //6
 
-    public void InsectAtkplus() {
+    public void InsectAtkplus(String token) {
         ArrayList<MonsterCard> insectmonsters =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("INSECT"))
             {
                 insectmonsters.add((MonsterCard) card);
@@ -197,9 +195,9 @@ public void reborn()
         System.out.println("successfully");
     } //17
 
-    public void aquaAtkplus() {
+    public void aquaAtkplus(String token) {
         ArrayList<MonsterCard> aquamonsters =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("AQUA"))
             {
                 aquamonsters.add((MonsterCard) card);
@@ -211,9 +209,9 @@ public void reborn()
         System.out.println("successfully");
     } //18
 
-    public void aquadeflos() {
+    public void aquadeflos(String token) {
         ArrayList<MonsterCard> aquamonsters =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("AQUA"))
             {
                 aquamonsters.add((MonsterCard) card);
@@ -225,15 +223,15 @@ public void reborn()
         System.out.println("successfully");
     } //19
 
-    public void closed() {
+    public void closed(String token) {
         ArrayList<MonsterCard> beastCards =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("BEAST"))
             {
                 beastCards.add((MonsterCard) card);
             }
         }
-        for (Card card : playBoard.getGraveyards()) {
+        for (Card card : GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getGraveyards()) {
             for (MonsterCard monsterCard : beastCards) {
                 monsterCard.setAttack(monsterCard.getAttack() + 100);
             }
@@ -241,9 +239,9 @@ public void reborn()
         System.out.println("successfully");
     }
 
-    public void BeastAtkplus() {
+    public void BeastAtkplus(String token) {
         ArrayList<MonsterCard> beastCards =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("BEAST"))
             {
                 beastCards.add((MonsterCard) card);
@@ -255,9 +253,9 @@ public void reborn()
         System.out.println("successfully");
     } //16
 
-    public void BeastWarriorAtkplus() {
+    public void BeastWarriorAtkplus(String token) {
         ArrayList<MonsterCard> beastCards =null;
-        for (Card card:playBoard.getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
             if (card.getType().equals("BEASTWARRIOR"))
             {
                 beastCards.add((MonsterCard) card);
@@ -268,17 +266,17 @@ public void reborn()
         }
         System.out.println("successfully");
     } //15
-public void des()
+public void des(String token)
 {
     int i=0;
-    while (i<GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().size())
+    while (i<GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().size())
     {
-        GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().remove(i);
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().remove(i);
         i++;
     }
-    while (i<GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().size())
+    while (i<GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getMonsters().size())
     {
-        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(i);
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getMonsters().remove(i);
         i++;
     }
     System.out.println("successfully");

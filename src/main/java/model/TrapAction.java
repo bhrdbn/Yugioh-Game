@@ -1,29 +1,23 @@
 package model;
 
-import java.util.List;
+import servercontroller.GlobalVariable;
 
 public class TrapAction {
-    PlayBoard playBoard = GlobalVariable.getBoard().getPlayBoardByTurn();
-    Deck deck = GlobalVariable.getBoard().getPlayBoardByTurn().getDeck();
-    Deck deckop = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getDeck();
-    PlayBoard OPplayboard = GlobalVariable.getBoard().getOpponentPlayBoardByTurn();
-    List<Card> graveYard = GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards();
-    Board board = GlobalVariable.getBoard();
-    public void setAction(int cardControllerNumber) {
+    public void setAction(int cardControllerNumber, String token) {
         if (cardControllerNumber == 1) {
-            getfromgrave();
+            getfromgrave(token);
         }
         if (cardControllerNumber == 2) {
-            destroyop();
+            destroyop(token);
         }
         if (cardControllerNumber == 3) {
-            timeseal();
+            timeseal(token);
         }
         if (cardControllerNumber == 4) {
-            destroyattacker();
+            destroyattacker(token);
         }
         if (cardControllerNumber == 5) {
-            solemn();
+            solemn(token);
         }
 
 
@@ -34,32 +28,32 @@ public class TrapAction {
     //3 TimeSeal
     //4 TrapHole
     //5 SolemnWarning
-    public void getfromgrave() {
+    public void getfromgrave(String token) {
         Card card;
-        card = graveYard.get(1);
-        deck.getMainDeck().add(card);
+        card = GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getGraveyards().get(1);
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getDeck().getMainDeck().add(card);
         System.out.println("succesfully");
 
     }
 
-    public void destroyop() {
-        OPplayboard.getMonsters().clear();
+    public void destroyop(String token) {
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().clear();
         System.out.println("succesfully");
     }
 
-    public void timeseal() {
-        board.reverseTurn();
+    public void timeseal(String token) {
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).reverseTurn();
         System.out.println("succesfully");
     }
 
-    public void destroyattacker() {
-        OPplayboard.getAttackerCards().remove(1);
+    public void destroyattacker(String token) {
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getAttackerCards().remove(1);
         System.out.println("succesfully");
     }
 
-    public void solemn( ) {
-        playBoard.decreaseLifePoint(2000);
-        deckop.removeCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getHand().get(1), 2);
+    public void solemn( String token) {
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().decreaseLifePoint(2000);
+        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().removeCard(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getHand().get(1), 2);
         System.out.println("succesfully");
     }
 }

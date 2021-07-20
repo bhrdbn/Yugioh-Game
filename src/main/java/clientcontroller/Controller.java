@@ -86,12 +86,12 @@ public class Controller {
         try {
             dataOutputStream.writeUTF("login " + username + " " + password);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             if (!result.contains("successfully"))
                 return dataInputStream.readUTF();
             String[] resultSep = result.split(" ");
-            token=resultSep[4];
-            return result.substring(0,14);
+            token = resultSep[4];
+            return result.substring(0, 14);
 
 
         } catch (IOException ioException) {
@@ -102,7 +102,7 @@ public class Controller {
     }
 
     //------------------------
-    public  String scoreboard() {
+    public String scoreboard() {
 
         try {
             dataOutputStream.writeUTF("scoreboard");
@@ -117,7 +117,7 @@ public class Controller {
 
     public String logoutUser() {
         try {
-            dataOutputStream.writeUTF("logout "+token);
+            dataOutputStream.writeUTF("logout " + token);
             dataOutputStream.flush();
             return dataInputStream.readUTF();
         } catch (IOException ioException) {
@@ -129,22 +129,22 @@ public class Controller {
 
     public String changeNickName(String nickname) {
         try {
-            dataOutputStream.writeUTF("change nickname "+nickname+" "+token);
+            dataOutputStream.writeUTF("change nickname " + nickname + " " + token);
             dataOutputStream.flush();
-           String result=dataInputStream.readUTF();
-           return result;
+            String result = dataInputStream.readUTF();
+            return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
     }
 
-    public String changePassword(String newPassword,String oldPassword) {
+    public String changePassword(String newPassword, String oldPassword) {
 
         try {
-            dataOutputStream.writeUTF("change password "+oldPassword+" "+newPassword+" "+token);
+            dataOutputStream.writeUTF("change password " + oldPassword + " " + newPassword + " " + token);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -152,7 +152,6 @@ public class Controller {
 
         }
     }
-
 
 
     public ArrayList<MonsterCard> getAllMonsters() {
@@ -167,9 +166,9 @@ public class Controller {
     public String buy(String cardName) {
 
         try {
-            dataOutputStream.writeUTF("buy "+cardName+" "+token);
+            dataOutputStream.writeUTF("buy " + cardName + " " + token);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -178,12 +177,13 @@ public class Controller {
         }
 
     }
+
     public String sell(String cardName) {
 
         try {
-            dataOutputStream.writeUTF("sell "+cardName+" "+token);
+            dataOutputStream.writeUTF("sell " + cardName + " " + token);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -191,16 +191,14 @@ public class Controller {
         }
 
     }
-
-
 
 
     public String decreaseCard(String name) {
 
         try {
-            dataOutputStream.writeUTF("admin decrease "+name);
+            dataOutputStream.writeUTF("admin decrease " + name);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -212,9 +210,9 @@ public class Controller {
 
     public String increaseCard(String name) {
         try {
-            dataOutputStream.writeUTF("admin increase "+name);
+            dataOutputStream.writeUTF("admin increase " + name);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -226,9 +224,9 @@ public class Controller {
 
     public String setForbidden(String name) {
         try {
-            dataOutputStream.writeUTF("admin forbid "+name);
+            dataOutputStream.writeUTF("admin forbid " + name);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -239,9 +237,9 @@ public class Controller {
 
     public String setAllowed(String name) {
         try {
-            dataOutputStream.writeUTF("admin allow "+name);
+            dataOutputStream.writeUTF("admin allow " + name);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -256,7 +254,7 @@ public class Controller {
         try {
             dataOutputStream.writeUTF("show all");
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -267,11 +265,11 @@ public class Controller {
     }
 
 
-    public boolean admin(){
+    public boolean admin() {
         try {
-            dataOutputStream.writeUTF("admin "+token);
+            dataOutputStream.writeUTF("admin " + token);
             dataOutputStream.flush();
-            String result=dataInputStream.readUTF();
+            String result = dataInputStream.readUTF();
             return result.equals("true");
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -282,36 +280,36 @@ public class Controller {
 
 
     public String createDeck(String deckName) {
-       try{
-           dataOutputStream.writeUTF("deck create " + deckName + " " + token);
-           dataOutputStream.flush();
-           String result = dataInputStream.readUTF();
-           return result;
-       }catch (IOException ioException){
-           ioException.printStackTrace();
-           return "exception";
-       }
+        try {
+            dataOutputStream.writeUTF("deck create " + deckName + " " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
     }
 
     public String deleteDeck(String deckName) {
-        try{
+        try {
             dataOutputStream.writeUTF("deck delete " + deckName + " " + token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
-        }catch (IOException ioException){
+        } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
     }
 
     public String activateDeck(String deckName) {
-        try{
+        try {
             dataOutputStream.writeUTF("deck set-activate " + deckName + " " + token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
-        }catch (IOException ioException){
+        } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
@@ -319,19 +317,19 @@ public class Controller {
 
     public String addCardToDeck(String deckName, String cardName, int position) {
 
-        try{if(position == 0) {
-            dataOutputStream.writeUTF("deck add-card card " + cardName + " deck " + deckName + " side " + token);
-            dataOutputStream.flush();
-            String result = dataInputStream.readUTF();
-            return result;
-        }
-        else{
-            dataOutputStream.writeUTF("deck add-card card " + cardName + " deck " + deckName + " " + token);
-            dataOutputStream.flush();
-            String result = dataInputStream.readUTF();
-            return result;
-        }
-        }catch (IOException ioException){
+        try {
+            if (position == 0) {
+                dataOutputStream.writeUTF("deck add-card card " + cardName + " deck " + deckName + " side " + token);
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                return result;
+            } else {
+                dataOutputStream.writeUTF("deck add-card card " + cardName + " deck " + deckName + " " + token);
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                return result;
+            }
+        } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
@@ -340,19 +338,19 @@ public class Controller {
 
     public String removeCardFromDeck(String deckName, String cardName, int position) {
 
-        try{if(position == 0) {
-            dataOutputStream.writeUTF("deck rm-card card " + cardName + " deck " + deckName + " side " + token);
-            dataOutputStream.flush();
-            String result = dataInputStream.readUTF();
-            return result;
-        }
-        else{
-            dataOutputStream.writeUTF("deck rm-card card " + cardName + " deck " + deckName + " " + token);
-            dataOutputStream.flush();
-            String result = dataInputStream.readUTF();
-            return result;
-        }
-        }catch (IOException ioException){
+        try {
+            if (position == 0) {
+                dataOutputStream.writeUTF("deck rm-card card " + cardName + " deck " + deckName + " side " + token);
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                return result;
+            } else {
+                dataOutputStream.writeUTF("deck rm-card card " + cardName + " deck " + deckName + " " + token);
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                return result;
+            }
+        } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
@@ -360,93 +358,63 @@ public class Controller {
     }
 
     public String showDecks() {
-        try{
+        try {
             dataOutputStream.writeUTF("deck show all " + token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
-        }catch (IOException ioException){
+        } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
     }
 
     public String showADeck(String deckName, int position) {
-        try{if(position == 0) {
-            dataOutputStream.writeUTF("deck show deck-name " + deckName + " side " + token);
-            dataOutputStream.flush();
-            String result = dataInputStream.readUTF();
-            return result;
-        }
-        else{
-            dataOutputStream.writeUTF("deck show deck-name " + deckName + " " + token);
-            dataOutputStream.flush();
-            String result = dataInputStream.readUTF();
-            return result;
-        }
-        }catch (IOException ioException){
+        try {
+            if (position == 0) {
+                dataOutputStream.writeUTF("deck show deck-name " + deckName + " side " + token);
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                return result;
+            } else {
+                dataOutputStream.writeUTF("deck show deck-name " + deckName + " " + token);
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                return result;
+            }
+        } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
     }
 
     public String showAllCards() {
-        try{
+        try {
             dataOutputStream.writeUTF("deck show cards " + token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
-        }catch (IOException ioException){
+        } catch (IOException ioException) {
             ioException.printStackTrace();
             return "exception";
         }
     }
 
-//    public void tributeMonsters(int monster) {
-//        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster);
-//        GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster));
-//
-//    }
-//
-//    public String ritualSummon() {
-//        Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard();
-//        if (!isSpellConditionMet((SpellCard) card))
-//            return "there is no way you could ritual summon a monster";
-//        else if (!((SpellCard) card).getIcon().equals("Ritual") || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedMonsterCard().typeOfMonsterCard().equals("Ritual"))
-//            return "you should ritual summon right now";
-//        else {
-//            System.out.println("please enter the cards(the number of cards) that you want to tribute");
-//            String monster1 = Main.scanner.nextLine();
-//            String monster2 = Main.scanner.nextLine();
-//            if (!isLevelMatched(monster1, monster2, card))
-//                return "selected monsters levels don't match with ritual monster";
-//            else {
-//                tributeMonsters(Integer.parseInt(monster1));
-//                tributeMonsters(Integer.parseInt(monster2));
-//                System.out.println("please enter the attack or defence status");
-//                String status = Main.scanner.nextLine();
-//                if (status.equals("attacking")) {
-//                    ((MonsterCard) card).setIsAttack(true);
-//                    card.setSide(false);
-//                } else if (status.equals("defensive"))
-//                    card.setSide(true);
-//                return "summoned successfully";
-//            }
-//
-//
-//        }
-//
-//    }
-//
-//    public boolean isLevelMatched(String monster1, String monster2, Card card) {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(Integer.parseInt(monster1)).getLevel() + GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(Integer.parseInt(monster2)).getLevel() >= ((MonsterCard) card).getLevel())
-//            return true;
-//        else
-//            return false;
-//    }
-//
-//
-//    public String newDuel(int round, String usernameOpponent, String usernamePlayer) {
+    public String ritualSummon() {
+        try {
+            dataOutputStream.writeUTF("ritual summon " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+
+    }
+
+
+    //    public String newDuel(int round, String usernameOpponent, String usernamePlayer) {
 //        if (Player.getPlayerByUser(usernameOpponent) == null) return "there is no player with this username";
 //        else if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
 //            return usernamePlayer + " has no active deck";
@@ -488,86 +456,91 @@ public class Controller {
 //    }
 //
 //
-//    public String selectOwnMonster(int number) {
-//        if (number > 5) return "selection is invalid";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(number).getName().equals("nokhodi"))
-//            return
-//                    "no card found in the given position";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedCard(GlobalVariable.getBoard().getPlayBoardByTurn().selectMonster(number));
-//            return "card selected";
-//        }
-//    }
-//
-//    public String selectOpponentMonster(int number) {
-//        if (number > 5) return "selection is invalid";
-//        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectMonster(number).getName().equals("nokhodi"))
-//            return
-//                    "no card found in the given position";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedOpponentCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectMonster(number));
-//            return "card selected";
-//        }
-//    }
-//
-//    public String selectOwnSpell(int number) {
-//        if (number > 5) return "selection is invalid";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi"))
-//            return
-//                    "no card found in the given position";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedCard(GlobalVariable.getBoard().getPlayBoardByTurn().selectSpellOrTrap(number));
-//            return "card selected";
-//        }
-//    }
-//
-//    public String selectOpponentSpell(int number) {
-//        if (number > 5) return "selection is invalid";
-//        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi"))
-//            return
-//                    "no card found in the given position";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedOpponentCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().selectSpellOrTrap(number));
-//            return "card selected";
-//        }
-//    }
-//
-//    public String selectHand(int number) {
-//        if (number > 6) return "selection is invalid";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getHand().size() < number) return
-//                "no card found in the given position";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedCard(GlobalVariable.getBoard().getPlayBoardByTurn().selectFromHand(number));
-//            return "card selected";
-//        }
-//    }
-//
-//    public String selectField() {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getFields() == null)
-//            return "no card found in the given position";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedCard(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
-//            return "card selected";
-//        }
-//    }
-//
-//    public String selectOpponentField() {
-//        if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getFields() == null)
-//            return "no card found in the given position";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedOpponentCard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getFields());
-//            return "card selected";
-//        }
-//    }
-//
-//    public String managePhase() {
+    public String selectOwnMonster(int number) {
+        try {
+            dataOutputStream.writeUTF("select monster " + String.valueOf(number) + " " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String selectOpponentMonster(int number) {
+        try {
+            dataOutputStream.writeUTF("select monster " + String.valueOf(number) + " opponent " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String selectOwnSpell(int number) {
+        try {
+            dataOutputStream.writeUTF("select spell " + String.valueOf(number) + " " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String selectOpponentSpell(int number) {
+        try {
+            dataOutputStream.writeUTF("select spell " + String.valueOf(number) + " opponent" + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String selectHand(int number) {
+        try {
+            dataOutputStream.writeUTF("select hand " + String.valueOf(number) + " " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String selectField() {
+        try {
+            dataOutputStream.writeUTF("select field " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String selectOpponentField() {
+        try {
+            dataOutputStream.writeUTF("select field " + "opponent " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    //    public String managePhase() {
 //        Phase phase = GlobalVariable.getBoard().getPhase();
 //        switch (phase) {
 //            case DRAW:
@@ -760,27 +733,18 @@ public class Controller {
 //    }
 //
 //
-//    public String deselect() {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
-//            return "no card is selected yet";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedOpponentCard(null);
-//            GlobalVariable.getBoard().getPlayBoardByTurn().
-//                    setSelectedCard(null);
-//            return "card deselected";
-//        }
-//    }
-//
-//    public int countNokhodi() {
-//        int number = 0;
-//        for (MonsterCard monster : GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters()) {
-//            if (monster.getName().equals("nokhodi")) number++;
-//        }
-//        return number;
-//    }
-//
+    public String deselect() {
+        try {
+            dataOutputStream.writeUTF("select -d " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
 //    public void setWin() {
 //        if (rounds == 1) {
 //            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
@@ -802,624 +766,154 @@ public class Controller {
 //
 //    }
 //// ** monster ba ehzare vizhe ro nazadam **
-//
-//    public String summon() {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
-//                        getLocation() != Location.HAND || !(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()
-//                instanceof MonsterCard))
-//            return "you can’t summon this card";
-//        else if (!(GlobalVariable.getBoard().getPhase() == Phase.MAIN1 ||
-//                GlobalVariable.getBoard().getPhase() == Phase.MAIN2))
-//            return "action not allowed in this phase";
-//        else if (countNokhodi() == 0)
-//            return ("monster card zone is full");
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet())
-//            return ("you already summoned/set on this turn");
-//        else if (((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getLevel() <= 4) {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setSetSummonedMonster
-//                    ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//            for (int i = 0; i < 5; i++) {
-//
-//                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
-//                            set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
-//                    break;
-//                }
-//            }
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard());
-//            return "summoned successfully";
-//        } else if (((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getLevel() <= 6) {
-//            if (countNokhodi() == 5)
-//                return "there are not enough cards for tribute";
-//            else {
-//                String s = Main.scanner.nextLine();
-//                if (s.equals("cancel")) {
-//                    deselect();
-//                    return "";
-//                }
-//                int monster = Integer.parseInt(s);
-//                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1).getName().equals("nokhodi"))
-//                    return "there no monsters one this address";
-//                else {
-//                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card);
-//                    setNokhodi(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1));
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().setSetSummonedMonster
-//                            ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                    for (int i = 0; i < 5; i++) {
-//
-//                        if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
-//                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
-//                                    set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
-//                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
-//                            break;
-//                        }
-//
-//                    }
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard());
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("Suijin")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(2, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("CrabTurtle")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(3, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("GateGuardian")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(4, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("SkullGuardian")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(5, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("CommandKnight")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(1, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("YomiShip")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(6, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("ManEaterBug")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(7, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("TheCalculator")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(10, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("HeraldofCreation")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(11, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("TheTricky")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(12, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("Terratiger")) {
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        actionMonster.setAction(13, (MonsterCard) GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard());
-//                    }
-//                    if (GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard().getName().equals("BeastKingBarbaros")) {
-//                        int i;
-//                        System.out.println("please enter which mode you want to sacrifice press 1 else 0");
-//                        i = Main.scanner.nextInt();
-//                        ActionMonster actionMonster = new ActionMonster();
-//                        if (i == 0) {
-//                            actionMonster.setAction(8, (MonsterCard) GlobalVariable.getBoard().
-//                                    getPlayBoardByTurn().getSelectedCard());
-//                        } else {
-//                            actionMonster.setAction(9, (MonsterCard) GlobalVariable.getBoard().
-//                                    getPlayBoardByTurn().getSelectedCard());
-//                        }
-//                    }
-//                    return "summoned successfully";
-//
-//                }
-//
-//            }
-//
-//        } else {
-//            if (countNokhodi() > 3)
-//                return "there are not enough cards for tribute";
-//            else {
-//                int monster = Integer.parseInt(Main.scanner.nextLine());
-//                int monster1 = Integer.parseInt(Main.scanner.nextLine());
-//                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1).getName().equals("nokhodi") ||
-//                        GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1 - 1).getName().equals("nokhodi"))
-//                    return "there no monsters one this address";
-//                else {
-//                    Card card = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1);
-//                    Card card1 = GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster1 - 1);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(card1);
-//                    setNokhodi(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(monster - 1));
-//                    setNokhodi(GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().remove(monster1 - 1));
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().setSetSummonedMonster
-//                            ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                    for (int i = 0; i < 5; i++) {
-//
-//                        if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
-//                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().
-//                                    set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(true);
-//                            GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
-//                            break;
-//                        }
-//                    }
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().
-//                            getPlayBoardByTurn().getSelectedCard());
-//                    return "summoned successfully";
-//
-//                }
-//
-//            }
-//
-//        }
-//
-//    }
-//
-//    public void setNokhodi(Card card) {
-//        card = new Card("nokhodi", 1, "ff", "aa", false, 1);
-//    }
-//
-//
-//    public String setMonster() {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
-//            return "you can't set this card";
-//        else if ((GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()
-//                instanceof MonsterCard) &&
-//                (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
-//            return "you can't do this action in this phase";
-//        else if (GlobalVariable.getBoard().isMonsterZoneFull())
-//            return "monster card zone is full";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet())
-//            return "you already summoned/set on this turn";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setSetSummonedMonster
-//                    ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//            for (int i = 0; i < 5; i++) {
-//                if (GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi")) {
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().set(i, (MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setSide(false);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setIsAttack(false);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getMonsters().get(i).setLocation(Location.MONSTERS);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                    break;
-//                }
-//
-//            }
-//            return "set successfully";
-//        }
-//
-//
-//    }
-//
-//    public String changePosition(Matcher phase) {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
-//            return "you can't change this card position";
-//        else if (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 &&
-//                GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
-//            return "you can't do this action in this phase";
-//        else if (phase.group(1).equals("attack") && (!GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().isSide() ||
-//                ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack()))
-//            return "this card is already in the wanted position";
-//        else if (phase.group(1).equals("defence") && !(((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack()))
-//            return "this card is already in the wanted position";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isPositionChanged())
-//            return "you already changed this card position in this turn";
-//        else if (phase.group(1).equals("attack")) {
-//
-//            ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).setIsAttack(true);
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setPositionChanged(true);
-//            return "monster card position changed successfully";
-//        } else {
-//
-//
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(true);
-//            ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).setIsAttack(false);
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setPositionChanged(true);
-//
-//
-//            return "monster card position changed successfully";
-//        }
-//
-//    }
-//
-//    public String flipSummon() {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
-//            return "you can't change this card position";
-//        else if (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 &&
-//                GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
-//            return "you can't do this action in this phase";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().isSide()
-//                || ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).isAttack() ||
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getSetSummonedMonster() ==
-//                        GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard())
-//            return "you can't flip summon this card";
-//        else {
-//            ((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).setIsAttack(true);
-//            return "flip summoned successfully";
-//        }
-//    }
-//
-//
-//    public String attack(int number) {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null &&
-//                GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
-//            return "no card is selected yet";
-//        else if (!GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).isCanBeAttacked() || GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().
-//                getLocation() != Location.MONSTERS)
-//            return "you can’t attack this card";
-//        else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
-//            return "you can't do this action in this phase";
-//        else if ((GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked()))
-//            return "this card already attacked";
-//        else if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
-//            return "there is no card to attack here";
-//        else
-//            return MonsterCard.Attack((MonsterCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard(), GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(number - 1), number);
-//    }
-//
-//    //  public String setDamage(MonsterCard card2, MonsterCard card1) {
-////
-//    //  }
-//
-//    public String directAttack() {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
-//            return "you can't attack with this card";
-//        else if (GlobalVariable.getBoard().getPhase() != Phase.BATTLE)
-//            return "you can't do this action in this phase";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardAttacked())
-//            return "this card already attacked";
-//        else {
-//            int counter = 0;
-//            for (int i = 0; i < 5; i++) {
-//                if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(i).getName().equals("nokhodi"))
-//                    counter++;
-//            }
-//            if (counter != 5)
-//                return "you can't attack the opponent directly";
-//            else
-//                return MonsterCard.directAttack();
-//        }
-//    }
-//
-//    public String activateCard(SpellCard card) {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
-//            return "no card is selected yet";
-//        else if (!(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof SpellCard))
-//            return "activate effect is only for spell cards";
-//        else if (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2)
-//            return "you can't activate effect on this turn";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().isCardActivated())
-//            return "you have already activated this card";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() == Location.HAND &&
-//                GlobalVariable.getBoard().isSpellZoneFull() && ((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field"))
-//            return "spell card zone is full";
-//        else if (!isSpellConditionMet((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()))
-//            return "preparations of this spell are not done yet ";
-//        else if (((SpellCard) GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard()).getIcon().equals("Field")) {
-//            if (GlobalVariable.getBoard().isFieldZoneFull())
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().add(GlobalVariable.getBoard().getPlayBoardByTurn().getFields());
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setFields(card);
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
-//
-//
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("Forest")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(15, GlobalVariable.getBoard());
-//                actionSpell.setAction(16, GlobalVariable.getBoard());
-//                actionSpell.setAction(17, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("Umiiruka")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(18, GlobalVariable.getBoard());
-//                actionSpell.setAction(19, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("ClosedForest")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(20, GlobalVariable.getBoard());
-//
-//            }
-//
-//            return "spell activated";
-//        } else {
-//
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("Terraforming")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(1, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("PotofGreed")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(2, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("Raigeki")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(3, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("SpellAbsorption")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(7, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("SupplySquad")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(33, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("Yami")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(4, GlobalVariable.getBoard());
-//                actionSpell.setAction(5, GlobalVariable.getBoard());
-//                actionSpell.setAction(6, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("Ringofdefense")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(21, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("DarkHole")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(22, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("MonsterReborn")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(23, GlobalVariable.getBoard());
-//
-//            }
-//            if (GlobalVariable.getBoard().
-//                    getPlayBoardByTurn().getSelectedCard().getName().equals("HarpiesFeatherDuster")) {
-//                ActionSpell actionSpell = new ActionSpell();
-//                actionSpell.setAction(24, GlobalVariable.getBoard());
-//
-//            }
-//            return "spell activated";
-//
-//        }
-//
-//
-//    }
-//
-//    public boolean isSpellConditionMet(SpellCard spellCard) {
-//        boolean isConditionMet = false;
-//        switch (spellCard.getIcon()) {
-//            case "Equip":
-//            case "Ritual":
-//            case "Counter":
-//            case "Normal":
-//                isConditionMet = GlobalVariable.getBoard().getPlayBoardByTurn().isCardActivated();
-//                break;
-//            case "Continuous":
-//            case "Field":
-//                isConditionMet = spellCard.isSide();
-//                break;
-//            case "Quick-play":
-//                isConditionMet = GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet();
-//                break;
-//        }
-//
-//        if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getSpellTrap().contains(spellCard)) {
-//            activateCardAndChangeTurn(spellCard);
-//            return true;
-//        }
-//
-//        return isConditionMet;
-//    }
-//
-////   public String setField(SpellCard field) {
-////
-////   }
-//
-//    public String setSpellCard(SpellCard spell, Phase phase) {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
-//            return "you can't set this card";
-//        else if (!(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof SpellCard) || (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
-//            return "you can't do this action in this phase";
-//        else if (GlobalVariable.getBoard().isSpellZoneFull())
-//            return "spell card zone is full";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-//            for (int i = 0; i < 5; i++) {
-//                if (GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).getName().equals("nokhodi")) {
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().set(i, GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(false);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).setLocation(Location.SPELL);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                }
-//
-//            }
-//            return "set successfully";
-//        }
-//    }
-//
-//    public String setTrapCard(TrapCard trap) {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() == null)
-//            return "no card is selected yet";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
-//            return "you can't set this card";
-//        else if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard() instanceof TrapCard && (GlobalVariable.getBoard().getPhase() != Phase.MAIN1 && GlobalVariable.getBoard().getPhase() != Phase.MAIN2))
-//            return "you can't do this action in this phase";
-//        else if (GlobalVariable.getBoard().isSpellZoneFull())
-//            return "spell card zone is full";
-//        else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(true);
-//            for (int i = 0; i < 5; i++) {
-//                if (GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).getName().equals("nokhodi")) {
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().set(i, GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().setSide(false);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().get(i).setLocation(Location.SPELL);
-//                    GlobalVariable.getBoard().getPlayBoardByTurn().getHand().remove(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard());
-//                }
-//
-//            }
-//            return "set successfully";
-//        }
-//    }
-//
-//
-//    public void activateCardAndChangeTurn(Card card) {
-//        if (isSpellConditionMet((SpellCard) card)) {
-//            System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
-//            System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
-//            System.out.println("do you want to activate your trap and spell?");
-//            String input = Main.scanner.nextLine();
-//            String activation = Main.scanner.nextLine();
-//            if (input.equals("no")) {
-//                System.out.println("now it will be " + GlobalVariable.getPlayer().getUsername() + " turn");
-//                System.out.println(GlobalVariable.getBoard().getPlayBoardByTurn());
-//            } else {
-//                if (activation.equals("activate spell") || activation.equals("activate trap")) {
-//                    if (isSpellConditionMet(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard())) {
-//                        activateCard(GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedSpellCard());
-//                        GlobalVariable.getBoard().getPlayBoardByTurn().getSpellTrap().add(card);
-//                        GlobalVariable.getBoard().getPlayBoardByTurn().setCardActivated(true);
-//                        if (GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard().getName().equals("CallofTheHaunted")) {
-//                            TrapAction trapAction = new TrapAction();
-//                            trapAction.setAction(1);
-//
-//                        }
-//                        if (GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard().getName().equals("Torrential Tribute")) {
-//                            TrapAction trapAction = new TrapAction();
-//                            trapAction.setAction(2);
-//
-//                        }
-//                        if (GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard().getName().equals("TimeSeal")) {
-//                            TrapAction trapAction = new TrapAction();
-//                            trapAction.setAction(3);
-//
-//                        }
-//                        if (GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard().getName().equals("TrapHole")) {
-//                            TrapAction trapAction = new TrapAction();
-//                            trapAction.setAction(4);
-//
-//                        }
-//                        if (GlobalVariable.getBoard().
-//                                getPlayBoardByTurn().getSelectedCard().getName().equals("SolemnWarning")) {
-//                            TrapAction trapAction = new TrapAction();
-//                            trapAction.setAction(5);
-//
-//                        }
-//                        System.out.println("spell/trap activated");
-//                    } else
-//                        System.out.println("it's not your turn to play this kind of moves");
-//                }
-//
-//            }
-//
-//        }
-//    }
-//
-//    public String showMyGraveyard() {
-//        StringBuilder graveyard = new StringBuilder();
-//        int i = 0;
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards().size() == 0)
-//            return "it's empty";
-//        for (Card card : GlobalVariable.getBoard().getPlayBoardByTurn().getGraveyards()) {
-//            graveyard.append(i).append(". ").append(card.toString()).append("\n");
-//            i++;
-//        }
-//
-//        return graveyard.toString();
-//
-//    }
-//
-//    public String showOpponentGraveyard() {
-//        StringBuilder graveyard = new StringBuilder();
-//        int i = 0;
-//        if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getGraveyards().size() == 0)
-//            return "it's empty";
-//        for (Card card : GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getGraveyards()) {
-//            graveyard.append(i).append(". ").append(card.toString()).append("\n");
-//            i++;
-//        }
-//        return graveyard.toString();
-//
-//    }
-//
-//    public String showCard() {
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() != null) {
-//            return (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedCard().toString());
-//        }
-//        if (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard() != null) {
-//            return (GlobalVariable.getBoard().getPlayBoardByTurn().getSelectedOpponentCard().toString());
-//        }
-//        return "no card is selected yet";
-//    }
-//
 
+    public String summon() {
+        try {
+            dataOutputStream.writeUTF("summon " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+
+    }
+
+    public String setMonster() {
+        try {
+            dataOutputStream.writeUTF("set " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String changePosition(String position) {
+        try {
+            dataOutputStream.writeUTF("set position " + position + " " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String flipSummon() {
+        try {
+            dataOutputStream.writeUTF("flip-summon " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+
+    public String attack(int number) {
+        try {
+            dataOutputStream.writeUTF("attack " + String.valueOf(number) + " " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String directAttack() {
+        try {
+            dataOutputStream.writeUTF("attack direct " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String activateCard() {
+        try {
+            dataOutputStream.writeUTF("activate effect " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+
+
+    }
+
+    public String setSpellCard() {
+        try {
+            dataOutputStream.writeUTF("setSpell " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String setTrapCard() {
+        try {
+            dataOutputStream.writeUTF("setTrap " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String showMyGraveyard() {
+        try {
+            dataOutputStream.writeUTF("show graveyard " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String showOpponentGraveyard() {
+        try {
+            dataOutputStream.writeUTF("show opponent graveyard " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+    public String showCard() {
+        try {
+            dataOutputStream.writeUTF("show card " + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
 }
 
 
