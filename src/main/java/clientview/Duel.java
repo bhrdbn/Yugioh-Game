@@ -117,9 +117,6 @@ public class Duel {
                 activateEffect(activateEffect);
             else if (matcherSetSpell.find())
                 setSpell(matcherSetSpell);
-//            else if(matcherAI.find()){
-//                newDuelAI(matcherAI);
-//            }
             else if(matcherSetTrap.find()){
                 setTrap(matcherSetTrap);
             }
@@ -137,12 +134,6 @@ public class Duel {
         System.out.println(controller.setTrapCard());
     }
 
-//    public void newDuelAI(Matcher matcher){
-//        int rounds=Integer.parseInt(matcher.group(1));
-//        System.out.println(controller.newDuelAI(rounds,GlobalVariable.getPlayer().getUsername()));
-//        System.out.println(GlobalVariable.getBoard().toString());
-//
-//    }
 //    public void setWin(){
 //        controller.setWin();
 //    }

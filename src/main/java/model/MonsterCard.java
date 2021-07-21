@@ -129,74 +129,74 @@ action 1,12 ==36
             MonsterCard nokhodi=new MonsterCard("nokhodi",1,"a",1,"s",true,1,1,1,null,"f",1,"a");
 
             if (currentMonster.getAttack() > opponentMonster.getAttack()) {
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).lowerOpponentLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).setLocation(Location.GRAVEYARD);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().set(number-1,
+                GlobalVariable.getBoards().get(token).lowerOpponentLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).setLocation(Location.GRAVEYARD);
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().set(number-1,
                         nokhodi);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "your opponent monster is destroyed and your opponent receives " + (currentMonster.getAttack() - opponentMonster.getAttack()) + " battle damage";
             }
             else if(currentMonster.getAttack() == opponentMonster.getAttack()){
                 currentMonster.setLocation(Location.GRAVEYARD);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getGraveyards().add(currentMonster);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getGraveyards().add(currentMonster);
                 GameController.getInstance().setNokhodi(currentMonster);
                 opponentMonster.setLocation(Location.GRAVEYARD);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
-                GameController.getInstance().setNokhodi(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number-1));
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
+                GameController.getInstance().setNokhodi(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().get(number-1));
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "both you and your opponent monster cards are destroyed and no one receives damage";
             }
             else{
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).lowerLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getSelectedCard().setLocation(Location.GRAVEYARD);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getGraveyards().add(currentMonster);
-                GameController.getInstance().setNokhodi((MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getSelectedCard());
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).lowerLifePoint(currentMonster.getAttack() - opponentMonster.getAttack());
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().setLocation(Location.GRAVEYARD);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getGraveyards().add(currentMonster);
+                GameController.getInstance().setNokhodi((MonsterCard) GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard());
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "your monster card is destroyed and you received " + (currentMonster.getAttack() - opponentMonster.getAttack()) + " battle damage";
             }
         }
         else if(!opponentMonster.isAttack() && opponentMonster.isSide()){
             if(currentMonster.getAttack() > opponentMonster.getDefence()){
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).setLocation(Location.GRAVEYARD);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
-                GameController.getInstance().setNokhodi(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number-1));
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).setLocation(Location.GRAVEYARD);
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
+                GameController.getInstance().setNokhodi(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().get(number-1));
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "the defense position monster is destroyed";
             }
             else if(currentMonster.getAttack() == opponentMonster.getDefence()) {
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "no card is destroyed";
             }
             else{
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).lowerLifePoint(opponentMonster.getDefence() - currentMonster.getAttack());
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).lowerLifePoint(opponentMonster.getDefence() - currentMonster.getAttack());
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "no card is destroyed and you received " + (opponentMonster.getDefence() - currentMonster.getAttack()) + " battle damage";
             }
         }
         else if(!opponentMonster.isAttack() && !opponentMonster.isSide()){
             if(currentMonster.getAttack() > opponentMonster.getDefence()){
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).setLocation(Location.GRAVEYARD);
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
-                GameController.getInstance().setNokhodi(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().get(number-1));
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).setLocation(Location.GRAVEYARD);
+                GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getGraveyards().add(opponentMonster);
+                GameController.getInstance().setNokhodi(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().get(number-1));
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "opponent monster card was " + opponentMonster.getName() + " and the defense position monster is destroyed";
             }
             else if(currentMonster.getAttack() == opponentMonster.getDefence()) {
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "opponent monster card was " + opponentMonster.getName() + " and no card is destroyed";
             }
             else{
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).lowerLifePoint(opponentMonster.getDefence() - currentMonster.getAttack());
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setCardAttacked(true);
+                GlobalVariable.getBoards().get(token).lowerLifePoint(opponentMonster.getDefence() - currentMonster.getAttack());
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardAttacked(true);
                 return "opponent monster card was " + opponentMonster.getName() + " and no card is destroyed and you received " + (opponentMonster.getDefence() - currentMonster.getAttack()) + " battle damage";
             }
         }
     return null;
     }
     public static String directAttack(String token){
-        int damage = ((MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getSelectedCard()).getAttack();
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).lowerOpponentLifePoint(damage);
+        int damage = ((MonsterCard) GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard()).getAttack();
+        GlobalVariable.getBoards().get(token).lowerOpponentLifePoint(damage);
         return "your opponent receives " + damage + " battle damage";
     }
 

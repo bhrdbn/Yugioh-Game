@@ -81,7 +81,7 @@ public class ActionMonster {
 //11 HeraldofCreation 4 -
     public void increaseAttackAll(MonsterCard monsterCard, String token) //1
     { ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
@@ -100,7 +100,7 @@ public class ActionMonster {
     {
         System.out.println("please enter the (index)monster you want from hand to drop");
         int num= Main.scanner.nextInt();
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand().remove(num);
+        GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand().remove(num);
         System.out.println("succesfully");
     }
 
@@ -108,7 +108,7 @@ public class ActionMonster {
     {
         System.out.println("please enter the (index)monster you want from hand to put in defence");
         int num=Main.scanner.nextInt();
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().setSelectedMonsterCard((MonsterCard) GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand().get(num));
+        GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setSelectedMonsterCard((MonsterCard) GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand().get(num));
         System.out.println("succesfully");
     }
 
@@ -116,7 +116,7 @@ public class ActionMonster {
     public void getInBoardWithSacrifices(MonsterCard monsterCard, String token) //3
     {
         ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
@@ -131,7 +131,7 @@ public class ActionMonster {
     public void getInBoardWithSacrifices2(String token) //4
     {
         ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
@@ -142,7 +142,7 @@ public class ActionMonster {
             monsterCards.remove(1);
             monsterCards.remove(2);
             monsterCards.remove(3);
-            GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().addCard(monsterCard1, 1);
+            GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getDeck().addCard(monsterCard1, 1);
             monsterCards.add(monsterCard1);
         } else {
             System.out.println("you cant summon");
@@ -153,7 +153,7 @@ public class ActionMonster {
     public void getInBoardWithSacrifices3(MonsterCard monsterCard, String token) //5
     {
         ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
@@ -175,15 +175,15 @@ public class ActionMonster {
 
     public void diewhenattack(MonsterCard monsterCard, String token) //6
     { ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
         }
 
-        if (monsterCard.getAttack() < GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getSelectedMonsterCard().getAttack()) {
+        if (monsterCard.getAttack() < GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedMonsterCard().getAttack()) {
             if (monsterCard.getDefence() == 0) {
-                GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getSelectedMonsterCard().setDefence(0);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedMonsterCard().setDefence(0);
             }
         }
         System.out.println("succesfully");
@@ -192,26 +192,26 @@ public class ActionMonster {
     public void acardwhenturned(MonsterCard monsterCard, String token) //7
     {
         monsterCard.setSide(true);
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getAttackerCards().remove(2);
+        GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getAttackerCards().remove(2);
         System.out.println("succesfully");
     }
 
 
     public void barbaroswithoutsac(MonsterCard monsterCard, String token) //8
     { ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
         }
         monsterCard.setAttack(1900);
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().addCard(monsterCard,1);
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getDeck().addCard(monsterCard,1);
         System.out.println("succesfully");
     }
 
     public void barbaroswitsac(MonsterCard monsterCard, String token) //9
     {ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
@@ -224,13 +224,13 @@ public class ActionMonster {
             System.out.println("you cant summon this monster");
         }
         monsterCards.add(monsterCard);
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().addCard(monsterCard, 1);
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getDeck().addCard(monsterCard, 1);
         System.out.println("succesfully");
     }
 
     public void calculate( MonsterCard monsterCard, String token) //10
     { ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
@@ -247,14 +247,14 @@ public class ActionMonster {
 
     public void sacraficeOneToget(String token) //11
     { ArrayList<MonsterCard> monsterCards =null;
-        for (Card card:GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getHand()) {
+        for (Card card:GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand()) {
 
             monsterCards.add((MonsterCard) card);
 
         }
         int i = 0,m=0;
         String t = "";
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().getMainDeck().remove(2);
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getDeck().getMainDeck().remove(2);
         for (MonsterCard monsterCardd : monsterCards) {
 
             if (monsterCardd.getLevel() > i)
@@ -269,7 +269,7 @@ public class ActionMonster {
                 m=j;
             }
         }
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getGraveyards().get(m);
+        GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getGraveyards().get(m);
         System.out.println("succesfully");
     }
 

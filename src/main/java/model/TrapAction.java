@@ -30,30 +30,30 @@ public class TrapAction {
     //5 SolemnWarning
     public void getfromgrave(String token) {
         Card card;
-        card = GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getGraveyards().get(1);
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().getDeck().getMainDeck().add(card);
+        card = GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getGraveyards().get(1);
+        GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getDeck().getMainDeck().add(card);
         System.out.println("succesfully");
 
     }
 
     public void destroyop(String token) {
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getMonsters().clear();
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().clear();
         System.out.println("succesfully");
     }
 
     public void timeseal(String token) {
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).reverseTurn();
+        GlobalVariable.getBoards().get(token).reverseTurn();
         System.out.println("succesfully");
     }
 
     public void destroyattacker(String token) {
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getAttackerCards().remove(1);
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getAttackerCards().remove(1);
         System.out.println("succesfully");
     }
 
     public void solemn( String token) {
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getPlayBoardByTurn().decreaseLifePoint(2000);
-        GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getDeck().removeCard(GlobalVariable.getBoards().get(GlobalVariable.getPlayers().get(token)).getOpponentPlayBoardByTurn().getHand().get(1), 2);
+        GlobalVariable.getBoards().get(token).getPlayBoardByTurn().decreaseLifePoint(2000);
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getDeck().removeCard(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getHand().get(1), 2);
         System.out.println("succesfully");
     }
 }

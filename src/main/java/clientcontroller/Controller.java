@@ -403,7 +403,7 @@ public class Controller {
 
     public String ritualSummon() {
         try {
-            dataOutputStream.writeUTF("ritual summon " + token);
+            dataOutputStream.writeUTF("ritual summon " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -459,7 +459,7 @@ public class Controller {
 //
     public String selectOwnMonster(int number) {
         try {
-            dataOutputStream.writeUTF("select monster " + String.valueOf(number) + " " + token);
+            dataOutputStream.writeUTF("select monster " + String.valueOf(number) + " " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -471,7 +471,7 @@ public class Controller {
 
     public String selectOpponentMonster(int number) {
         try {
-            dataOutputStream.writeUTF("select monster " + String.valueOf(number) + " opponent " + token);
+            dataOutputStream.writeUTF("select monster " + String.valueOf(number) + " opponent " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -483,7 +483,7 @@ public class Controller {
 
     public String selectOwnSpell(int number) {
         try {
-            dataOutputStream.writeUTF("select spell " + String.valueOf(number) + " " + token);
+            dataOutputStream.writeUTF("select spell " + String.valueOf(number) + " " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -495,7 +495,7 @@ public class Controller {
 
     public String selectOpponentSpell(int number) {
         try {
-            dataOutputStream.writeUTF("select spell " + String.valueOf(number) + " opponent" + token);
+            dataOutputStream.writeUTF("select spell " + String.valueOf(number) + " opponent" + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -507,7 +507,7 @@ public class Controller {
 
     public String selectHand(int number) {
         try {
-            dataOutputStream.writeUTF("select hand " + String.valueOf(number) + " " + token);
+            dataOutputStream.writeUTF("select hand " + String.valueOf(number) + " " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -519,7 +519,7 @@ public class Controller {
 
     public String selectField() {
         try {
-            dataOutputStream.writeUTF("select field " + token);
+            dataOutputStream.writeUTF("select field " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -531,7 +531,7 @@ public class Controller {
 
     public String selectOpponentField() {
         try {
-            dataOutputStream.writeUTF("select field " + "opponent " + token);
+            dataOutputStream.writeUTF("select field " + "opponent " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -736,7 +736,7 @@ public class Controller {
 //
     public String deselect() {
         try {
-            dataOutputStream.writeUTF("select -d " + token);
+            dataOutputStream.writeUTF("select -d " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -770,7 +770,7 @@ public class Controller {
 
     public String summon() {
         try {
-            dataOutputStream.writeUTF("summon " + token);
+            dataOutputStream.writeUTF("summon " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -783,7 +783,7 @@ public class Controller {
 
     public String setMonster() {
         try {
-            dataOutputStream.writeUTF("set " + token);
+            dataOutputStream.writeUTF("set " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -795,7 +795,7 @@ public class Controller {
 
     public String changePosition(String position) {
         try {
-            dataOutputStream.writeUTF("set position " + position + " " + token);
+            dataOutputStream.writeUTF("set position " + position + " " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -807,7 +807,7 @@ public class Controller {
 
     public String flipSummon() {
         try {
-            dataOutputStream.writeUTF("flip-summon " + token);
+            dataOutputStream.writeUTF("flip-summon " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -820,7 +820,7 @@ public class Controller {
 
     public String attack(int number) {
         try {
-            dataOutputStream.writeUTF("attack " + String.valueOf(number) + " " + token);
+            dataOutputStream.writeUTF("attack " + String.valueOf(number) + " " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -832,7 +832,7 @@ public class Controller {
 
     public String directAttack() {
         try {
-            dataOutputStream.writeUTF("attack direct " + token);
+            dataOutputStream.writeUTF("attack direct " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -844,7 +844,7 @@ public class Controller {
 
     public String activateCard() {
         try {
-            dataOutputStream.writeUTF("activate effect " + token);
+            dataOutputStream.writeUTF("activate effect " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -858,7 +858,7 @@ public class Controller {
 
     public String setSpellCard() {
         try {
-            dataOutputStream.writeUTF("setSpell " + token);
+            dataOutputStream.writeUTF("setSpell " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -870,7 +870,7 @@ public class Controller {
 
     public String setTrapCard() {
         try {
-            dataOutputStream.writeUTF("setTrap " + token);
+            dataOutputStream.writeUTF("setTrap " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -882,7 +882,7 @@ public class Controller {
 
     public String showMyGraveyard() {
         try {
-            dataOutputStream.writeUTF("show graveyard " + token);
+            dataOutputStream.writeUTF("show graveyard " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -894,7 +894,7 @@ public class Controller {
 
     public String showOpponentGraveyard() {
         try {
-            dataOutputStream.writeUTF("show opponent graveyard " + token);
+            dataOutputStream.writeUTF("show opponent graveyard " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -906,7 +906,7 @@ public class Controller {
 
     public String showCard() {
         try {
-            dataOutputStream.writeUTF("show card " + token);
+            dataOutputStream.writeUTF("show card " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
