@@ -1,10 +1,9 @@
 package model;
 
-import clientview.Main;
+import clientview.MainClient;
 import servercontroller.GlobalVariable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ActionMonster {
     public void setAction(int cardControllerNumber,MonsterCard monsterCard, String token) {
@@ -99,7 +98,7 @@ public class ActionMonster {
     public void trick(String token) //12
     {
         System.out.println("please enter the (index)monster you want from hand to drop");
-        int num= Main.scanner.nextInt();
+        int num= MainClient.scanner.nextInt();
         GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand().remove(num);
         System.out.println("succesfully");
     }
@@ -107,7 +106,7 @@ public class ActionMonster {
     public void terratiger(String token) //13
     {
         System.out.println("please enter the (index)monster you want from hand to put in defence");
-        int num=Main.scanner.nextInt();
+        int num= MainClient.scanner.nextInt();
         GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setSelectedMonsterCard((MonsterCard) GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand().get(num));
         System.out.println("succesfully");
     }

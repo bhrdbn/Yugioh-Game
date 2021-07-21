@@ -268,7 +268,7 @@ public class Controller {
 
     public boolean admin() {
         try {
-            dataOutputStream.writeUTF("admin " + token);
+            dataOutputStream.writeUTF("admin enter " + token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result.equals("true");

@@ -22,7 +22,7 @@ public class Login  {
     public void run() {
         System.out.println("welcome to login menu");
         while (true) {
-            String input=Main.scanner.nextLine();
+            String input= MainClient.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "user create username (\\w+) nickname (\\w+) password (\\w+)");
             Matcher matcher1_1 = getCommand(input, "user create nickname (\\w+) username (\\w+) password (\\w+)");
             Matcher matcher1_2 = getCommand(input, "user create username (\\w+) password (\\w+) nickname (\\w+)");
@@ -78,13 +78,13 @@ public class Login  {
     public void loginUser(Matcher matcher, int flag) {
         if (flag == 0) {
             System.out.println(controller.loginUser(matcher.group(1), matcher.group(2)));
-            if(controller.loginUser(matcher.group(1), matcher.group(2)).equals("user logged in successfully!")){
+            if(controller.loginUser(matcher.group(1), matcher.group(2)).startsWith("user logged in")){
                 MenuHandler.runNextLogin();
             }
             b = 8;
         } else {
             System.out.println(Controller.getInstance().loginUser(matcher.group(2), matcher.group(1)));
-            if(controller.loginUser(matcher.group(2), matcher.group(1)).equals("user logged in successfully!")){
+            if(controller.loginUser(matcher.group(2), matcher.group(1)).equals("user logged in!")){
                 MenuHandler.runNextLogin();
             }
         }

@@ -11,7 +11,7 @@ public class Card {
     protected long price;
     private Location location;
     protected boolean isForbidden=false;
-    protected int countInShop=10;
+    protected int countInShop;
     public void setName(String name) {
         this.name = name;
     }
@@ -67,9 +67,13 @@ public class Card {
      //   this.commands = new ArrayList<>();
         this.side = true;
         this.price = price;
+        countInShop=10;
     }
 
-  // public void run(PlayBoard playBoard,Card card){
+    public void setCountInShop(int countInShop) {
+        this.countInShop = countInShop;
+    }
+    // public void run(PlayBoard playBoard,Card card){
   //      for (Command command:commands)
   //          command.doAction(GlobalVariable.getBoard());
   // }

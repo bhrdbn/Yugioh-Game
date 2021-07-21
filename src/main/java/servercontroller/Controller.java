@@ -186,7 +186,25 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+       setCountM(allMonsters);
+        setCountS(allSpells);
+        setCountT(allTraps);
 
+    }
+    public void setCountM(ArrayList<MonsterCard>cards){
+        for(Card card:cards){
+            card.setCountInShop(5);
+        }
+    }
+    public void setCountS(ArrayList<SpellCard>cards){
+        for(Card card:cards){
+            card.setCountInShop(5);
+        }
+    }
+    public void setCountT(ArrayList<TrapCard>cards){
+        for(Card card:cards){
+            card.setCountInShop(5);
+        }
     }
 
     public ArrayList<MonsterCard> getAllMonsters() {

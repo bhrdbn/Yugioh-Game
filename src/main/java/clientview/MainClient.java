@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 
-public class Main {
+public class MainClient {
 
     public static Scanner scanner=new Scanner(System.in);
 

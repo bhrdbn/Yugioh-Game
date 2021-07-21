@@ -26,7 +26,7 @@ public class DeckView  {
     public void run() {
         System.out.println("welcome to deck menu");
         while (true) {
-            String input= Main.scanner.nextLine();
+            String input= MainClient.scanner.nextLine();
             Matcher matcher = getCommand(input, "deck create (\\w+)");
             Matcher matcher1 = getCommand(input, "deck delete (\\w+)");
             Matcher matcher2 = getCommand(input, "^deck set-activate (\\w+)");

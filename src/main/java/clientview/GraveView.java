@@ -14,7 +14,7 @@ public class GraveView {
     }
     public void run(){
         while(true){
-            String input=Main.scanner.nextLine();
+            String input= MainClient.scanner.nextLine();
             if(input.equals("back")){
                 MenuHandler.runBack(Menu.GRAVEYARD);
                 break;

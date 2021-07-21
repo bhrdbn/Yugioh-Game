@@ -20,9 +20,9 @@ public class Board {
     @Override
     public String toString() {
         String board = "";
-        board += getOpponentPlayBoardByTurn().rotateToString();
+        board += playBoard2.rotateToString();
         board += "\n----------------------\n";
-        board += getPlayBoardByTurn().toString();
+        board += playBoard1.toString();
         board += "\n\n----------------------\n\n";
         return board;
     }

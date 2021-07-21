@@ -77,8 +77,8 @@ public class Main {
             return Controller.getInstance().buy(parts[1],parts[2]);
         else if(command.equals("show all"))
             return Controller.getInstance().showAll();
-        else if(command.startsWith("admin"))
-            return Controller.getInstance().admin(parts[1]);
+        else if(command.startsWith("admin enter"))
+            return Controller.getInstance().admin(parts[2]);
         else if(command.startsWith("admin dec"))
             return Controller.getInstance().decreaseCard(parts[2]);
         else if(command.startsWith("admin in"))

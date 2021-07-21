@@ -1,6 +1,6 @@
 package model;
 
-import clientview.Main;
+import clientview.MainClient;
 
 import java.util.ArrayList;
 
@@ -51,7 +51,7 @@ public class GraveYard {
 
     public void inputCommandLine(){
         System.out.println("Here is GraveYard");
-        String inputLine = Main.scanner.nextLine();
+        String inputLine = MainClient.scanner.nextLine();
         inputLine = inputLine.trim();
         inputLine = inputLine.toLowerCase();
         String[] input = inputLine.split("[ ]+");

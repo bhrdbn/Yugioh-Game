@@ -1,9 +1,7 @@
 package clientview;
 
 import clientcontroller.Controller;
-import model.CheatSheet;
 
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,12 +22,12 @@ public class Admin {
     public void run()  {
         System.out.println("welcome abp");
         while (true) {
-            String input = Main.scanner.nextLine();
-            Matcher matcher1 = getCommand(input, "^set ([a-zA-Z\\s]+) forbidden$");
-            Matcher matcher2 = getCommand(input, "^set ([a-zA-Z\\s]+) allowed$");
-            Matcher matcher3 = getCommand(input, "exit");
-            Matcher matcher4 = getCommand(input, "^increase ([a-zA-Z\\s]+)$");
-            Matcher matcher5 = getCommand(input, "^decrease ([a-zA-Z\\s]+)$");
+            String input = MainClient.scanner.nextLine();
+            Matcher matcher1 = getCommand(input, "^set ([a-zA-Z]+) forbidden$");
+            Matcher matcher2 = getCommand(input, "^set ([a-zA-Z]+) allowed$");
+            Matcher matcher3 = getCommand(input, "^exit");
+            Matcher matcher4 = getCommand(input, "^increase ([a-zA-Z]+)$");
+            Matcher matcher5 = getCommand(input, "^decrease ([a-zA-Z]+)$");
             if(matcher1.find()){
                 System.out.println(controller.setForbidden(matcher1.group(1)));
             }

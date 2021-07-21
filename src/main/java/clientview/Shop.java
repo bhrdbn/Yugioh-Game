@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import java.util.regex.*;
-
 import clientcontroller.*;
-import model.Card;
 import model.CheatSheet;
 
 public class Shop {
@@ -30,7 +27,7 @@ public class Shop {
     public void run() throws IOException {
         System.out.println("welcome to shop menu");
         while (true) {
-            String input = Main.scanner.nextLine();
+            String input = MainClient.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "^shop buy ([a-zA-Z\\s]+)$");
             Matcher matcher2 = getCommand(input, "shop show --all");
             Matcher matcher3 = getCommand(input, "exit");
@@ -70,8 +67,9 @@ public class Shop {
         return matcher;
     }
     public void admin(){
-        if(shopController.admin()) MenuHandler.admin();
-        else System.out.println("you don't have access");
+
+       if(shopController.admin()) MenuHandler.admin();
+       else System.out.println("you don't have access");
     }
 
 }

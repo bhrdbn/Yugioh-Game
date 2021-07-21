@@ -81,6 +81,7 @@ public class MonsterCard extends Card {
         this.action=action;
 
 
+
     }
     public MonsterCard(MonsterCard card){
         super(card.name,card.number,card.cardType,card.description,card.side,card.price);

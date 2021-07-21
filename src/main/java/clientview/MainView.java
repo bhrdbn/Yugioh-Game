@@ -3,7 +3,7 @@ package clientview;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import  clientcontroller.*;
-import model.*;
+
 public class MainView {
     private static MainView mainView=null;
     private MainView(){
@@ -21,7 +21,7 @@ public class MainView {
     public void run(){
         System.out.println("welcome to main menu");
         while(true){
-            String input=Main.scanner.nextLine();
+            String input= MainClient.scanner.nextLine();
             Matcher matcher = getCommand(input, "scoreboard show");
             Matcher matcher1 = getCommand(input, "user logout");
             Matcher matcher2 = getCommand(input, "exit");
