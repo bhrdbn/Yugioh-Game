@@ -24,7 +24,8 @@ public class Lobby {
         System.out.println("welcome to main menu");
         while(true){
             String input=Main.scanner.nextLine();
-            Matcher matcher = getCommand(input, "request game round (\\d)");
+            Matcher matcher = getCommand(input, "^request game round (\\d)$");
+            //Matcher matcher1 = getCommand(input, "^request game round (\\d) username");
             Matcher matcher2 = getCommand(input, "exit");
             if(matcher.find())requestView(matcher.group(1));
             else if(matcher2.find())MenuHandler.runBack(Menu.LOBBY);
@@ -43,7 +44,12 @@ public class Lobby {
                 return;
             }
         }
-        System.out.println(Controller.getInstance().request(round));
+        String result=Controller.getInstance().request(round);
+        if(result.startsWith("duel created")){
+            System.out.println();
+            MenuHandler.runNextMain(Menu.DUEL);
+        }
+
     }
     public Matcher getCommand(String input, String regex) {
         Pattern pattern = Pattern.compile(regex);
