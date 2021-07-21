@@ -1,9 +1,18 @@
 package servercontroller;
 
 import clientview.Main;
+import clientview.MainView;
 import model.*;
 
+
 public class GameController {
+    int rounds;
+    Player firstWinner;
+    Player secondWinner;
+    Player thirdWinner;
+    int firstLp;
+    int secondLp;
+    int thirdLP;
     private static GameController duelController = null;
     public static GameController getInstance() {
         if (duelController == null)
@@ -54,49 +63,6 @@ public class GameController {
             return false;
     }
 
-
-//    public String newDuel(int round, String usernameOpponent, String usernamePlayer) {
-//        if (Player.getPlayerByUser(usernameOpponent) == null) return "there is no player with this username";
-//        else if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
-//            return usernamePlayer + " has no active deck";
-//        } else if (Player.getPlayerByUser(usernameOpponent).getActivatedDeck() == null) {
-//            return usernameOpponent + " has no active deck";
-//        } else if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
-//            return usernamePlayer + " has no active deck";
-//        } else if (!Player.getPlayerByUser(usernamePlayer).getActivatedDeck().isValid()) {
-//            return usernamePlayer + "’s deck is invalid";
-//        } else if (!Player.getPlayerByUser(usernameOpponent).getActivatedDeck().isValid()) {
-//            return usernameOpponent + "’s deck is invalid";
-//        } else if (round != 1 && round != 3)
-//            return "number of rounds is not supported";
-//        else {
-//            rounds = round;
-//            PlayBoard playBoardPlayer = new PlayBoard(Player.getPlayerByUser(usernamePlayer));
-//            PlayBoard playBoardOpponent = new PlayBoard(Player.getPlayerByUser(usernameOpponent));
-//            GlobalVariable.setBoard(new Board(playBoardPlayer, playBoardOpponent));
-//            return "duel created";
-//        }
-//    }
-//
-//    public String newDuelAI(int round, String usernamePlayer) {
-//
-//        if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
-//            return usernamePlayer + " has no active deck";
-//        } else if (Player.getPlayerByUser(usernamePlayer).getActivatedDeck() == null) {
-//            return usernamePlayer + " has no active deck";
-//        } else if (!Player.getPlayerByUser(usernamePlayer).getActivatedDeck().isValid()) {
-//            return usernamePlayer + "’s deck is invalid";
-//        } else if (round != 1 && round != 3)
-//            return "number of rounds is not supported";
-//        else {
-//            PlayBoard playBoardPlayer = new PlayBoard(Player.getPlayerByUser(usernamePlayer));
-//            PlayBoard playBoardOpponent = new PlayBoard(new AI("AI", "123", "AI"));
-//            GlobalVariable.setBoard(new Board(playBoardPlayer, playBoardOpponent));
-//            return "duel created";
-//        }
-//    }
-//
-//
     public String selectOwnMonster(int number, String token) {
         if (number > 5) return "selection is invalid";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().selectMonster(number).getName().equals("nokhodi"))
@@ -176,199 +142,110 @@ public class GameController {
         }
     }
 
-//    public String managePhase() {
-//        Phase phase = GlobalVariable.getBoard().getPhase();
-//        switch (phase) {
-//            case DRAW:
-//                return "draw phase\n" +
-//                        (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
-//            case STANDBY:
-//                return "standby phase";
-//
-//            case MAIN1:
-//                return "1st Main phase";
-//
-//            case BATTLE:
-//                return "battle phase";
-//
-//            case MAIN2:
-//                return "2nd main phase";
-//
-//            case END:
-//                GlobalVariable.getBoard().changePhase(Phase.END);
-//                GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(false);
-//                GlobalVariable.getBoard().getPlayBoardByTurn().setSetSummonedMonster(null);
-//                GlobalVariable.getBoard().reverseTurn();
+    public String managePhase(String token, String playerToken) {
+        Phase phase = GlobalVariable.getBoards().get(token).getPhase();
+        switch (phase) {
+            case DRAW:
+                return "draw phase\n" +
+                        (GlobalVariable.getBoards().get(token).addToHand(GlobalVariable.getBoards().get(token).getPlayBoardByTurn()));
+            case STANDBY:
+                return "standby phase";
+
+            case MAIN1:
+                return "1st Main phase";
+
+            case BATTLE:
+                return "battle phase";
+
+            case MAIN2:
+                return "2nd main phase";
+
+            case END:
+                GlobalVariable.getBoards().get(token).changePhase(Phase.END);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setCardSummonedOrSet(false);
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().setSetSummonedMonster(null);
+                GlobalVariable.getBoards().get(token).reverseTurn();
 //                if (GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer() instanceof AI) {
 //                    return manageAIPhaseAndPlay();
-//                } else return "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn" + "\n" +
-//                        "draw phase\n" +
-//                        (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
-//
-//            default:
-//                return "";
-//        }
-//    }
-//
-//    public String manageAIPhaseAndPlay() {
-//        String finalOut = "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn" + "\n" +
-//                "draw phase\n" +
-//                (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
-//        GlobalVariable.getBoard().setPhase(Phase.STANDBY);
-//        finalOut += "standby phase\n";
-//        GlobalVariable.getBoard().setPhase(Phase.MAIN1);
-//        finalOut += "1st Main phase\n";
-//        if (getMinOpponentAttack() != null && getMaxAttack().getAttack() > getMinOpponentAttack().getAttack()) {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setSelectedCard(getMaxAttack());
-//            finalOut += summon() + "\n";
-//            GlobalVariable.getBoard().setPhase(Phase.BATTLE);
-//            finalOut += "battle phase\n";
-//            finalOut += MonsterCard.Attack(getMaxAttack(), getMinOpponentAttack(), getMinOpponentAttackIndex()) + "\n";
-//
-//        } else if (getMinOpponentAttack() == null) {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setSelectedCard(getMaxAttack());
-//            GlobalVariable.getBoard().setPhase(Phase.BATTLE);
-//            finalOut += "battle phase\n";
-//            MonsterCard.directAttack();
-//        } else {
-//            GlobalVariable.getBoard().setPhase(Phase.BATTLE);
-//            finalOut += "battle phase\n";
-//        }
-//        finalOut += "2nd Main phase\n";
-//        GlobalVariable.getBoard().setPhase(Phase.MAIN2);
-//        if (!GlobalVariable.getBoard().getPlayBoardByTurn().isCardSummonedOrSet()) {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().setSelectedCard(getMaxDefense());
-//            finalOut += setMonster() + "\n";
-//        }
-//        GlobalVariable.getBoard().setPhase(Phase.END);
-//        finalOut += managePhase();
-//        return finalOut;
-//    }
-//
-//    public MonsterCard getMaxAttack() {
-//        int max = 0;
-//        MonsterCard monster = null;
-//        for (Card card : GlobalVariable.getBoard().getPlayBoardByTurn().getHand()) {
-//            if (card instanceof MonsterCard) {
-//                if (max < ((MonsterCard) card).getAttack()) {
-//                    max = ((MonsterCard) card).getAttack();
-//                    monster = (MonsterCard) card;
-//                }
-//            }
-//        }
-//        return monster;
-//    }
-//
-//    public MonsterCard getMaxDefense() {
-//        int max = 0;
-//        MonsterCard monster = null;
-//        for (Card card : GlobalVariable.getBoard().getPlayBoardByTurn().getHand()) {
-//            if (card instanceof MonsterCard) {
-//                if (max < ((MonsterCard) card).getDefence()) {
-//                    max = ((MonsterCard) card).getDefence();
-//                    monster = (MonsterCard) card;
-//                }
-//            }
-//        }
-//        return monster;
-//    }
-//
-//    public MonsterCard getMinOpponentAttack() {
-//        int min = 99999;
-//        MonsterCard monster = null;
-//        for (MonsterCard card : GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters()) {
-//            if (!card.getName().equals("nokhodi")) {
-//                if (min > card.getDefence()) {
-//                    min = card.getDefence();
-//                    monster = card;
-//                }
-//            }
-//        }
-//        return monster;
-//    }
-//
-//    public int getMinOpponentAttackIndex() {
-//        int min = 99999;
-//        int position = 0;
-//        MonsterCard monster = null;
-//        for (int i = 0; i < 5; i++) {
-//            if (GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(i).getDefence() < min) {
-//                min = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getMonsters().get(i).getDefence();
-//                position = i + 1;
-//            }
-//        }
-//        return position;
-//    }
-//
-//    public void setWinner(int max) {
-//        GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
-//        GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000 + max);
-//        GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
-//        System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won whole match");
-//        MainView.getInstance().run();
-//    }
-//
-//    public void lose() {
-//        System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won this round");
-//        if (rounds == 1) {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000 +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
-//            MainView.getInstance().run();
-//        } else {
-//            System.out.println("next round started");
-//            if (firstWinner != null) {
-//                if (secondWinner != null) {
-//                    thirdWinner = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer();
-//                    thirdLP = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint();
-//                    if (firstWinner.getUsername().equals(thirdWinner.getUsername())) {
-//                        int max = firstLp;
-//                        if (firstLp < thirdLP) max = thirdLP;
-//                        setWinner(max);
-//                    } else {
-//                        int max = secondLp;
-//                        if (secondLp < thirdLP) max = thirdLP;
-//                        setWinner(max);
-//                    }
-//                } else {
-//                    secondWinner = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer();
-//                    secondLp = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint();
-//                    if (secondWinner.getUsername().equals(firstWinner.getUsername())) {
-//                        int max = firstLp;
-//                        if (firstLp < secondLp) max = secondLp;
-//                        setWinner(max);
-//                    } else getNewBoard();
-//
-//                }
-//            } else {
-//                firstWinner = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer();
-//                firstLp = GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint();
-//                getNewBoard();
-//            }
-//        }
-//
-//
-//    }
-//
-//    private void getNewBoard() {
-//        PlayBoard playBoard = new PlayBoard(GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer());
-//        PlayBoard playBoard1 = new PlayBoard(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer());
-//        Board board = new Board(playBoard, playBoard1);
-//        GlobalVariable.setBoard(board);
-//    }
-//
-//    public String goNextPhase() {
-//        if (GlobalVariable.getBoard().getPhase() == Phase.MAIN2 && (GlobalVariable.getBoard().isDeckFinished() ||
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getLifePoint() <= 0)) {
-//            lose();
-//
-//        }
-//        GlobalVariable.getBoard().changePhase(GlobalVariable.getBoard().getPhase());
-//        return managePhase();
-//    }
-//
-//
+//                } else
+                    return "End phase\n" + GlobalVariable.getBoards().get(token).getTurn().getNickname() + "'s turn" + "\n" +
+                        "draw phase\n" +
+                        (GlobalVariable.getBoards().get(token).addToHand(GlobalVariable.getBoards().get(token).getPlayBoardByTurn()));
+
+            default:
+                return "";
+        }
+    }
+
+    public void setWinner(int max, String token) {
+        GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000 + max);
+        GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
+        System.out.println(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won whole match");
+        MainView.getInstance().run();
+    }
+
+    public void lose(String token, String playerToken) {
+        System.out.println(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won this round");
+        if (rounds == 1) {
+            GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
+            GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000 +
+                    GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getLifePoint());
+            GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
+            MainView.getInstance().run();
+        } else {
+            System.out.println("next round started");
+            if (firstWinner != null) {
+                if (secondWinner != null) {
+                    thirdWinner = GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer();
+                    thirdLP = GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getLifePoint();
+                    if (firstWinner.getUsername().equals(thirdWinner.getUsername())) {
+                        int max = firstLp;
+                        if (firstLp < thirdLP) max = thirdLP;
+                        setWinner(max, token);
+                    } else {
+                        int max = secondLp;
+                        if (secondLp < thirdLP) max = thirdLP;
+                        setWinner(max, token);
+                    }
+                } else {
+                    secondWinner = GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer();
+                    secondLp = GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getLifePoint();
+                    if (secondWinner.getUsername().equals(firstWinner.getUsername())) {
+                        int max = firstLp;
+                        if (firstLp < secondLp) max = secondLp;
+                        setWinner(max, token);
+                    } else getNewBoard(token, playerToken);
+
+                }
+            } else {
+                firstWinner = GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer();
+                firstLp = GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getLifePoint();
+                getNewBoard(token, playerToken);
+            }
+        }
+
+
+    }
+
+    private void getNewBoard(String token, String playerToken) {
+        PlayBoard playBoard = new PlayBoard(GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getPlayer());
+        PlayBoard playBoard1 = new PlayBoard(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer());
+        Board board = new Board(playBoard, playBoard1);
+        Controller.getInstance().setBoard(token, GlobalVariable.getPlayers().get(playerToken));
+    }
+
+    public String goNextPhase(String token, String playerToken) {
+        if (GlobalVariable.getBoards().get(token).getPhase() == Phase.MAIN2 && (GlobalVariable.getBoards().get(token).isDeckFinished() ||
+                GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getLifePoint() <= 0)) {
+            lose(token, playerToken);
+
+        }
+        GlobalVariable.getBoards().get(token).changePhase(GlobalVariable.getBoards().get(token).getPhase());
+        return managePhase(token, playerToken);
+    }
+
+
     public String deselect(String token) {
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedOpponentCard() == null)

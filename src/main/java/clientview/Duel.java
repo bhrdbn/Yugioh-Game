@@ -87,9 +87,9 @@ public class Duel {
                 selectOpponentMonster(Integer.parseInt(matcherSelect6.group(1)));
             } else if (matcherback.find()) MenuHandler.runBack(Menu.DUEL);
 
-//            else if (nextPhase.find()) {
-//                goNextPhase();
-//            }
+            else if (nextPhase.find()) {
+                goNextPhase();
+            }
             else if (matchersummon.find()) {
                 summon(matchersummon);
             } else if (matcherSet.find()) {
@@ -120,9 +120,9 @@ public class Duel {
             else if(matcherSetTrap.find()){
                 setTrap(matcherSetTrap);
             }
-//            else if(surrender.find()){
-//                setWin();
-//            }
+            else if(surrender.find()){
+                setWin();
+            }
             else
                 System.out.println("invalid command");
         }
@@ -134,9 +134,9 @@ public class Duel {
         System.out.println(controller.setTrapCard());
     }
 
-//    public void setWin(){
-//        controller.setWin();
-//    }
+    public void setWin(){
+        controller.setWin();
+    }
 
 
     public void activateEffect(Matcher activateEffect) {
@@ -167,20 +167,9 @@ public class Duel {
         System.out.println(controller.setMonster());
     }
 
-//    public void newDuel(Matcher matcherPlayer, int flag) {
-//        if (flag == 0)
-//            System.out.println(controller.newDuel(Integer.parseInt
-//                    (matcherPlayer.group(2)), matcherPlayer.group(1), GlobalVariable.getPlayer().getUsername()));
-//        else
-//            System.out.println(controller.getInstance().newDuel(Integer.parseInt
-//                    (matcherPlayer.group(1)), matcherPlayer.group(2), GlobalVariable.getPlayer().getUsername()));
-//        System.out.println(GlobalVariable.getBoard().toString());
-//    }
-//
-//    public void goNextPhase() {
-//        System.out.println(controller.goNextPhase());
-//        System.out.println(GlobalVariable.getBoard().toString());
-//    }
+    public void goNextPhase() {
+        System.out.println(controller.goNextPhase());
+    }
 
     public void selectOwnMonster(int number) {
         System.out.println(controller.selectOwnMonster(number));

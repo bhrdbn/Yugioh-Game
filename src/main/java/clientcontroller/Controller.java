@@ -541,40 +541,6 @@ public class Controller {
         }
     }
 
-    //    public String managePhase() {
-//        Phase phase = GlobalVariable.getBoard().getPhase();
-//        switch (phase) {
-//            case DRAW:
-//                return "draw phase\n" +
-//                        (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
-//            case STANDBY:
-//                return "standby phase";
-//
-//            case MAIN1:
-//                return "1st Main phase";
-//
-//            case BATTLE:
-//                return "battle phase";
-//
-//            case MAIN2:
-//                return "2nd main phase";
-//
-//            case END:
-//                GlobalVariable.getBoard().changePhase(Phase.END);
-//                GlobalVariable.getBoard().getPlayBoardByTurn().setCardSummonedOrSet(false);
-//                GlobalVariable.getBoard().getPlayBoardByTurn().setSetSummonedMonster(null);
-//                GlobalVariable.getBoard().reverseTurn();
-//                if (GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer() instanceof AI) {
-//                    return manageAIPhaseAndPlay();
-//                } else return "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn" + "\n" +
-//                        "draw phase\n" +
-//                        (GlobalVariable.getBoard().addToHand(GlobalVariable.getBoard().getPlayBoardByTurn()));
-//
-//            default:
-//                return "";
-//        }
-//    }
-//
 //    public String manageAIPhaseAndPlay() {
 //        String finalOut = "End phase\n" + GlobalVariable.getBoard().getTurn().getNickname() + "'s turn" + "\n" +
 //                "draw phase\n" +
@@ -723,17 +689,19 @@ public class Controller {
 //        GlobalVariable.setBoard(board);
 //    }
 //
-//    public String goNextPhase() {
-//        if (GlobalVariable.getBoard().getPhase() == Phase.MAIN2 && (GlobalVariable.getBoard().isDeckFinished() ||
-//                GlobalVariable.getBoard().getPlayBoardByTurn().getLifePoint() <= 0)) {
-//            lose();
-//
-//        }
-//        GlobalVariable.getBoard().changePhase(GlobalVariable.getBoard().getPhase());
-//        return managePhase();
-//    }
-//
-//
+    public String goNextPhase() {
+        try {
+            dataOutputStream.writeUTF("next phase " + boardToken + token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+
+
     public String deselect() {
         try {
             dataOutputStream.writeUTF("select -d " + boardToken);
@@ -746,26 +714,16 @@ public class Controller {
         }
     }
 
-//    public void setWin() {
-//        if (rounds == 1) {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000 +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
-//            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won the game : " +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
-//            MainView.getInstance().run();
-//        } else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000 +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
-//            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won whole match : " +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
-//            MainView.getInstance().run();
-//        }
-//
-//    }
+    public void setWin() {
+        try {
+            dataOutputStream.writeUTF("surrender " + boardToken);
+            dataOutputStream.flush();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+
+    }
 //// ** monster ba ehzare vizhe ro nazadam **
 
     public String summon() {
