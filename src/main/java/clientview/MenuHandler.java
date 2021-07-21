@@ -8,6 +8,7 @@ public class MenuHandler {
             case LOGIN:
                 System.exit(0);
                 break;
+            case LOBBY:
             case DECK:
             case DUEL:
             case SHOP:
@@ -45,6 +46,9 @@ public class MenuHandler {
                 break;
             case DUEL:
                 Duel.getInstance().run();
+                break;
+            case LOBBY:
+                Lobby.getInstance().run();
                 break;
             case SHOP:
                 try {

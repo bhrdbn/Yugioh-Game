@@ -7,5 +7,6 @@ public enum Menu {
     PROFILE,
     SHOP,
     Main,
-    GRAVEYARD
+    GRAVEYARD,
+    LOBBY
 }

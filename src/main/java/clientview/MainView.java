@@ -64,6 +64,9 @@ public class MainView {
             case "duel":
                 MenuHandler.runNextMain(Menu.DUEL);
                 break;
+            case "lobby":
+                MenuHandler.runNextMain(Menu.LOBBY);
+                break;
         }
     }
 }

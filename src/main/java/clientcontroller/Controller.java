@@ -44,6 +44,7 @@ public class Controller {
     int secondLp;
     int thirdLP;
     String token;
+    String boardToken;
 
     private Controller() {
 
@@ -908,6 +909,21 @@ public class Controller {
             dataOutputStream.writeUTF("show card " + token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
+    public String request(String round){
+        try {
+            dataOutputStream.writeUTF("request " + token+" "+round);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            if(result.startsWith("duel create")){
+                String[] results=result.split(" ");
+                boardToken=results[4];
+            }
             return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();

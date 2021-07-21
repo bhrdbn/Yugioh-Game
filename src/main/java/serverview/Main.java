@@ -87,6 +87,8 @@ public class Main {
             return Controller.getInstance().setForbidden(parts[2]);
         else if(command.startsWith("admin all"))
             return Controller.getInstance().setAllowed(parts[2]);
+        else if(command.startsWith("request"))
+            Controller.getInstance().request(parts[1],parts[2]);
         else if(command.startsWith("sell"))
             return Controller.getInstance().sell(parts[1],parts[2]);
         else if(command.startsWith("deck create"))
