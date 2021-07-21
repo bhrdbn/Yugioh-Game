@@ -155,6 +155,10 @@ public class Main {
             return GameController.getInstance().showOpponentGraveyard(parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
         else if(command.equals("show card"))
             return GameController.getInstance().showCard(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+        else if(command.equals("next phase"))
+            return GameController.getInstance().goNextPhase(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+//        else if(command.equals("surrender"))
+//            return GameController.getInstance().setWin();
         return "";
     }
 }

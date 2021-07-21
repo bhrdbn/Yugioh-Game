@@ -29,13 +29,7 @@ public class Controller {
     ArrayList<SpellCard> allSpells = new ArrayList<>();
     ArrayList<TrapCard> allTraps = new ArrayList<>();
     private static Controller loginController = null;
-    int rounds;
-    Player firstWinner;
-    Player secondWinner;
-    Player thirdWinner;
-    int firstLp;
-    int secondLp;
-    int thirdLP;
+
 
     private Controller() {
         shopInit();
@@ -492,7 +486,7 @@ public class Controller {
         }
 
 
-    private String setBoard(String token, Player player) {
+    public String setBoard(String token, Player player) {
         PlayBoard playBoard1 = new PlayBoard(player);
         PlayBoard playBoard2 = new PlayBoard(GlobalVariable.getPlayers().get(token));
         Board board = new Board(playBoard2, playBoard1);

@@ -1,9 +1,18 @@
 package servercontroller;
 
-import clientview.MainClient;
+import clientview.Main;
+import clientview.MainView;
 import model.*;
 
+
 public class GameController {
+    int rounds;
+    Player firstWinner;
+    Player secondWinner;
+    Player thirdWinner;
+    int firstLp;
+    int secondLp;
+    int thirdLP;
     private static GameController duelController = null;
     public static GameController getInstance() {
         if (duelController == null)
@@ -25,15 +34,15 @@ public class GameController {
             return "you should ritual summon right now";
         else {
             System.out.println("please enter the cards(the number of cards) that you want to tribute");
-            String monster1 = MainClient.scanner.nextLine();
-            String monster2 = MainClient.scanner.nextLine();
+            String monster1 = Main.scanner.nextLine();
+            String monster2 = Main.scanner.nextLine();
             if (!isLevelMatched(monster1, monster2, card, token))
                 return "selected monsters levels don't match with ritual monster";
             else {
                 tributeMonsters(Integer.parseInt(monster1), token);
                 tributeMonsters(Integer.parseInt(monster2), token);
                 System.out.println("please enter the attack or defence status");
-                String status = MainClient.scanner.nextLine();
+                String status = Main.scanner.nextLine();
                 if (status.equals("attacking")) {
                     ((MonsterCard) card).setIsAttack(true);
                     card.setSide(false);
@@ -449,7 +458,7 @@ public class GameController {
             if (countNokhodi(token) == 5)
                 return "there are not enough cards for tribute";
             else {
-                String s = MainClient.scanner.nextLine();
+                String s = Main.scanner.nextLine();
                 if (s.equals("cancel")) {
                     deselect(token);
                     return "";
@@ -547,7 +556,7 @@ public class GameController {
                             getPlayBoardByTurn().getSelectedCard().getName().equals("BeastKingBarbaros")) {
                         int i;
                         System.out.println("please enter which mode you want to sacrifice press 1 else 0");
-                        i = MainClient.scanner.nextInt();
+                        i = Main.scanner.nextInt();
                         ActionMonster actionMonster = new ActionMonster();
                         if (i == 0) {
                             actionMonster.setAction(8, (MonsterCard) GlobalVariable.getBoards().get(token).
@@ -567,8 +576,8 @@ public class GameController {
             if (countNokhodi(token) > 3)
                 return "there are not enough cards for tribute";
             else {
-                int monster = Integer.parseInt(MainClient.scanner.nextLine());
-                int monster1 = Integer.parseInt(MainClient.scanner.nextLine());
+                int monster = Integer.parseInt(Main.scanner.nextLine());
+                int monster1 = Integer.parseInt(Main.scanner.nextLine());
                 if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getMonsters().get(monster - 1).getName().equals("nokhodi") ||
                         GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getMonsters().get(monster1 - 1).getName().equals("nokhodi"))
                     return "there no monsters one this address";
@@ -940,8 +949,8 @@ public class GameController {
             System.out.println("now it will be " + GlobalVariable.getPlayers().get(token).getUsername() + " turn");
             System.out.println(GlobalVariable.getBoards().get(token).getPlayBoardByTurn());
             System.out.println("do you want to activate your trap and spell?");
-            String input = MainClient.scanner.nextLine();
-            String activation = MainClient.scanner.nextLine();
+            String input = Main.scanner.nextLine();
+            String activation = Main.scanner.nextLine();
             if (input.equals("no")) {
                 System.out.println("now it will be " + GlobalVariable.getPlayers().get(token).getUsername() + " turn");
                 System.out.println(GlobalVariable.getBoards().get(token).getPlayBoardByTurn());
