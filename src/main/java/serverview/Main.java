@@ -105,13 +105,13 @@ public class Main {
             return Controller.getInstance().removeCardFromDeck(parts[5], parts[3], 0, parts[7]);
         else if(command.startsWith("deck rm-card") && !command.contains("side"))
             return Controller.getInstance().removeCardFromDeck(parts[5], parts[3], 1, parts[6]);
-        else if(command.equals("deck show all"))
+        else if(command.startsWith("deck show all"))
             return Controller.getInstance().showDecks(parts[3]);
         else if(command.startsWith("deck show deck-name") && command.contains("side"))
             return Controller.getInstance().showADeck(parts[3], 0, parts[5]);
         else if(command.startsWith("deck show deck-name") && !command.contains("side"))
             return Controller.getInstance().showADeck(parts[3], 1, parts[4]);
-        else if(command.equals("deck show cards"))
+        else if(command.startsWith("deck show cards"))
             return Controller.getInstance().showAllCards(parts[3]);
         else if(command.startsWith("select monster"))
             return GameController.getInstance().selectOwnMonster(Integer.parseInt(parts[2]), parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
@@ -127,35 +127,35 @@ public class Main {
             return GameController.getInstance().selectField(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
         else if(command.startsWith("select field opponent"))
             return GameController.getInstance().selectOpponentField(parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
-        else if(command.equals("select -d"))
+        else if(command.startsWith("select -d"))
             return GameController.getInstance().deselect(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.equals("summon"))
+        else if(command.startsWith("summon"))
             return GameController.getInstance().summon(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
-        else if(command.equals("set"))
+        else if(command.startsWith("set"))
             return GameController.getInstance().setMonster(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
         else if(command.startsWith("set position"))
             return GameController.getInstance().changePosition(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
-        else if(command.equals("flip-summon"))
+        else if(command.startsWith("flip-summon"))
             return GameController.getInstance().flipSummon(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
         else if(command.startsWith("attack"))
             return GameController.getInstance().attack(Integer.parseInt(parts[1]), parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.equals("attack direct"))
+        else if(command.startsWith("attack direct"))
             return GameController.getInstance().directAttack(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.equals("activate effect"))
+        else if(command.startsWith("activate effect"))
             return GameController.getInstance().activateCard((SpellCard) GlobalVariable.getBoards().get(parts[2]).getPlayBoardByTurn().getSelectedCard(), parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.equals("setSpell"))
+        else if(command.startsWith("setSpell"))
             return GameController.getInstance().setSpellCard(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
-        else if(command.equals("setTrap"))
+        else if(command.startsWith("setTrap"))
             return GameController.getInstance().setTrapCard(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
-        else if(command.equals("ritual summon"))
+        else if(command.startsWith("ritual summon"))
             return GameController.getInstance().ritualSummon(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.equals("show graveyard"))
+        else if(command.startsWith("show graveyard"))
             return GameController.getInstance().showMyGraveyard(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.equals("show opponent graveyard"))
+        else if(command.startsWith("show opponent graveyard"))
             return GameController.getInstance().showOpponentGraveyard(parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
-        else if(command.equals("show card"))
+        else if(command.startsWith("show card"))
             return GameController.getInstance().showCard(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.equals("next phase"))
+        else if(command.startsWith("next phase"))
             return GameController.getInstance().goNextPhase(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
 //        else if(command.equals("surrender"))
 //            return GameController.getInstance().setWin();
