@@ -95,7 +95,7 @@ public class Main {
             return Controller.getInstance().createDeck(parts[2], parts[3]);
         else if(command.startsWith("deck delete"))
             return Controller.getInstance().deleteDeck(parts[2], parts[3]);
-        else if(command.startsWith("deck-set activate"))
+        else if(command.startsWith("deck set-activate"))
             return Controller.getInstance().activateDeck(parts[2], parts[3]);
         else if(command.startsWith("deck add-card") && command.contains("side"))
             return Controller.getInstance().addCardToDeck(parts[5], parts[3], 0, parts[7]);
