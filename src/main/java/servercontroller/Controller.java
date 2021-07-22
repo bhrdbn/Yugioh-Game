@@ -390,22 +390,23 @@ public class Controller {
 
     public String addCardToDeck(String deckName, String cardName, int position, String token) {
 
-        if (!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(cardName))
+        if (GlobalVariable.getPlayers().get(token) != null && !GlobalVariable.getPlayers().get(token).doesHaveCardWithName(cardName))
             return "card with name " + cardName + " does not exist";
-        else if (!GlobalVariable.getPlayers().get(token).doesHaveDeckWithThisName(deckName))
+        else if (GlobalVariable.getPlayers().get(token) != null && !GlobalVariable.getPlayers().get(token).doesHaveDeckWithThisName(deckName))
             return "deck with name " + deckName + " does not exist";
-        else if (position == 1 && GlobalVariable.getPlayers().get(token).getDeckByName(deckName).isMainFull()) {
+        else if (GlobalVariable.getPlayers().get(token) != null && position == 1 && GlobalVariable.getPlayers().get(token).getDeckByName(deckName).isMainFull()) {
 
             return "main deck is full";
-        } else if (position == 0 && GlobalVariable.getPlayers().get(token).getDeckByName(deckName).isSideFull()) {
+        } else if (GlobalVariable.getPlayers().get(token) != null && position == 0 && GlobalVariable.getPlayers().get(token).getDeckByName(deckName).isSideFull()) {
 
             return "side deck is full";
-        } else if (GlobalVariable.getPlayers().get(token).getDeckByName(deckName).countACardInDeck
+        } else if (GlobalVariable.getPlayers().get(token) != null && GlobalVariable.getPlayers().get(token).getDeckByName(deckName).countACardInDeck
                 (GlobalVariable.getPlayers().get(token).getCardByName(cardName)) == 3) {
             return "there are already three cards with name " + cardName + " in deck " + deckName;
-        } else {
+        } else { if(GlobalVariable.getPlayers().get(token) != null) {
             GlobalVariable.getPlayers().get(token).getDeckByName(deckName).addCard(GlobalVariable.getPlayers().get(token).getCardByName(cardName), position);
             GlobalVariable.getPlayers().get(token).getDeckByName(deckName).setIsValid();
+        }
             return "card added to deck successfully";
         }
 
@@ -417,9 +418,10 @@ public class Controller {
         else if (!GlobalVariable.getPlayers().get(token).getDeckByName(deckName).doesHaveCard(cardName, position))
             return "card with name " + cardName + " does not exist";
 
-        else {
+        else { if(GlobalVariable.getPlayers().get(token) != null) {
             GlobalVariable.getPlayers().get(token).getDeckByName(deckName).removeCard(GlobalVariable.getPlayers().get(token).getCardByName(cardName), position);
             GlobalVariable.getPlayers().get(token).getDeckByName(deckName).setIsValid();
+        }
             return "card removed from deck successfully";
         }
 
