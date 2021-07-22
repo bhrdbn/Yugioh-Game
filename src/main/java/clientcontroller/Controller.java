@@ -888,6 +888,18 @@ public class Controller {
             return "exception";
         }
     }
+
+    public String addAuction(String group, String group1) {
+        try {
+        dataOutputStream.writeUTF("addauction " + token+" "+group+" "+group1);
+        dataOutputStream.flush();
+        String result = dataInputStream.readUTF();
+        return result;
+    } catch (IOException ioException) {
+        ioException.printStackTrace();
+        return "exception";
+    }
+    }
 }
 
 

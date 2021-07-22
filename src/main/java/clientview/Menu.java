@@ -8,5 +8,6 @@ public enum Menu {
     SHOP,
     Main,
     GRAVEYARD,
+    AUCTION,
     LOBBY
 }

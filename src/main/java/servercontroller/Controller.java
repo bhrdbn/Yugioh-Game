@@ -304,6 +304,22 @@ public class Controller {
         }
 
     }
+  // public String addAuction(String token,String name,int price){
+  //     if(!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(name))
+  //         return "you don't have this card";
+  //     GlobalVariable.getAuctions().put(name,price);
+  //     new Thread(()->{
+  //         LocalDateTime now0=LocalDateTime.now();
+  //         while(ChronoUnit.MINUTES.between(now0,LocalDateTime.now())<=3){
+  //             player=getOpponent(token,round);
+  //             if (player!=null) {
+  //                 String boardToken = setBoard(token, player);
+  //                 return "duel created with " + player.getUsername() + " " + boardToken;
+  //             }
+
+
+  //     })
+  // }
 
 
     public String showAll() {
