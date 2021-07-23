@@ -491,23 +491,39 @@ public class Controller {
             return wait(token,round);
         }
     }
+    public synchronized String opponentExists(String token){
+        for (Map.Entry<String, String> entry : GlobalVariable.getP2p().entrySet()) {
+            if (entry.getValue().equals(token)) {
+               return entry.getKey();
+            }
+        }
+        return "";
+    }
 
     public synchronized String wait(String token, String round) {
         Player player;
         LocalDateTime now0 = LocalDateTime.now();
-        while (ChronoUnit.SECONDS.between(now0, LocalDateTime.now()) <= 15) {
-            player = getOpponent(token, round);
-            if (player != null) {
-                String boardToken = setBoard(token, player);
-                return "duel created with " + player.getUsername() + " " + boardToken;
+        String secondToken=opponentExists(token);
+        if(secondToken.equals("")) {
+            while (ChronoUnit.SECONDS.between(now0, LocalDateTime.now()) <= 15) {
+                player = getOpponent(token, round);
+                if (player != null) {
+                    String boardToken = setBoard(token, player);
+                    return "duel created with " + player.getUsername() + " " + boardToken;
+                }
             }
-        }
-        while (true) {
-            player = getOpponentRound(token, round);
-            if (player != null) {
-                String boardToken = setBoard(token, player);
-                return "duel created with " + player.getUsername() + " " + boardToken;
+            while (true) {
+                player = getOpponentRound(token, round);
+                if (player != null) {
+                    String boardToken = setBoard(token, player);
+                    return "duel created with " + player.getUsername() + " " + boardToken;
+                }
             }
+        }else {
+            String boardToken=GlobalVariable.getP2board().get(secondToken);
+            return  "duel created with " + GlobalVariable.getPlayers().get(secondToken).getUsername()
+                    + " " + boardToken;
+
         }
 
     }
@@ -519,6 +535,7 @@ public class Controller {
         Board board = new Board(playBoard2, playBoard1);
         String boardToken = UUID.randomUUID().toString();
         GlobalVariable.getBoards().put(boardToken, board);
+        GlobalVariable.getP2board().put(token,boardToken);
         GlobalVariable.getWaitingList().remove(token);
         return boardToken;
     }
@@ -531,6 +548,7 @@ public class Controller {
                     && !entry.getKey().equals(token)) {
                 player = GlobalVariable.getPlayers().get(entry.getKey());
                 GlobalVariable.getWaitingList().remove(entry.getKey());
+                GlobalVariable.getP2p().put(token,entry.getKey());
                 return player;
             }
         }
@@ -544,6 +562,7 @@ public class Controller {
                     !entry.getKey().equals(token)) {
                 player = GlobalVariable.getPlayers().get(entry.getKey());
                 GlobalVariable.getWaitingList().remove(entry.getKey());
+                GlobalVariable.getP2p().put(token,entry.getKey());
                 return player;
             }
         }
