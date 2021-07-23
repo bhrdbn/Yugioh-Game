@@ -33,6 +33,7 @@ public class Player {
         decks=new ArrayList<>();
         otherDecks=new ArrayList<>();
         allPlayers.add(this);
+        score=0;
     }
 
     public Player getPlayerByNickName(String nickname) {

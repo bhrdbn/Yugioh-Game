@@ -20,7 +20,7 @@ public class Lobby {
         return lobby;
     }
     public void run(){
-        System.out.println("welcome to main menu");
+        System.out.println("welcome to lobby menu");
         while(true){
             String input= MainClient.scanner.nextLine();
             Matcher matcher = getCommand(input, "^request game round (\\d)$");
@@ -34,20 +34,20 @@ public class Lobby {
     }
     public void requestView(String round){
         String s;
-        LocalDateTime l=LocalDateTime.now();
         System.out.println("you cancel your request by typing 'cancel request' or wait to connect ...");
-        while(ChronoUnit.SECONDS.between(l,LocalDateTime.now())<6) {
+
              s = MainClient.scanner.nextLine();
-            if(s!=null&&s.startsWith("cancel")) {
+            if(!s.equals("")&&s.startsWith("cancel")) {
                 System.out.println("you canceled");
                 return;
             }
-        }
+
         String result=Controller.getInstance().request(round);
-        if(result.startsWith("duel created")){
-            System.out.println();
+        if(result.startsWith("duel create")){
+            System.out.println(result);
             MenuHandler.runNextMain(Menu.DUEL);
         }
+        else System.out.println("salam");
 
     }
     public Matcher getCommand(String input, String regex) {

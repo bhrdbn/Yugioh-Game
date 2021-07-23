@@ -88,9 +88,9 @@ public class Controller {
     public String loginUser(String username, String password) {
         if (Player.getPlayerByUser(username) != null) {
             if (checkPassword(Player.getPlayerByUser(username), password)) {
-                String token= UUID.randomUUID().toString();
-                GlobalVariable.getPlayers().put(token,Player.getPlayerByUser(username));
-                return ("user logged in successfully! "+token);
+                String token = UUID.randomUUID().toString();
+                GlobalVariable.getPlayers().put(token, Player.getPlayerByUser(username));
+                return ("user logged in successfully! " + token);
             } else
                 return ("Username and password didn't match!");
         } else return ("Username and password didn't match!");
@@ -103,18 +103,19 @@ public class Controller {
         Comparator<Player> multiComparator = scoreComparator.thenComparing(alphabetComparator);
         ArrayList<Player> sortedAllPerson = (ArrayList<Player>) Player.getAllPlayers().stream().sorted(multiComparator).
                 collect(Collectors.toList());
-       StringBuilder score= new StringBuilder();
+        StringBuilder score = new StringBuilder();
         for (Player allPerson : sortedAllPerson) {
             score.append(allPerson.toString());
-            if(isOnlineByName(allPerson.getUsername()))
+            if (isOnlineByName(allPerson.getUsername()))
                 score.append("  online");
             score.append("\n");
         }
         return score.toString();
     }
-    public static boolean isOnlineByName(String username){
+
+    public static boolean isOnlineByName(String username) {
         for (Player value : GlobalVariable.getPlayers().values()) {
-            if(value.getUsername().equals(username))return true;
+            if (value.getUsername().equals(username)) return true;
         }
         return false;
     }
@@ -125,22 +126,20 @@ public class Controller {
     }
 
     public String changeNickName(String nickname, String token) {
-        if(checkNickNameExist(nickname)) {
+        if (checkNickNameExist(nickname)) {
             GlobalVariable.getPlayers().get(token).setNickname(nickname);
             return "nickname changed successfully";
-        }
-        else return nickname +" already exists";
+        } else return nickname + " already exists";
     }
 
-    public String changePassword(String old,String newPassword,String token) {
-        if (GlobalVariable.getPlayers().get(token).getPassword().equals(old)){
-            if(old.equals(newPassword))return "please enter a new password";
-            else{
+    public String changePassword(String old, String newPassword, String token) {
+        if (GlobalVariable.getPlayers().get(token).getPassword().equals(old)) {
+            if (old.equals(newPassword)) return "please enter a new password";
+            else {
                 GlobalVariable.getPlayers().get(token).setPassword(newPassword);
                 return "password changed";
             }
-        }
-        else return "username and password didn't match";
+        } else return "username and password didn't match";
 
     }
 
@@ -180,23 +179,26 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       setCountM(allMonsters);
+        setCountM(allMonsters);
         setCountS(allSpells);
         setCountT(allTraps);
 
     }
-    public void setCountM(ArrayList<MonsterCard>cards){
-        for(Card card:cards){
+
+    public void setCountM(ArrayList<MonsterCard> cards) {
+        for (Card card : cards) {
             card.setCountInShop(5);
         }
     }
-    public void setCountS(ArrayList<SpellCard>cards){
-        for(Card card:cards){
+
+    public void setCountS(ArrayList<SpellCard> cards) {
+        for (Card card : cards) {
             card.setCountInShop(5);
         }
     }
-    public void setCountT(ArrayList<TrapCard>cards){
-        for(Card card:cards){
+
+    public void setCountT(ArrayList<TrapCard> cards) {
+        for (Card card : cards) {
             card.setCountInShop(5);
         }
     }
@@ -210,14 +212,14 @@ public class Controller {
         return allSpells;
     }
 
-    public String buy(String cardName,String token) {
+    public String buy(String cardName, String token) {
         try {
             Card card = getCardByName(cardName);
             if (card.isForbidden()) return "this card is forbidden";
             if (card.getCountInShop() <= 0) return "card is finished";
             if (GlobalVariable.getPlayers().get(token).getMoney() < card.getPrice()) {
-                return (card.getPrice() + " " + GlobalVariable.getPlayers().get(token).getMoney()+
-                 "\nno enough money");
+                return (card.getPrice() + " " + GlobalVariable.getPlayers().get(token).getMoney() +
+                        "\nno enough money");
             } else {
                 if (card instanceof MonsterCard)
                     GlobalVariable.getPlayers().get(token).getCards().add(new MonsterCard((MonsterCard) card));
@@ -233,12 +235,13 @@ public class Controller {
             return "no card with this name";
         }
     }
-    public String sell(String cardName,String token){
-        if(!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(cardName))
+
+    public String sell(String cardName, String token) {
+        if (!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(cardName))
             return "you don't have this card";
         getCardByName(cardName).addCountInShop();
         GlobalVariable.getPlayers().get(token).increasePlayerMoney((int) getCardByName(cardName).getPrice());
-        Card card=GlobalVariable.getPlayers().get(token).getCardByName(cardName);
+        Card card = GlobalVariable.getPlayers().get(token).getCardByName(cardName);
         GlobalVariable.getPlayers().get(token).getCards().remove(card);
         return "you sold the card successfully";
 
@@ -304,22 +307,22 @@ public class Controller {
         }
 
     }
-  // public String addAuction(String token,String name,int price){
-  //     if(!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(name))
-  //         return "you don't have this card";
-  //     GlobalVariable.getAuctions().put(name,price);
-  //     new Thread(()->{
-  //         LocalDateTime now0=LocalDateTime.now();
-  //         while(ChronoUnit.MINUTES.between(now0,LocalDateTime.now())<=3){
-  //             player=getOpponent(token,round);
-  //             if (player!=null) {
-  //                 String boardToken = setBoard(token, player);
-  //                 return "duel created with " + player.getUsername() + " " + boardToken;
-  //             }
+    // public String addAuction(String token,String name,int price){
+    //     if(!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(name))
+    //         return "you don't have this card";
+    //     GlobalVariable.getAuctions().put(name,price);
+    //     new Thread(()->{
+    //         LocalDateTime now0=LocalDateTime.now();
+    //         while(ChronoUnit.MINUTES.between(now0,LocalDateTime.now())<=3){
+    //             player=getOpponent(token,round);
+    //             if (player!=null) {
+    //                 String boardToken = setBoard(token, player);
+    //                 return "duel created with " + player.getUsername() + " " + boardToken;
+    //             }
 
 
-  //     })
-  // }
+    //     })
+    // }
 
 
     public String showAll() {
@@ -355,7 +358,7 @@ public class Controller {
 
 
     public String admin(String token) {
-        if(GlobalVariable.getPlayers().get(token).getUsername().equals("abp"))return "true";
+        if (GlobalVariable.getPlayers().get(token).getUsername().equals("abp")) return "true";
         return "false";
     }
     //todo : continue from here
@@ -403,10 +406,11 @@ public class Controller {
         } else if (GlobalVariable.getPlayers().get(token) != null && GlobalVariable.getPlayers().get(token).getDeckByName(deckName).countACardInDeck
                 (GlobalVariable.getPlayers().get(token).getCardByName(cardName)) == 3) {
             return "there are already three cards with name " + cardName + " in deck " + deckName;
-        } else { if(GlobalVariable.getPlayers().get(token) != null) {
-            GlobalVariable.getPlayers().get(token).getDeckByName(deckName).addCard(GlobalVariable.getPlayers().get(token).getCardByName(cardName), position);
-            GlobalVariable.getPlayers().get(token).getDeckByName(deckName).setIsValid();
-        }
+        } else {
+            if (GlobalVariable.getPlayers().get(token) != null) {
+                GlobalVariable.getPlayers().get(token).getDeckByName(deckName).addCard(GlobalVariable.getPlayers().get(token).getCardByName(cardName), position);
+                GlobalVariable.getPlayers().get(token).getDeckByName(deckName).setIsValid();
+            }
             return "card added to deck successfully";
         }
 
@@ -418,10 +422,11 @@ public class Controller {
         else if (!GlobalVariable.getPlayers().get(token).getDeckByName(deckName).doesHaveCard(cardName, position))
             return "card with name " + cardName + " does not exist";
 
-        else { if(GlobalVariable.getPlayers().get(token) != null) {
-            GlobalVariable.getPlayers().get(token).getDeckByName(deckName).removeCard(GlobalVariable.getPlayers().get(token).getCardByName(cardName), position);
-            GlobalVariable.getPlayers().get(token).getDeckByName(deckName).setIsValid();
-        }
+        else {
+            if (GlobalVariable.getPlayers().get(token) != null) {
+                GlobalVariable.getPlayers().get(token).getDeckByName(deckName).removeCard(GlobalVariable.getPlayers().get(token).getCardByName(cardName), position);
+                GlobalVariable.getPlayers().get(token).getDeckByName(deckName).setIsValid();
+            }
             return "card removed from deck successfully";
         }
 
@@ -482,29 +487,29 @@ public class Controller {
             return "your deck is invalid";
         } else {
             Player player;
-            GlobalVariable.getWaitingList().put(token,round);
-            LocalDateTime now0=LocalDateTime.now();
-            while(ChronoUnit.SECONDS.between(now0,LocalDateTime.now())<=15){
-             player=getOpponent(token,round);
-            if (player!=null) {
-                String boardToken = setBoard(token, player);
-                return "duel created with " + player.getUsername() + " " + boardToken;
+            GlobalVariable.getWaitingList().put(token, round);
+            LocalDateTime now0 = LocalDateTime.now();
+            while (ChronoUnit.SECONDS.between(now0, LocalDateTime.now()) <= 15) {
+                player = getOpponent(token, round);
+                if (player != null) {
+                    String boardToken = setBoard(token, player);
+                    return "duel created with " + player.getUsername() + " " + boardToken;
+                }
             }
-            }
-            while(true){
-                player=getOpponentRound(token,round);
-                if (player!=null) {
+            while (true) {
+                player = getOpponentRound(token, round);
+                if (player != null) {
                     String boardToken = setBoard(token, player);
                     return "duel created with " + player.getUsername() + " " + boardToken;
                 }
             }
 
-            }
-
         }
 
+    }
 
-    public String setBoard(String token, Player player) {
+
+    public synchronized String setBoard(String token, Player player) {
         PlayBoard playBoard1 = new PlayBoard(player);
         PlayBoard playBoard2 = new PlayBoard(GlobalVariable.getPlayers().get(token));
         Board board = new Board(playBoard2, playBoard1);
@@ -514,23 +519,13 @@ public class Controller {
         return boardToken;
     }
 
-    public Player getOpponent(String token,String round) {
-        Player player=null;
-        for (Map.Entry<String,String> entry : GlobalVariable.getWaitingList().entrySet()) {
-            if(entry.getValue().equals(round)&&
-                    Math.abs(GlobalVariable.getPlayers().get(entry.getKey()).getScore()-GlobalVariable.getPlayers().get(token).getScore())<=1500) {
-                player=GlobalVariable.getPlayers().get(entry.getKey());
-                GlobalVariable.getWaitingList().remove(entry.getKey());
-                return player;
-            }
-    }
-        return null;
-}
-    public Player getOpponentRound(String token,String round) {
-        Player player=null;
-        for (Map.Entry<String,String> entry : GlobalVariable.getWaitingList().entrySet()) {
-            if(entry.getValue().equals(round) ){
-                player=GlobalVariable.getPlayers().get(entry.getKey());
+    public synchronized Player getOpponent(String token, String round) {
+        Player player = null;
+        for (Map.Entry<String, String> entry : GlobalVariable.getWaitingList().entrySet()) {
+            if (entry.getValue().equals(round) &&
+                    Math.abs(GlobalVariable.getPlayers().get(entry.getKey()).getScore() - GlobalVariable.getPlayers().get(token).getScore()) <= 1500
+            && !entry.getKey().equals(token)) {
+                player = GlobalVariable.getPlayers().get(entry.getKey());
                 GlobalVariable.getWaitingList().remove(entry.getKey());
                 return player;
             }
@@ -538,7 +533,18 @@ public class Controller {
         return null;
     }
 
-
+    public synchronized Player getOpponentRound(String token, String round) {
+        Player player = null;
+        for (Map.Entry<String, String> entry : GlobalVariable.getWaitingList().entrySet()) {
+            if (entry.getValue().equals(round)&&
+                    !entry.getKey().equals(token)) {
+                player = GlobalVariable.getPlayers().get(entry.getKey());
+                GlobalVariable.getWaitingList().remove(entry.getKey());
+                return player;
+            }
+        }
+        return null;
+    }
 
 
 }

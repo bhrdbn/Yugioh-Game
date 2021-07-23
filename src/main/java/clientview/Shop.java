@@ -29,6 +29,7 @@ public class Shop {
         while (true) {
             String input = MainClient.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "^shop buy ([a-zA-Z\\s]+)$");
+            Matcher matcher5=getCommand(input, "^shop sell ([a-zA-Z\\s]+)$");
             Matcher matcher2 = getCommand(input, "shop show --all");
             Matcher matcher3 = getCommand(input, "exit");
             Matcher matcher4 = getCommand(input, "cheat BAP ([a-zA-Z\\s]+) and ([a-zA-Z\\s]+) and ([a-zA-Z\\s]+) code ([0-9])");
@@ -46,6 +47,7 @@ public class Shop {
                 }
             }
             else if(matcher.find()) admin();
+            else if (matcher5.find()) System.out.println(shopController.sell(matcher5.group(1)));
             else
                 System.out.println("invalid command");
         }
