@@ -307,22 +307,24 @@ public class Controller {
         }
 
     }
-    // public String addAuction(String token,String name,int price){
-    //     if(!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(name))
-    //         return "you don't have this card";
-    //     GlobalVariable.getAuctions().put(name,price);
-    //     new Thread(()->{
-    //         LocalDateTime now0=LocalDateTime.now();
-    //         while(ChronoUnit.MINUTES.between(now0,LocalDateTime.now())<=3){
-    //             player=getOpponent(token,round);
-    //             if (player!=null) {
-    //                 String boardToken = setBoard(token, player);
-    //                 return "duel created with " + player.getUsername() + " " + boardToken;
-    //             }
+
+    public String addAuction(String token, String name, int price) {
+        if (!GlobalVariable.getPlayers().get(token).doesHaveCardWithName(name))
+            return "you don't have this card";
+
+        new Thread(() -> {
+            Auction auction = new Auction(price, GlobalVariable.getPlayers().get(token), getCardByName(name));
+            LocalDateTime now0 = LocalDateTime.now();
+            while (ChronoUnit.MINUTES.between(now0, LocalDateTime.now()) <= 5) {
+                auction.setTime((int) (300-(ChronoUnit.SECONDS.between(now0, LocalDateTime.now()))));
+
+            }
+            auction.setActive(false);
 
 
-    //     })
-    // }
+        }).start();
+        return "auction created";
+    }
 
 
     public String showAll() {
@@ -488,13 +490,14 @@ public class Controller {
         } else {
 
             GlobalVariable.getWaitingList().put(token, round);
-            return wait(token,round);
+            return wait(token, round);
         }
     }
-    public synchronized String opponentExists(String token){
+
+    public synchronized String opponentExists(String token) {
         for (Map.Entry<String, String> entry : GlobalVariable.getP2p().entrySet()) {
             if (entry.getValue().equals(token)) {
-               return entry.getKey();
+                return entry.getKey();
             }
         }
         return "";
@@ -503,8 +506,8 @@ public class Controller {
     public synchronized String wait(String token, String round) {
         Player player;
         LocalDateTime now0 = LocalDateTime.now();
-        String secondToken=opponentExists(token);
-        if(secondToken.equals("")) {
+        String secondToken = opponentExists(token);
+        if (secondToken.equals("")) {
             while (ChronoUnit.SECONDS.between(now0, LocalDateTime.now()) <= 15) {
                 player = getOpponent(token, round);
                 if (player != null) {
@@ -519,9 +522,9 @@ public class Controller {
                     return "duel created with " + player.getUsername() + " " + boardToken;
                 }
             }
-        }else {
-            String boardToken=GlobalVariable.getP2board().get(secondToken);
-            return  "duel created with " + GlobalVariable.getPlayers().get(secondToken).getUsername()
+        } else {
+            String boardToken = GlobalVariable.getP2board().get(secondToken);
+            return "duel created with " + GlobalVariable.getPlayers().get(secondToken).getUsername()
                     + " " + boardToken;
 
         }
@@ -535,7 +538,7 @@ public class Controller {
         Board board = new Board(playBoard2, playBoard1);
         String boardToken = UUID.randomUUID().toString();
         GlobalVariable.getBoards().put(boardToken, board);
-        GlobalVariable.getP2board().put(token,boardToken);
+        GlobalVariable.getP2board().put(token, boardToken);
         GlobalVariable.getWaitingList().remove(token);
         return boardToken;
     }
@@ -548,7 +551,7 @@ public class Controller {
                     && !entry.getKey().equals(token)) {
                 player = GlobalVariable.getPlayers().get(entry.getKey());
                 GlobalVariable.getWaitingList().remove(entry.getKey());
-                GlobalVariable.getP2p().put(token,entry.getKey());
+                GlobalVariable.getP2p().put(token, entry.getKey());
                 return player;
             }
         }
@@ -562,7 +565,7 @@ public class Controller {
                     !entry.getKey().equals(token)) {
                 player = GlobalVariable.getPlayers().get(entry.getKey());
                 GlobalVariable.getWaitingList().remove(entry.getKey());
-                GlobalVariable.getP2p().put(token,entry.getKey());
+                GlobalVariable.getP2p().put(token, entry.getKey());
                 return player;
             }
         }
@@ -570,6 +573,41 @@ public class Controller {
     }
 
 
+    public String showAuction() {
+        StringBuilder str = new StringBuilder();
+        for (Auction auction : Auction.getAuctions()) {
+            str.append(auction.toString());
+
+        }
+        str.append("\n");
+        str.append("if you have a suggestion for a specific id enter id and your suggestion");
+        return str.toString();
+    }
+
+    public String suggestAuction(int id, int price, String token) {
+        Auction auction = Auction.getAuctionById(id);
+        if (auction == null) return "enter valid id";
+        if (!auction.getActive()) return "auction is expired";
+        if (auction.getPrice() >= price) return "your suggested payment is not enough";
+        if (price > GlobalVariable.getPlayers().get(token).getMoney()) return "you don't have enough money";
+        if (auction.getCustomer() != null) {
+            int difference=price-auction.getPrice();
+            auction.getCustomer().increasePlayerMoney(auction.getPrice());
+            auction.setCustomer(GlobalVariable.getPlayers().get(token));
+            GlobalVariable.getPlayers().get(token).decreaseMoney(price);
+            auction.setPrice(price);
+            auction.getSeller().increasePlayerMoney(difference);
+            return "your current money is "+GlobalVariable.getPlayers().get(token).getMoney();
+        }
+        auction.setCustomer(GlobalVariable.getPlayers().get(token));
+        GlobalVariable.getPlayers().get(token).decreaseMoney(price);
+        auction.setPrice(price);
+        auction.getSeller().increasePlayerMoney(price);
+        getCardByName(auction.getCard().getName()).addCountInShop();
+        Card card = GlobalVariable.getPlayers().get(token).getCardByName(auction.getCard().getName());
+        GlobalVariable.getPlayers().get(token).getCards().remove(card);
+        return "your current money is "+GlobalVariable.getPlayers().get(token).getMoney();
+    }
 }
 
 

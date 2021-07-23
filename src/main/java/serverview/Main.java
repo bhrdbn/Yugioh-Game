@@ -62,8 +62,17 @@ public class Main {
             return String.valueOf(Controller.getInstance().createUser(parts[1], parts[2], parts[3]));
         } else if (command.startsWith("login")) {
             return String.valueOf(Controller.getInstance().loginUser(parts[1], parts[2]));
-        } else if (command.startsWith("scoreboard")) {
-            return Controller.getInstance().scoreboard();
+        } else if (command.startsWith("addauction")) {
+            return (Controller.getInstance().addAuction(parts[1], parts[2],Integer.parseInt(parts[3])));
+        }else if (command.startsWith("show auction")){
+            return (Controller.getInstance().showAuction());
+        }
+        else if (command.startsWith("suggest")){
+            return (Controller.getInstance().suggestAuction(Integer.parseInt(parts[1]),Integer.parseInt(parts[2])
+                    ,parts[3]));
+        }
+        else if (command.startsWith("scoreboard")) {
+            return Controller.scoreboard();
         } else if (command.startsWith("logout")) {
             return Controller.getInstance().logoutUser(parts[1]);
         }

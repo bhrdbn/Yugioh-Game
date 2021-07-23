@@ -13,6 +13,7 @@ public class MenuHandler {
             case DUEL:
             case SHOP:
             case PROFILE:
+            case AUCTION:
                 MainView.getInstance().run();
                 break;
             case Main:
@@ -57,6 +58,8 @@ public class MenuHandler {
                     e.printStackTrace();
                 }
                 break;
+            case AUCTION:
+                Auction.getInstance().run();
 
         }
 

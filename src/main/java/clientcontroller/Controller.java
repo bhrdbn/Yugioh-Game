@@ -900,6 +900,32 @@ public class Controller {
         return "exception";
     }
     }
+
+    public String showAuction() {
+        try {
+            dataOutputStream.writeUTF("show auctions");
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+
+    }
+
+    public String suggest(String id, String price) {
+        try {
+            dataOutputStream.writeUTF("suggest "+id+" "+price+" "+token);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+
+    }
 }
 
 

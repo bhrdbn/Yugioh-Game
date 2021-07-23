@@ -24,23 +24,20 @@ public class Auction {
         while (true) {
             String input = MainClient.scanner.nextLine();
             Matcher matcher1 = getCommand(input, "^sell ([a-zA-Z\\s]+) price (\\d+)$");
-            Matcher matcher2 = getCommand(input, "^set ([a-zA-Z]+) allowed$");
+            Matcher matcher2 = getCommand(input, "^show auctions$");
             Matcher matcher3 = getCommand(input, "^exit");
-            Matcher matcher4 = getCommand(input, "^increase ([a-zA-Z]+)$");
-            Matcher matcher5 = getCommand(input, "^decrease ([a-zA-Z]+)$");
+            Matcher matcher4 = getCommand(input, "^id (\\d+) price (\\d+)$");
             if(matcher1.find()){
                 System.out.println(controller.addAuction(matcher1.group(1),matcher1.group(2)));
             }
             else if(matcher2.find()){
-                System.out.println(controller.setAllowed(matcher2.group(1)));
+                System.out.println(controller.showAuction());
             }
             else if(matcher3.find())MenuHandler.runBack(Menu.SHOP);
             else if(matcher4.find()){
-                System.out.println(controller.increaseCard(matcher4.group(1)));
+                System.out.println(controller.suggest(matcher4.group(1),matcher4.group(2)));
             }
-            else if(matcher5.find()){
-                System.out.println(controller.decreaseCard(matcher5.group(1)));
-            }
+
             else System.out.println("invalid command");
 
         }
