@@ -486,24 +486,28 @@ public class Controller {
         } else if (!GlobalVariable.getPlayers().get(token).getActivatedDeck().isValid()) {
             return "your deck is invalid";
         } else {
-            Player player;
-            GlobalVariable.getWaitingList().put(token, round);
-            LocalDateTime now0 = LocalDateTime.now();
-            while (ChronoUnit.SECONDS.between(now0, LocalDateTime.now()) <= 15) {
-                player = getOpponent(token, round);
-                if (player != null) {
-                    String boardToken = setBoard(token, player);
-                    return "duel created with " + player.getUsername() + " " + boardToken;
-                }
-            }
-            while (true) {
-                player = getOpponentRound(token, round);
-                if (player != null) {
-                    String boardToken = setBoard(token, player);
-                    return "duel created with " + player.getUsername() + " " + boardToken;
-                }
-            }
 
+            GlobalVariable.getWaitingList().put(token, round);
+            return wait(token,round);
+        }
+    }
+
+    public synchronized String wait(String token, String round) {
+        Player player;
+        LocalDateTime now0 = LocalDateTime.now();
+        while (ChronoUnit.SECONDS.between(now0, LocalDateTime.now()) <= 15) {
+            player = getOpponent(token, round);
+            if (player != null) {
+                String boardToken = setBoard(token, player);
+                return "duel created with " + player.getUsername() + " " + boardToken;
+            }
+        }
+        while (true) {
+            player = getOpponentRound(token, round);
+            if (player != null) {
+                String boardToken = setBoard(token, player);
+                return "duel created with " + player.getUsername() + " " + boardToken;
+            }
         }
 
     }
@@ -524,7 +528,7 @@ public class Controller {
         for (Map.Entry<String, String> entry : GlobalVariable.getWaitingList().entrySet()) {
             if (entry.getValue().equals(round) &&
                     Math.abs(GlobalVariable.getPlayers().get(entry.getKey()).getScore() - GlobalVariable.getPlayers().get(token).getScore()) <= 1500
-            && !entry.getKey().equals(token)) {
+                    && !entry.getKey().equals(token)) {
                 player = GlobalVariable.getPlayers().get(entry.getKey());
                 GlobalVariable.getWaitingList().remove(entry.getKey());
                 return player;
@@ -536,7 +540,7 @@ public class Controller {
     public synchronized Player getOpponentRound(String token, String round) {
         Player player = null;
         for (Map.Entry<String, String> entry : GlobalVariable.getWaitingList().entrySet()) {
-            if (entry.getValue().equals(round)&&
+            if (entry.getValue().equals(round) &&
                     !entry.getKey().equals(token)) {
                 player = GlobalVariable.getPlayers().get(entry.getKey());
                 GlobalVariable.getWaitingList().remove(entry.getKey());
