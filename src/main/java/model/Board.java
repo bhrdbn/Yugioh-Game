@@ -9,8 +9,8 @@ public class Board {
     private PlayBoard playBoard1;
     private PlayBoard playBoard2;
 
-    public Board(PlayBoard playBoardPlayer, PlayBoard playBoardOpponent) {
-
+    public Board(PlayBoard playBoardPlayer, PlayBoard playBoardOpponent, String token) {
+        turn = GlobalVariable.getPlayers().get(token);
         playBoard1 = playBoardPlayer;
         playBoard2 = playBoardOpponent;
         phase = Phase.DRAW;
@@ -20,11 +20,11 @@ public class Board {
     @Override
     public String toString() {
         String board = "";
-//        board += getOpponentPlayBoardByTurn().rotateToString();
-        board += playBoard2.rotateToString();
+        board += getOpponentPlayBoardByTurn().rotateToString();
+//        board += playBoard2.rotateToString();
         board += "\n----------------------\n";
-//        board += getPlayBoardByTurn().toString();
-        board += playBoard1.toString();
+        board += getPlayBoardByTurn().toString();
+//        board += playBoard1.toString();
         board += "\n\n----------------------\n\n";
         return board;
     }

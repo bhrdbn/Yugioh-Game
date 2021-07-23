@@ -691,7 +691,7 @@ public class Controller {
 //
     public String goNextPhase() {
         try {
-            dataOutputStream.writeUTF("next phase " + boardToken + token);
+            dataOutputStream.writeUTF("next phase " + boardToken + " " + token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
@@ -790,7 +790,7 @@ public class Controller {
 
     public String directAttack() {
         try {
-            dataOutputStream.writeUTF("attack direct " + boardToken);
+            dataOutputStream.writeUTF("direct attack " + boardToken);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;

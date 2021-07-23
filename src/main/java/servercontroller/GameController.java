@@ -27,7 +27,7 @@ public class GameController {
 
     public String ritualSummon(String token) {
         Card card = GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard();
-        if (!isSpellConditionMet((SpellCard) card, token))
+        if (card == null && !isSpellConditionMet((SpellCard) card, token))
             return "there is no way you could ritual summon a monster";
         else if (!((SpellCard) card).getIcon().equals("Ritual") || GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedMonsterCard().typeOfMonsterCard().equals("Ritual"))
             return "you should ritual summon right now";
@@ -273,7 +273,7 @@ public class GameController {
     private void getNewBoard(String token, String playerToken) {
         PlayBoard playBoard = new PlayBoard(GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getPlayer());
         PlayBoard playBoard1 = new PlayBoard(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer());
-        Board board = new Board(playBoard, playBoard1);
+        Board board = new Board(playBoard, playBoard1, playerToken);
         Controller.getInstance().setBoard(token, GlobalVariable.getPlayers().get(playerToken));
     }
 

@@ -533,9 +533,9 @@ public class Controller {
 
 
     public synchronized String setBoard(String token, Player player) {
-        PlayBoard playBoard1 = new PlayBoard(player);
-        PlayBoard playBoard2 = new PlayBoard(GlobalVariable.getPlayers().get(token));
-        Board board = new Board(playBoard2, playBoard1);
+        PlayBoard playBoard2 = new PlayBoard(player);
+        PlayBoard playBoard1 = new PlayBoard(GlobalVariable.getPlayers().get(token));
+        Board board = new Board(playBoard1, playBoard2, token);
         String boardToken = UUID.randomUUID().toString();
         GlobalVariable.getBoards().put(boardToken, board);
         GlobalVariable.getP2board().put(token, boardToken);

@@ -47,8 +47,6 @@ public class Lobby {
             System.out.println(result);
             MenuHandler.runNextMain(Menu.DUEL);
         }
-        else System.out.println("salam");
-
     }
     public Matcher getCommand(String input, String regex) {
         Pattern pattern = Pattern.compile(regex);
