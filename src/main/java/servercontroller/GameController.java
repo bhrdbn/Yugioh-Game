@@ -27,7 +27,7 @@ public class GameController {
 
     public String ritualSummon(String token) {
         Card card = GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard();
-        if (!isSpellConditionMet((SpellCard) card, token))
+        if (card == null && !isSpellConditionMet((SpellCard) card, token))
             return "there is no way you could ritual summon a monster";
         else if (!((SpellCard) card).getIcon().equals("Ritual") || GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedMonsterCard().typeOfMonsterCard().equals("Ritual"))
             return "you should ritual summon right now";
