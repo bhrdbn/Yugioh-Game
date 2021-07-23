@@ -558,6 +558,7 @@ public class Controller {
         return null;
     }
 
+
     public synchronized Player getOpponentRound(String token, String round) {
         Player player = null;
         for (Map.Entry<String, String> entry : GlobalVariable.getWaitingList().entrySet()) {

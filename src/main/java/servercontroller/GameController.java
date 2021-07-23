@@ -946,6 +946,4 @@ public class GameController {
         }
         return "no card is selected yet";
     }
-
-
 }

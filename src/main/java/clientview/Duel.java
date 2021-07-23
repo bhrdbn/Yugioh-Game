@@ -122,8 +122,10 @@ public class Duel {
             else if(surrender.find()){
                 setWin();
             }
-            else
+            else {
                 System.out.println("invalid command");
+                System.out.println(controller.invalidCommand());
+            }
         }
     }
     public void ritualSommun() {

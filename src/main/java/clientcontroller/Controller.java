@@ -926,6 +926,18 @@ public class Controller {
         }
 
     }
+
+    public String invalidCommand() {
+        try {
+            dataOutputStream.writeUTF("invalid command " + boardToken);
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            return "exception";
+        }
+    }
 }
 
 

@@ -168,6 +168,8 @@ public class Main {
             return GameController.getInstance().goNextPhase(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
 //        else if(command.equals("surrender"))
 //            return GameController.getInstance().setWin();
+        else if(command.startsWith("invalid command"))
+            return GlobalVariable.getBoards().get(parts[2]).toString();
         return "";
     }
 }
