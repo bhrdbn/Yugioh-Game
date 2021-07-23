@@ -309,26 +309,26 @@ public class GameController {
         return number;
     }
 
-//    public void setWin() {
-//        if (rounds == 1) {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000 +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
-//            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won the game : " +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
-//            MainView.getInstance().run();
-//        } else {
-//            GlobalVariable.getBoard().getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000 +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getLifePoint());
-//            GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
-//            System.out.println(GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won whole match : " +
-//                    GlobalVariable.getBoard().getOpponentPlayBoardByTurn().getPlayer().getScore());
-//            MainView.getInstance().run();
-//        }
-//
-//    }
+    public String setWin(String boardToken) {
+        if (rounds == 1) {
+            GlobalVariable.getBoards().get(boardToken).getPlayBoardByTurn().getPlayer().increasePlayerMoney(100);
+            GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000 +
+                    GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getLifePoint());
+            GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
+           return(GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won the game score: " +
+                    GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getScore());
+
+        } else {
+            GlobalVariable.getBoards().get(boardToken).getPlayBoardByTurn().getPlayer().increasePlayerMoney(300);
+            GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000 +
+                    GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getLifePoint());
+            GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
+           return (GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won whole match score: " +
+                    GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getScore());
+
+        }
+
+    }
 //// ** monster ba ehzare vizhe ro nazadam **
 //
     public String summon(String token) {

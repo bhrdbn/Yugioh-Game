@@ -714,13 +714,17 @@ public class Controller {
         }
     }
 
-    public void setWin() {
+    public String setWin() {
         try {
             dataOutputStream.writeUTF("surrender " + boardToken);
             dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            return result;
         } catch (IOException ioException) {
             ioException.printStackTrace();
+            return "exception";
         }
+
 
 
     }

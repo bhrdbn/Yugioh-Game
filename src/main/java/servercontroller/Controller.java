@@ -317,6 +317,7 @@ public class Controller {
             LocalDateTime now0 = LocalDateTime.now();
             while (ChronoUnit.MINUTES.between(now0, LocalDateTime.now()) <= 5) {
                 auction.setTime((int) (300-(ChronoUnit.SECONDS.between(now0, LocalDateTime.now()))));
+                if(auction.getTime()<=1)break;
 
             }
             auction.setActive(false);

@@ -136,7 +136,8 @@ public class Duel {
     }
 
     public void setWin(){
-        controller.setWin();
+        System.out.println(controller.setWin());
+        MenuHandler.runBack(Menu.DUEL);
     }
 
 
