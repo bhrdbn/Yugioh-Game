@@ -139,7 +139,7 @@ public class Main {
             return GameController.getInstance().flipSummon(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
         else if(command.startsWith("attack"))
             return GameController.getInstance().attack(Integer.parseInt(parts[1]), parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
-        else if(command.startsWith("attack direct"))
+        else if(command.startsWith("direct attack"))
             return GameController.getInstance().directAttack(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
         else if(command.startsWith("activate effect"))
             return GameController.getInstance().activateCard((SpellCard) GlobalVariable.getBoards().get(parts[2]).getPlayBoardByTurn().getSelectedCard(), parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();

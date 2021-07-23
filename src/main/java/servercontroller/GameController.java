@@ -273,7 +273,7 @@ public class GameController {
     private void getNewBoard(String token, String playerToken) {
         PlayBoard playBoard = new PlayBoard(GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getPlayer());
         PlayBoard playBoard1 = new PlayBoard(GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getPlayer());
-        Board board = new Board(playBoard, playBoard1);
+        Board board = new Board(playBoard, playBoard1, playerToken);
         Controller.getInstance().setBoard(token, GlobalVariable.getPlayers().get(playerToken));
     }
 
