@@ -495,6 +495,7 @@ public class Controller {
         }
     }
 
+
     public synchronized String opponentExists(String token) {
         for (Map.Entry<String, String> entry : GlobalVariable.getP2p().entrySet()) {
             if (entry.getValue().equals(token)) {
@@ -559,7 +560,6 @@ public class Controller {
         return null;
     }
 
-
     public synchronized Player getOpponentRound(String token, String round) {
         Player player = null;
         for (Map.Entry<String, String> entry : GlobalVariable.getWaitingList().entrySet()) {
@@ -573,7 +573,6 @@ public class Controller {
         }
         return null;
     }
-
 
     public String showAuction() {
         StringBuilder str = new StringBuilder();

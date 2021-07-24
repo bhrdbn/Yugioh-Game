@@ -140,7 +140,7 @@ public class Main {
             return GameController.getInstance().deselect(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
         else if(command.startsWith("summon"))
             return GameController.getInstance().summon(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
-        else if(command.startsWith("set"))
+        else if(command.startsWith("setMonster"))
             return GameController.getInstance().setMonster(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
         else if(command.startsWith("set position"))
             return GameController.getInstance().changePosition(parts[2], parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);

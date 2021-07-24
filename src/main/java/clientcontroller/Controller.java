@@ -745,7 +745,7 @@ public class Controller {
 
     public String setMonster() {
         try {
-            dataOutputStream.writeUTF("set " + boardToken+" "+token);
+            dataOutputStream.writeUTF("setMonster " + boardToken+" "+token);
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
             return result;
