@@ -50,6 +50,10 @@ public class PlayBoard {
         return lifePoint;
     }
 
+    public void setLifePoint(int lifePoint){
+        this.lifePoint = lifePoint;
+    }
+
     public MonsterCard getSetSummonedMonster() {
         return setSummonedMonster;
     }
