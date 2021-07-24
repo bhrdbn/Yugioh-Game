@@ -123,53 +123,53 @@ public class Main {
         else if(command.startsWith("deck show cards"))
             return Controller.getInstance().showAllCards(parts[3]);
         else if(command.startsWith("select monster"))
-            return GameController.getInstance().selectOwnMonster(Integer.parseInt(parts[2]), parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
+            return GameController.getInstance().selectOwnMonster(Integer.parseInt(parts[2]), parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);
         else if(command.startsWith("select monster") && command.endsWith("opponent"))
-            return GameController.getInstance().selectOpponentMonster(Integer.parseInt(parts[2]), parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[4]).toString();
+            return GameController.getInstance().selectOpponentMonster(Integer.parseInt(parts[2]), parts[4],parts[5]) + "\n" + GlobalVariable.getBoards().get(parts[4]).networkToString(parts[5]);
         else if(command.startsWith("select spell"))
-            return GameController.getInstance().selectOwnSpell(Integer.parseInt(parts[2]), parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
+            return GameController.getInstance().selectOwnSpell(Integer.parseInt(parts[2]), parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);
         else if(command.startsWith("select spell") && command.endsWith("opponent"))
-            return GameController.getInstance().selectOpponentSpell(Integer.parseInt(parts[2]), parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[4]).toString();
+            return GameController.getInstance().selectOpponentSpell(Integer.parseInt(parts[2]), parts[4],parts[5]) + "\n" + GlobalVariable.getBoards().get(parts[4]).networkToString(parts[5]);
         else if(command.startsWith("select hand"))
-            return GameController.getInstance().selectHand(Integer.parseInt(parts[2]), parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
+            return GameController.getInstance().selectHand(Integer.parseInt(parts[2]), parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);
         else if(command.startsWith("select field"))
-            return GameController.getInstance().selectField(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+            return GameController.getInstance().selectField(parts[2],parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("select field opponent"))
-            return GameController.getInstance().selectOpponentField(parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
+            return GameController.getInstance().selectOpponentField(parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);
         else if(command.startsWith("select -d"))
             return GameController.getInstance().deselect(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
         else if(command.startsWith("summon"))
-            return GameController.getInstance().summon(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
+            return GameController.getInstance().summon(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
         else if(command.startsWith("set"))
-            return GameController.getInstance().setMonster(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
+            return GameController.getInstance().setMonster(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
         else if(command.startsWith("set position"))
-            return GameController.getInstance().changePosition(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
+            return GameController.getInstance().changePosition(parts[2], parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);
         else if(command.startsWith("flip-summon"))
-            return GameController.getInstance().flipSummon(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
+            return GameController.getInstance().flipSummon(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
         else if(command.startsWith("attack"))
-            return GameController.getInstance().attack(Integer.parseInt(parts[1]), parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+            return GameController.getInstance().attack(Integer.parseInt(parts[1]), parts[2],parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("direct attack"))
-            return GameController.getInstance().directAttack(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+            return GameController.getInstance().directAttack(parts[2],parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("activate effect"))
             return GameController.getInstance().activateCard((SpellCard) GlobalVariable.getBoards().get(parts[2]).getPlayBoardByTurn().getSelectedCard(), parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
         else if(command.startsWith("setSpell"))
-            return GameController.getInstance().setSpellCard(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
+            return GameController.getInstance().setSpellCard(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
         else if(command.startsWith("setTrap"))
-            return GameController.getInstance().setTrapCard(parts[1]) + "\n" + GlobalVariable.getBoards().get(parts[1]).toString();
+            return GameController.getInstance().setTrapCard(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
         else if(command.startsWith("ritual summon"))
-            return GameController.getInstance().ritualSummon(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+            return GameController.getInstance().ritualSummon(parts[2],parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("show graveyard"))
-            return GameController.getInstance().showMyGraveyard(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+            return GameController.getInstance().showMyGraveyard(parts[2],parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("show opponent graveyard"))
-            return GameController.getInstance().showOpponentGraveyard(parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[3]).toString();
+            return GameController.getInstance().showOpponentGraveyard(parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);
         else if(command.startsWith("show card"))
-            return GameController.getInstance().showCard(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+            return GameController.getInstance().showCard(parts[2],parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("next phase"))
-            return GameController.getInstance().goNextPhase(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
+            return GameController.getInstance().goNextPhase(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("surrender"))
            return GameController.getInstance().setWin(parts[1]);
         else if(command.startsWith("invalid command"))
-            return GlobalVariable.getBoards().get(parts[2]).toString();
+            return GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         return "";
     }
 }

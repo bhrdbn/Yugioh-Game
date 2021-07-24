@@ -25,7 +25,10 @@ public class GameController {
 
     }
 
-    public String ritualSummon(String token) {
+    public String ritualSummon(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         Card card = GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard();
         if (card == null && !isSpellConditionMet((SpellCard) card, token))
             return "there is no way you could ritual summon a monster";
@@ -105,7 +108,10 @@ public class GameController {
 //    }
 //
 //
-    public String selectOwnMonster(int number, String token) {
+    public String selectOwnMonster(int number, String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (number > 5) return "selection is invalid";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().selectMonster(number).getName().equals("nokhodi"))
             return
@@ -117,7 +123,10 @@ public class GameController {
         }
     }
 
-    public String selectOpponentMonster(int number, String token) {
+    public String selectOpponentMonster(int number, String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (number > 5) return "selection is invalid";
         else if (GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().selectMonster(number).getName().equals("nokhodi"))
             return
@@ -129,7 +138,10 @@ public class GameController {
         }
     }
 
-    public String selectOwnSpell(int number, String token) {
+    public String selectOwnSpell(int number, String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (number > 5) return "selection is invalid";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi"))
             return
@@ -141,7 +153,10 @@ public class GameController {
         }
     }
 
-    public String selectOpponentSpell(int number, String token) {
+    public String selectOpponentSpell(int number, String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (number > 5) return "selection is invalid";
         else if (GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().selectSpellOrTrap(number).getName().equals("nokhodi"))
             return
@@ -153,7 +168,10 @@ public class GameController {
         }
     }
 
-    public String selectHand(int number, String token) {
+    public String selectHand(int number, String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (number > 6) return "selection is invalid";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getHand().size() < number) return
                 "no card found in the given position";
@@ -164,7 +182,10 @@ public class GameController {
         }
     }
 
-    public String selectField(String token) {
+    public String selectField(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getFields() == null)
             return "no card found in the given position";
         else {
@@ -174,7 +195,10 @@ public class GameController {
         }
     }
 
-    public String selectOpponentField(String token) {
+    public String selectOpponentField(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getFields() == null)
             return "no card found in the given position";
         else {
@@ -331,7 +355,10 @@ public class GameController {
     }
 //// ** monster ba ehzare vizhe ro nazadam **
 //
-    public String summon(String token) {
+    public String summon(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedOpponentCard() == null)
             return "no card is selected yet";
@@ -528,7 +555,10 @@ public class GameController {
     }
 
 
-    public String setMonster(String token) {
+    public String setMonster(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
@@ -562,7 +592,10 @@ public class GameController {
 
     }
 
-    public String changePosition(String position, String token) {
+    public String changePosition(String position, String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
@@ -595,7 +628,10 @@ public class GameController {
 
     }
 
-    public String flipSummon(String token) {
+    public String flipSummon(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
@@ -615,7 +651,10 @@ public class GameController {
     }
 
 
-    public String attack(int number, String token) {
+    public String attack(int number, String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null &&
                 GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getMonsters().get(number - 1).getName().equals("nokhodi"))
             return "no card is selected yet";
@@ -636,7 +675,10 @@ public class GameController {
 //
     //  }
 
-    public String directAttack(String token) {
+    public String directAttack(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().getLocation() != Location.MONSTERS)
@@ -805,7 +847,10 @@ public class GameController {
 ////
 ////   }
 //
-    public String setSpellCard(String token) {
+    public String setSpellCard(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
@@ -829,7 +874,10 @@ public class GameController {
         }
     }
 
-    public String setTrapCard(String token) {
+    public String setTrapCard(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard() == null)
             return "no card is selected yet";
         else if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().getLocation() != Location.HAND)
@@ -910,7 +958,10 @@ public class GameController {
         }
     }
 
-    public String showMyGraveyard(String token) {
+    public String showMyGraveyard(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         StringBuilder graveyard = new StringBuilder();
         int i = 0;
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getGraveyards().size() == 0)
@@ -924,7 +975,10 @@ public class GameController {
 
     }
 
-    public String showOpponentGraveyard(String token) {
+    public String showOpponentGraveyard(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         StringBuilder graveyard = new StringBuilder();
         int i = 0;
         if (GlobalVariable.getBoards().get(token).getOpponentPlayBoardByTurn().getGraveyards().size() == 0)
@@ -937,7 +991,10 @@ public class GameController {
 
     }
 
-    public String showCard(String token) {
+    public String showCard(String token,String t) {
+        if(!(GlobalVariable.getPlayers().get(t).getUsername().equals(GlobalVariable.getBoards().get(token).
+                getPlayBoardByTurn().getPlayer().getUsername())))
+            return "it's not your turn";
         if (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedOpponentCard() != null) {
             return (GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getSelectedCard().toString());
         }

@@ -116,6 +116,12 @@ public class Server {
         boolean isEdit = false;
         if (w[1].charAt(0) == '$')
             isEdit = true;
+        boolean isDis = false;
+        if (w[1].charAt(0) == '!')
+            isDis = true;
+        boolean isFav = false;
+        if (w[1].charAt(0) == '+')
+            isFav = true;
         // if private message, send message to mentioned username only
         if (isPrivate == true) {
             String tocheck = w[1].substring(1, w[1].length());
@@ -147,7 +153,7 @@ public class Server {
         }
 
         // if message is a broadcast message
-        if (isPrivate == false && isReply == false && isRemove == false && isPIN==false && isEdit==false) {
+        if (isPrivate == false && isReply == false && isRemove == false && isPIN==false && isEdit==false&& isDis==false&& isFav==false) {
             String messageLf = time + " " + message + "\n";
             // display message
             System.out.print(messageLf);
@@ -181,13 +187,14 @@ public class Server {
                 }
             }
         }
+
         if (isEdit == true) {
             int index = Integer.parseInt(w[1].substring(1, w[1].length()));
             String messageLf = time + " " + message + " edited the previous message " + messages.get(index) + "\n";
             // display message
 
             System.out.print(messageLf);
-
+            messages.set(index,message);
             // we loop in reverse order in case we would have to remove a Client
             // because it has disconnected
             for (int i = al.size(); --i >= 0; ) {
@@ -203,6 +210,40 @@ public class Server {
             int index = Integer.parseInt(w[1].substring(1, w[1].length()));
             String messageLf = time + " " + message +" the message : " +messages.get(index)+" is removed!!! " + "\n";
             messages.remove(index);
+            // display message
+            System.out.print(messageLf);
+
+            // we loop in reverse order in case we would have to remove a Client
+            // because it has disconnected
+            for (int i = al.size(); --i >= 0; ) {
+                ClientThread ct = al.get(i);
+                // try to write to the Client if it fails remove it from the list
+                if (!ct.writeMsg(messageLf)) {
+                    al.remove(i);
+                    display("Disconnected Client " + ct.username + " removed from list.");
+                }
+            }
+        }   if (isDis == true) {
+            int index = Integer.parseInt(w[1].substring(1, w[1].length()));
+            String messageLf = time + " " + message +" the message : " +messages.get(index)+" is hated :( ) " + "\n";
+
+            // display message
+            System.out.print(messageLf);
+
+            // we loop in reverse order in case we would have to remove a Client
+            // because it has disconnected
+            for (int i = al.size(); --i >= 0; ) {
+                ClientThread ct = al.get(i);
+                // try to write to the Client if it fails remove it from the list
+                if (!ct.writeMsg(messageLf)) {
+                    al.remove(i);
+                    display("Disconnected Client " + ct.username + " removed from list.");
+                }
+            }
+        }   if (isFav == true) {
+            int index = Integer.parseInt(w[1].substring(1, w[1].length()));
+            String messageLf = time + " " + message +" the message : " +messages.get(index)+" is loved!!! " + "\n";
+
             // display message
             System.out.print(messageLf);
 
@@ -387,6 +428,20 @@ public class Server {
                             writeMsg(msg);
                         }
                         break;
+                    case ChatMessage.FAV:
+                        confirmation = broadcast(username + ": " + message);
+                        if (confirmation == false) {
+                            String msg = notif + "Sorry. No such message exists." + notif;
+                            writeMsg(msg);
+                        }
+                        break;
+                    case ChatMessage.DIS:
+                        confirmation = broadcast(username + ": " + message);
+                        if (confirmation == false) {
+                            String msg = notif + "Sorry. No such message exists." + notif;
+                            writeMsg(msg);
+                        }
+                        break;
                     case ChatMessage.LOGOUT:
                         display(username + " disconnected with a LOGOUT message.");
                         keepGoing = false;
@@ -404,6 +459,13 @@ public class Server {
                         // send list of active clients
                         for (int i = 0; i < PINNED.size(); ++i) {
                             writeMsg((i + 1) + ") " + PINNED.get(i+1));
+                        }
+                        break;
+                    case ChatMessage.SHOWMES:
+                        writeMsg("List of the messages till " + sdf.format(new Date()) + "\n");
+                        // send list of active clients
+                        for (int i = 0; i < messages.size()-1; ++i) {
+                            writeMsg((i + 1) + ") " + messages.get(i));
                         }
                         break;
                 }

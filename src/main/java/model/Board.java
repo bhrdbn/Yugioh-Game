@@ -28,6 +28,23 @@ public class Board {
         board += "\n\n----------------------\n\n";
         return board;
     }
+    public String networkToString(String token){
+        String board="";
+        if(playBoard1.getPlayer().getUsername().equals(GlobalVariable.getPlayers().get(token).getUsername())){
+            board+=playBoard2.rotateToString();
+            board += "\n----------------------\n";
+            board+=playBoard1.toString();
+        }
+        else{
+            board+=playBoard1.rotateToString();
+            board += "\n\n----------------------\n\n";
+            board+=playBoard2.toString();
+        }
+        board += "\n\n----------------------\n\n";
+        return board;
+    }
+
+
 
     public void setPhase(Phase phase) {
         this.phase = phase;
