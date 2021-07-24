@@ -124,10 +124,16 @@ public class Duel {
             }
             else {
                 System.out.println("invalid command");
-                System.out.println(controller.invalidCommand());
+                    String r=controller.invalidCommand();
+                    System.out.println(controller.invalidCommand());
+                    if(r.contains("you won your score"))
+                        MenuHandler.runBack(Menu.DUEL);
+
+                }
+
             }
         }
-    }
+
     public void ritualSommun() {
         System.out.println(controller.ritualSummon());
     }

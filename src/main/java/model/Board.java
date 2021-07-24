@@ -8,6 +8,7 @@ public class Board {
     private Phase phase;
     private PlayBoard playBoard1;
     private PlayBoard playBoard2;
+    private String winner;
 
     public Board(PlayBoard playBoardPlayer, PlayBoard playBoardOpponent, String token) {
         turn = GlobalVariable.getPlayers().get(token);
@@ -16,6 +17,13 @@ public class Board {
         phase = Phase.DRAW;
     }
 
+    public void setWinner(String winner) {
+        this.winner = winner;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
 
     @Override
     public String toString() {

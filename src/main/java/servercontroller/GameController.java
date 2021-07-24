@@ -325,6 +325,10 @@ public class GameController {
         }
     }
 
+    public void setRounds(int rounds) {
+        this.rounds = rounds;
+    }
+
     public int countNokhodi(String token) {
         int number = 0;
         for (MonsterCard monster : GlobalVariable.getBoards().get(token).getPlayBoardByTurn().getMonsters()) {
@@ -339,6 +343,8 @@ public class GameController {
             GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(1000 +
                     GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getLifePoint());
             GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increaseScore(1000);
+            GlobalVariable.getBoards().get(boardToken).setWinner(GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn()
+            .getPlayer().getUsername());
            return(GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won the game score: " +
                     GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getScore());
 
@@ -347,6 +353,8 @@ public class GameController {
             GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increasePlayerMoney(3000 +
                     GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getLifePoint());
             GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().increaseScore(3000);
+            GlobalVariable.getBoards().get(boardToken).setWinner(GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn()
+                    .getPlayer().getUsername());
            return (GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getUsername() + " won whole match score: " +
                     GlobalVariable.getBoards().get(boardToken).getOpponentPlayBoardByTurn().getPlayer().getScore());
 

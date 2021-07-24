@@ -540,6 +540,7 @@ public class Controller {
         String boardToken = UUID.randomUUID().toString();
         GlobalVariable.getBoards().put(boardToken, board);
         GlobalVariable.getP2board().put(token, boardToken);
+        GameController.getInstance().setRounds(Integer.parseInt(GlobalVariable.getWaitingList().get(token)));
         GlobalVariable.getWaitingList().remove(token);
         return boardToken;
     }

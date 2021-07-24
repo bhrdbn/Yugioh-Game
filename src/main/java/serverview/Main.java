@@ -140,7 +140,7 @@ public class Main {
             return GameController.getInstance().deselect(parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[2]).toString();
         else if(command.startsWith("summon"))
             return GameController.getInstance().summon(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
-        else if(command.startsWith("set"))
+        else if(command.startsWith("setMonster"))
             return GameController.getInstance().setMonster(parts[1],parts[2]) + "\n" + GlobalVariable.getBoards().get(parts[1]).networkToString(parts[2]);
         else if(command.startsWith("set position"))
             return GameController.getInstance().changePosition(parts[2], parts[3],parts[4]) + "\n" + GlobalVariable.getBoards().get(parts[3]).networkToString(parts[4]);
@@ -168,8 +168,12 @@ public class Main {
             return GameController.getInstance().goNextPhase(parts[2], parts[3]) + "\n" + GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
         else if(command.startsWith("surrender"))
            return GameController.getInstance().setWin(parts[1]);
-        else if(command.startsWith("invalid command"))
-            return GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
+        else if(command.startsWith("invalid command")) {
+            if (GlobalVariable.getBoards().get(parts[2]).getWinner() == null)
+                return GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3]);
+            else return GlobalVariable.getBoards().get(parts[2]).networkToString(parts[3])+"you won your score: "+
+                    GlobalVariable.getPlayers().get(parts[3]).getScore();
+        }
         return "";
     }
 }
